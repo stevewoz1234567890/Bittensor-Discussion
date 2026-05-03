@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Generate one Markdown file per subnet under subnets/.
 
-Pulls chain identity + hyperparameters, GitHub README **hardware grep** (GB/VRAM/GPU/CUDA/vCPU-aware), short alpha-price samples from RPC, optionally TAOStats historical pools.
+Pulls chain **`DynamicInfo`** for a richer **Overview**, `SubnetHyperparameters`, GitHub README preface excerpt
+and hardware scrape, and optional crawl / TAOStats pool history.
 
 Usage (from repo root, with bittensor installed):
     python3 -m venv .venv && .venv/bin/pip install -r scripts/requirements-catalog.txt
@@ -85,6 +86,164 @@ HW_GREP_EMPTY_STUB = """#### CPU / GPU / RAM lines (automatic grep)
 *Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
 
 """
+
+OVERVIEW_README_INTRO_CHARS = 9_600
+
+
+def _readme_intro_until_first_section(readme_plain: str | None, *, max_chars: int) -> str | None:
+    """Return README body up to first `## `-level heading (exclusive), skipping fenced ``` blocks."""
+    if not readme_plain or len(readme_plain.strip()) < 120:
+        return None
+    out: list[str] = []
+    in_fence = False
+    for ln in readme_plain.splitlines():
+        stripped = ln.strip()
+        if stripped.startswith("```"):
+            in_fence = not in_fence
+            continue
+        if in_fence:
+            continue
+        if stripped.startswith("##") and not stripped.startswith("###"):
+            break
+        out.append(ln.rstrip())
+
+    snippet = "\n".join(out).strip()
+    if len(snippet) < 140:
+        return None
+    if len(snippet) > max_chars:
+        snippet = snippet[: max_chars - 3].rstrip() + "…"
+    return snippet
+
+
+def _subnet_lead_sentence(name: str, netuid: int, sym: str, desc_text: str) -> str:
+    sym_bit = f" using alpha ticker **`{sym}`**" if sym else ""
+    anchor = (
+        f"**{name}** (NetUID **{netuid}**) is a Bittensor subnet{sym_bit}; "
+        "the material below expands on how operators describe its mission on-chain and in their repository."
+    )
+
+    trimmed = (desc_text or "").strip()
+    first_para = trimmed.split("\n\n", 1)[0].strip() if trimmed else ""
+    if first_para and len(first_para) > 30:
+        return f"{anchor}\n\n{_first_meaningful_sentence(first_para)}"
+    return anchor
+
+
+def _first_meaningful_sentence(blob: str) -> str:
+    blob = blob.replace("\n", " ").strip()
+    for delim in ".?!":
+        idx = blob.find(delim)
+        if 28 <= idx <= 520:
+            return blob[: idx + 1].strip()
+    return blob[: min(440, len(blob))].strip() + ("…" if len(blob) > 440 else "")
+
+
+def build_detailed_overview(
+    dyn,
+    *,
+    desc: str,
+    additional: str,
+    fetch_title: str | None,
+    fetch_desc: str | None,
+    readme_intro: str | None,
+    block: int,
+) -> str:
+    """Structured multi-section Overview (purpose + chain snapshot + README intro + crawler hints)."""
+
+    netuid = dyn.netuid
+    name = getattr(dyn, "subnet_name", "") or f"netuid-{netuid}"
+    sym = getattr(dyn, "symbol", "") or ""
+
+    if netuid == 0:
+        dyn_bits = []
+        dyn_bits.append(
+            f"- **Root tempo:** `{dyn.tempo}` blocks between epoch strides (see [`SubnetHyperparameters`](https://learnbittensor.org/explore/concept/subnet-hyperparameters)). "
+            "Validators allocate weight across subnets rather than miners competing inside a commodity task."
+        )
+        dyn_bits.append(f"- **`tao_in` (pool-facing TAO):** {dyn.tao_in}")
+        dyn_bits.append(f"- **Root alpha bookkeeping (`alpha_in` / `alpha_out`):** {dyn.alpha_in} / {dyn.alpha_out}")
+        dyn_bits.append(f"- **Reported subnet volume rolling figure:** {dyn.subnet_volume}")
+        return (
+            ROOT_OVERVIEW.strip()
+            + f"\n\n### Root snapshot *(block {block})*\n\n"
+            + "\n".join(dyn_bits)
+            + "\n"
+        )
+
+    parts: list[str] = [_subnet_lead_sentence(name, netuid, sym, desc)]
+
+    snapshot_hdr = "### Chain & market snapshot *(from `DynamicInfo`)*\n"
+    snap_lines = [
+        f"- **Tempo / epoch pacing:** `{dyn.tempo}` blocks between steps; **blocks since last step:** `{dyn.blocks_since_last_step}`. "
+        "**Emission allocation field:** "
+        + f"`{dyn.emission}` *(protocol snapshot at block {block})*.",
+        f"- **TAO routed into swap pool reserves:** **`tao_in`** = {dyn.tao_in}. **Alpha liquidity in pool (`alpha_in`)** = {dyn.alpha_in}; **`alpha_out`** (off-pool bonded/staked tally) "
+        "= "
+        + f"{dyn.alpha_out}.",
+        f"- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`{dyn.price}`** *(also **moving-average price** `{dyn.moving_price}` used in some dashboards)*.",
+        f"- **Outstanding subnet volume accumulator:** `{dyn.subnet_volume}`. "
+        "**Owner hotkey / coldkey (chain):** `{0}` / `{1}`.".format(dyn.owner_hotkey, dyn.owner_coldkey),
+        f"- **Subnet registered at block:** `{dyn.network_registered_at}` "
+        "(see explorers for approximate wall-clock age). "
+        "**Is dynamic liquidity subnet:** `{}`.".format(bool(getattr(dyn, "is_dynamic", False))),
+        f"- **Pending emissions cues:** pending α emission `{dyn.pending_alpha_emission}`; pending root emission `{dyn.pending_root_emission}`.",
+        f"- **Per-flow emission splits:** τ-in `{dyn.tao_in_emission}` · α-out `{dyn.alpha_out_emission}` · α-in `{dyn.alpha_in_emission}`.",
+    ]
+
+    identity_hdr = "### On-chain declared purpose *(SubnetIdentity)*\n"
+    identity_body: list[str] = []
+
+    dd = (desc or "").strip()
+    aa = (additional or "").strip()
+    if dd:
+        identity_body.append(dd)
+    else:
+        identity_body.append(
+            "*This subnet left the **description** field empty on-chain. Rely on README introductions, outbound links, and community docs.*"
+        )
+    if aa and aa.lower() != dd.lower():
+        identity_body.append("")
+        identity_body.append("**Additional commentary (on-chain)**\n")
+        identity_body.append(aa)
+
+    parts.append(snapshot_hdr.rstrip("\n") + "\n\n" + "\n".join(snap_lines))
+
+    parts.append("")
+    parts.append(identity_hdr.rstrip("\n") + "\n\n" + "\n\n".join(identity_body).strip())
+
+    readme_hdr = "### Repository README excerpt *(everything before first `##` heading)*\n"
+    if readme_intro:
+        intro_body = readme_intro.strip()
+
+        redundant = dd and len(dd) > 40 and dd[:120].strip().lower() in intro_body[:800].lower()
+        if redundant:
+            intro_body += (
+                "\n\n*(This README prelude largely restates the on-chain elevator pitch "
+                "+ links; substantive procedure usually appears under deeper headings.)*\n"
+            )
+        parts.append("")
+        parts.append(readme_hdr.rstrip("\n") + "\n\n" + intro_body)
+    elif fetch_desc or fetch_title:
+        parts.append("")
+        parts.append(
+            readme_hdr.rstrip("\n")
+            + "\n\n"
+            + "*README text unavailable for extraction (no compatible GitHub link or Markdown too short).*"
+        )
+
+    crawler_bits: list[str] = []
+    if fetch_desc:
+        crawler_bits.append(f"**Landing meta / crawler:** {fetch_desc}")
+    if fetch_title:
+        crawler_bits.append(f"**Fetched document title:** {fetch_title}")
+
+    if crawler_bits:
+        parts.append("")
+        parts.append(
+            "### Supplementary site crawl *(marketing HTML)*\n\n" + "\n\n".join(crawler_bits).strip()
+        )
+
+    return "\n\n".join(p for p in parts if p.strip()).strip()
 
 
 def _line_looks_hardware_rich(line: str) -> bool:
@@ -322,8 +481,10 @@ def _readme_specs_from_github(
     repo_url: str,
     *,
     http_delay: float,
-) -> tuple[str | None, str | None]:
-    """Return Markdown body plus canonical README URL."""
+    extract_hardware_bundle: bool = True,
+) -> tuple[str | None, str | None, str | None]:
+    """Return (README hardware Markdown bundle or None if skipped, raw URL, full README Markdown text)."""
+
     readme_text = None
     readme_url_used = None
     for raw_url in _github_repo_raw_readme_candidates(repo_url):
@@ -334,7 +495,10 @@ def _readme_specs_from_github(
             break
 
     if not readme_text:
-        return None, None
+        return None, None, None
+
+    if not extract_hardware_bundle:
+        return None, readme_url_used, readme_text
 
     heading_chunks = _extract_readme_heading_sections(readme_text)
     grep_primary = _collect_hardware_grep_lines(readme_text)
@@ -369,12 +533,12 @@ def _readme_specs_from_github(
     bundled.extend(extra_sections)
 
     if not bundled:
-        return None, readme_url_used
+        return None, readme_url_used, readme_text
 
     text_out = "\n\n---\n\n".join(bundled)
     if len(text_out) > 12_500:
         text_out = text_out[: 12_400] + "…\n"
-    return text_out, readme_url_used
+    return text_out, readme_url_used, readme_text
 
 
 def chain_price_recent_rows(
@@ -599,40 +763,6 @@ def format_price_block(
     return "\n".join(lines)
 
 
-def _overview_for_subnet(
-    netuid: int,
-    subnet_name: str,
-    desc: str,
-    additional: str,
-    fetch_title: str | None,
-    fetch_desc: str | None,
-) -> str:
-    if netuid == 0:
-        return ROOT_OVERVIEW
-
-    parts: list[str] = []
-    d = (desc or "").strip()
-    a = (additional or "").strip()
-
-    if d:
-        parts.append(d)
-    if a and a != d:
-        parts.append(a)
-    if fetch_desc and fetch_desc not in " ".join(parts):
-        parts.append(f"**From crawled page (site or GitHub):** {fetch_desc}")
-    elif fetch_title and not parts:
-        parts.append(
-            f"**From crawled page:** document title “{fetch_title}”. Open the links below for full detail."
-        )
-
-    if not parts:
-        return (
-            f"**{subnet_name}** (NetUID {netuid}) does not currently expose a long on-chain description. "
-            "Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers."
-        )
-
-    return "\n\n".join(parts)
-
 
 def _links_markdown(si) -> str:
     if not si:
@@ -671,6 +801,7 @@ def render_page(
     st: Subtensor,
     readme_excerpt: str | None,
     readme_raw_url: str | None,
+    readme_intro: str | None,
     taostats_key: str | None,
     taostats_limit: int,
     taostats_delay: float,
@@ -714,7 +845,15 @@ def render_page(
         "",
         "## Overview",
         "",
-        _overview_for_subnet(netuid, name, desc, additional, fetch_title, fetch_desc),
+        build_detailed_overview(
+            d,
+            desc=desc,
+            additional=additional,
+            fetch_title=fetch_title,
+            fetch_desc=fetch_desc,
+            readme_intro=readme_intro,
+            block=block,
+        ),
         "",
         "## Operational parameters — registration, limits, economics (chain)\n",
         "",
@@ -757,21 +896,6 @@ def render_page(
             "",
         ]
     )
-
-    if fetch_title or fetch_desc:
-        lines.extend(
-            [
-                "## Web crawl (supplementary)\n",
-                "",
-            ]
-        )
-        if fetch_title:
-            lines.append(f"- **Document title:** {fetch_title}")
-        if fetch_desc:
-            lines.append(f"- **Meta / og:description:** {fetch_desc}")
-        if fetch_url:
-            lines.append(f"- **Fetched from:** [{fetch_url}]({fetch_url})")
-        lines.append("")
 
     lines.extend(
         [
@@ -857,8 +981,8 @@ def main() -> None:
         "",
         f"Generated from `{args.network}` at block **{block}** ({snapshot_utc}).",
         "",
-        "Each page now adds **chain registration/limit tables**, heuristic **README hardware/miner excerpts** from GitHub, "
-        "**short-window on-chain alpha price samples**, plus optional **TAOStats daily prices** (`TAOSTATS_API_KEY`).",
+        "Detailed **Overview** per page: **`DynamicInfo` market snapshot**, full **SubnetIdentity** copy, README text **before first `##`**, optional marketing crawl snippet. "
+        "Also **`SubnetHyperparameters`/registration** tables, **hardware README grep**, on-chain α **price samples**, optional **TAOStats** history (`TAOSTATS_API_KEY`).",
         "",
         "## Index",
         "",
@@ -888,9 +1012,16 @@ def main() -> None:
 
         readme_excerpt = None
         readme_raw_url = None
-        if args.readme_specs and github_candidate:
-            readme_excerpt, readme_raw_url = _readme_specs_from_github(gh_raw, http_delay=args.delay)
+        readme_plain_text = None
+        if github_candidate:
+            readme_excerpt, readme_raw_url, readme_plain_text = _readme_specs_from_github(
+                gh_raw, http_delay=args.delay, extract_hardware_bundle=args.readme_specs
+            )
             time.sleep(args.delay)
+
+        readme_intro = _readme_intro_until_first_section(
+            readme_plain_text, max_chars=OVERVIEW_README_INTRO_CHARS
+        )
 
         body = render_page(
             d,
@@ -902,6 +1033,7 @@ def main() -> None:
             st=st,
             readme_excerpt=readme_excerpt,
             readme_raw_url=readme_raw_url,
+            readme_intro=readme_intro,
             taostats_key=taostats_key,
             taostats_limit=args.taostats_limit,
             taostats_delay=args.taostats_delay,
