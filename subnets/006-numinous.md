@@ -2,12 +2,73 @@
 
 ## Overview
 
+**Numinous** (NetUID **6**) (`ζ`).
+
 Numinous is a forecasting protocol whose goal is to aggregate agents into superhuman LLM forecasters.
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `134`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,479.184232012. **Alpha liquidity in pool (`alpha_in`)** = ‎2,219,119.724212580ζ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,552,558.899405846ζ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004729466`** *(also **moving-average price** `0.004702162928879261` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎595,596.308921320ζ‎`. **Owner hotkey / coldkey (chain):** `5CfSg4e23Z3aTXvc2XZie8ZE1xkqRPoyVRFdWUuyyjGxJrMA` / `5CfSg4e23Z3aTXvc2XZie8ZE1xkqRPoyVRFdWUuyyjGxJrMA`.
+- **Subnet registered at block:** `3219949` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎100.817451827ζ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ζ‎` · α-in `‎0.000000000ζ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.004729466`
+- **Market cap:** `21922620167845.56710651`
+- **Liquidity:** `20974435517595`
+- **Total τ:** `10479184493058`
+- **Total α:** `4771665623618426`
+- **α in pool:** `2219119669014892`
+- **α staked:** `2416207060862343`
+- **Price Δ 1h:** `0.334408001522369992`
+- **Price Δ 1d:** `1.606138305220201925`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `12`
+- **Active miners:** `138`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `12`
+- **Neuron reg. cost:** `245297887`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+Numinous is a forecasting protocol whose goal is to aggregate agents into superhuman LLM forecasters.
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<div align="center">
+
+# **Numinous**
+
+
+
+[Discord](https://discord.gg/qKPeYPc3) • [Dashboard](https://app.hex.tech/1644b22a-abe5-4113-9d5f-3ad05e4a8de7/app/Numinous-031erYRYSssIrH3W3KcyHg/latest) • [Website](https://numinouslabs.io/) • [Twitter](https://x.com/numinous_ai) •
+[Network](https://taostats.io/subnets/6/chart)
+---
+
+</div>
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Fetched document title:** Numinous
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -22,7 +83,7 @@ Numinous is a forecasting protocol whose goal is to aggregate agents into superh
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 10000000
 - **`immunity_period` (blocks):** 50400
-- **Registration recycle cost snapshot (`burn`):** τ0.200000000
+- **Registration recycle cost snapshot (`burn`):** τ0.237398782
 - **Owner SS58 (`owner_ss58`):** `5CfSg4e23Z3aTXvc2XZie8ZE1xkqRPoyVRFdWUuyyjGxJrMA`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -80,14 +141,10 @@ Run the physical infrastructure that executes and scores the agents.
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - Agents must adhere to the interface defined in the architecture. Code size is limited to **2MB**.
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/numinouslabs/numinous/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -97,7 +154,7 @@ Numinous is a forecasting protocol whose goal is to aggregate agents into superh
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -113,22 +170,22 @@ Numinous is a forecasting protocol whose goal is to aggregate agents into superh
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.004733415 |
-| 8103843 | 0.00472713 |
-| 8103891 | 0.004713705 |
-| 8103939 | 0.004713702 |
-| 8103987 | 0.004713561 |
-| 8104035 | 0.004703499 |
+| 8103976 | 0.004713699 |
+| 8104024 | 0.0047035 |
+| 8104072 | 0.004705287 |
+| 8104120 | 0.004705117 |
+| 8104168 | 0.004729289 |
+| 8104216 | 0.004729466 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

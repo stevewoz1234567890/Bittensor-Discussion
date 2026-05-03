@@ -2,12 +2,55 @@
 
 ## Overview
 
+**for sale (burn to uid1)** (NetUID **104**) (`Բ`).
+
+subnet for sale. in the meantime, burning to uid1 and experimentation stops to park subnet until sold.
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `232`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ5,188.943290950. **Alpha liquidity in pool (`alpha_in`)** = ‎1,394,875.693837810Բ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,496,171.036613933Բ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.003561423`** *(also **moving-average price** `0.003563604084774852` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎53,573.039846972Բ‎`. **Owner hotkey / coldkey (chain):** `5CoeuhimLNpjegk9zDBLmp9EBEy6X44Ad6naf2dCupkWYG6y` / `5HBb3F1bmDzdwQ5WTweXUvnKETTzu6aWNAH811vrLkvSdQAn`.
+- **Subnet registered at block:** `5528520` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎171.690665258Բ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000Բ‎` · α-in `‎0.000000000Բ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.003561423`
+- **Market cap:** `12848388899070.360102669`
+- **Liquidity:** `10156685669123`
+- **Total τ:** `5188943307200`
+- **Total α:** `3891033730451743`
+- **α in pool:** `1394875689274680`
+- **α staked:** `2212780267086123`
+- **Price Δ 1h:** `-0.000028078656177978`
+- **Price Δ 1d:** `-0.238715162278410452`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `64`
+- **Active validators:** `1`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `64`
+- **Validators (metadata):** `1`
+- **Neuron reg. cost:** `999999999`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
 subnet for sale. in the meantime, burning to uid1 and experimentation stops to park subnet until sold.
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +92,7 @@ subnet for sale. in the meantime, burning to uid1 and experimentation stops to p
 
 ## Miner / validator hardware (CPU/GPU/RAM)
 
-No GitHub URL is registered on-chain for this subnet, so README-based hardware notes were not fetched. Use the website or community links above when available.
+*No GitHub URL on-chain; hardware notes not fetched automatically.*
 
 ## On-chain identity — description
 
@@ -59,7 +102,7 @@ subnet for sale. in the meantime, burning to uid1 and experimentation stops to p
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -71,21 +114,21 @@ subnet for sale. in the meantime, burning to uid1 and experimentation stops to p
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.003561617 |
-| 8103891 | 0.003561424 |
-| 8103939 | 0.003561424 |
-| 8103987 | 0.003561424 |
-| 8104035 | 0.003561424 |
+| 8104024 | 0.003561424 |
+| 8104072 | 0.003561424 |
+| 8104120 | 0.003561423 |
+| 8104168 | 0.003561423 |
+| 8104216 | 0.003561423 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

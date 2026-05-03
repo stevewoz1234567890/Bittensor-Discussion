@@ -2,12 +2,68 @@
 
 ## Overview
 
-**oneoneone** (NetUID 111) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
+**oneoneone** (NetUID **111**) (`Ё`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `239`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,707.194629135. **Alpha liquidity in pool (`alpha_in`)** = ‎1,265,516.751147659Ё‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,482,199.871255923Ё‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.003716935`** *(also **moving-average price** `0.003724820213392377` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎88,270.176831684Ё‎`. **Owner hotkey / coldkey (chain):** `5CG4zutn1o8ZRQKUfMqKS2DfbYUwNtbM3XqL7ZPkTkntppwK` / `5HKeYGvjWXKfB6VVtG4SBpRa87TyKYzc6n8pJKacStFwWyfZ`.
+- **Subnet registered at block:** `5615562` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎176.286989119Ё‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000Ё‎` · α-in `‎0.000000000Ё‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.003716935`
+- **Market cap:** `12190999567111.652039055`
+- **Liquidity:** `9411038134554`
+- **Total τ:** `4707194862824`
+- **Total α:** `3747703622403582`
+- **α in pool:** `1265516688274170`
+- **α staked:** `2014336084806783`
+- **Price Δ 1h:** `-0.000914723797804071`
+- **Price Δ 1d:** `-0.623912010653773483`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `5`
+- **Active miners:** `249`
+- **Active dual:** `1`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `5`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+# oneoneone - Subnet 111
+
+**A Decentralized Protocol for Accessing User-Generated Content**
+
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3.12-blue.svg)
+![Node.js](https://img.shields.io/badge/node.js-18+-green.svg)
+![Bittensor](https://img.shields.io/badge/bittensor-subnet%20111-orange.svg)
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** A decentralized AI ecosystem built on the Bittensor network that specializes in collecting, validating, and serving high-quality user-generated content from platforms across the web. - oneoneone-io...
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -276,8 +332,6 @@ pm2 start ./auto-updater.sh --name "autoupdater-validator-prod" -- validator 111
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - - **CPU**: 2 cores
 - - **RAM**: 8 GB
 - - **Storage**: 32 GB SSD
@@ -286,17 +340,15 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 *Primary README URL used: `https://raw.githubusercontent.com/oneoneone-io/subnet-111/main/README.md`*
 
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
-
 ## On-chain identity — description
 
 
-*Empty — no description bytes set in `SubnetIdentity`.*
+*Unset in `SubnetIdentity`.*
 
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -309,21 +361,21 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.003716977 |
-| 8103891 | 0.003716972 |
-| 8103939 | 0.003716966 |
-| 8103987 | 0.003716961 |
-| 8104035 | 0.003716957 |
+| 8104024 | 0.003716958 |
+| 8104072 | 0.003716952 |
+| 8104120 | 0.003716944 |
+| 8104168 | 0.003716938 |
+| 8104216 | 0.003716934 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

@@ -2,12 +2,87 @@
 
 ## Overview
 
+**Verathos** (NetUID **96**) (`᚛`).
+
 Verified AI inference and training subnet.
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `224`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ63.754288588. **Alpha liquidity in pool (`alpha_in`)** = ‎2,879.932801789᚛‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎60,772.453572421᚛‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.022133219`** *(also **moving-average price** `0.014719460159540176` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,308.394185054᚛‎`. **Owner hotkey / coldkey (chain):** `5GpKXttD7h1spLMvFADW6pnpftakhiWy8iUAipq1najWMz8c` / `5CGq1JQhmZmR8w3pXFqycUgX9mcLt8bPwMZ8YDJbEmELpw7X`.
+- **Subnet registered at block:** `7692872` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎97.639351691᚛‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002159834` · α-out `‎1.000000000᚛‎` · α-in `‎0.097562644᚛‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.021728965`
+- **Market cap:** `860706158532.765960555`
+- **Liquidity:** `126271042378`
+- **Total τ:** `63135290338`
+- **Total α:** `63638113780249`
+- **α in pool:** `2905603283014`
+- **α staked:** `36705402511913`
+- **Price Δ 1h:** `-9.004551999235484572`
+- **Price Δ 1d:** `43.737797333282177086`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `6`
+- **Active miners:** `6`
+- **Active dual:** `1`
+- **Emission:** `2152974`
+- **Max neurons:** `256`
+- **Validators (metadata):** `6`
+- **Neuron reg. cost:** `10000000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+Verified AI inference and training subnet.
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<p align="center">
+  <strong>Verathos</strong><br>
+  Cryptographically verified AI compute on <a href="https://bittensor.com">Bittensor</a>
+</p>
+
+<p align="center">
+  <a href="https://verathos.ai">Website</a> &middot;
+  <a href="https://verathos.ai/docs">Docs</a> &middot;
+  <a href="https://verathos.ai/chat">Try It</a> &middot;
+  <a href="https://verathos.ai/docs?page=setup">Setup Guide</a>
+</p>
+
+---
+
+Verathos is a decentralized compute network on Bittensor (Subnet 96) where any tensor operation – in inference or training – can be cryptographically proven via ZK-inspired **sumcheck-based verification** over Merkle-committed weights, anchored on-chain. Validators verify proofs on CPU in milliseconds and set weights accordingly. The result is a permissionless network where compute is verifiable, not trusted.
+
+### Verified Inference – Live
+
+A proof plugin integrates directly into production [vLLM](https://github.com/vllm-project/vllm) serving. It generates sumcheck proofs for GEMM operations in parallel during CUDA graph execution – no challenge-response round trip, single-digit percent overhead. The network exposes an OpenAI-compatible API with score-weighted routing across all miners.
+
+### Verified Training – In Development
+
+The same proof system extends to training. The training prover verifies forward pass, backward pass (gradient GEMM), and optimizer step for full fine-tuning and LoRA (AdamW, SGD, Muon). A training job produces proofs that the correct base model was fine-tuned with the claimed data and optimizer. The protocol is implemented and tested but not yet active on the network.
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Cryptographically verified AI inference and training on Bittensor. Trust the math, not the server.
+
+**Fetched document title:** Verathos — Verified Intelligence for Everyone
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -111,8 +186,6 @@ See the [Setup Guide](docs/setup.md) for wallet creation, EVM funding, auto-upda
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - Verathos is a decentralized compute network on Bittensor (Subnet 96) where any tensor operation – in inference or training – can be cryptographically proven via ZK-inspired **sumcheck-based verification** over Merkle-committed weights, anchored on-chain. Validators verify proofs on CPU in milliseconds and set weights accordingly. The result is a permissionless network where compute is verifiable, not trusted.
 - A proof plugin integrates directly into production [vLLM](https://github.com/vllm-project/vllm) serving. It generates sumcheck proofs for GEMM operations in parallel during CUDA graph execution – no challenge-response round trip, single-digit percent overhead. The network exposes an OpenAI-compatible API with score-weighted routing across all miners.
 - │  (GPU)   │  ── receipt ──►   │  (CPU)     │──shared_state──►│  (API)     │
@@ -126,8 +199,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 *Primary README URL used: `https://raw.githubusercontent.com/verathos-ai/verathos/main/README.md`*
 
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
-
 ## On-chain identity — description
 
 
@@ -136,7 +207,7 @@ Verified AI inference and training subnet.
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -151,21 +222,21 @@ Verified AI inference and training subnet.
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.024033101 |
-| 8103891 | 0.023934527 |
-| 8103939 | 0.023831652 |
-| 8103987 | 0.023830149 |
-| 8104035 | 0.023151936 |
+| 8104024 | 0.023869921 |
+| 8104072 | 0.023394761 |
+| 8104120 | 0.022928382 |
+| 8104168 | 0.021779155 |
+| 8104216 | 0.022133219 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

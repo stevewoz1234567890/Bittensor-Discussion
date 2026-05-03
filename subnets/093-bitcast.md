@@ -2,12 +2,73 @@
 
 ## Overview
 
+**Bitcast** (NetUID **93**) (`ᚃ`).
+
 The Decentralized Creators Economy
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `221`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ20,145.101552536. **Alpha liquidity in pool (`alpha_in`)** = ‎1,325,619.829291534ᚃ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,720,316.213421645ᚃ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.015196794`** *(also **moving-average price** `0.014806873397901654` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎810,537.787292101ᚃ‎`. **Owner hotkey / coldkey (chain):** `5DAoDtMxVqtMu2Nd5E7QhPEGXDMgrySvE1b3rRT5ARDhfNNK` / `5FLfN276taTF6Ud62soChQhPNbtF2EPK4dr3pJB9oTsTpUvr`.
+- **Subnet registered at block:** `5370681` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎164.098843557ᚃ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ᚃ‎` · α-in `‎0.000000000ᚃ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.015196797`
+- **Market cap:** `49084607871830.900218311`
+- **Liquidity:** `40290276997444`
+- **Total τ:** `20145102500971`
+- **Total α:** `4045923042713179`
+- **α in pool:** `1325619766880728`
+- **α staked:** `1904311373992635`
+- **Price Δ 1h:** `0.680718606385867702`
+- **Price Δ 1d:** `6.58027122821639738`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `9`
+- **Active miners:** `7`
+- **Active dual:** `1`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `9`
+- **Neuron reg. cost:** `5000000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+The Decentralized Creators Economy
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<p align="center">
+  <a href="https://www.bitcast.network/">
+    <img src="assets/lockup_gradient.svg" alt="Bitcast Logo" width="800" />
+  </a>
+</p>
+
+# Bitcast — The Decentralized Creator Economy
+
+Bitcast is a decentralized platform that incentivizes content creators to connect brands with audiences. Creators publish YouTube videos to satisfy defined briefs and earn rewards based on engagement metrics.
+
+---
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Fetched document title:** bitcast
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -94,12 +155,10 @@ Bitcast employs a dynamic, multi-layered scoring and rewards mechanism to fairly
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/bitcast-network/bitcast/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -109,7 +168,7 @@ The Decentralized Creators Economy
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -123,21 +182,80 @@ The Decentralized Creators Economy
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.015101514 |
-| 8103891 | 0.01509406 |
-| 8103939 | 0.015177428 |
-| 8103987 | 0.015196323 |
-| 8104035 | 0.0152019 |
+| 8104024 | 0.015201989 |
+| 8104072 | 0.015190096 |
+| 8104120 | 0.015160214 |
+| 8104168 | 0.015174541 |
+| 8104216 | 0.015196794 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
+
+| Timestamp (UTC) | Block | Pool price |
+|-----------------|------:|-----------:|
+| 2026-03-09T23:59:48Z | 7711060 | 0.014681327 |
+| 2026-03-10T23:59:48Z | 7718257 | 0.015452756 |
+| 2026-03-11T23:59:48Z | 7725455 | 0.015542639 |
+| 2026-03-12T23:59:48.001Z | 7732653 | 0.015039283 |
+| 2026-03-13T23:59:48Z | 7739841 | 0.01537258 |
+| 2026-03-14T23:59:48.001Z | 7747036 | 0.017112115 |
+| 2026-03-15T23:59:48Z | 7754226 | 0.017628603 |
+| 2026-03-16T23:59:48Z | 7761426 | 0.017727804 |
+| 2026-03-17T23:59:48Z | 7768619 | 0.017487896 |
+| 2026-03-18T23:59:48Z | 7775819 | 0.017305098 |
+| 2026-03-19T23:59:48Z | 7783014 | 0.01666838737571929605 |
+| 2026-03-20T23:59:48Z | 7790201 | 0.016273718 |
+| 2026-03-21T23:59:48Z | 7797398 | 0.016851925 |
+| 2026-03-22T23:59:48Z | 7804598 | 0.01630232 |
+| 2026-03-23T23:59:48Z | 7811798 | 0.017154247 |
+| 2026-03-24T23:59:48.001Z | 7818996 | 0.01675519014827303122 |
+| 2026-03-25T23:59:48Z | 7826196 | 0.016541456 |
+| 2026-03-26T23:59:48Z | 7833396 | 0.015357557 |
+| 2026-03-27T23:59:48Z | 7840596 | 0.01500895 |
+| 2026-03-28T23:59:48.001Z | 7847743 | 0.014960884 |
+| 2026-03-29T23:59:48Z | 7854902 | 0.015654304 |
+| 2026-03-30T23:59:48.001Z | 7862095 | 0.015239573 |
+| 2026-03-31T23:59:48Z | 7869291 | 0.015759797 |
+| 2026-04-01T23:59:48Z | 7876474 | 0.01658201 |
+| 2026-04-02T23:59:48Z | 7883622 | 0.017431599 |
+| 2026-04-03T23:59:48Z | 7890794 | 0.017071177 |
+| 2026-04-04T23:59:48.001Z | 7897988 | 0.017836104 |
+| 2026-04-05T23:59:48Z | 7905188 | 0.018532904 |
+| 2026-04-06T23:59:48Z | 7912388 | 0.018826392 |
+| 2026-04-07T23:59:48Z | 7919588 | 0.019588773 |
+| 2026-04-08T23:59:48Z | 7926788 | 0.017897013 |
+| 2026-04-09T23:59:48Z | 7933987 | 0.019309276 |
+| 2026-04-10T23:59:48Z | 7941184 | 0.018716664 |
+| 2026-04-11T23:59:48Z | 7948384 | 0.01857412 |
+| 2026-04-12T23:59:48Z | 7955584 | 0.018798972 |
+| 2026-04-13T23:59:48Z | 7962784 | 0.019517525 |
+| 2026-04-14T23:59:48Z | 7969979 | 0.018271891 |
+| 2026-04-15T23:59:48.001Z | 7977179 | 0.018159473 |
+| 2026-04-16T23:59:48Z | 7984379 | 0.017296797 |
+| 2026-04-17T23:59:48Z | 7991579 | 0.016741414 |
+| 2026-04-18T23:59:48Z | 7998779 | 0.015352218 |
+| 2026-04-19T23:59:48Z | 8005979 | 0.015563486 |
+| 2026-04-20T23:59:48Z | 8013179 | 0.015522951 |
+| 2026-04-21T23:59:48Z | 8020376 | 0.015257377 |
+| 2026-04-22T23:59:48Z | 8027562 | 0.0146232 |
+| 2026-04-23T23:59:48Z | 8034762 | 0.015102341 |
+| 2026-04-24T23:59:48Z | 8041962 | 0.014587818 |
+| 2026-04-25T23:59:48Z | 8049151 | 0.015449286 |
+| 2026-04-26T23:59:48Z | 8056274 | 0.015308365 |
+| 2026-04-27T23:59:48.001Z | 8063454 | 0.014951104 |
+| 2026-04-28T23:59:48Z | 8070646 | 0.015256595 |
+| 2026-04-29T23:59:48Z | 8077790 | 0.01541044 |
+| 2026-04-30T23:59:48Z | 8084984 | 0.014999507 |
+| 2026-05-01T23:59:48Z | 8092168 | 0.014197495 |
+| 2026-05-02T23:59:48Z | 8099357 | 0.014860874 |
+| 2026-05-03T16:10:00Z | 8104202 | 0.015196797 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

@@ -2,12 +2,81 @@
 
 ## Overview
 
+**Handshake** (NetUID **58**) (`خ`).
+
 Trustless micropayments for autonomous AI agents
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `186`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ8,105.920933288. **Alpha liquidity in pool (`alpha_in`)** = ‎1,746,117.343541936خ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,215,381.607604028خ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004648203`** *(also **moving-average price** `0.004673666320741177` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎351,629.166976476خ‎`. **Owner hotkey / coldkey (chain):** `5HHaedKuMkEr4UHk4D1x1QmdXtmg1FJH4PP2G3FUzLzUAyR2` / `5CigXk8XsnSqi8unxvYma6n8wYD35obs1XCS9eibjFF4vYEN`.
+- **Subnet registered at block:** `4367003` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎140.345062928خ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000خ‎` · α-in `‎0.000000000خ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.004648204`
+- **Market cap:** `17938671589098.210551216`
+- **Liquidity:** `16222230553996`
+- **Total τ:** `8105921179712`
+- **Total α:** `4961485951145964`
+- **α in pool:** `1746117290524264`
+- **α staked:** `2113152136785340`
+- **Price Δ 1h:** `-0.075155319560590752`
+- **Price Δ 1d:** `0.307642640789236306`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `16`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `16`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+Trustless micropayments for autonomous AI agents
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<p align="center">
+  <img src="HS58.png" width="120" />
+</p>
+
+<h1 align="center">Handshake58</h1>
+
+<p align="center">
+  <strong>AI Provider Directory  DRAIN & MPP Protocols  Bittensor Subnet 58</strong>
+</p>
+
+<p align="center">
+  <a href="https://handshake58.com">Live Marketplace</a>
+  <a href="docs/thesis.html">Thesis</a>
+  <a href="https://github.com/kimbo128/DRAIN">DRAIN Protocol</a>
+</p>
+
+---
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Discover AI providers, pay with USDC micropayments, and run pre-built AI skills. No API keys, no subscriptions — powered by Bittensor Subnet 58.
+
+**Fetched document title:** Handshake58 | AI Agent Marketplace
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -129,14 +198,10 @@ Run a validator to score providers on Subnet 58.
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - `| [DRAIN Protocol](https://github.com/kimbo128/DRAIN) | Core protocol, smart contracts, SDK |`
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/Handshake58/HS58/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -146,7 +211,7 @@ Trustless micropayments for autonomous AI agents
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -161,22 +226,21 @@ Trustless micropayments for autonomous AI agents
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.004651714 |
-| 8103843 | 0.004651706 |
-| 8103891 | 0.004651702 |
-| 8103939 | 0.004651698 |
-| 8103987 | 0.004651694 |
-| 8104035 | 0.004651691 |
+| 8104024 | 0.004651692 |
+| 8104072 | 0.004651688 |
+| 8104120 | 0.004651682 |
+| 8104168 | 0.004651678 |
+| 8104216 | 0.004648203 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

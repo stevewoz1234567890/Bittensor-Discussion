@@ -2,12 +2,78 @@
 
 ## Overview
 
+**colosseum** (NetUID **38**) (`ם`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `166`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ2,003.771260575. **Alpha liquidity in pool (`alpha_in`)** = ‎186,158.730937802ם‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎797,912.241487815ם‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.010746849`** *(also **moving-average price** `0.010545383207499981` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎34,103.337105848ם‎`. **Owner hotkey / coldkey (chain):** `5DDDD2gnwrXoAM764HRn4i6nXF2wHY2JXCfs4k9LaE9voi3v` / `5CaHKFJZQQRhEBT9RkHWM7NBsAW58MkBBo3mKKfGykNPmBqp`.
+- **Subnet registered at block:** `7284230` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎102.820090647ם‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.005373431` · α-out `‎1.000000000ם‎` · α-in `‎0.500000000ם‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.010746869`
+- **Market cap:** `7686158023398.005562565`
+- **Liquidity:** `4004255045886`
+- **Total τ:** `2003702134921`
+- **Total α:** `984051563353136`
+- **α in pool:** `186152163105865`
+- **α staked:** `529047587016520`
+- **Price Δ 1h:** `-0.043816815761032332`
+- **Price Δ 1d:** `0.881472821747483283`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `9`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `5373456`
+- **Max neurons:** `256`
+- **Validators (metadata):** `9`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
 Strategic games on bittensor
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<p align="center">
+  <h1 align="center">🏛️ TAO Colosseum</h1>
+  <h3 align="center">P2P Betting on Bittensor EVM with Validator Incentives</h3>
+</p>
+
+<p align="center">
+  <a href="https://github.com/TAO-Colosseum/tao-colosseum-subnet/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
+  </a>
+  <a href="https://bittensor.com">
+    <img src="https://img.shields.io/badge/Bittensor-Subnet-green.svg" alt="Bittensor Subnet">
+  </a>
+  <img src="https://img.shields.io/badge/Python-3.9+-yellow.svg" alt="Python 3.9+">
+</p>
+
+---
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** P2P betting game on Bittensor EVM. Choose your side - Red or Blue. Classic or Underdog mode.
+
+**Fetched document title:** TAO Colosseum | Red vs Blue Betting
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -143,8 +209,6 @@ API documentation available at `http://localhost:8000/docs`
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - `| `GET /scores` | Current miner scores |`
 - `| `GET /leaderboard` | Top miners by score |`
 
@@ -153,8 +217,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 ##### Extra scrape: `validator.md` (grep only)
 
 #### CPU / GPU / RAM lines (automatic grep)
-
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
 
 - `| CPU | 2 cores | 4+ cores |`
 - `| RAM | 4 GB | 8+ GB |`
@@ -168,8 +230,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 ##### Extra scrape: `validator.md` (grep only)
 
 #### CPU / GPU / RAM lines (automatic grep)
-
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
 
 - `| CPU | 2 cores | 4+ cores |`
 - `| RAM | 4 GB | 8+ GB |`
@@ -181,8 +241,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 *Primary README URL used: `https://raw.githubusercontent.com/TAO-Colosseum/tao-colosseum-subnet/main/README.md`*
 
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
-
 ## On-chain identity — description
 
 
@@ -191,7 +249,7 @@ Strategic games on bittensor
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -207,22 +265,21 @@ Strategic games on bittensor
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.010688224 |
-| 8103843 | 0.010740066 |
-| 8103891 | 0.010751728 |
-| 8103939 | 0.010751487 |
-| 8103987 | 0.010747973 |
-| 8104035 | 0.010747791 |
+| 8104024 | 0.01074784 |
+| 8104072 | 0.010747558 |
+| 8104120 | 0.010747205 |
+| 8104168 | 0.010746997 |
+| 8104216 | 0.010746849 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

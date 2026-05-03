@@ -2,12 +2,95 @@
 
 ## Overview
 
-**ReadyAI** (NetUID 33) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
+**ReadyAI** (NetUID **33**) (`ט`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `161`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ17,139.977177732. **Alpha liquidity in pool (`alpha_in`)** = ‎2,500,943.605811104ט‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,834,823.108944575ט‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.006877753`** *(also **moving-average price** `0.006939813960343599` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎824,612.740691959ט‎`. **Owner hotkey / coldkey (chain):** `5HinUfk5SqBUAbkMtgdNoum3VJvwrLgdvwW5sbXA1UPYZ8uB` / `5HinUfk5SqBUAbkMtgdNoum3VJvwrLgdvwW5sbXA1UPYZ8uB`.
+- **Subnet registered at block:** `2943950` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎120.232076341ט‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ט‎` · α-in `‎0.000000000ט‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.006877753`
+- **Market cap:** `27050392621367.798896169`
+- **Liquidity:** `34340849565417`
+- **Total τ:** `17139977740543`
+- **Total α:** `4335753714755679`
+- **α in pool:** `2500943523978611`
+- **α staked:** `1432084111844862`
+- **Price Δ 1h:** `-0.550117282199393331`
+- **Price Δ 1d:** `-0.680173184878699248`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `14`
+- **Active miners:** `236`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `14`
+- **Neuron reg. cost:** `1053795`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+# **ReadyAI** <!-- omit in toc -->
+[![Discord Chat](https://img.shields.io/discord/308323056592486420.svg)](https://discord.gg/bittensor)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+---
+- [Conversation Genome Project](#conversation-genome-project-overview)
+  - [Key Features](#key-features)
+  - [Benefits](#Benefits)
+  - [System Design](#System-Design)
+  - [Rewards and Incentives](#reward-mechanism)
+- [Getting Started](#Getting-Started)
+  - [Installation & Compute Requirements](#installation--compute-requirements)
+  - [Configuration](#configuration)
+  - [LLM Selection](#LLM-Selection)
+  - [Quickstart - Running the tests](#running-the-tests)
+  - [Registration](#Registration)
+  - [Get Running Quickly with the Docker Image!](#Running-a-Miner-or-a-Validator-with-Docker)
+  - [Get a miner Running on Runpod](#Running-a-Miner-on-Runpod)
+- [Subnet Roles](#subnet-roles)
+  - [Mining](#mining)
+  - [Validating](#validating)
+- [Helpful Guides](#helpful-guides)
+  - [Runpod](#Runpod)
+  - [Managing Processes](#managing-processes)
+  - [Making sure your port is open](#making-sure-your-port-is-open)
+- [llms.txt Reference MCP](#llmstxt-reference-mcp)
+- [License](#license)
+
+---
+
+# Introduction to ReadyAI
+
+ReadyAI is an open-source initiative aimed at provide a low-cost resource-minimal data structuring and semantic tagging pipeline for any individual or business. AI runs on Structured Data. ReadyAI is a low-cost, structured data pipeline to turn your raw data into structured data for your vector databases and AI applications.
+
+If you are new to Bittensor, please checkout the [Bittensor Website](https://bittensor.com/) before proceeding to the setup section.
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** ReadyAI (readyai.ai) enables structured data processing at scale, democratizing access to the valuable digital commodity of structured data – the key ingredient for high quality fine tuned models a...
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -22,7 +105,7 @@
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 10000000
 - **`immunity_period` (blocks):** 7200
-- **Registration recycle cost snapshot (`burn`):** τ0.001146975
+- **Registration recycle cost snapshot (`burn`):** τ0.001019851
 - **Owner SS58 (`owner_ss58`):** `5HinUfk5SqBUAbkMtgdNoum3VJvwrLgdvwW5sbXA1UPYZ8uB`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -197,8 +280,6 @@ Now, you can deploy your instan…
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - Miners & Validators using an OpenAI API Key will need a CPU with at least 8GB of Ram and 20GB of Disk Space.
 - - `readyai_conversation_data_importer.py` -- An example processor that reads [ReadyAi/5000-podcast-conversations-with-metadata-and-embedding-dataset](https://huggingface.co/datasets/ReadyAi/5000-podcast-conversations-with-metadata-and-embedding-dataset) and processes a subset of it and inserts it into the `conversations.sqlite` data store
 - - `facebook_conversation_data_importer.py` -- An example processor that reads the subset of the Facebook conversation data and processes it into the `conversations.sqlite` data store
@@ -212,17 +293,15 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 *Primary README URL used: `https://raw.githubusercontent.com/afterpartyai/bittensor-conversation-genome-project/main/README.md`*
 
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
-
 ## On-chain identity — description
 
 
-*Empty — no description bytes set in `SubnetIdentity`.*
+*Unset in `SubnetIdentity`.*
 
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -235,22 +314,21 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.006915814 |
-| 8103843 | 0.006915804 |
-| 8103891 | 0.006915801 |
-| 8103939 | 0.006915643 |
-| 8103987 | 0.006877773 |
-| 8104035 | 0.006877771 |
+| 8104024 | 0.006877772 |
+| 8104072 | 0.006877767 |
+| 8104120 | 0.006877761 |
+| 8104168 | 0.006877756 |
+| 8104216 | 0.006877753 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

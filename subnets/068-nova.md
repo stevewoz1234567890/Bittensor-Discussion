@@ -2,12 +2,63 @@
 
 ## Overview
 
+**NOVA** (NetUID **68**) (`ظ`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `196`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ36,641.941713993. **Alpha liquidity in pool (`alpha_in`)** = ‎2,019,377.722159077ظ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,818,156.884704262ظ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.018144328`** *(also **moving-average price** `0.0181091062258929` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,369,222.111178082ظ‎`. **Owner hotkey / coldkey (chain):** `5CSuegTfX4Gf7SoXXJoPEyMEicXBjm5Z1QgoPPcU424rQbbb` / `5EcdJLAeYoxM3Tsf5VZ3NQPenPku218gqnjSoo3iJNy4V12V`.
+- **Subnet registered at block:** `4972413` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎147.615231439ظ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.009072164` · α-out `‎1.000000000ظ‎` · α-in `‎0.500000000ظ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.018144322`
+- **Market cap:** `77416824124981.66712384`
+- **Liquidity:** `73281945468262`
+- **Total τ:** `36641817236475`
+- **Total α:** `4837515522060466`
+- **α in pool:** `2019371582569343`
+- **α staked:** `2247352967677377`
+- **Price Δ 1h:** `0.047525039420859506`
+- **Price Δ 1d:** `-0.822154660579085795`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `64`
+- **Active validators:** `6`
+- **Active miners:** `3`
+- **Active dual:** `0`
+- **Emission:** `9072161`
+- **Max neurons:** `64`
+- **Validators (metadata):** `6`
+- **Neuron reg. cost:** `141653716`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
 Accelerating drug discovery.
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+*README text unavailable for extraction (no compatible GitHub link or Markdown too short).*
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** METANOVA LABS is a crypto-native biotech company at the forefront of drug discovery. We are developing next generation therapeutics that regulate mental states and restore critical biological processes.
+
+**Fetched document title:** Metanova Labs
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -22,7 +73,7 @@ Accelerating drug discovery.
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.122355371
+- **Registration recycle cost snapshot (`burn`):** τ0.137092167
 - **Owner SS58 (`owner_ss58`):** `5EcdJLAeYoxM3Tsf5VZ3NQPenPku218gqnjSoo3iJNy4V12V`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -127,8 +178,6 @@ DM the NOVA team to obtain an API key.
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - - CUDA 12.6 (for GPU support)
 - - Sufficient RAM for ML model operations
 - - 2 GPU devices for parallel inference. If only one is available, inference will run sequentially which may result in delayed/missing scoring rounds.
@@ -138,8 +187,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 *Primary README URL used: `https://raw.githubusercontent.com/metanova-labs/nova/main/README.md`*
 
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
-
 ## On-chain identity — description
 
 
@@ -148,7 +195,7 @@ Accelerating drug discovery.
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -162,21 +209,21 @@ Accelerating drug discovery.
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.018141722 |
-| 8103891 | 0.018135705 |
-| 8103939 | 0.018135712 |
-| 8103987 | 0.018135296 |
-| 8104035 | 0.018136353 |
+| 8104024 | 0.018136397 |
+| 8104072 | 0.018136617 |
+| 8104120 | 0.018143922 |
+| 8104168 | 0.018144198 |
+| 8104216 | 0.018144328 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

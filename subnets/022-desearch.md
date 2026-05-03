@@ -2,12 +2,76 @@
 
 ## Overview
 
+**Desearch** (NetUID **22**) (`χ`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `150`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ9,424.427375381. **Alpha liquidity in pool (`alpha_in`)** = ‎1,946,997.925816086χ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,094,318.403255436χ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004840380`** *(also **moving-average price** `0.004846023628488183` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎238,935.940732947χ‎`. **Owner hotkey / coldkey (chain):** `5CUu1QhvrfyMDBELUPJLt4c7uJFbi7TKqDHkS1Zz41oD4dyP` / `5DFuaMasyQtPhXcsuoYEyJmCVSRtzKxsTKFTA4SrpcGXBxJn`.
+- **Subnet registered at block:** `2009702` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎113.312470080χ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000χ‎` · α-in `‎0.000000000χ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.00484038`
+- **Market cap:** `19867798430136.29097306`
+- **Liquidity:** `18848637195532`
+- **Total τ:** `9424427657334`
+- **Total α:** `5041303329071522`
+- **α in pool:** `1946997867563895`
+- **α staked:** `2157596901883192`
+- **Price Δ 1h:** `-0.000537145024611572`
+- **Price Δ 1d:** `1.168783937999272645`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `14`
+- **Active miners:** `10`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `14`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
 Decentralized search engine
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<div align="center">
+
+<img src="./docs/assets/desearch-logo.png" alt="Desearch" width="480" />
+
+# **Subnet 22 on Bittensor**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+</div>
+
+Welcome to **Desearch powered by Bittensor Subnet 22**! Desearch is a decentralized,
+AI-powered search engine that returns unbiased and verifiable results across X, Reddit,
+Arxiv, Hacker News, Wikipedia, YouTube, and the broader web. Frontend and API access are
+available at [desearch.ai](https://desearch.ai).
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** AI-powered search APIs for web and Twitter/X data. Build intelligent agents with real-time search, semantic retrieval, and structured responses.
+
+**Fetched document title:** Desearch - AI Search APIs for Web and X Data
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -79,12 +143,10 @@ See the [Validator Setup Guide](./docs/running_a_validator.md) for full instruct
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/datura-ai/desearch/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -94,7 +156,7 @@ Decentralized search engine
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -110,22 +172,22 @@ Decentralized search engine
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.00484052 |
-| 8103843 | 0.004840412 |
-| 8103891 | 0.004840408 |
-| 8103939 | 0.004840404 |
-| 8103987 | 0.0048404 |
-| 8104035 | 0.004840397 |
+| 8103976 | 0.004840401 |
+| 8104024 | 0.004840398 |
+| 8104072 | 0.004840393 |
+| 8104120 | 0.004840387 |
+| 8104168 | 0.004840383 |
+| 8104216 | 0.00484038 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

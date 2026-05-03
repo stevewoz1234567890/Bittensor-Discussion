@@ -2,12 +2,63 @@
 
 ## Overview
 
+**CliqueAI** (NetUID **83**) (`ᚦ`).
+
 CliqueAI - AI-Powered Maximum Clique Solver Network
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `211`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ5,185.009316050. **Alpha liquidity in pool (`alpha_in`)** = ‎998,938.483347191ᚦ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,742,431.179889548ᚦ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005188253`** *(also **moving-average price** `0.005219500511884689` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎103,685.031604122ᚦ‎`. **Owner hotkey / coldkey (chain):** `5EHGayLmiXfwz6oYmQFYmDz12RPXkhJw8Ty8RYVDeVZH9Q5L` / `5DqEjRLyNN8k3WbEXhA36tyGG4YpWyPEcVSTa47XxspNHhc3`.
+- **Subnet registered at block:** `5231190` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎150.884258746ᚦ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002594126` · α-out `‎1.000000000ᚦ‎` · α-in `‎0.500000000ᚦ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.005188247`
+- **Market cap:** `12534670051428.210723745`
+- **Liquidity:** `10367681458220`
+- **Total τ:** `5184972810051`
+- **Total α:** `2741350799460975`
+- **α in pool:** `998932519629307`
+- **α staked:** `1417041517734028`
+- **Price Δ 1h:** `-0.228475145227194408`
+- **Price Δ 1d:** `-2.325017047125370829`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `9`
+- **Active miners:** `246`
+- **Active dual:** `0`
+- **Emission:** `2594124`
+- **Max neurons:** `256`
+- **Validators (metadata):** `9`
+- **Neuron reg. cost:** `300000000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+CliqueAI - AI-Powered Maximum Clique Solver Network
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+*README text unavailable for extraction (no compatible GitHub link or Markdown too short).*
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Fetched document title:** CliqueAI - AI-Powered Maximum Clique Solver Network
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -75,12 +126,10 @@ Smart allocation engine filters eligible miners and samples each miner with the 
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/toptensor/CliqueAI/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -90,7 +139,7 @@ CliqueAI - AI-Powered Maximum Clique Solver Network
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -105,21 +154,21 @@ CliqueAI - AI-Powered Maximum Clique Solver Network
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.005200606 |
-| 8103891 | 0.005200129 |
-| 8103939 | 0.005200144 |
-| 8103987 | 0.005200158 |
-| 8104035 | 0.005200175 |
+| 8104024 | 0.005200171 |
+| 8104072 | 0.005198852 |
+| 8104120 | 0.005198862 |
+| 8104168 | 0.005198876 |
+| 8104216 | 0.005188253 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

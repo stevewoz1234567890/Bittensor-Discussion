@@ -2,12 +2,64 @@
 
 ## Overview
 
+**distil** (NetUID **97**) (`ა`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `225`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,507.267567948. **Alpha liquidity in pool (`alpha_in`)** = ‎95,024.997566141ა‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎346,539.406383018ა‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.047416193`** *(also **moving-average price** `0.04763534641824663` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎165,754.232613276ა‎`. **Owner hotkey / coldkey (chain):** `5EvHrbHz8rT8DrWazxFhzfMsmscFtPE3qhRDeY4ggKZrBcxZ` / `5EUXD91ADceyH7nRWXCqG1wbaCEhsqosT4rjGhwaZDRR4ib6`.
+- **Subnet registered at block:** `7735450` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎121.671088043ა‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.022338225` · α-out `‎1.000000000ა‎` · α-in `‎0.471107531ა‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.047416683`
+- **Market cap:** `19294493707628.046973767`
+- **Liquidity:** `9012456724385`
+- **Total τ:** `4506991002206`
+- **Total α:** `441545277086471`
+- **α in pool:** `95018576524622`
+- **α staked:** `311895034611527`
+- **Price Δ 1h:** `-0.334418023790884375`
+- **Price Δ 1d:** `-0.957814539578590929`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `1`
+- **Active miners:** `5`
+- **Active dual:** `0`
+- **Emission:** `22270404`
+- **Max neurons:** `256`
+- **Validators (metadata):** `1`
+- **Neuron reg. cost:** `659684863`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
 Distillation
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+# Distil — SN97
+
+A Bittensor subnet for competitive model distillation of **Qwen/Qwen3.6-35B-A3B** (35B total, ~3B active MoE).
+
+**Dashboard**: [distil.arbos.life](https://distil.arbos.life)
+**API**: [api.arbos.life](https://api.arbos.life)
+**Chat with the King**: [chat.arbos.life](https://chat.arbos.life) — try the current best distilled model
+**Subnet**: Finney netuid 97
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -22,7 +74,7 @@ Distillation
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.797293279
+- **Registration recycle cost snapshot (`burn`):** τ0.646855582
 - **Owner SS58 (`owner_ss58`):** `5EUXD91ADceyH7nRWXCqG1wbaCEhsqosT4rjGhwaZDRR4ib6`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -159,8 +211,6 @@ Wallet keys never leave the `distil` host. The GPU pod receives evaluation tasks
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - 1. **Pre-checks (no GPU)** — Every epoch (~10 min), all committed models are verified:
 - - Models that fail pre-checks are **never sent to GPU** — no wasted compute
 - 6. **vLLM-accelerated evaluation** — vLLM generates teacher continuations 5–10× faster than pure HuggingFace inference. Teacher logits are precomputed and cached on GPU. Multi-GPU pod scaffolding (`DISTIL_TP_SIZE`, `DISTIL_STUDENT_PARALLELISM`) supports 4× / 8× H100 migration for Kimi K2.6 / batched student forward (v30.4).
@@ -183,8 +233,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 *Primary README URL used: `https://raw.githubusercontent.com/unarbos/distil/main/README.md`*
 
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
-
 ## On-chain identity — description
 
 
@@ -193,7 +241,7 @@ Distillation
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -209,21 +257,21 @@ Distillation
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.047581898 |
-| 8103891 | 0.04757803 |
-| 8103939 | 0.047573797 |
-| 8103987 | 0.047258638 |
-| 8104035 | 0.047593059 |
+| 8104024 | 0.047593851 |
+| 8104072 | 0.047502972 |
+| 8104120 | 0.047327905 |
+| 8104168 | 0.047740559 |
+| 8104216 | 0.047416193 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

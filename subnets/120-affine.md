@@ -2,12 +2,63 @@
 
 ## Overview
 
+**Affine** (NetUID **120**) (`ⴷ`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `248`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ84,499.856559737. **Alpha liquidity in pool (`alpha_in`)** = ‎1,254,406.979626642ⲃ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,941,624.654601604ⲃ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.067101088`** *(also **moving-average price** `0.06717911059968174` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎958,574.320396245ⲃ‎`. **Owner hotkey / coldkey (chain):** `5Fn7rj78bfSrNcFQCHShC7aoVSneGLbiPD7xFHu3zhwFrQhs` / `5Fc3ZZQAYB3SPXKcFnd1WJeyQvArSZZeB6LU1rb7zvQ6XvDh`.
+- **Subnet registered at block:** `5749344` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎180.201224319ⲃ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ⲃ‎` · α-in `‎0.000000000ⲃ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.067101102`
+- **Market cap:** `204312276156669.302747358`
+- **Liquidity:** `168671947249165`
+- **Total τ:** `84499861658075`
+- **Total α:** `3196018634228246`
+- **α in pool:** `1254406903646541`
+- **α staked:** `1790435432276188`
+- **Price Δ 1h:** `0.099866997656135215`
+- **Price Δ 1d:** `0.468473353615653492`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `9`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `9`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
 Reason Mining
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+*README text unavailable for extraction (no compatible GitHub link or Markdown too short).*
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Affine: Reason Mining
+
+**Fetched document title:** Affine
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -112,12 +163,10 @@ Learn how to:
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/AffineFoundation/affine/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -127,7 +176,7 @@ Reason Mining
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -143,21 +192,80 @@ Reason Mining
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.067034149 |
-| 8103891 | 0.067034218 |
-| 8103939 | 0.067064609 |
-| 8103987 | 0.067066865 |
-| 8104035 | 0.067068357 |
+| 8104024 | 0.067068378 |
+| 8104072 | 0.067068256 |
+| 8104120 | 0.067088376 |
+| 8104168 | 0.067101189 |
+| 8104216 | 0.067101088 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
+
+| Timestamp (UTC) | Block | Pool price |
+|-----------------|------:|-----------:|
+| 2026-03-09T23:59:48Z | 7711060 | 0.081091598 |
+| 2026-03-10T23:59:48Z | 7718257 | 0.080957445 |
+| 2026-03-11T23:59:48Z | 7725455 | 0.079465589 |
+| 2026-03-12T23:59:48.001Z | 7732653 | 0.079843437 |
+| 2026-03-13T23:59:48Z | 7739841 | 0.082226237 |
+| 2026-03-14T23:59:48.001Z | 7747036 | 0.078840973 |
+| 2026-03-15T23:59:48Z | 7754226 | 0.077660935 |
+| 2026-03-16T23:59:48Z | 7761426 | 0.078815898 |
+| 2026-03-17T23:59:48Z | 7768619 | 0.077683399 |
+| 2026-03-18T23:59:48Z | 7775819 | 0.076398778 |
+| 2026-03-19T23:59:48Z | 7783014 | 0.07612364746791819334 |
+| 2026-03-20T23:59:48Z | 7790201 | 0.07676534 |
+| 2026-03-21T23:59:48Z | 7797398 | 0.077468528 |
+| 2026-03-22T23:59:48Z | 7804598 | 0.076546976 |
+| 2026-03-23T23:59:48Z | 7811798 | 0.074625152 |
+| 2026-03-24T23:59:48.001Z | 7818996 | 0.08054129733424494616 |
+| 2026-03-25T23:59:48Z | 7826196 | 0.082784291 |
+| 2026-03-26T23:59:48Z | 7833396 | 0.083777851 |
+| 2026-03-27T23:59:48Z | 7840596 | 0.084587264 |
+| 2026-03-28T23:59:48.001Z | 7847743 | 0.081606531 |
+| 2026-03-29T23:59:48Z | 7854902 | 0.080097977 |
+| 2026-03-30T23:59:48.001Z | 7862095 | 0.078596674 |
+| 2026-03-31T23:59:48Z | 7869291 | 0.076895582 |
+| 2026-04-01T23:59:48Z | 7876474 | 0.077424993 |
+| 2026-04-02T23:59:48Z | 7883622 | 0.07605462 |
+| 2026-04-03T23:59:48Z | 7890794 | 0.074686745 |
+| 2026-04-04T23:59:48.001Z | 7897988 | 0.074123129 |
+| 2026-04-05T23:59:48Z | 7905188 | 0.074251143 |
+| 2026-04-06T23:59:48Z | 7912388 | 0.074520619 |
+| 2026-04-07T23:59:48Z | 7919588 | 0.07310012 |
+| 2026-04-08T23:59:48Z | 7926788 | 0.075322627 |
+| 2026-04-09T23:59:48Z | 7933987 | 0.077224997 |
+| 2026-04-10T23:59:48Z | 7941184 | 0.079774911 |
+| 2026-04-11T23:59:48Z | 7948384 | 0.077961469 |
+| 2026-04-12T23:59:48Z | 7955584 | 0.077980188 |
+| 2026-04-13T23:59:48Z | 7962784 | 0.079320062 |
+| 2026-04-14T23:59:48Z | 7969979 | 0.078427227 |
+| 2026-04-15T23:59:48.001Z | 7977179 | 0.076662086 |
+| 2026-04-16T23:59:48Z | 7984379 | 0.076413786 |
+| 2026-04-17T23:59:48Z | 7991579 | 0.075912431 |
+| 2026-04-18T23:59:48Z | 7998779 | 0.075586581 |
+| 2026-04-19T23:59:48Z | 8005979 | 0.076683597 |
+| 2026-04-20T23:59:48Z | 8013179 | 0.07398891 |
+| 2026-04-21T23:59:48Z | 8020376 | 0.072726335 |
+| 2026-04-22T23:59:48Z | 8027562 | 0.0724072 |
+| 2026-04-23T23:59:48Z | 8034762 | 0.071717015 |
+| 2026-04-24T23:59:48Z | 8041962 | 0.071198776 |
+| 2026-04-25T23:59:48Z | 8049151 | 0.070948354 |
+| 2026-04-26T23:59:48Z | 8056274 | 0.070516153 |
+| 2026-04-27T23:59:48.001Z | 8063454 | 0.069883062 |
+| 2026-04-28T23:59:48Z | 8070646 | 0.069672906 |
+| 2026-04-29T23:59:48Z | 8077790 | 0.069677541 |
+| 2026-04-30T23:59:48Z | 8084984 | 0.069442753 |
+| 2026-05-01T23:59:48Z | 8092168 | 0.067221269 |
+| 2026-05-02T23:59:48Z | 8099357 | 0.066795188 |
+| 2026-05-03T16:10:00Z | 8104202 | 0.067101102 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

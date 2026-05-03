@@ -2,12 +2,69 @@
 
 ## Overview
 
-**EfficientFrontier** (NetUID 53) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
+**EfficientFrontier** (NetUID **53**) (`ب`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `181`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ14,873.526410319. **Alpha liquidity in pool (`alpha_in`)** = ‎2,475,753.443814136ب‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,466,269.765428636ب‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.006006189`** *(also **moving-average price** `0.005982463713735342` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎464,120.416697552ب‎`. **Owner hotkey / coldkey (chain):** `5F2HTUqtk9VWQwXkkUX9oFSXUkAib74qw7s3W7KyZP88AmYe` / `5Fv2Qm2w9tnotv9xpGq9EVKaSjRtFzGdas5RBsUswpdsE5Sh`.
+- **Subnet registered at block:** `4203869` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎136.533134984ب‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.003003092` · α-out `‎1.000000000ب‎` · α-in `‎0.500000000ب‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.006006154`
+- **Market cap:** `28090328604980.087654362`
+- **Liquidity:** `29743204779681`
+- **Total τ:** `14873447629407`
+- **Total α:** `4942010378633353`
+- **α in pool:** `2475753560477179`
+- **α staked:** `2201170908156174`
+- **Price Δ 1h:** `0.166172186004779702`
+- **Price Δ 1d:** `-1.577392418376140717`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `13`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `3003072`
+- **Max neurons:** `256`
+- **Validators (metadata):** `13`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<div align="center">
+
+# **EfficientFrontier-SignalPlus**
+
+</div>
+
+**Quick Overview of [Strategy Ranking Rules](docs/Introduction/RankingRulesEN.md)**
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Contribute to EfficientFrontier-SignalPlus/EfficientFrontier development by creating an account on GitHub.
+
+**Fetched document title:** GitHub - EfficientFrontier-SignalPlus/EfficientFrontier · GitHub
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -112,24 +169,20 @@ By handling the TAO acquisition and payment process, we aim to make it as easy a
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - `|  Ranking_Index <p> (Strategy Score)|  $${\frac {\text{Weighted Daily \\% Returns}}{\text{Maximum Decayed Drawdown}} \cdot 10} \cdot \text{Risk Factor}$$|**Weighted Daily Returns / Maximum Drawdown Applied Against a Decay Factor (with a Scoring Cap)**<p>Conceptually similar to a Calmar ratio, with some adjustments down to daily return weights in order to favour more recent performance.|`
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/EfficientFrontier-SignalPlus/EfficientFrontier/main/README.md`*
 
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
-
 ## On-chain identity — description
 
 
-*Empty — no description bytes set in `SubnetIdentity`.*
+*Unset in `SubnetIdentity`.*
 
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -141,22 +194,80 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.005995765 |
-| 8103843 | 0.005995873 |
-| 8103891 | 0.005996165 |
-| 8103939 | 0.005996277 |
-| 8103987 | 0.005997159 |
-| 8104035 | 0.005997609 |
+| 8104024 | 0.005997429 |
+| 8104072 | 0.006005924 |
+| 8104120 | 0.006006039 |
+| 8104168 | 0.006006072 |
+| 8104216 | 0.006006189 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
+
+| Timestamp (UTC) | Block | Pool price |
+|-----------------|------:|-----------:|
+| 2026-03-09T23:59:48Z | 7711060 | 0.006140774 |
+| 2026-03-10T23:59:48Z | 7718257 | 0.006124044 |
+| 2026-03-11T23:59:48Z | 7725455 | 0.006114181 |
+| 2026-03-12T23:59:48.001Z | 7732653 | 0.006112158 |
+| 2026-03-13T23:59:48Z | 7739841 | 0.006113334 |
+| 2026-03-14T23:59:48.001Z | 7747036 | 0.006112116 |
+| 2026-03-15T23:59:48Z | 7754226 | 0.00612399 |
+| 2026-03-16T23:59:48Z | 7761426 | 0.006130433 |
+| 2026-03-17T23:59:48Z | 7768619 | 0.006023262 |
+| 2026-03-18T23:59:48Z | 7775819 | 0.005996808 |
+| 2026-03-19T23:59:48Z | 7783014 | 0.00599765109772901598 |
+| 2026-03-20T23:59:48Z | 7790201 | 0.006000827 |
+| 2026-03-21T23:59:48Z | 7797398 | 0.005999269 |
+| 2026-03-22T23:59:48Z | 7804598 | 0.00601213 |
+| 2026-03-23T23:59:48Z | 7811798 | 0.006027944 |
+| 2026-03-24T23:59:48.001Z | 7818996 | 0.00598762306109542705 |
+| 2026-03-25T23:59:48Z | 7826196 | 0.005947866 |
+| 2026-03-26T23:59:48Z | 7833396 | 0.004448719 |
+| 2026-03-27T23:59:48Z | 7840596 | 0.004456061 |
+| 2026-03-28T23:59:48.001Z | 7847743 | 0.004491348 |
+| 2026-03-29T23:59:48Z | 7854902 | 0.004566997 |
+| 2026-03-30T23:59:48.001Z | 7862095 | 0.004504066 |
+| 2026-03-31T23:59:48Z | 7869291 | 0.004521559 |
+| 2026-04-01T23:59:48Z | 7876474 | 0.004559186 |
+| 2026-04-02T23:59:48Z | 7883622 | 0.004647712 |
+| 2026-04-03T23:59:48Z | 7890794 | 0.00467015 |
+| 2026-04-04T23:59:48.001Z | 7897988 | 0.004682446 |
+| 2026-04-05T23:59:48Z | 7905188 | 0.004679904 |
+| 2026-04-06T23:59:48Z | 7912388 | 0.004842313 |
+| 2026-04-07T23:59:48Z | 7919588 | 0.004861238 |
+| 2026-04-08T23:59:48Z | 7926788 | 0.004935536 |
+| 2026-04-09T23:59:48Z | 7933987 | 0.004955988 |
+| 2026-04-10T23:59:48Z | 7941184 | 0.004984249 |
+| 2026-04-11T23:59:48Z | 7948384 | 0.004972764 |
+| 2026-04-12T23:59:48Z | 7955584 | 0.004950363 |
+| 2026-04-13T23:59:48Z | 7962784 | 0.005022016 |
+| 2026-04-14T23:59:48Z | 7969979 | 0.005028406 |
+| 2026-04-15T23:59:48.001Z | 7977179 | 0.005014055 |
+| 2026-04-16T23:59:48Z | 7984379 | 0.00501124 |
+| 2026-04-17T23:59:48Z | 7991579 | 0.005010417 |
+| 2026-04-18T23:59:48Z | 7998779 | 0.005020631 |
+| 2026-04-19T23:59:48Z | 8005979 | 0.005027733 |
+| 2026-04-20T23:59:48Z | 8013179 | 0.005026014 |
+| 2026-04-21T23:59:48Z | 8020376 | 0.004944129 |
+| 2026-04-22T23:59:48Z | 8027562 | 0.005037365 |
+| 2026-04-23T23:59:48Z | 8034762 | 0.005036787 |
+| 2026-04-24T23:59:48Z | 8041962 | 0.005159778 |
+| 2026-04-25T23:59:48Z | 8049151 | 0.005294438 |
+| 2026-04-26T23:59:48Z | 8056274 | 0.005392454 |
+| 2026-04-27T23:59:48.001Z | 8063454 | 0.005352237 |
+| 2026-04-28T23:59:48Z | 8070646 | 0.005945997 |
+| 2026-04-29T23:59:48Z | 8077790 | 0.005561265 |
+| 2026-04-30T23:59:48Z | 8084984 | 0.005600867 |
+| 2026-05-01T23:59:48Z | 8092168 | 0.005830752 |
+| 2026-05-02T23:59:48Z | 8099357 | 0.006023707 |
+| 2026-05-03T16:10:00Z | 8104202 | 0.006006154 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

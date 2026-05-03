@@ -2,12 +2,71 @@
 
 ## Overview
 
+**Harnyx** (NetUID **67**) (`ط`).
+
+Deep research as a commodity.
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `195`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ911.669074468. **Alpha liquidity in pool (`alpha_in`)** = ‎80,810.105748888ط‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎272,017.604636276ط‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.011281937`** *(also **moving-average price** `0.010195458773523569` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎7,210.044605632ط‎`. **Owner hotkey / coldkey (chain):** `5Cm4fATsr3S1AUX9WTkwaV1qiYtzPVdRpLWSEDmvvEkoT7Rt` / `5HEAv3TU1yNei4GwiTsxfmDCDW9pMCKLeDVky9iaVJfYiVeY`.
+- **Subnet registered at block:** `7236936` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎101.718873733ط‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.005640989` · α-out `‎1.000000000ط‎` · α-in `‎0.500000000ط‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.011257247`
+- **Market cap:** `2762165544959.355043922`
+- **Liquidity:** `1821220818295`
+- **Total τ:** `910596079835`
+- **Total α:** `352808476577485`
+- **α in pool:** `80892312166610`
+- **α staked:** `164475453589916`
+- **Price Δ 1h:** `-0.728790073908117812`
+- **Price Δ 1d:** `17.034905619870608415`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `10`
+- **Active miners:** `1`
+- **Active dual:** `1`
+- **Emission:** `5628700`
+- **Max neurons:** `256`
+- **Validators (metadata):** `10`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
 Deep research as a commodity. Faster, cheaper, traceable research — produced by a competitive swarm of miners on Bittensor SN67.
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+# Harnyx Subnet
+
+**A Deep Research harness under continuous competitive pressure — always adapting, never static.**
+
+Harnyx (SN 67) is a Bittensor subnet for deep research. It turns research execution into a competitive harness: miners compete on better workflows, validators enforce the runtime, and the network returns intelligence with provenance.
+
+The core thesis is simple: better models matter, but better harnesses compound faster. Deep research is not one reasoning step. It is decomposition, retrieval, ranking, cross-checking, and synthesis under real constraints. Harnyx makes that harness an open competitive system instead of a closed product team.
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Deep research, native to agents. Harnyx delivers synthesis, comprehensiveness, and full citation at a cost that makes repeated calling viable.
+
+**Fetched document title:** Harnyx — Deep Research API for AI Agents | Bittensor SN67
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -61,12 +120,10 @@ uv sync --all-packages --dev
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/harnyx/harnyx/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -76,7 +133,7 @@ Deep research as a commodity. Faster, cheaper, traceable research — produc
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -92,21 +149,21 @@ Deep research as a commodity. Faster, cheaper, traceable research — produc
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.011303936 |
-| 8103891 | 0.011327991 |
-| 8103939 | 0.011152501 |
-| 8103987 | 0.011232235 |
-| 8104035 | 0.011281424 |
+| 8104024 | 0.01128159 |
+| 8104072 | 0.011280619 |
+| 8104120 | 0.01127938 |
+| 8104168 | 0.011232937 |
+| 8104216 | 0.011281936 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

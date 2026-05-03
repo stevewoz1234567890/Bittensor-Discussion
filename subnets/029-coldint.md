@@ -2,12 +2,89 @@
 
 ## Overview
 
-**Coldint** (NetUID 29) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
+**Coldint** (NetUID **29**) (`ה`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `157`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ18,447.995874931. **Alpha liquidity in pool (`alpha_in`)** = ‎1,345,270.007713656ה‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,645,779.496437307ה‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.013634627`** *(also **moving-average price** `0.013630733825266361` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎179,064.742837334ה‎`. **Owner hotkey / coldkey (chain):** `5HHHHHzgLnYRvnKkHd45cRUDMHXTSwx7MjUzxBrKbY4JfZWn` / `5HHHHHzgLnYRvnKkHd45cRUDMHXTSwx7MjUzxBrKbY4JfZWn`.
+- **Subnet registered at block:** `3379782` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎118.514477775ה‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000675090` · α-out `‎1.000000000ה‎` · α-in `‎0.049512908ה‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.013634629`
+- **Market cap:** `59984730710980.506371574`
+- **Liquidity:** `36790235775469`
+- **Total τ:** `18447987854876`
+- **Total α:** `4991035860222206`
+- **α in pool:** `1345269308067952`
+- **α staked:** `3054170582154254`
+- **Price Δ 1h:** `-0.000674747946804339`
+- **Price Δ 1d:** `0.049978653956194601`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `8`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `674867`
+- **Max neurons:** `256`
+- **Validators (metadata):** `8`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<div align="center">
+
+# **Bittensor COLaborative Destributed INcentivized Training (coldint) Subnet** <!-- omit in toc -->
+[![Discord Chat](https://img.shields.io/discord/308323056592486420.svg)](https://discord.gg/bittensor)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+---
+
+[coldint.io](https://coldint.io) • [Discord](https://discord.gg/bittensor) • [Network](https://x.taostats.io/subnet/29)
+</div>
+
+---
+
+# Introduction
+Bittensor subnet 29 is focused on advancing collaborative, distributed model training and research, as well as sharing of innovative ideas regarding model structure, training and evaluation.
+It started as a fork of subnet 9 (pretraining), which was somewhat static and lacked the incentive to publish small improvements.
+See [Macrocosmos github](https://github.com/macrocosm-os/pretraining/releases/tag/v3.2.1) for the exact starting point.
+
+The following documentation assumes you are familiar with basic Bittensor concepts: Miners, Validators, and incentives. If you need a primer, please check out https://docs.bittensor.com/learn/bittensor-building-blocks.
+
+The initial competition rewards miners for improving model score on the [Fineweb-edu-2 dataset](https://huggingface.co/datasets/HuggingFaceFW/fineweb-edu-score-2).
+
+Miner rewards can also be earned by contributing code, bug-fixes or key suggestions or insights; see [coldint.io](https://coldint.io) for further detais.
+
+See the [Miner](docs/miner.md) and [Validator](docs/validator.md) docs for more information about how they work, as well as setup instructions.
+
+---
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Contribute to coldint/coldint_validator development by creating an account on GitHub.
+
+**Fetched document title:** GitHub - coldint/coldint_validator · GitHub
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -53,8 +130,6 @@
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - Miners will need enough disk space to store the model they work on. Max size of model is defined in [constants/\_\_init\_\_.py](../constants/__init__.py), but is typically 15GB. It is recommended to have at least 100 GB of disk space.
 - Miners will need enough processing power to train their model. The current models have around 7B parameters. To train such a model a single large GPU (80 GB) is required, or multiple 48GB or 24GB GPUs.
 
@@ -63,8 +138,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 ##### Extra scrape: `validator.md` (grep only)
 
 #### CPU / GPU / RAM lines (automatic grep)
-
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
 
 - Validators will need enough disk space to store the models of miners being evaluated. There is a maximum model size, currently ~15GB and 6.9B parameters, defined in [constants/\_\_init\_\_.py](../constants/__init__.py) and the validator has cleanup logic to remove old models. It is recommended to have at least 1 TB of disk space.
 - Validators will need enough processing power to evaluate their model, an RTX4090 (with 24GB RAM) is the minimum recommend GPU.
@@ -75,8 +148,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - Miners will need enough disk space to store the model they work on. Max size of model is defined in [constants/\_\_init\_\_.py](../constants/__init__.py), but is typically 15GB. It is recommended to have at least 100 GB of disk space.
 - Miners will need enough processing power to train their model. The current models have around 7B parameters. To train such a model a single large GPU (80 GB) is required, or multiple 48GB or 24GB GPUs.
 
@@ -86,25 +157,21 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - Validators will need enough disk space to store the models of miners being evaluated. There is a maximum model size, currently ~15GB and 6.9B parameters, defined in [constants/\_\_init\_\_.py](../constants/__init__.py) and the validator has cleanup logic to remove old models. It is recommended to have at least 1 TB of disk space.
 - Validators will need enough processing power to evaluate their model, an RTX4090 (with 24GB RAM) is the minimum recommend GPU.
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/coldint/coldint_validator/main/README.md`*
 
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
-
 ## On-chain identity — description
 
 
-*Empty — no description bytes set in `SubnetIdentity`.*
+*Unset in `SubnetIdentity`.*
 
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -116,22 +183,81 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.013634779 |
-| 8103843 | 0.013634745 |
-| 8103891 | 0.01363473 |
-| 8103939 | 0.013634714 |
-| 8103987 | 0.013634699 |
-| 8104035 | 0.013634691 |
+| 8103976 | 0.013634701 |
+| 8104024 | 0.013634694 |
+| 8104072 | 0.013634677 |
+| 8104120 | 0.013634656 |
+| 8104168 | 0.013634639 |
+| 8104216 | 0.013634627 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
+
+| Timestamp (UTC) | Block | Pool price |
+|-----------------|------:|-----------:|
+| 2026-03-09T23:59:48Z | 7711060 | 0.014325542 |
+| 2026-03-10T23:59:48Z | 7718257 | 0.014336827 |
+| 2026-03-11T23:59:48Z | 7725455 | 0.01437578 |
+| 2026-03-12T23:59:48.001Z | 7732653 | 0.014304612 |
+| 2026-03-13T23:59:48Z | 7739841 | 0.0142841 |
+| 2026-03-14T23:59:48.001Z | 7747036 | 0.014339973 |
+| 2026-03-15T23:59:48Z | 7754226 | 0.014315682 |
+| 2026-03-16T23:59:48Z | 7761426 | 0.014362071 |
+| 2026-03-17T23:59:48Z | 7768619 | 0.014387925 |
+| 2026-03-18T23:59:48Z | 7775819 | 0.014359686 |
+| 2026-03-19T23:59:48Z | 7783014 | 0.01445726325875916671 |
+| 2026-03-20T23:59:48Z | 7790201 | 0.014399393 |
+| 2026-03-21T23:59:48Z | 7797398 | 0.014377939 |
+| 2026-03-22T23:59:48Z | 7804598 | 0.014309843 |
+| 2026-03-23T23:59:48Z | 7811798 | 0.014371979 |
+| 2026-03-24T23:59:48.001Z | 7818996 | 0.01448788687897551065 |
+| 2026-03-25T23:59:48Z | 7826196 | 0.014337459 |
+| 2026-03-26T23:59:48Z | 7833396 | 0.014298014 |
+| 2026-03-27T23:59:48Z | 7840596 | 0.01428408 |
+| 2026-03-28T23:59:48.001Z | 7847743 | 0.014274544 |
+| 2026-03-29T23:59:48Z | 7854902 | 0.014119468 |
+| 2026-03-30T23:59:48.001Z | 7862095 | 0.013969748 |
+| 2026-03-31T23:59:48Z | 7869291 | 0.014094733 |
+| 2026-04-01T23:59:48Z | 7876474 | 0.014125087 |
+| 2026-04-02T23:59:48Z | 7883622 | 0.014164083 |
+| 2026-04-03T23:59:48Z | 7890794 | 0.014106313 |
+| 2026-04-04T23:59:48.001Z | 7897988 | 0.014128569 |
+| 2026-04-05T23:59:48Z | 7905188 | 0.014122072 |
+| 2026-04-06T23:59:48Z | 7912388 | 0.014109879 |
+| 2026-04-07T23:59:48Z | 7919588 | 0.014098476 |
+| 2026-04-08T23:59:48Z | 7926788 | 0.014089634 |
+| 2026-04-09T23:59:48Z | 7933987 | 0.013971584 |
+| 2026-04-10T23:59:48Z | 7941184 | 0.014002836 |
+| 2026-04-11T23:59:48Z | 7948384 | 0.013975569 |
+| 2026-04-12T23:59:48Z | 7955584 | 0.013943276 |
+| 2026-04-13T23:59:48Z | 7962784 | 0.013932758 |
+| 2026-04-14T23:59:48Z | 7969979 | 0.013948998 |
+| 2026-04-15T23:59:48.001Z | 7977179 | 0.013908944 |
+| 2026-04-16T23:59:48Z | 7984379 | 0.01389829 |
+| 2026-04-17T23:59:48Z | 7991579 | 0.013929783 |
+| 2026-04-18T23:59:48Z | 7998779 | 0.014035898 |
+| 2026-04-19T23:59:48Z | 8005979 | 0.013973547 |
+| 2026-04-20T23:59:48Z | 8013179 | 0.013962273 |
+| 2026-04-21T23:59:48Z | 8020376 | 0.013945815 |
+| 2026-04-22T23:59:48Z | 8027562 | 0.013931256 |
+| 2026-04-23T23:59:48Z | 8034762 | 0.013920146 |
+| 2026-04-24T23:59:48Z | 8041962 | 0.013880461 |
+| 2026-04-25T23:59:48Z | 8049151 | 0.013845618 |
+| 2026-04-26T23:59:48Z | 8056274 | 0.013846929 |
+| 2026-04-27T23:59:48.001Z | 8063454 | 0.013843367 |
+| 2026-04-28T23:59:48Z | 8070646 | 0.013797689 |
+| 2026-04-29T23:59:48Z | 8077790 | 0.013739389 |
+| 2026-04-30T23:59:48Z | 8084984 | 0.013679012 |
+| 2026-05-01T23:59:48Z | 8092168 | 0.013635383 |
+| 2026-05-02T23:59:48Z | 8099357 | 0.013622964 |
+| 2026-05-03T16:10:00Z | 8104202 | 0.013634629 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

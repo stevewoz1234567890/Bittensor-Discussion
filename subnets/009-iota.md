@@ -2,12 +2,79 @@
 
 ## Overview
 
+**iota** (NetUID **9**) (`ι`).
+
 The world's first permissionless pipeline parallel training architecture
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `137`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ48,971.113578796. **Alpha liquidity in pool (`alpha_in`)** = ‎2,067,487.492779010ι‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,000,217.037386223ι‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.023687899`** *(also **moving-average price** `0.02373872767202556` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎716,759.281220080ι‎`. **Owner hotkey / coldkey (chain):** `5FsbubeciqtB5Nik3umL2iD4fG8FcC9GbT9nHJfXMj4mJJZ9` / `5FsbubeciqtB5Nik3umL2iD4fG8FcC9GbT9nHJfXMj4mJJZ9`.
+- **Subnet registered at block:** `1489797` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎103.530895725ι‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ι‎` · α-in `‎0.000000000ι‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.023687901`
+- **Market cap:** `99657330340595.317823304`
+- **Liquidity:** `97945552626476`
+- **Total τ:** `48971114841562`
+- **Total α:** `5067691530165233`
+- **α in pool:** `2067487439470224`
+- **α staked:** `2139610958171480`
+- **Price Δ 1h:** `-0.000996279276838022`
+- **Price Δ 1d:** `-0.624530950482424862`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `11`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `11`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+The world's first permissionless pipeline parallel training architecture
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<div align="center">
+
+# IOTA
+
+</div>
+
+**I**ncentivized **O**rchestrated **T**raining **A**rchitecture (IOTA) is a framework for pretraining large language models across a network of heterogeneous, unreliable, permissionless and token incentivized machines. IOTA employs a data- and pipeline-parallel architecture to accelerate training and reduce hardware requirements for participants.
+
+<div align="center">
+
+<a href="https://iota.macrocosmos.ai">
+  <img src="./docs/assets/iota-page.png" alt="iota" width="600"/>
+</a>
+
+</div>
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Incentivised Orchestrated Training Architecture from Macrocosmos.ai
+
+**Fetched document title:** IOTA | Macrocosmos.ai
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -78,15 +145,11 @@ The runs are currently in bfloat16, resulting in a total footprint of ~2GB for a
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - The runs are currently in bfloat16, resulting in a total footprint of ~2GB for a 1B parameter model. As such, we recommend:
 - 1. Cuda GPU with >= 16GB VRAM (RTX 4090, for example).
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/macrocosm-os/iota/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -96,7 +159,7 @@ The world's first permissionless pipeline parallel training architecture
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -112,22 +175,22 @@ The world's first permissionless pipeline parallel training architecture
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.023688198 |
-| 8103843 | 0.023688162 |
-| 8103891 | 0.023688146 |
-| 8103939 | 0.023688129 |
-| 8103987 | 0.023688113 |
-| 8104035 | 0.0236881 |
+| 8103976 | 0.023688115 |
+| 8104024 | 0.023688103 |
+| 8104072 | 0.023688086 |
+| 8104120 | 0.023688063 |
+| 8104168 | 0.023688045 |
+| 8104216 | 0.023687899 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

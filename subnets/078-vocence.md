@@ -2,12 +2,77 @@
 
 ## Overview
 
+**Vocence** (NetUID **78**) (`و`).
+
 The voice layer for decentralized intelligence
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `206`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ255.356357594. **Alpha liquidity in pool (`alpha_in`)** = ‎22,490.818604294و‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎142,374.903225335و‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.011353823`** *(also **moving-average price** `0.009278750279918313` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎5,494.706797450و‎`. **Owner hotkey / coldkey (chain):** `5Fk765B4CRBekwErwE5VxvveWhHztHSfsnsLt8cbDayDWsuk` / `5FnQCJW2Rm1BijNBUJzPetcpZx43RWutYiyaxA8j88fy9i9L`.
+- **Subnet registered at block:** `7966145` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎97.024809243و‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.003306940` · α-out `‎1.000000000و‎` · α-in `‎0.291256777و‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.011354306`
+- **Market cap:** `1470093591851.876156866`
+- **Liquidity:** `510637978399`
+- **Total τ:** `255316497148`
+- **Total α:** `164848934005761`
+- **α in pool:** `22486753593907`
+- **α staked:** `106987790411854`
+- **Price Δ 1h:** `-4.267251918566121604`
+- **Price Δ 1d:** `43.056449581772121022`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `142`
+- **Active validators:** `9`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `3305848`
+- **Max neurons:** `256`
+- **Validators (metadata):** `9`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+The voice layer for decentralized intelligence
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<p align="center">
+  <img src="docs/vocence.png" alt="Vocence" width="640">
+</p>
+
+# <a href="https://vocence.ai" style="color: #DFFF00;">Vocence</a>
+
+**Open, incentivized voice intelligence on Bittensor.**
+
+Vocence is a Bittensor subnet focused on the development and evaluation of voice intelligence models, including Prompt-based Text-to-Speech (PromptTTS), Speech-to-Text (STT), Speech-to-Speech (STS), voice cloning, and other multimodal voice capabilities.
+
+The network incentivizes miners to train and deploy models that follow natural-language prompts describing both content and voice traits such as gender, tone, emotion, pitch, speaking speed, age group, accent, and recording environment.
+
+Validators evaluate how well models produce high-quality audio that matches both the requested content and the described voice characteristics.
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Generate speech from prompts, clone any voice, design custom voices, and create music — powered by a decentralized network on Bittensor.
+
+**Fetched document title:** Vocence — Decentralized Voice AI
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -130,14 +195,10 @@ Use **uv** for local tooling (e.g. `uv run vocence`); Chutes builds run in their
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - `| **Miners** | Train PromptTTS models, publish them on Hugging Face, and deploy on [Chutes](https://chutes.ai) using the canonical Vocence wrapper. They expose a single `/speak` API (text + instruction → WAV). You can run miner workflows via the [CLI](docs/CLI.md#miner-commands) (`vocence miner push`, `vocence miner commit`) or follow [miner_sample](miner_sample/MINER_GUIDE.md) for the Chutes deploy. Rewards come from validator scores. |`
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/vocence-78/vocence/master/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -147,7 +208,7 @@ The voice layer for decentralized intelligence
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -162,21 +223,80 @@ The voice layer for decentralized intelligence
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.011765339 |
-| 8103891 | 0.011772546 |
-| 8103939 | 0.011810428 |
-| 8103987 | 0.011465059 |
-| 8104035 | 0.01155241 |
+| 8104024 | 0.011553355 |
+| 8104072 | 0.011425673 |
+| 8104120 | 0.011246674 |
+| 8104168 | 0.011385104 |
+| 8104216 | 0.011353823 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
+
+| Timestamp (UTC) | Block | Pool price |
+|-----------------|------:|-----------:|
+| 2026-03-09T23:59:48Z | 7711060 | 0.004109643 |
+| 2026-03-10T23:59:48Z | 7718257 | 0.004183468 |
+| 2026-03-11T23:59:48Z | 7725455 | 0.00420842 |
+| 2026-03-12T23:59:48.001Z | 7732653 | 0.00419243 |
+| 2026-03-13T23:59:48Z | 7739841 | 0.004065513 |
+| 2026-03-14T23:59:48.001Z | 7747036 | 0.003901809 |
+| 2026-03-15T23:59:48Z | 7754226 | 0.002757296 |
+| 2026-03-16T23:59:48Z | 7761426 | 0.002941471 |
+| 2026-03-17T23:59:48Z | 7768619 | 0.003195247 |
+| 2026-03-18T23:59:48Z | 7775819 | 0.003371019 |
+| 2026-03-19T23:59:48Z | 7783014 | 0.00341816412882269559 |
+| 2026-03-20T23:59:48Z | 7790201 | 0.00328893 |
+| 2026-03-21T23:59:48Z | 7797398 | 0.003012039 |
+| 2026-03-22T23:59:48Z | 7804598 | 0.003823171 |
+| 2026-03-23T23:59:48Z | 7811798 | 0.003741991 |
+| 2026-03-24T23:59:48.001Z | 7818996 | 0.00340150626732777659 |
+| 2026-03-25T23:59:48Z | 7826196 | 0.003525956 |
+| 2026-03-26T23:59:48Z | 7833396 | 0.003252291 |
+| 2026-03-27T23:59:48Z | 7840596 | 0.00319308 |
+| 2026-03-28T23:59:48.001Z | 7847743 | 0.003167857 |
+| 2026-03-29T23:59:48Z | 7854902 | 0.003343762 |
+| 2026-03-30T23:59:48.001Z | 7862095 | 0.003775555 |
+| 2026-03-31T23:59:48Z | 7869291 | 0.003959418 |
+| 2026-04-01T23:59:48Z | 7876474 | 0.003862442 |
+| 2026-04-02T23:59:48Z | 7883622 | 0.003383689 |
+| 2026-04-03T23:59:48Z | 7890794 | 0.00327571 |
+| 2026-04-04T23:59:48.001Z | 7897988 | 0.002626907 |
+| 2026-04-05T23:59:48Z | 7905188 | 0.002604933 |
+| 2026-04-06T23:59:48Z | 7912388 | 0.002589182 |
+| 2026-04-07T23:59:48Z | 7919588 | 0.002358755 |
+| 2026-04-08T23:59:48Z | 7926788 | 0.002457724 |
+| 2026-04-09T23:59:48Z | 7933987 | 0.002424766 |
+| 2026-04-10T23:59:48Z | 7941184 | 0.002350458 |
+| 2026-04-11T23:59:48Z | 7948384 | 0.002261615 |
+| 2026-04-12T23:59:48Z | 7955584 | 0.002261384 |
+| 2026-04-13T23:59:48Z | 7962784 | 0.002257307 |
+| 2026-04-14T23:59:48Z | 7969979 | 0.013503673 |
+| 2026-04-15T23:59:48.001Z | 7977179 | 0.009877673 |
+| 2026-04-16T23:59:48Z | 7984379 | 0.007742507 |
+| 2026-04-17T23:59:48Z | 7991579 | 0.007106113 |
+| 2026-04-18T23:59:48Z | 7998779 | 0.006910053 |
+| 2026-04-19T23:59:48Z | 8005979 | 0.00626176 |
+| 2026-04-20T23:59:48Z | 8013179 | 0.007208875 |
+| 2026-04-21T23:59:48Z | 8020376 | 0.00748281 |
+| 2026-04-22T23:59:48Z | 8027562 | 0.010822676 |
+| 2026-04-23T23:59:48Z | 8034762 | 0.009631142 |
+| 2026-04-24T23:59:48Z | 8041962 | 0.008424677 |
+| 2026-04-25T23:59:48Z | 8049151 | 0.007325858 |
+| 2026-04-26T23:59:48Z | 8056274 | 0.007334336 |
+| 2026-04-27T23:59:48.001Z | 8063454 | 0.00732589 |
+| 2026-04-28T23:59:48Z | 8070646 | 0.007236427 |
+| 2026-04-29T23:59:48Z | 8077790 | 0.007896605 |
+| 2026-04-30T23:59:48Z | 8084984 | 0.008596101 |
+| 2026-05-01T23:59:48Z | 8092168 | 0.007602709 |
+| 2026-05-02T23:59:48Z | 8099357 | 0.008845081 |
+| 2026-05-03T16:10:00Z | 8104202 | 0.011354306 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

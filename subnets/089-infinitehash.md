@@ -2,14 +2,110 @@
 
 ## Overview
 
+**InfiniteHash** (NetUID **89**) (`ᛒ`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `217`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ6,560.459351752. **Alpha liquidity in pool (`alpha_in`)** = ‎1,796,219.298644606ᛒ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,048,771.217245696ᛒ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.003772099`** *(also **moving-average price** `0.003774631069973111` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎160,061.046042506ᛒ‎`. **Owner hotkey / coldkey (chain):** `5FCN4P1KqFtsgBk29ABeDZuAnhrcHP2iTN2fG1kBefJBhBLd` / `5Dc5NmEUptDeMLrxDSvg8kfCToxJkiF47apAYSVTycAVvDN4`.
+- **Subnet registered at block:** `5313364` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎160.423078498ᛒ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ᛒ‎` · α-in `‎0.000000000ᛒ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.003772099`
+- **Market cap:** `13267445377965.699970806`
+- **Liquidity:** `13335976371940`
+- **Total τ:** `6560459597470`
+- **Total α:** `3844977515890302`
+- **α in pool:** `1796219233501147`
+- **α staked:** `1721038764755447`
+- **Price Δ 1h:** `-0.015877231625749`
+- **Price Δ 1d:** `-0.821722522658959781`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `10`
+- **Active miners:** `3`
+- **Active dual:** `1`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `10`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
 BTC Pool + Lightning Network
+
+
+
+**Additional commentary (on-chain)**
+
 
 The Last Bitcoin Mining Pool, made by Bittensor
 
+### Repository README excerpt *(everything before first `##` heading)*
+
+# InfiniteHash Subnet (SN89)
+
+# Decentralized Bitcoin Mining & Lightning Infrastructure
+
+Track [Pool Metrics](https://infinitehash.xyz)
+
+# What is InfiniteHash?
+
+InfiniteHash Subnet (SN89) is revolutionizing Bitcoin mining by combining decentralized mining operations with cutting-edge Lightning Network infrastructure. We're building a truly decentralized and more democratic Bitcoin mining pool AND in parallel the foundation for Bitcoin to become the preferred payment layer for the emerging AI agent economy via our enterprise quality Lightning network.
+
+# How It Works
+
+Phase 1 (launch): Market Discovery
+- Miners contribute hashrate and earn Alpha tokens proportional to contribution
+- All mined Bitcoin is converted to Alpha and burned, creating continuous buying pressure
+- Market discovers sustainable Alpha-to-hashrate conversion rates
+
+Phase 2: Sustainable Economics
+- Minimum hashrate threshold for base rewards - no incentive for overcommitting hash
+- Alpha denominated hashprice designed to exceed BTC hashprice available in market, after pool fees. Min hashrate threshold adjusted routinely
+- Miners also run Lightning nodes and compete (creating uid curve) on quality for incremental rewards beyond hashrate
+
+# Getting Started
+
+# For Miners
+
+Requirements / Getting Started (V1)
+
+- Bitcoin ASIC miners
+- Bittensor baseminer - no SN specific configurations. Validators score your hash contribution based on your hotkey in the ASIC workerID
+- Point Your ASICs to Our Pool
+
+
+Pool URL: stratum+tcp://btc.global.luxor.tech:700 (or choose a specific regional stratum if desired).
+
+Configure Worker Names
+  - Format: `infinite.YOUR_HOTKEY.your_workerID`
+  - YOUR_HOTKEY: Your Bittensor wallet hotkey
+  - your_workerID: Any identifier you choose for your ASIC fleet
+
+Examples:
+
+# Validators
+
+- - -
+
+For a detailed description of the auction-based incentive mechanism and validator responsibilities, see `docs/subnet_auction_incentive_system.md`.
+
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -200,12 +296,10 @@ docker compose run --rm backups ./restore-db.sh b2id://{ID}
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/backend-developers-ltd/InfiniteHash/master/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -230,21 +324,21 @@ The Last Bitcoin Mining Pool, made by Bittensor
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.003772704 |
-| 8103891 | 0.0037727 |
-| 8103939 | 0.003772696 |
-| 8103987 | 0.003772117 |
-| 8104035 | 0.003772114 |
+| 8104024 | 0.003772115 |
+| 8104072 | 0.003772111 |
+| 8104120 | 0.003772106 |
+| 8104168 | 0.003772102 |
+| 8104216 | 0.003772099 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

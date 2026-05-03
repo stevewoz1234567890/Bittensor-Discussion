@@ -2,12 +2,87 @@
 
 ## Overview
 
+**HashiChain** (NetUID **115**) (`Ѕ`).
+
 The First Public Blockchain Designed for AI Agents
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `243`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ5,977.667317868. **Alpha liquidity in pool (`alpha_in`)** = ‎808,882.129991527Ѕ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,296,844.257995025Ѕ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.007402016`** *(also **moving-average price** `0.007403086172416806` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎133,822.995835390Ѕ‎`. **Owner hotkey / coldkey (chain):** `5EhTo9AXu6JCK2voyEz2ftwFq9cmYR1ACj8qobD67MGZKgTV` / `5EkNnrTjnMYaj4x1gNxAnJne9UvKgfU6NZNjhm6XFWMstbdG`.
+- **Subnet registered at block:** `5683635` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎168.451275655Ѕ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000Ѕ‎` · α-in `‎0.000000000Ѕ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.007402019`
+- **Market cap:** `11363097238338.379648488`
+- **Liquidity:** `11965028212813`
+- **Total τ:** `5977668070029`
+- **Total α:** `2105713387986552`
+- **α in pool:** `808882028374174`
+- **α staked:** `726252809612378`
+- **Price Δ 1h:** `-0.002188544160160364`
+- **Price Δ 1d:** `-0.03271009924989611`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `18`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `18`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+The First Public Blockchain Designed for AI Agents
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+**HashiChain**: The First Public Blockchain Designed for AI Agents
+
+Abstract
+
+**HashiChain** is a sovereign Layer 1 infrastructure designed to serve as the backbone of the Agent Economy. As the digital locus migrates from human interaction to Autonomous Agents, the rigid, deterministic architecture of traditional blockchains—built solely for binary financial transfers—has become obsolete for the fuzzy, high-dimensional needs of AI. HashiChain introduces a new cryptographic primitive: the Probabilistic State Machine, transforming the blockchain from a ledger of assets into a ledger of intents.
+
+The Architecture: From Hash to Connection
+
+Existing smart contracts cannot natively process unstructured intents, such as complex agent transaction matching, as these requests require semantic understanding beyond simple arithmetic verification. HashiChain bridges this gap by leveraging the Bittensor network as its consensus engine and computational substrate.
+Yuma Consensus Integration: We utilize Yuma Consensus not just for reward distribution, but to achieve network-wide agreement on the validity of probabilistic agent interactions.
+
+Miners as Solver Nodes: Miners operate as sovereign Solver Nodes within the HashiChain network. By running distributed AI models inside Trusted Execution Environments (TEEs), these nodes simulate potential interactions in secure sandboxes.
+Proof of Entanglement (PoE): We replace the deterministic verification of code with the probabilistic verification of semantic compatibility. Nodes calculate the probability of a successful "match" between private agent intents, finalizing the state transition on the Intent Ledger.
+
+The Philosophy
+
+The protocol is architected around the concept of "Hashi" (Bridge & Chopsticks).
+As a Bridge: It connects isolated agent silos across the dark forest of the internet via privacy-preserving tunnels.
+As Chopsticks: It enforces the economic law of coordination—just as a single chopstick cannot seize food, a solitary agent cannot capture value. HashiChain provides the immutable infrastructure for agents to pair, coordinate, and settle value, establishing the fundamental economic fabric of the future Agent Civilization.
+
+
+![logo](./assets/intro.png)
+
+*(Often repeats the headline blurb — check deeper headings for runbooks.)*
+
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** The digital landscape is currently undergoing a fundamental shift, where the locus of interaction is migrating from humans to Autonomous Agents. Unlike traditional Agents acting merely as passive t...
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -51,12 +126,10 @@ The First Public Blockchain Designed for AI Agents
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/hashi115/hashichain/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -80,21 +153,21 @@ The First Public Blockchain Designed for AI Agents
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.00740222 |
-| 8103891 | 0.007402195 |
-| 8103939 | 0.007402168 |
-| 8103987 | 0.007402143 |
-| 8104035 | 0.007402123 |
+| 8104024 | 0.007402128 |
+| 8104072 | 0.007402099 |
+| 8104120 | 0.007402064 |
+| 8104168 | 0.007402035 |
+| 8104216 | 0.007402016 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

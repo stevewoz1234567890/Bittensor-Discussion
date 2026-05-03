@@ -1,8 +1,18 @@
 # Subnet pages (one file per NetUID)
 
-Generated from `finney` at block **8104035** (2026-05-03 15:36 UTC).
+Generated from `finney` at block **8104216** (2026-05-03 16:12 UTC).
 
-Each page combines **`SubnetInfo` / hyperparameter** tables, README **miner/validator heading blocks**, an automatic **CPU/GPU/RAM line grep** (`GB`/VRAM/GPU/CUDA/vCPU/etc., or an explicit stub if none found), **short-window** on-chain α prices, plus optional **TAOStats** daily pools (`TAOSTATS_API_KEY`).
+Each page pulls **`DynamicInfo`**, **`SubnetInfo`**, **`SubnetHyperparameters`**, `SubnetIdentity`, GitHub README (preface + hardware scrape where applicable), on-chain α **price probes**. With **`TAOSTATS_API_KEY`** (repo `.env` or env): bulk **subnet/pool snapshots** plus optional **daily pool history**.
+
+### Conventions (read once)
+
+- **Operational parameters** = consensus registration economics, caps, tempo, weight-commit settings. Hardware notes in **Miner / validator hardware** are repo scrapes, not consensus fields.
+
+**α price — short window:** row spacing follows `--chain-price-step` / `--chain-price-max-offset` (bounded by RPC retention).
+
+**TAOStats:** prefetch fills **subnet + pool index** bullets in Overview; `--taostats-limit` caps **daily** price rows per page.
+
+---
 
 ## Index
 
@@ -138,4 +148,4 @@ Each page combines **`SubnetInfo` / hyperparameter** tables, README **miner/vali
 
 ---
 
-Regenerate: `python scripts/generate_subnet_pages.py` · optional `TAOSTATS_API_KEY=…` · `--no-readme-specs` / `--no-supplement-web` to reduce HTTP traffic.
+Regenerate: `python scripts/generate_subnet_pages.py` · optional `.env` with `TAOSTATS_API_KEY` · `--no-readme-specs` / `--no-supplement-web` to reduce HTTP traffic.

@@ -2,12 +2,71 @@
 
 ## Overview
 
+**ItsAI** (NetUID **32**) (`ח`).
+
+ItsAI is a bittensor subnet focused on high-quality AI detection for texts.
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `160`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ7,922.833932299. **Alpha liquidity in pool (`alpha_in`)** = ‎1,992,420.405234875ח‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,990,254.603923980ח‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.003978302`** *(also **moving-average price** `0.004058257443830371` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎258,249.631933622ח‎`. **Owner hotkey / coldkey (chain):** `5DWgkCSvq4brWSNLDU9FBgTk1ZpAQ2y6t3ky97CvEVuS9Qad` / `5DWgkCSvq4brWSNLDU9FBgTk1ZpAQ2y6t3ky97CvEVuS9Qad`.
+- **Subnet registered at block:** `2515294` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎120.764312150ח‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.001541729` · α-out `‎1.000000000ח‎` · α-in `‎0.387534464ח‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.003978302`
+- **Market cap:** `19822256138088.055750688`
+- **Liquidity:** `15849243914071`
+- **Total τ:** `7922814170095`
+- **Total α:** `4982656969168208`
+- **α in pool:** `1992415292749676`
+- **α staked:** `2990176812648068`
+- **Price Δ 1h:** `-0.102551585908548292`
+- **Price Δ 1d:** `-4.69866054050298902`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `8`
+- **Active miners:** `129`
+- **Active dual:** `0`
+- **Emission:** `1541220`
+- **Max neurons:** `256`
+- **Validators (metadata):** `8`
+- **Neuron reg. cost:** `701715`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
 ItsAI is a bittensor subnet focused on high-quality AI detection for texts. Recognised as the most accurate AI detector by MGTD benchmark.
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<div align="center">
+
+# **Bittensor SN32** <!-- omit in toc -->
+[![Discord Chat](https://img.shields.io/discord/308323056592486420.svg)](https://discord.gg/bittensor)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+---
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Free AI Detector (AI Checker) with 99% accuracy. Detect ChatGPT, Claude, Gemini, DeepSeek. Deep scan, plagiarism checker, batch upload, and API.
+
+**Fetched document title:** Best Free AI Detector & AI Checker - 99% Accuracy | It's AI
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -22,7 +81,7 @@ ItsAI is a bittensor subnet focused on high-quality AI detection for texts. Reco
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 10000000
 - **`immunity_period` (blocks):** 7200
-- **Registration recycle cost snapshot (`burn`):** τ0.000606176
+- **Registration recycle cost snapshot (`burn`):** τ0.000679110
 - **Owner SS58 (`owner_ss58`):** `5DWgkCSvq4brWSNLDU9FBgTk1ZpAQ2y6t3ky97CvEVuS9Qad`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -51,12 +110,10 @@ ItsAI is a bittensor subnet focused on high-quality AI detection for texts. Reco
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/It-s-AI/llm-detection/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -82,22 +139,22 @@ ItsAI is a bittensor subnet focused on high-quality AI detection for texts. Reco
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.004024069 |
-| 8103843 | 0.003977373 |
-| 8103891 | 0.003982387 |
-| 8103939 | 0.003982325 |
-| 8103987 | 0.003947701 |
-| 8104035 | 0.003947699 |
+| 8103976 | 0.003952664 |
+| 8104024 | 0.0039477 |
+| 8104072 | 0.003947698 |
+| 8104120 | 0.003972721 |
+| 8104168 | 0.003978304 |
+| 8104216 | 0.003978302 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

@@ -2,12 +2,78 @@
 
 ## Overview
 
+**TrajectoryRL** (NetUID **11**) (`λ`).
+
 Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, safer, and more reliable.
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `139`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ23,536.285002524. **Alpha liquidity in pool (`alpha_in`)** = ‎2,076,205.816755946λ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,837,598.035999111λ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.011345255`** *(also **moving-average price** `0.011461847927421331` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎824,680.490830589λ‎`. **Owner hotkey / coldkey (chain):** `5ECzcM7sixWNEeD6RbpeEHW1YcYMFejwHuvDBgQxVSjGyrMS` / `5D2Jhtbnm7iAdKfjRk6DisXBnr1MEsYat8kXqaPNrVqJP3uE`.
+- **Subnet registered at block:** `2918568` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎104.807406512λ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000λ‎` · α-in `‎0.000000000λ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.011346027`
+- **Market cap:** `44367605731640.375071272`
+- **Liquidity:** `47092972229722`
+- **Total τ:** `23537088251013`
+- **Total α:** `4913790852755057`
+- **α in pool:** `2076135018778737`
+- **α staked:** `1834273949192199`
+- **Price Δ 1h:** `0.310975662047769518`
+- **Price Δ 1d:** `-0.674329181262877465`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `10`
+- **Active miners:** `2`
+- **Active dual:** `1`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `10`
+- **Neuron reg. cost:** `200000000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, safer, and more reliable.
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+# TrajectoryRL
+
+> **Bittensor Subnet 11** — A reinforcement learning playground that continuously produces state-of-the-art skills for AI agents
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Bittensor](https://img.shields.io/badge/bittensor-7.0+-green.svg)](https://github.com/opentensor/bittensor)
+
+Every platform shift creates a new software category. PCs gave us desktop apps. Smartphones gave us mobile apps. Agents are the next platform, and **skills are the software that runs on them**. The world needs far more skills than human developers can ship. Agents will write skills for other agents. TrajectoryRL is the RL playground where that happens.
+
+The competition runs 24/7 on Bittensor. Miners compete every epoch to produce the best agent skills, validators evaluate them in real sandboxes with real protocols, and the winning skills surface automatically. Every season the bar rises. You don't bring us your prompt. **Skills ship, you install them.**
+
+
+One install gives any agent (Claude Code, Cursor, Codex, OpenClaw, Hermes, Manus, …) access to every skill the subnet has shipped. Source, catalog, and docs: [`trajrl`](https://github.com/trajectoryRL/trajrl).
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** The open factory for AI agent skills. Open-source skills, vetted by continuous competition, that work with any agent harness. TrajectoryRL runs a 24/7 competition on Bittensor Subnet 11 to produce the best skills. The winners surface automatically and anyone can use them.
+
+**Fetched document title:** TrajectoryRL | Bittensor Subnet 11
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -22,7 +88,7 @@ Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, saf
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 10000000
 - **`immunity_period` (blocks):** 10800
-- **Registration recycle cost snapshot (`burn`):** τ0.223643578
+- **Registration recycle cost snapshot (`burn`):** τ0.200000000
 - **Owner SS58 (`owner_ss58`):** `5D2Jhtbnm7iAdKfjRk6DisXBnr1MEsYat8kXqaPNrVqJP3uE`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -91,16 +157,12 @@ docker pull ghcr.io/trajectoryrl/hermes-agent:latest
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - - **No server required** — Miners upload packs to any HTTP endpoint and commit on-chain. No GPU, no uptime needed.
 - Mining means writing a **SKILL.md** — instructions and strategies that teach an AI agent how to handle operational scenarios. The testee agent SSHes into an isolated sandbox (shell + mock services + scenario files), reads your SKILL.md, solves the task. A judge agent then SSHes in, grounds its evaluation in the sandbox state, and scores the work. No GPU, no server, no uptime required.
 - Prereqs: Docker, [uv](https://docs.astral.sh/uv/), an LLM API key, ~6 GB free disk.
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/trajectoryRL/trajectoryRL/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -110,7 +172,7 @@ Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, saf
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -125,22 +187,22 @@ Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, saf
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.011316362 |
-| 8103843 | 0.011310867 |
-| 8103891 | 0.011310858 |
-| 8103939 | 0.011310849 |
-| 8103987 | 0.011298589 |
-| 8104035 | 0.011326588 |
+| 8103976 | 0.01129859 |
+| 8104024 | 0.01132659 |
+| 8104072 | 0.011326581 |
+| 8104120 | 0.01134577 |
+| 8104168 | 0.011345761 |
+| 8104216 | 0.011345255 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

@@ -2,12 +2,65 @@
 
 ## Overview
 
+**Astrid** (NetUID **127**) (`𑀅`).
+
 The capital axis for Bittensor.
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `255`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,001.092757130. **Alpha liquidity in pool (`alpha_in`)** = ‎945,370.085414295𑀅‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,257,090.456074224𑀅‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004235843`** *(also **moving-average price** `0.004250121535733342` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎545,050.435067859𑀅‎`. **Owner hotkey / coldkey (chain):** `5EKrpcqVNWfVfmKiq8v3LRrgb3E3ENBwYzmAziDhMK58gtb5` / `5FU4uxAdrZsaWaezWwXEK93MwPX5gw2566BQK2WwrGUudfSH`.
+- **Subnet registered at block:** `5848837` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎185.324458280𑀅‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000𑀅‎` · α-in `‎0.000000000𑀅‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.004235844`
+- **Market cap:** `9979802951225.038872444`
+- **Liquidity:** `8005532961201`
+- **Total τ:** `4001093053011`
+- **Total α:** `3202447541488519`
+- **α in pool:** `945370015560227`
+- **α staked:** `1410666455854924`
+- **Price Δ 1h:** `-0.025537382526860276`
+- **Price Δ 1d:** `0.242949011945821376`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `16`
+- **Active miners:** `4`
+- **Active dual:** `1`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `16`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+The capital axis for Bittensor.
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+# Astrid Validator - Subnet 127
+
+A production-ready Bittensor subnet validator daemon for Subnet 127 (Astrid). This validator connects to the Astrid coordination service, executes trading strategy simulations in isolated Docker environments, and manages Bittensor weight commitments.
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Fetched document title:** Astrid Intelligence PLC
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -122,12 +175,10 @@ Executes arbitrary Docker images with mounted volumes and environment variables:
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/astridintelligence/sn-127/master/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -137,7 +188,7 @@ The capital axis for Bittensor.
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -151,21 +202,21 @@ The capital axis for Bittensor.
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.00423694 |
-| 8103891 | 0.004236931 |
-| 8103939 | 0.004236922 |
-| 8103987 | 0.004236913 |
-| 8104035 | 0.004235881 |
+| 8104024 | 0.004235882 |
+| 8104072 | 0.004235872 |
+| 8104120 | 0.004235859 |
+| 8104168 | 0.004235849 |
+| 8104216 | 0.004235843 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

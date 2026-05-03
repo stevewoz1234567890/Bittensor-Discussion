@@ -2,12 +2,73 @@
 
 ## Overview
 
+**TensorUSD** (NetUID **113**) (`Ѓ`).
+
 A reserve-backed stablecoin designed to support 1:1 redeemability for US Dollar within the Bittensor ecosystem.
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `241`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ2,126.137893771. **Alpha liquidity in pool (`alpha_in`)** = ‎369,920.983901755Ѓ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎939,185.835627897Ѓ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005747938`** *(also **moving-average price** `0.005713406018912792` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎23,862.184590892Ѓ‎`. **Owner hotkey / coldkey (chain):** `5FRumLA6zhL7G72xfojizAeZaTGhAYqw3WQYrq1iusC3M8uB` / `5C85m1bfiEXNW3fP3B5xY5Q9Fhmz5eAxwTk2qezLHenBNezY`.
+- **Subnet registered at block:** `7119664` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎156.253337440Ѓ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002873966` · α-out `‎1.000000000Ѓ‎` · α-in `‎0.500000000Ѓ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.005749285`
+- **Market cap:** `5326956313179.981519365`
+- **Liquidity:** `4252844293915`
+- **Total τ:** `2126349966299`
+- **Total α:** `1309089044433889`
+- **α in pool:** `369871093121322`
+- **α staked:** `556671305312567`
+- **Price Δ 1h:** `0.38146207457192458`
+- **Price Δ 1d:** `2.625486416050837171`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `129`
+- **Active validators:** `13`
+- **Active miners:** `1`
+- **Active dual:** `1`
+- **Emission:** `2874640`
+- **Max neurons:** `256`
+- **Validators (metadata):** `13`
+- **Neuron reg. cost:** `1000000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+A reserve-backed stablecoin designed to support 1:1 redeemability for US Dollar within the Bittensor ecosystem.
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+# TensorUSD Subnet (SN113)
+
+> **Decentralized liquidation auctions and price oracle for TensorUSD stablecoin on Bittensor**
+
+Miners earn TAO by participating in liquidation auctions and contributing to the price oracle. Validators track on-chain activity and distribute rewards.
+
+📚 **[Documentation](https://docs.tensorusd.com/components/subnet)**
+
+---
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** A decentralized, 1.5× overcollateralized stablecoin backed by TAO for the Bittensor ecosystem.
+
+**Fetched document title:** TensorUSD (TUSDT) – TAO-Backed Stablecoin for Bittensor
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -154,12 +215,10 @@ uv run neurons/validator.py \
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/TensorUSD/subnet/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -169,7 +228,7 @@ A reserve-backed stablecoin designed to support 1:1 redeemability for US Dollar 
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -185,21 +244,21 @@ A reserve-backed stablecoin designed to support 1:1 redeemability for US Dollar 
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.005751467 |
-| 8103891 | 0.005748685 |
-| 8103939 | 0.005727985 |
-| 8103987 | 0.005728106 |
-| 8104035 | 0.005728238 |
+| 8104024 | 0.00572821 |
+| 8104072 | 0.005728323 |
+| 8104120 | 0.005728419 |
+| 8104168 | 0.005748753 |
+| 8104216 | 0.005747938 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

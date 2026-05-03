@@ -2,12 +2,75 @@
 
 ## Overview
 
+**Targon** (NetUID **4**) (`δ`).
+
 Incentivized Compute Marketplace powered by the Targon Virtual Machine (TVM).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `132`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ132,355.481243573. **Alpha liquidity in pool (`alpha_in`)** = ‎2,313,110.699689567δ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,798,016.408121928δ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.057221388`** *(also **moving-average price** `0.057842751033604145` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,983,038.450877654δ‎`. **Owner hotkey / coldkey (chain):** `5Hp18g9P8hLGKp9W3ZDr4bvJwba6b6bY3P2u3VdYf8yMR8FM` / `5CXGPMnq9RCCLUEvp9G2iUuabw69TSFM155UVS1S4Zmusaxv`.
+- **Subnet registered at block:** `1411451` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎99.813247235δ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.017146480` · α-out `‎1.000000000δ‎` · α-in `‎0.299651582δ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.057221392`
+- **Market cap:** `264658685461101.924572128`
+- **Liquidity:** `264714449340654`
+- **Total τ:** `132355261157812`
+- **Total α:** `5111110210761540`
+- **α in pool:** `2313106751804326`
+- **α staked:** `2312063594647608`
+- **Price Δ 1h:** `-0.45622540267843479`
+- **Price Δ 1d:** `0.176965079092971994`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `5`
+- **Active miners:** `6`
+- **Active dual:** `1`
+- **Emission:** `17140816`
+- **Max neurons:** `256`
+- **Validators (metadata):** `5`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+Incentivized Compute Marketplace powered by the Targon Virtual Machine (TVM).
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+# Targon: The Confidential Decentralized AI Cloud
+
+Targon is a next-generation AI infrastructure platform that leverages
+Confidential Compute (CC) and Protected pcie (PPCIE) technology to secure the
+entire stack. By providing a secure execution environment from hardware to
+application layers, Targon enables verifiable and trustworthy operations across
+the entire infrastructure in a decentralized fashion.
+
+NOTICE: Using this software, you must agree to the Terms and Agreements provided
+in the terms and conditions document. By downloading and running this software,
+you implicitly agree to these terms and conditions.
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Scale with Secure GPU & CPU Rentals on a Lightning-Fast Cloud for Training and Deployment
+
+**Fetched document title:** Targon
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -78,8 +141,6 @@ you implicitly agree to these terms and conditions.
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - - GPU TEE (Trusted Execution Environment) for isolated execution
 - - NVIDIA Confidential Compute integration OR
 - - NVIDIA PPCIE
@@ -87,8 +148,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/manifold-inc/targon/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -98,7 +157,7 @@ Incentivized Compute Marketplace powered by the Targon Virtual Machine (TVM).
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -113,22 +172,81 @@ Incentivized Compute Marketplace powered by the Targon Virtual Machine (TVM).
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.057601643 |
-| 8103843 | 0.057479998 |
-| 8103891 | 0.057483693 |
-| 8103939 | 0.057451942 |
-| 8103987 | 0.057452223 |
-| 8104035 | 0.057441034 |
+| 8103976 | 0.057452229 |
+| 8104024 | 0.057442322 |
+| 8104072 | 0.057213885 |
+| 8104120 | 0.057218331 |
+| 8104168 | 0.057224167 |
+| 8104216 | 0.057221388 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
+
+| Timestamp (UTC) | Block | Pool price |
+|-----------------|------:|-----------:|
+| 2026-03-09T23:59:48Z | 7711060 | 0.046600613 |
+| 2026-03-10T23:59:48Z | 7718257 | 0.044671352 |
+| 2026-03-11T23:59:48Z | 7725455 | 0.044992059 |
+| 2026-03-12T23:59:48.001Z | 7732653 | 0.045044181 |
+| 2026-03-13T23:59:48Z | 7739841 | 0.044617073 |
+| 2026-03-14T23:59:48.001Z | 7747036 | 0.044974878 |
+| 2026-03-15T23:59:48Z | 7754226 | 0.048140667 |
+| 2026-03-16T23:59:48Z | 7761426 | 0.050329983 |
+| 2026-03-17T23:59:48Z | 7768619 | 0.048695883 |
+| 2026-03-18T23:59:48Z | 7775819 | 0.048080551 |
+| 2026-03-19T23:59:48Z | 7783014 | 0.04836100149019909583 |
+| 2026-03-20T23:59:48Z | 7790201 | 0.049109114 |
+| 2026-03-21T23:59:48Z | 7797398 | 0.049968164 |
+| 2026-03-22T23:59:48Z | 7804598 | 0.05165981 |
+| 2026-03-23T23:59:48Z | 7811798 | 0.061013414 |
+| 2026-03-24T23:59:48.001Z | 7818996 | 0.06184430854535391113 |
+| 2026-03-25T23:59:48Z | 7826196 | 0.066822963 |
+| 2026-03-26T23:59:48Z | 7833396 | 0.060947965 |
+| 2026-03-27T23:59:48Z | 7840596 | 0.061895334 |
+| 2026-03-28T23:59:48.001Z | 7847743 | 0.063063153 |
+| 2026-03-29T23:59:48Z | 7854902 | 0.065204757 |
+| 2026-03-30T23:59:48.001Z | 7862095 | 0.064037034 |
+| 2026-03-31T23:59:48Z | 7869291 | 0.062491315 |
+| 2026-04-01T23:59:48Z | 7876474 | 0.063967724 |
+| 2026-04-02T23:59:48Z | 7883622 | 0.062467608 |
+| 2026-04-03T23:59:48Z | 7890794 | 0.062987777 |
+| 2026-04-04T23:59:48.001Z | 7897988 | 0.062974174 |
+| 2026-04-05T23:59:48Z | 7905188 | 0.062341489 |
+| 2026-04-06T23:59:48Z | 7912388 | 0.062265633 |
+| 2026-04-07T23:59:48Z | 7919588 | 0.061441453 |
+| 2026-04-08T23:59:48Z | 7926788 | 0.059118644 |
+| 2026-04-09T23:59:48Z | 7933987 | 0.054508584 |
+| 2026-04-10T23:59:48Z | 7941184 | 0.053899182 |
+| 2026-04-11T23:59:48Z | 7948384 | 0.054216944 |
+| 2026-04-12T23:59:48Z | 7955584 | 0.053167615 |
+| 2026-04-13T23:59:48Z | 7962784 | 0.05393021 |
+| 2026-04-14T23:59:48Z | 7969979 | 0.052268678 |
+| 2026-04-15T23:59:48.001Z | 7977179 | 0.052176297 |
+| 2026-04-16T23:59:48Z | 7984379 | 0.053980353 |
+| 2026-04-17T23:59:48Z | 7991579 | 0.055863978 |
+| 2026-04-18T23:59:48Z | 7998779 | 0.056493406 |
+| 2026-04-19T23:59:48Z | 8005979 | 0.056178061 |
+| 2026-04-20T23:59:48Z | 8013179 | 0.057823106 |
+| 2026-04-21T23:59:48Z | 8020376 | 0.059238895 |
+| 2026-04-22T23:59:48Z | 8027562 | 0.059936151 |
+| 2026-04-23T23:59:48Z | 8034762 | 0.05899197 |
+| 2026-04-24T23:59:48Z | 8041962 | 0.058073284 |
+| 2026-04-25T23:59:48Z | 8049151 | 0.059177521 |
+| 2026-04-26T23:59:48Z | 8056274 | 0.059106068 |
+| 2026-04-27T23:59:48.001Z | 8063454 | 0.059256637 |
+| 2026-04-28T23:59:48Z | 8070646 | 0.058311586 |
+| 2026-04-29T23:59:48Z | 8077790 | 0.058234294 |
+| 2026-04-30T23:59:48Z | 8084984 | 0.057661247 |
+| 2026-05-01T23:59:48Z | 8092168 | 0.057040686 |
+| 2026-05-02T23:59:48Z | 8099357 | 0.057896253 |
+| 2026-05-03T16:09:12.001Z | 8104198 | 0.057221398 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

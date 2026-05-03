@@ -2,12 +2,65 @@
 
 ## Overview
 
+**blockmachine** (NetUID **19**) (`t`).
+
 Harnessing Bittensor's incentive layer to forge self-optimizing infrastructure.
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `147`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ37,644.040219984. **Alpha liquidity in pool (`alpha_in`)** = ‎2,664,835.686191816t‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,287,617.366524083t‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.014128891`** *(also **moving-average price** `0.014199528377503157` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,594,134.594053425t‎`. **Owner hotkey / coldkey (chain):** `5CK49hDJcseEk1V7iB1dmmztdw4igafhxLsVN82VtUVAQRfC` / `5FWh37LfVV5LE9dZA91STzbtebh6vxYa3MH71c621sYafo1L`.
+- **Subnet registered at block:** `1956072` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎110.903097011t‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000t‎` · α-in `‎0.000000000t‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.014128891`
+- **Market cap:** `59894670470417.628066886`
+- **Liquidity:** `75295213163090`
+- **Total τ:** `37644040965839`
+- **Total α:** `4952440052715899`
+- **α in pool:** `2664835633401922`
+- **α staked:** `1574327261295024`
+- **Price Δ 1h:** `-0.010148386537464637`
+- **Price Δ 1d:** `-1.335345514707494647`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `12`
+- **Active miners:** `10`
+- **Active dual:** `1`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `12`
+- **Neuron reg. cost:** `100000000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+Harnessing Bittensor's incentive layer to forge self-optimizing infrastructure.
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+*README text unavailable for extraction (no compatible GitHub link or Markdown too short).*
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Contribute to taostat/blockmachine development by creating an account on GitHub.
+
+**Fetched document title:** GitHub - taostat/blockmachine · GitHub
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -65,12 +118,10 @@ https://github.com/taostat/blockmachine-validator
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/taostat/blockmachine/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -80,7 +131,7 @@ Harnessing Bittensor's incentive layer to forge self-optimizing infrastructure.
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -94,22 +145,22 @@ Harnessing Bittensor's incentive layer to forge self-optimizing infrastructure.
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.014092897 |
-| 8103843 | 0.014092939 |
-| 8103891 | 0.014092931 |
-| 8103939 | 0.014130321 |
-| 8103987 | 0.014130314 |
-| 8104035 | 0.014130309 |
+| 8103976 | 0.014130315 |
+| 8104024 | 0.014130311 |
+| 8104072 | 0.014128916 |
+| 8104120 | 0.014128905 |
+| 8104168 | 0.014128897 |
+| 8104216 | 0.014128891 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

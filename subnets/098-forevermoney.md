@@ -2,14 +2,72 @@
 
 ## Overview
 
+**ForeverMoney** (NetUID **98**) (`ბ`).
+
+Decentralized intelligence for advanced liquidity management.
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `226`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ6,258.187876335. **Alpha liquidity in pool (`alpha_in`)** = ‎1,526,138.320178375ბ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,341,097.936980165ბ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004102000`** *(also **moving-average price** `0.004097630036994815` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎177,201.345604905ბ‎`. **Owner hotkey / coldkey (chain):** `5EJ2354xmxG8AoYoRuefW2kpLiZ8f3g68MSaFiVDAGUWRmR2` / `5Dd9Q6yueRkH1fLTHa2xdEEPoMQiqenWKRMUtZKPTuvjRL3w`.
+- **Subnet registered at block:** `5445992` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎167.160938562ბ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ბ‎` · α-in `‎0.000000000ბ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.004102`
+- **Market cap:** `11783389026464.33108`
+- **Liquidity:** `12518407265695`
+- **Total τ:** `6258188141478`
+- **Total α:** `3867223257158540`
+- **α in pool:** `1526138255538253`
+- **α staked:** `1346457801620287`
+- **Price Δ 1h:** `0.016043529166794674`
+- **Price Δ 1d:** `0.243080918062400463`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `12`
+- **Active miners:** `1`
+- **Active dual:** `1`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `12`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
 Decentralized intelligence for advanced liquidity management.  Alpha-gated TG https://t.me/+3MN77q0y9lwyMDVk
+
+
+
+**Additional commentary (on-chain)**
+
 
 Making liquidity intelligent.
 
+### Repository README excerpt *(everything before first `##` heading)*
+
+*README text unavailable for extraction (no compatible GitHub link or Markdown too short).*
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Decentralized Liquidity Intelligence
+
+**Fetched document title:** ForeverMoney 九八 - SN98
+
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -162,12 +220,10 @@ For detailed system architecture, see **[ARCHITECTURE.md](./ARCHITECTURE.md)**.
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/SN98-ForeverMoney/forever-money/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -193,21 +249,21 @@ Making liquidity intelligent.
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.004101349 |
-| 8103891 | 0.004101345 |
-| 8103939 | 0.00410134 |
-| 8103987 | 0.004101335 |
-| 8104035 | 0.004101331 |
+| 8104024 | 0.004101332 |
+| 8104072 | 0.004102016 |
+| 8104120 | 0.004102009 |
+| 8104168 | 0.004102003 |
+| 8104216 | 0.004102 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

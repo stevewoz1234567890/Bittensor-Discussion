@@ -2,12 +2,111 @@
 
 ## Overview
 
+**Synth** (NetUID **50**) (`ש`).
+
 Predictive intelligence for financial markets and beyond
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `178`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ14,886.198663624. **Alpha liquidity in pool (`alpha_in`)** = ‎1,597,047.439131314ש‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,117,126.344782289ש‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.009346621`** *(also **moving-average price** `0.00950712664052844` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,081,296.516666585ש‎`. **Owner hotkey / coldkey (chain):** `5DxyiWpGqN5xXiczXcEGph51BcgTqcYKD5GKZqoACuc2sJkD` / `5DxyiWpGqN5xXiczXcEGph51BcgTqcYKD5GKZqoACuc2sJkD`.
+- **Subnet registered at block:** `4763204` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎133.799260251ש‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ש‎` · α-in `‎0.000000000ש‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.009346622`
+- **Market cap:** `41201064743262.905420608`
+- **Liquidity:** `29813197393241`
+- **Total τ:** `14886199173860`
+- **Total α:** `4714160783913603`
+- **α in pool:** `1597047384539695`
+- **α staked:** `2811076186014769`
+- **Price Δ 1h:** `1.140432357936690692`
+- **Price Δ 1d:** `0.095612471344638194`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `13`
+- **Active miners:** `238`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `13`
+- **Neuron reg. cost:** `800000000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+Predictive intelligence for financial markets and beyond
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<div align="center">
+  <a href="https://www.synthdata.co/">
+    <img alt="Synth banner logo" src="https://github.com/synthdataco/synth-subnet/blob/main/docs/images/logo.png" height="134" />
+  </a>
+</div>
+
+<h1 align="center">
+    Synth Subnet
+</h1>
+
+<div align="center">
+    <a href="https://www.synthdata.co" target="_blank">
+        <b>Website</b>
+    </a>
+·
+    <a href="https://github.com/synthdataco/synth-subnet/blob/main/Synth%20Whitepaper%20v1.pdf" target="_blank">
+        <b>Whitepaper</b>
+    </a>
+·
+    <a href="https://discord.gg/gnt8sFMdg6" target="_blank">
+        <b>Discord</b>
+    </a>
+·
+    <a href="https://api.synthdata.co/docs" target="_blank">
+        <b>API Documentation</b>
+    </a>
+</div>
+
+---
+
+<div align="center">
+
+[![License: MIT](https://img.shields.io/github/license/synthdataco/synth-subnet)][license]
+
+</div>
+
+---
+
+### Table of contents
+
+- [1. Overview](#-1-overview)
+  - [1.1. Introduction](#11-introduction)
+  - [1.2. Task Presented to the Miners](#12-task-presented-to-the-miners)
+  - [1.3. Validator's Scoring Methodology](#13-validators-scoring-methodology)
+  - [1.4. Calculation of Leaderboard Score](#14-calculation-of-leaderboard-score)
+  - [1.5. Overall Purpose](#15-overall-purpose)
+- [2. Usage](#-2-usage)
+  - [2.1. Miners](#21-miners)
+    - [2.1.1. Tutorial](#211-tutorial)
+    - [2.1.2. Reference](#212-reference)
+  - [2.2. Validators](#22-validators)
+  - [2.3. Develop](#23-develop)
+- [3. License](#-3-license)
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -149,12 +248,10 @@ Th…
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/mode-network/synth-subnet/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -164,7 +261,7 @@ Predictive intelligence for financial markets and beyond
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -178,22 +275,21 @@ Predictive intelligence for financial markets and beyond
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.009228975 |
-| 8103843 | 0.009228956 |
-| 8103891 | 0.00924126 |
-| 8103939 | 0.00935273 |
-| 8103987 | 0.009377381 |
-| 8104035 | 0.009383555 |
+| 8104024 | 0.009383557 |
+| 8104072 | 0.009383547 |
+| 8104120 | 0.009345941 |
+| 8104168 | 0.009346528 |
+| 8104216 | 0.00934662 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

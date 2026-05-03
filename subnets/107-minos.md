@@ -2,12 +2,69 @@
 
 ## Overview
 
+**Minos** (NetUID **107**) (`ミ`).
+
 The Foundational Layer of Genomics
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `235`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ3,763.559750431. **Alpha liquidity in pool (`alpha_in`)** = ‎114,185.363131611Ե‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎625,374.520279279Ե‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.032497813`** *(also **moving-average price** `0.031393509823828936` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎71,006.038270810Ե‎`. **Owner hotkey / coldkey (chain):** `5E4WJ2tAZVDTRVvSFtR1jJqAX4CokgCt9JYmPzJMWDmUT3Ju` / `5DA2vLrSXZxnT9G4Yrywx1Fpi4RXwMH1Ah7r8DTTWS7UZZBM`.
+- **Subnet registered at block:** `7457580` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎138.704397430Ե‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.016362814` · α-out `‎1.000000000Ե‎` · α-in `‎0.500000000Ե‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.031897211`
+- **Market cap:** `15802834192308.6581195`
+- **Liquidity:** `7404385247381`
+- **Total τ:** `3703448458214`
+- **Total α:** `739540950423021`
+- **α in pool:** `116026971422897`
+- **α staked:** `379402995551603`
+- **Price Δ 1h:** `0.48081913329637374`
+- **Price Δ 1d:** `-4.072427379485487325`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `64`
+- **Active validators:** `12`
+- **Active miners:** `2`
+- **Active dual:** `1`
+- **Emission:** `15948307`
+- **Max neurons:** `64`
+- **Validators (metadata):** `12`
+- **Neuron reg. cost:** `150000000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+The Foundational Layer of Genomics
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+# Minos – Decentralized Genomic Variant Calling & Benchmarking Platform
+
+Minos (SN107) is a subnet for genomic variant calling and benchmarking powered by Bittensor. Every 72 minutes, the platform generates a fresh challenge genome (BAM file) containing hidden synthetic mutations injected using HelixForge at read level. Miners are rewarded for performing hyperparameter search and providing configurations for state-of-the-art variant calling tools that can accurately identify these hidden mutations in the genome. Once the hyperparameter space has been saturated, miners will compete to provide their own custom algorithms to identify mutations. Validators are responsible for downloading miner's hyperparam config and they will run each miner's submitted config, and evaluate the results using industry standard tools and approaches such as hap.py. Miners will never be asked to upload outputs, they submit their variant-calling configuration (and pipelines in later stages), which the validator executes trustlessly.
+
+> **Subnet 107** on Bittensor mainnet (finney).
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Minos is a Bittensor subnet for decentralized genomic variant calling. Miners compete to detect DNA mutations with clinical-grade precision, advancing precision medicine.
+
+**Fetched document title:** Minos | The Foundational Layer of Genomics
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -209,8 +266,6 @@ bash start-miner.sh --setup                                           # Re-run s
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - `| CPU/RAM (Validator) | ≥8 cores / 32 GB RAM | hap.py scoring benefits from cores |`
 - `| CPU/RAM (Miner) | ≥4 cores / 8–16 GB RAM | 8 GB for BCFtools/FreeBayes, 16 GB for DeepVariant |`
 - `| Disk | ≥60 GB (miner) / ≥100 GB (validator) | Reference: ~2 GB miner, ~14 GB validator (SDF expands ~6×). Plus per-round BAMs (~6 GB each) until cleaned. |`
@@ -233,8 +288,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 *Primary README URL used: `https://raw.githubusercontent.com/minos-protocol/minos_subnet/main/README.md`*
 
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
-
 ## On-chain identity — description
 
 
@@ -243,7 +296,7 @@ The Foundational Layer of Genomics
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -259,21 +312,80 @@ The Foundational Layer of Genomics
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.032208913 |
-| 8103891 | 0.031562135 |
-| 8103939 | 0.031574375 |
-| 8103987 | 0.031795831 |
-| 8104035 | 0.031764333 |
+| 8104024 | 0.031781783 |
+| 8104072 | 0.03170377 |
+| 8104120 | 0.031695762 |
+| 8104168 | 0.032122062 |
+| 8104216 | 0.032497813 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
+
+| Timestamp (UTC) | Block | Pool price |
+|-----------------|------:|-----------:|
+| 2026-03-09T23:59:48Z | 7711060 | 0.016228162 |
+| 2026-03-10T23:59:48Z | 7718257 | 0.017969988 |
+| 2026-03-11T23:59:48Z | 7725455 | 0.019072162 |
+| 2026-03-12T23:59:48.001Z | 7732653 | 0.017147097 |
+| 2026-03-13T23:59:48Z | 7739841 | 0.015334254 |
+| 2026-03-14T23:59:48.001Z | 7747036 | 0.016489581 |
+| 2026-03-15T23:59:48Z | 7754226 | 0.018461422 |
+| 2026-03-16T23:59:48Z | 7761426 | 0.018085895 |
+| 2026-03-17T23:59:48Z | 7768619 | 0.017273633 |
+| 2026-03-18T23:59:48Z | 7775819 | 0.015030126 |
+| 2026-03-19T23:59:48Z | 7783014 | 0.01525408396641907099 |
+| 2026-03-20T23:59:48Z | 7790201 | 0.015870436 |
+| 2026-03-21T23:59:48Z | 7797398 | 0.014420292 |
+| 2026-03-22T23:59:48Z | 7804598 | 0.017215124 |
+| 2026-03-23T23:59:48Z | 7811798 | 0.017256873 |
+| 2026-03-24T23:59:48.001Z | 7818996 | 0.01617109548305753579 |
+| 2026-03-25T23:59:48Z | 7826196 | 0.014584997 |
+| 2026-03-26T23:59:48Z | 7833396 | 0.012398202 |
+| 2026-03-27T23:59:48Z | 7840596 | 0.014157179 |
+| 2026-03-28T23:59:48.001Z | 7847743 | 0.015261685 |
+| 2026-03-29T23:59:48Z | 7854902 | 0.014169084 |
+| 2026-03-30T23:59:48.001Z | 7862095 | 0.013521378 |
+| 2026-03-31T23:59:48Z | 7869291 | 0.012243332 |
+| 2026-04-01T23:59:48Z | 7876474 | 0.013340896 |
+| 2026-04-02T23:59:48Z | 7883622 | 0.014446052 |
+| 2026-04-03T23:59:48Z | 7890794 | 0.013563785 |
+| 2026-04-04T23:59:48.001Z | 7897988 | 0.012640638 |
+| 2026-04-05T23:59:48Z | 7905188 | 0.012693516 |
+| 2026-04-06T23:59:48Z | 7912388 | 0.012991087 |
+| 2026-04-07T23:59:48Z | 7919588 | 0.013023395 |
+| 2026-04-08T23:59:48Z | 7926788 | 0.012848112 |
+| 2026-04-09T23:59:48Z | 7933987 | 0.010937909 |
+| 2026-04-10T23:59:48Z | 7941184 | 0.012648895 |
+| 2026-04-11T23:59:48Z | 7948384 | 0.013120392 |
+| 2026-04-12T23:59:48Z | 7955584 | 0.011893189 |
+| 2026-04-13T23:59:48Z | 7962784 | 0.012088598 |
+| 2026-04-14T23:59:48Z | 7969979 | 0.013341169 |
+| 2026-04-15T23:59:48.001Z | 7977179 | 0.012556012 |
+| 2026-04-16T23:59:48Z | 7984379 | 0.01209753 |
+| 2026-04-17T23:59:48Z | 7991579 | 0.013074389 |
+| 2026-04-18T23:59:48Z | 7998779 | 0.013512584 |
+| 2026-04-19T23:59:48Z | 8005979 | 0.012158522 |
+| 2026-04-20T23:59:48Z | 8013179 | 0.013215935 |
+| 2026-04-21T23:59:48Z | 8020376 | 0.015262965 |
+| 2026-04-22T23:59:48Z | 8027562 | 0.017115719 |
+| 2026-04-23T23:59:48Z | 8034762 | 0.016384407 |
+| 2026-04-24T23:59:48Z | 8041962 | 0.01599422 |
+| 2026-04-25T23:59:48Z | 8049151 | 0.018118389 |
+| 2026-04-26T23:59:48Z | 8056274 | 0.021777483 |
+| 2026-04-27T23:59:48.001Z | 8063454 | 0.027428748 |
+| 2026-04-28T23:59:48Z | 8070646 | 0.022380463 |
+| 2026-04-29T23:59:48Z | 8077790 | 0.023489626 |
+| 2026-04-30T23:59:48Z | 8084984 | 0.025662659 |
+| 2026-05-01T23:59:48Z | 8092168 | 0.030631721 |
+| 2026-05-02T23:59:48Z | 8099357 | 0.030166116 |
+| 2026-05-03T16:10:00Z | 8104202 | 0.031897211 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

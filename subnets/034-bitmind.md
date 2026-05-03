@@ -2,12 +2,78 @@
 
 ## Overview
 
-**BitMind** (NetUID 34) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
+**BitMind** (NetUID **34**) (`י`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `162`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ36,243.535230933. **Alpha liquidity in pool (`alpha_in`)** = ‎2,646,060.149877818י‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,051,747.910296441י‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.013696064`** *(also **moving-average price** `0.013715578941628337` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎596,388.762163037י‎`. **Owner hotkey / coldkey (chain):** `5HjBSeeoz52CLfvDWDkzupqrYLHz1oToDPHjdmJjc4TF68LQ` / `5DthmKBR83sUdudSfgFnsxBkTYtYTFLJUgovNfb1TSKVLiTH`.
+- **Subnet registered at block:** `3493948` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎121.740243941י‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000י‎` · α-in `‎0.000000000י‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.013696065`
+- **Market cap:** `59571419474742.254532945`
+- **Liquidity:** `72484147037559`
+- **Total τ:** `36243536103830`
+- **Total α:** `4697795060174259`
+- **α in pool:** `2646060086143657`
+- **α staked:** `1703468006395496`
+- **Price Δ 1h:** `-0.077495021225771042`
+- **Price Δ 1d:** `-0.182048829520552518`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `9`
+- **Active miners:** `68`
+- **Active dual:** `1`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `9`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<div align="center">
+  <img src="docs/static/bm-logo-black.png" alt="BitMind Logo" width="120"/>
+
+  <h1>GAS<br><small>Generative Adversarial Subnet</small></h1>
+  <h3><code>Bittensor SN34</code></h3>
+  <p>
+    <a href="docs/Mining.md">⛏️ Mining</a> ·
+    <a href="docs/Validating.md">🛡️ Validating</a> ·
+    <a href="docs/Incentive.md">💰 Incentives</a> ·
+    <a href="https://app.bitmind.ai/">🏆 Leaderboard</a>
+  </p>
+  <p>
+    🤗 <a href="https://huggingface.co/gasstation">GAS-Station</a> ·
+    <a href="https://www.bitmind.ai/apps">🌐 Apps</a>
+  </p>
+</div>
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Contribute to BitMind-AI/bitmind-subnet development by creating an account on GitHub.
+
+**Fetched document title:** GitHub - BitMind-AI/bitmind-subnet · GitHub
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -151,8 +217,6 @@ Validators are responsible for challenging and scoring both miner types. Generat
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - `| Track | What You Do | How You're Scored |`
 - `| **Discriminative Mining** | Submit AI-generated content detection models (image, video, audio) | `sn34_score` -- geometric mean of MCC and Brier score, measuring both accuracy and calibration |`
 - - **Cloud-evaluated**: Discriminator models are benchmarked on cloud infrastructure -- no GPU hosting required
@@ -161,17 +225,15 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 *Primary README URL used: `https://raw.githubusercontent.com/BitMind-AI/bitmind-subnet/main/README.md`*
 
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
-
 ## On-chain identity — description
 
 
-*Empty — no description bytes set in `SubnetIdentity`.*
+*Unset in `SubnetIdentity`.*
 
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -184,22 +246,21 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.013708205 |
-| 8103843 | 0.013706698 |
-| 8103891 | 0.013706691 |
-| 8103939 | 0.013706493 |
-| 8103987 | 0.013706487 |
-| 8104035 | 0.013706482 |
+| 8104024 | 0.013706484 |
+| 8104072 | 0.013706475 |
+| 8104120 | 0.01370644 |
+| 8104168 | 0.013706431 |
+| 8104216 | 0.013696064 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

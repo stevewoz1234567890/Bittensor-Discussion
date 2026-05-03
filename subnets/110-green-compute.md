@@ -2,12 +2,63 @@
 
 ## Overview
 
-**Green Compute** (NetUID 110) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
+**Green Compute** (NetUID **110**) (`Ѐ`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `238`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ3,751.119953734. **Alpha liquidity in pool (`alpha_in`)** = ‎649,779.607871620Ѐ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,789,482.714531190Ѐ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005761714`** *(also **moving-average price** `0.0057741275522857904` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎110,233.109717447Ѐ‎`. **Owner hotkey / coldkey (chain):** `5CCf21ieTFDMkVMs9BHe2Tb6ysVDGVHqbgKjU21CURLPq32d` / `5D53sX6AwAzXUB24G85Ch35hYr5rCpXjYFWpFTe4uzBb75sL`.
+- **Subnet registered at block:** `5606062` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎167.960972143Ѐ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002880856` · α-out `‎1.000000000Ѐ‎` · α-in `‎0.500000000Ѐ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.005761703`
+- **Market cap:** `10379525923044.146803413`
+- **Liquidity:** `7494882167562`
+- **Total τ:** `3751079127157`
+- **Total α:** `2439243496657571`
+- **α in pool:** `649773693716227`
+- **α staked:** `1151694712941344`
+- **Price Δ 1h:** `-1.082109686401076238`
+- **Price Δ 1d:** `2.231410472286620409`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `14`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `2880852`
+- **Max neurons:** `256`
+- **Validators (metadata):** `14`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+*README text unavailable for extraction (no compatible GitHub link or Markdown too short).*
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Rent 4090s and 5090s by the hour, run OpenAI-compatible inference, or earn rewards as a miner. Bittensor subnet 110, powered by verified green energy.
+
+**Fetched document title:** Decentralized GPU compute on Bittensor
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,17 +100,17 @@
 
 ## Miner / validator hardware (CPU/GPU/RAM)
 
-No GitHub URL is registered on-chain for this subnet, so README-based hardware notes were not fetched. Use the website or community links above when available.
+*No GitHub URL on-chain; hardware notes not fetched automatically.*
 
 ## On-chain identity — description
 
 
-*Empty — no description bytes set in `SubnetIdentity`.*
+*Unset in `SubnetIdentity`.*
 
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -72,21 +123,80 @@ No GitHub URL is registered on-chain for this subnet, so README-based hardware n
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.005823913 |
-| 8103891 | 0.00582473 |
-| 8103939 | 0.005824777 |
-| 8103987 | 0.005826362 |
-| 8104035 | 0.005826417 |
+| 8104024 | 0.005826406 |
+| 8104072 | 0.005826448 |
+| 8104120 | 0.005826485 |
+| 8104168 | 0.005784928 |
+| 8104216 | 0.005761714 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
+
+| Timestamp (UTC) | Block | Pool price |
+|-----------------|------:|-----------:|
+| 2026-03-09T23:59:48Z | 7711060 | 0.004367783 |
+| 2026-03-10T23:59:48Z | 7718257 | 0.004263551 |
+| 2026-03-11T23:59:48Z | 7725455 | 0.00424502 |
+| 2026-03-12T23:59:48.001Z | 7732653 | 0.00436112 |
+| 2026-03-13T23:59:48Z | 7739841 | 0.004283294 |
+| 2026-03-14T23:59:48.001Z | 7747036 | 0.004085905 |
+| 2026-03-15T23:59:48Z | 7754226 | 0.003572765 |
+| 2026-03-16T23:59:48Z | 7761426 | 0.003835506 |
+| 2026-03-17T23:59:48Z | 7768619 | 0.003591766 |
+| 2026-03-18T23:59:48Z | 7775819 | 0.003927356 |
+| 2026-03-19T23:59:48Z | 7783014 | 0.00361832214215156777 |
+| 2026-03-20T23:59:48Z | 7790201 | 0.003753931 |
+| 2026-03-21T23:59:48Z | 7797398 | 0.003711958 |
+| 2026-03-22T23:59:48Z | 7804598 | 0.003672885 |
+| 2026-03-23T23:59:48Z | 7811798 | 0.003791346 |
+| 2026-03-24T23:59:48.001Z | 7818996 | 0.00383898430159971012 |
+| 2026-03-25T23:59:48Z | 7826196 | 0.003628577 |
+| 2026-03-26T23:59:48Z | 7833396 | 0.003366506 |
+| 2026-03-27T23:59:48Z | 7840596 | 0.003420295 |
+| 2026-03-28T23:59:48.001Z | 7847743 | 0.003470436 |
+| 2026-03-29T23:59:48Z | 7854902 | 0.003362466 |
+| 2026-03-30T23:59:48.001Z | 7862095 | 0.003467889 |
+| 2026-03-31T23:59:48Z | 7869291 | 0.003434792 |
+| 2026-04-01T23:59:48Z | 7876474 | 0.003437998 |
+| 2026-04-02T23:59:48Z | 7883622 | 0.003403758 |
+| 2026-04-03T23:59:48Z | 7890794 | 0.003468117 |
+| 2026-04-04T23:59:48.001Z | 7897988 | 0.003612613 |
+| 2026-04-05T23:59:48Z | 7905188 | 0.004088789 |
+| 2026-04-06T23:59:48Z | 7912388 | 0.004005189 |
+| 2026-04-07T23:59:48Z | 7919588 | 0.003972696 |
+| 2026-04-08T23:59:48Z | 7926788 | 0.003939452 |
+| 2026-04-09T23:59:48Z | 7933987 | 0.003930419 |
+| 2026-04-10T23:59:48Z | 7941184 | 0.004084783 |
+| 2026-04-11T23:59:48Z | 7948384 | 0.004174633 |
+| 2026-04-12T23:59:48Z | 7955584 | 0.004156627 |
+| 2026-04-13T23:59:48Z | 7962784 | 0.004332659 |
+| 2026-04-14T23:59:48Z | 7969979 | 0.004758605 |
+| 2026-04-15T23:59:48.001Z | 7977179 | 0.005174485 |
+| 2026-04-16T23:59:48Z | 7984379 | 0.005502801 |
+| 2026-04-17T23:59:48Z | 7991579 | 0.004990239 |
+| 2026-04-18T23:59:48Z | 7998779 | 0.005196967 |
+| 2026-04-19T23:59:48Z | 8005979 | 0.005875537 |
+| 2026-04-20T23:59:48Z | 8013179 | 0.005445518 |
+| 2026-04-21T23:59:48Z | 8020376 | 0.006247334 |
+| 2026-04-22T23:59:48Z | 8027562 | 0.006273696 |
+| 2026-04-23T23:59:48Z | 8034762 | 0.006577492 |
+| 2026-04-24T23:59:48Z | 8041962 | 0.005986947 |
+| 2026-04-25T23:59:48Z | 8049151 | 0.005887603 |
+| 2026-04-26T23:59:48Z | 8056274 | 0.006681772 |
+| 2026-04-27T23:59:48.001Z | 8063454 | 0.005959506 |
+| 2026-04-28T23:59:48Z | 8070646 | 0.00565586 |
+| 2026-04-29T23:59:48Z | 8077790 | 0.005727632 |
+| 2026-04-30T23:59:48Z | 8084984 | 0.005731258 |
+| 2026-05-01T23:59:48Z | 8092168 | 0.005624965 |
+| 2026-05-02T23:59:48Z | 8099357 | 0.005810064 |
+| 2026-05-03T16:10:00Z | 8104202 | 0.005761703 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

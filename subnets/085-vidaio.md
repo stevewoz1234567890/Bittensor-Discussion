@@ -2,12 +2,72 @@
 
 ## Overview
 
+**Vidaio** (NetUID **85**) (`ᚱ`).
+
 Next-Generation Video Processing Powered By AI
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `213`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ19,500.390110008. **Alpha liquidity in pool (`alpha_in`)** = ‎1,481,189.871887810ᚱ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,668,968.893104730ᚱ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.013114480`** *(also **moving-average price** `0.01311512989923358` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,161,383.248118082ᚱ‎`. **Owner hotkey / coldkey (chain):** `5FR392L6eKrTGwUjQurpxw89YUe7LzKANktDwRKLYYSgwxhb` / `5GTPBjA4uXhuQ51SJB7Jd55JwY6dKEnbnjCrsSSEXy3MN63z`.
+- **Subnet registered at block:** `5258781` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎158.496198086ᚱ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.006557239` · α-out `‎1.000000000ᚱ‎` · α-in `‎0.500000000ᚱ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.01311447`
+- **Market cap:** `50468446167862.12922148`
+- **Liquidity:** `38925239761036`
+- **Total τ:** `19500297233783`
+- **Total α:** `4150139911302876`
+- **α in pool:** `1481183953850458`
+- **α staked:** `2367118430299426`
+- **Price Δ 1h:** `0.079647235320607022`
+- **Price Δ 1d:** `-1.573580455798409743`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `4`
+- **Active miners:** `101`
+- **Active dual:** `1`
+- **Emission:** `6557234`
+- **Max neurons:** `256`
+- **Validators (metadata):** `4`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+Next-Generation Video Processing Powered By AI
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<div align="center">
+
+# **Vidaio Subnet**: Revolutionizing Video Processing with AI-Driven Decentralization <!-- omit in toc -->
+
+
+Please check our [Tweet](https://x.com/vidaio_τ) to follow us.
+[Website](https://vidaio.io)
+[![vidAio](./docs/images/banner.png)](https://vidaio.io)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+---
+
+</div>
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -75,12 +135,10 @@ Validators ensure miners deliver consistent, high-quality results by evaluating 
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/vidaio-subnet/vidaio-subnet/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -90,7 +148,7 @@ Next-Generation Video Processing Powered By AI
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -106,21 +164,21 @@ Next-Generation Video Processing Powered By AI
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.013097381 |
-| 8103891 | 0.013104033 |
-| 8103939 | 0.013104034 |
-| 8103987 | 0.013124133 |
-| 8104035 | 0.013134415 |
+| 8104024 | 0.013134335 |
+| 8104072 | 0.013145376 |
+| 8104120 | 0.013114223 |
+| 8104168 | 0.013114465 |
+| 8104216 | 0.01311448 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

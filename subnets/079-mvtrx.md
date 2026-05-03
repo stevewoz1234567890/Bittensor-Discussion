@@ -2,14 +2,120 @@
 
 ## Overview
 
+**MVTRX** (NetUID **79**) (`ي`).
+
 Building a SOTA Exchange for dTAO and Beyond
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `207`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,159.740270794. **Alpha liquidity in pool (`alpha_in`)** = ‎1,098,046.484969202ي‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,154,926.114383308ي‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.009214584`** *(also **moving-average price** `0.008716988377273083` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎274,816.303629384ي‎`. **Owner hotkey / coldkey (chain):** `5EWwdZB7qCCMaAso5Mzcks4UUcPxKYvpAj32t5Mg1v6HSxoF` / `5Fxp7QBG81X7PLdMkAe1RLCvqqfQSw9rJC5ppEQs9FP8qez9`.
+- **Subnet registered at block:** `5173967` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎154.342903609ي‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.004607282` · α-out `‎1.000000000ي‎` · α-in `‎0.500000000ي‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.009165678`
+- **Market cap:** `36184244324603.578609278`
+- **Liquidity:** `20223889558582`
+- **Total τ:** `10132636031053`
+- **Total α:** `4252975032110202`
+- **α in pool:** `1100982767180944`
+- **α staked:** `2846815128905257`
+- **Price Δ 1h:** `-0.594609578825626018`
+- **Price Δ 1d:** `7.752440944215403356`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `6`
+- **Active miners:** `207`
+- **Active dual:** `1`
+- **Emission:** `4582784`
+- **Max neurons:** `256`
+- **Validators (metadata):** `6`
+- **Neuron reg. cost:** `4512514`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+Building a SOTA Exchange for dTAO and Beyond
+
+
+
+**Additional commentary (on-chain)**
+
 
 Powered by TAOS Matrix of Simulations Sandbox
 
+### Repository README excerpt *(everything before first `##` heading)*
+
+<div align="center">
+
+# **τaos** ☯ **‪ي‬n 79**<!-- omit in toc -->
+### **Decentralized Simulation of Automated Trading in Intelligent Markets:** <!-- omit in toc -->
+### **Risk-Averse Agent Optimization** <!-- omit in toc -->
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+---
+
+
+**τaos** operates as a [Bittensor](https://bittensor.com) subnet at netuid 79, where participants are incentivized to produce meaningful contributions using carefully risk-managed algorithms in a large-scale agent-based **s**imulation **o**f **a**utomated **t**rading strategies.
+
+[![Website](https://img.shields.io/badge/website-black?logo=googlechrome
+)](https://taos.im)
+[![Whitepaper](https://img.shields.io/badge/whitepaper-white?logo=proton
+)](https://simulate.trading/taos-im-paper)
+[![Dashboard](https://img.shields.io/badge/dashboard-white?logo=grafana
+)](https://taos.simulate.trading)
+[![Discord](https://img.shields.io/badge/discord-black?logo=discord
+)](https://discord.com/channels/799672011265015819/1353733356470276096)
+
+---
+**_taos_ (/ˈtɑos/)** : To make things out of metal by heating it until it is soft and then bending and hitting it with a hammer to create the right shape.
+
+---
+### Table of Contents
+</div>
+
+1. [Incentive Mechanism](#mechanism)
+    - [Owner Role](#mechanism-owner)
+    - [Validator Role](#mechanism-validator)
+    - [Miner Role](#mechanism-miner)
+2. [Technical Operation](#technical)
+    - [Simulator](#technical-simulator)
+    - [Validator](#technical-validator)
+    - [Miner](#technical-miner)
+3. [Requirements](#requirements)
+    - [Validator](#requirements-validator)
+    - [Miner](#requirements-miner)
+4. [Install](#install)
+    - [Validator](#install-validator)
+    - [Miner](#install-miner)
+    - [Docker](#install-docker)
+5. [Agents](#agents)
+6. [Run](#run)
+    - [Validator](#run-validator)
+    - [Miner](#run-miner)
+---
+
+<div style="page-break-after: always;"></div>
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Simulation of Automated Trading in Intelligent Markets (a.k.a. Sn-79)
+
+**Fetched document title:** TAOS – Simulation of Automated Trading in Intelligent Markets (a.k.a. Sn-79)
+
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -24,7 +130,7 @@ Powered by TAOS Matrix of Simulations Sandbox
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 7200
-- **Registration recycle cost snapshot (`burn`):** τ0.002455167
+- **Registration recycle cost snapshot (`burn`):** τ0.004367194
 - **Owner SS58 (`owner_ss58`):** `5Fxp7QBG81X7PLdMkAe1RLCvqqfQSw9rJC5ppEQs9FP8qez9`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -101,8 +207,6 @@ Requirements are subject to change as the subnet matures and evolves; this secti
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - - 32GB RAM
 - - 16 CORE CPU
 - We hope to increase both major parameters significantly so that validators may wish to prepare a larger machine for easier expansion.  It should be noted however that increasing the CPU resources available will result in a faster progression of simulations due to multi-threaded processing of the orderbook realizations.  This should not inherently be a problem, but may cause divergences in scoring if there is a major discrepancy in resources with the other validators in the subnet.  We plan to communicate the setup employed by our validator whenever changes are made, and will enable to configure the resources allocated for simulation processing if necessary.
@@ -110,8 +214,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/taos-im/sn-79/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -136,21 +238,80 @@ Powered by TAOS Matrix of Simulations Sandbox
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.009200309 |
-| 8103891 | 0.009211116 |
-| 8103939 | 0.009221391 |
-| 8103987 | 0.009233615 |
-| 8104035 | 0.009234959 |
+| 8104024 | 0.009234651 |
+| 8104072 | 0.009200746 |
+| 8104120 | 0.00920208 |
+| 8104168 | 0.009188778 |
+| 8104216 | 0.009214584 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
+
+| Timestamp (UTC) | Block | Pool price |
+|-----------------|------:|-----------:|
+| 2026-03-09T23:59:48Z | 7711060 | 0.003691151 |
+| 2026-03-10T23:59:48Z | 7718257 | 0.003649474 |
+| 2026-03-11T23:59:48Z | 7725455 | 0.003590706 |
+| 2026-03-12T23:59:48.001Z | 7732653 | 0.003677287 |
+| 2026-03-13T23:59:48Z | 7739841 | 0.003595591 |
+| 2026-03-14T23:59:48.001Z | 7747036 | 0.003606077 |
+| 2026-03-15T23:59:48Z | 7754226 | 0.003349596 |
+| 2026-03-16T23:59:48Z | 7761426 | 0.00368465 |
+| 2026-03-17T23:59:48Z | 7768619 | 0.003586991 |
+| 2026-03-18T23:59:48Z | 7775819 | 0.003574148 |
+| 2026-03-19T23:59:48Z | 7783014 | 0.00321463684567068246 |
+| 2026-03-20T23:59:48Z | 7790201 | 0.003333198 |
+| 2026-03-21T23:59:48Z | 7797398 | 0.003287595 |
+| 2026-03-22T23:59:48Z | 7804598 | 0.003310106 |
+| 2026-03-23T23:59:48Z | 7811798 | 0.003457555 |
+| 2026-03-24T23:59:48.001Z | 7818996 | 0.00341829884701192655 |
+| 2026-03-25T23:59:48Z | 7826196 | 0.003344591 |
+| 2026-03-26T23:59:48Z | 7833396 | 0.003286649 |
+| 2026-03-27T23:59:48Z | 7840596 | 0.003291027 |
+| 2026-03-28T23:59:48.001Z | 7847743 | 0.003271818 |
+| 2026-03-29T23:59:48Z | 7854902 | 0.003235477 |
+| 2026-03-30T23:59:48.001Z | 7862095 | 0.003431709 |
+| 2026-03-31T23:59:48Z | 7869291 | 0.0034002 |
+| 2026-04-01T23:59:48Z | 7876474 | 0.003411273 |
+| 2026-04-02T23:59:48Z | 7883622 | 0.003465712 |
+| 2026-04-03T23:59:48Z | 7890794 | 0.003384495 |
+| 2026-04-04T23:59:48.001Z | 7897988 | 0.003402478 |
+| 2026-04-05T23:59:48Z | 7905188 | 0.003388498 |
+| 2026-04-06T23:59:48Z | 7912388 | 0.003248918 |
+| 2026-04-07T23:59:48Z | 7919588 | 0.003247633 |
+| 2026-04-08T23:59:48Z | 7926788 | 0.003165201 |
+| 2026-04-09T23:59:48Z | 7933987 | 0.003536141 |
+| 2026-04-10T23:59:48Z | 7941184 | 0.004341571 |
+| 2026-04-11T23:59:48Z | 7948384 | 0.004068068 |
+| 2026-04-12T23:59:48Z | 7955584 | 0.004122484 |
+| 2026-04-13T23:59:48Z | 7962784 | 0.004509293 |
+| 2026-04-14T23:59:48Z | 7969979 | 0.005494222 |
+| 2026-04-15T23:59:48.001Z | 7977179 | 0.005116759 |
+| 2026-04-16T23:59:48Z | 7984379 | 0.005039406 |
+| 2026-04-17T23:59:48Z | 7991579 | 0.004756043 |
+| 2026-04-18T23:59:48Z | 7998779 | 0.004732003 |
+| 2026-04-19T23:59:48Z | 8005979 | 0.005152784 |
+| 2026-04-20T23:59:48Z | 8013179 | 0.004994444 |
+| 2026-04-21T23:59:48Z | 8020376 | 0.004966218 |
+| 2026-04-22T23:59:48Z | 8027562 | 0.004937146 |
+| 2026-04-23T23:59:48Z | 8034762 | 0.005027867 |
+| 2026-04-24T23:59:48Z | 8041962 | 0.005735082 |
+| 2026-04-25T23:59:48Z | 8049151 | 0.006503401 |
+| 2026-04-26T23:59:48Z | 8056274 | 0.007663869 |
+| 2026-04-27T23:59:48.001Z | 8063454 | 0.007500996 |
+| 2026-04-28T23:59:48Z | 8070646 | 0.007627128 |
+| 2026-04-29T23:59:48Z | 8077790 | 0.007587844 |
+| 2026-04-30T23:59:48Z | 8084984 | 0.007708646 |
+| 2026-05-01T23:59:48Z | 8092168 | 0.008154347 |
+| 2026-05-02T23:59:48Z | 8099357 | 0.00849097 |
+| 2026-05-03T16:10:00Z | 8104202 | 0.009165678 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

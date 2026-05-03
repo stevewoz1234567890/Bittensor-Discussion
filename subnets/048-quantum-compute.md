@@ -2,12 +2,63 @@
 
 ## Overview
 
+**Quantum Compute** (NetUID **48**) (`ק`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `176`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ11,708.809326655. **Alpha liquidity in pool (`alpha_in`)** = ‎2,183,397.605792405ק‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,589,939.634370637ק‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005391910`** *(also **moving-average price** `0.005304103717207909` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎644,708.379879276ק‎`. **Owner hotkey / coldkey (chain):** `5D2Qc9ud7vTJrPzk8mT1ruY8oV8UaDP3ttepD7zVNNi943ch` / `5GNH5YMkcX8jEF1PukvxKafifcqz13jp18BT73jRL3AZc4Rc`.
+- **Subnet registered at block:** `3856677` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎132.420363864ק‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ק‎` · α-in `‎0.000000000ק‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.00539191`
+- **Market cap:** `22143025960247.3328735`
+- **Liquidity:** `23481492711293`
+- **Total τ:** `11708809619283`
+- **Total α:** `4773324240163042`
+- **α in pool:** `2183397551519015`
+- **α staked:** `1923315275706835`
+- **Price Δ 1h:** `1.236753760767850035`
+- **Price Δ 1d:** `-1.259294636781233679`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `12`
+- **Active miners:** `6`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `12`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
 Quantum Computing
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+*README text unavailable for extraction (no compatible GitHub link or Markdown too short).*
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Decentralized deep tech. Innovation from everywhere. Quantum computing, AI, and decentralized networks powered by Bittensor.
+
+**Fetched document title:** qBitTensor Labs — Decentralized Deep Tech
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -59,12 +110,10 @@ To set up a Validator please see [validator.md](qbittensor/validator/validator.m
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/qbittensor-labs/quantum-compute/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -74,7 +123,7 @@ Quantum Computing
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -90,22 +139,21 @@ Quantum Computing
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.005348711 |
-| 8103843 | 0.005348703 |
-| 8103891 | 0.005326041 |
-| 8103939 | 0.005326038 |
-| 8103987 | 0.005326034 |
-| 8104035 | 0.005326032 |
+| 8104024 | 0.005326032 |
+| 8104072 | 0.005326028 |
+| 8104120 | 0.005370669 |
+| 8104168 | 0.005391913 |
+| 8104216 | 0.00539191 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

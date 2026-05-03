@@ -2,12 +2,73 @@
 
 ## Overview
 
+**Aurelius** (NetUID **37**) (`ל`).
+
 Decentralized Alignment of Artificial Intelligence
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `165`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ8,751.109101185. **Alpha liquidity in pool (`alpha_in`)** = ‎2,160,507.638744840ל‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,883,868.255390733ל‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004052758`** *(also **moving-average price** `0.004053476266562939` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎314,241.392978999ל‎`. **Owner hotkey / coldkey (chain):** `5DXqqdrvu5FK3dASRVTCdGPZKx4Q9nkAZZSmibKG6PEEeW4j` / `5GRBbS3aDep7cvR1NRm9Awp5HAF1o4HC7t59Y8HoheLZ6ZaP`.
+- **Subnet registered at block:** `3212175` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎124.649172396ל‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ל‎` · α-in `‎0.000000000ל‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.004052756`
+- **Market cap:** `16813595068227.525120656`
+- **Liquidity:** `17507119397142`
+- **Total τ:** `8751106949316`
+- **Total α:** `5044363480990036`
+- **α in pool:** `2160508169706283`
+- **α staked:** `1988173633053993`
+- **Price Δ 1h:** `0.000271420975166215`
+- **Price Δ 1d:** `0.046088648689213652`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `14`
+- **Active miners:** `15`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `14`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+Decentralized Alignment of Artificial Intelligence
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+# Aurelius Protocol
+
+A Bittensor subnet for moral reasoning alignment. Miners submit structured ethical-dilemma
+scenario configurations; validators score them through an 8-stage pipeline and run
+accepted scenarios through [Concordia](https://github.com/google-deepmind/concordia)
+generative-agent simulations. The resulting transcripts form training data that improves
+LLM performance on moral reasoning benchmarks (MoReBench).
+
+---
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Aurelius is a decentralized AI alignment protocol. Alignment you can
+
+**Fetched document title:** Aurelius — Decentralized Alignment of Artificial Intelligence
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -22,7 +83,7 @@ Decentralized Alignment of Artificial Intelligence
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 10000000
 - **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.000500000
+- **Registration recycle cost snapshot (`burn`):** τ0.001224349
 - **Owner SS58 (`owner_ss58`):** `5GRBbS3aDep7cvR1NRm9Awp5HAF1o4HC7t59Y8HoheLZ6ZaP`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -192,15 +253,11 @@ mkdir -p data con…
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - CPU/RAM limits scaled to the scenario's agent count, and its LLM egress is firewalled to
 - capped RAM / CPU, egress limited to `SIM_ALLOWED_LLM_HOSTS`, and no persistent
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/Aurelius-Protocol/Aurelius-Protocol/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -210,7 +267,7 @@ Decentralized Alignment of Artificial Intelligence
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -225,22 +282,21 @@ Decentralized Alignment of Artificial Intelligence
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.004052756 |
-| 8103843 | 0.004052749 |
-| 8103891 | 0.004052747 |
-| 8103939 | 0.004052744 |
-| 8103987 | 0.004052677 |
-| 8104035 | 0.004052675 |
+| 8104024 | 0.004052676 |
+| 8104072 | 0.004052673 |
+| 8104120 | 0.004052761 |
+| 8104168 | 0.004052758 |
+| 8104216 | 0.004052758 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

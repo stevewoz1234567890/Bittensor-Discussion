@@ -4,10 +4,45 @@
 
 The **root network** (NetUID 0) is Bittensor’s top-level coordination layer. TAO holders delegate stake to root validators, who set **weights** on other subnets. Those weights help determine how network **emissions** are allocated across subnets. Root is not an application or “task” subnet like higher netuids; it is the mechanism through which the protocol routes incentive and security across the rest of the network.
 
+### Root snapshot *(block 8104216)*
+
+- **Root tempo:** `100` blocks between epoch strides (see [`SubnetHyperparameters`](https://learnbittensor.org/explore/concept/subnet-hyperparameters)). Validators allocate weight across subnets rather than miners competing inside a commodity task.
+- **`tao_in` (pool-facing TAO):** τ5,237,076.441389917
+- **Root alpha bookkeeping (`alpha_in` / `alpha_out`):** τ1,370,188.099459281 / τ4,680,425.258368280
+- **Reported subnet volume rolling figure:** τ48,484,159.059189916
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `1`
+- **Market cap:** `6050613357827561`
+- **Liquidity:** `6607264540849198`
+- **Total τ:** `5237049972112335`
+- **Total α:** `6050613357827561`
+- **α in pool:** `1370214568736863`
+- **α staked:** `4680398789090698`
+- **Price Δ 1h:** `0`
+- **Price Δ 1d:** `0`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `64`
+- **Active validators:** `8`
+- **Active miners:** `28`
+- **Active dual:** `4`
+- **Emission:** `0`
+- **Max neurons:** `64`
+- **Validators (metadata):** `8`
+- **Neuron reg. cost:** `500000`
+
+
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,17 +84,17 @@ The **root network** (NetUID 0) is Bittensor’s top-level coordination layer. T
 
 ## Miner / validator hardware (CPU/GPU/RAM)
 
-No GitHub URL is registered on-chain for this subnet, so README-based hardware notes were not fetched. Use the website or community links above when available.
+*No GitHub URL on-chain; hardware notes not fetched automatically.*
 
 ## On-chain identity — description
 
 
-*Empty — no description bytes set in `SubnetIdentity`.*
+*Unset in `SubnetIdentity`.*
 
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -71,27 +106,27 @@ No GitHub URL is registered on-chain for this subnet, so README-based hardware n
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Root uses TAO directly; protocol surfaces **1 τ per root weight unit** for pricing helpers.
+Root: protocol uses **1 τ per root weight unit** in pricing helpers.
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103459 | 1 |
-| 8103507 | 1 |
-| 8103555 | 1 |
-| 8103603 | 1 |
-| 8103651 | 1 |
-| 8103699 | 1 |
-| 8103747 | 1 |
-| 8103795 | 1 |
-| 8103843 | 1 |
-| 8103891 | 1 |
-| 8103939 | 1 |
-| 8103987 | 1 |
-| 8104035 | 1 |
+| 8103640 | 1 |
+| 8103688 | 1 |
+| 8103736 | 1 |
+| 8103784 | 1 |
+| 8103832 | 1 |
+| 8103880 | 1 |
+| 8103928 | 1 |
+| 8103976 | 1 |
+| 8104024 | 1 |
+| 8104072 | 1 |
+| 8104120 | 1 |
+| 8104168 | 1 |
+| 8104216 | 1 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

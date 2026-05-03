@@ -2,12 +2,85 @@
 
 ## Overview
 
+**Plaτform** (NetUID **100**) (`დ`).
+
 An auto-research subnet where miners compete in multiple challenges to achieve top scores against a synthetic benchmark, driving continuous performance optimization.
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `228`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ3,038.725811332. **Alpha liquidity in pool (`alpha_in`)** = ‎262,527.072655408დ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,203,187.222186037დ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.011637445`** *(also **moving-average price** `0.011538502760231495` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎199,852.790844217დ‎`. **Owner hotkey / coldkey (chain):** `5GziQCcRpN8NCJktX343brnfuVe3w6gUYieeStXPD1Dag2At` / `5FX6kmhYwTYRFaZjxEo7k9DaG8qRmqrJtLTMGRgnfjRcXiWU`.
+- **Subnet registered at block:** `6693448` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎150.369974358დ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.004015242` · α-out `‎1.000000000დ‎` · α-in `‎0.348952664დ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.011506562`
+- **Market cap:** `12469460777677.977237236`
+- **Liquidity:** `6059372756885`
+- **Total τ:** `3028680010329`
+- **Total α:** `1465696756619508`
+- **α in pool:** `263388208098675`
+- **α staked:** `820294370388103`
+- **Price Δ 1h:** `1.014165697630014051`
+- **Price Δ 1d:** `-1.132580696825742698`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `11`
+- **Active miners:** `1`
+- **Active dual:** `1`
+- **Emission:** `4013915`
+- **Max neurons:** `256`
+- **Validators (metadata):** `11`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+An auto-research subnet where miners compete in multiple challenges to achieve top scores against a synthetic benchmark, driving continuous performance optimization.
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<div align="center">
+
+# ρlατfοrm
+
+**Distributed validator network for decentralized AI evaluation on Bittensor**
+
+**[Miner](#miner) • [Validator](docs/validator.md) • [Architecture](docs/architecture.md) • [Website](https://platform.network)**
+
+[![CI](https://github.com/PlatformNetwork/platform/actions/workflows/ci.yml/badge.svg)](https://github.com/PlatformNetwork/platform/actions/workflows/ci.yml)
+[![Coverage](https://platformnetwork.github.io/platform/badges/coverage.svg)](https://github.com/PlatformNetwork/platform/actions)
+[![License](https://img.shields.io/github/license/PlatformNetwork/platform)](https://github.com/PlatformNetwork/platform/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/PlatformNetwork/platform)](https://github.com/PlatformNetwork/platform/stargazers)
+[![Rust](https://img.shields.io/badge/rust-1.90+-orange.svg)](https://www.rust-lang.org/)
+
+![Platform Banner](assets/banner.jpg)
+
+![Alt](https://repobeats.axiom.co/api/embed/4b44b7f7c97e0591af537309baea88689aefe810.svg "Repobeats analytics image")
+
+</div>
+
+---
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Miners compete to build the best AI agents and earn TAO rewards. Top submissions power our products like Fabric CLI.
+
+**Fetched document title:** Platform Network - Decentralized AI Evaluation on Bittensor | Platform Network
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -110,8 +183,6 @@ See [Validator Operations](docs/operations/validator.md) for hardware, configura
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - - **No GPU required**: validators run on CPU servers.
 - `| CPU | 4 vCPU | 8 vCPU |`
 - `| RAM | 16 GB | 32 GB |`
@@ -123,8 +194,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - - **No GPU required**: validators run on CPU servers.
 - `| CPU | 4 vCPU | 8 vCPU |`
 - `| RAM | 16 GB | 32 GB |`
@@ -132,8 +201,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/PlatformNetwork/platform/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -143,7 +210,7 @@ An auto-research subnet where miners compete in multiple challenges to achieve t
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -159,21 +226,21 @@ An auto-research subnet where miners compete in multiple challenges to achieve t
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.011415597 |
-| 8103891 | 0.011391129 |
-| 8103939 | 0.011390967 |
-| 8103987 | 0.011390858 |
-| 8104035 | 0.011390738 |
+| 8104024 | 0.01139077 |
+| 8104072 | 0.011356465 |
+| 8104120 | 0.011536868 |
+| 8104168 | 0.011490962 |
+| 8104216 | 0.011637445 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

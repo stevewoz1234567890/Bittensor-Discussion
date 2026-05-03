@@ -2,12 +2,53 @@
 
 ## Overview
 
-**Chunking** (NetUID 40) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
+**Chunking** (NetUID **40**) (`ן`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `168`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ7,040.832742057. **Alpha liquidity in pool (`alpha_in`)** = ‎2,076,458.648160530ן‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,980,876.349454463ן‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.003391589`** *(also **moving-average price** `0.0034085914958268404` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎162,206.191890151ן‎`. **Owner hotkey / coldkey (chain):** `5F9Qvcz22Fwq4cm58o2bShiL6n8BnJmhqXB1cispBpqRfN6w` / `5F9Qvcz22Fwq4cm58o2bShiL6n8BnJmhqXB1cispBpqRfN6w`.
+- **Subnet registered at block:** `3372582` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎126.938944683ן‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ן‎` · α-in `‎0.000000000ן‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.003386775`
+- **Market cap:** `13613309119687.2711165`
+- **Liquidity:** `14073327430862`
+- **Total τ:** `7035835434783`
+- **Total α:** `5057321997614993`
+- **α in pool:** `2077933135823859`
+- **α staked:** `1941616175744601`
+- **Price Δ 1h:** `0.138020470671093493`
+- **Price Δ 1d:** `-1.628052071176411471`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `13`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `13`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,17 +90,17 @@
 
 ## Miner / validator hardware (CPU/GPU/RAM)
 
-No matching README sections were auto-detected for [https://github.com/VectorChat/chunking_subnet](https://github.com/VectorChat/chunking_subnet). Open the repository for miner/validator machine requirements, dependencies, and cloud sizing.
+*No miner/validator sections auto-matched.* Open [https://github.com/VectorChat/chunking_subnet](https://github.com/VectorChat/chunking_subnet) for requirements.
 
 ## On-chain identity — description
 
 
-*Empty — no description bytes set in `SubnetIdentity`.*
+*Unset in `SubnetIdentity`.*
 
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -71,22 +112,21 @@ No matching README sections were auto-detected for [https://github.com/VectorCha
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.003382116 |
-| 8103843 | 0.003382111 |
-| 8103891 | 0.003382109 |
-| 8103939 | 0.003382106 |
-| 8103987 | 0.003382104 |
-| 8104035 | 0.003422796 |
+| 8104024 | 0.003422796 |
+| 8104072 | 0.003422794 |
+| 8104120 | 0.003406085 |
+| 8104168 | 0.003406082 |
+| 8104216 | 0.003391589 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

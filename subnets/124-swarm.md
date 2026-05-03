@@ -2,12 +2,118 @@
 
 ## Overview
 
-**Swarm** (NetUID 124) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
+**Swarm** (NetUID **124**) (`𑀁`).
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `252`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ9,281.787107902. **Alpha liquidity in pool (`alpha_in`)** = ‎1,165,961.357176709𑀁‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,450,629.739233198𑀁‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.007934802`** *(also **moving-average price** `0.008029140997678041` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎178,647.247212534𑀁‎`. **Owner hotkey / coldkey (chain):** `5GZPtUjyp5d4j7aWWV9774caQAxxbsxNNM3nuaJYDPAEDjmt` / `5HKYqfJrUFKYPMRFZZ7kfhUNEyHUbY2ZyEjQqKJf2RKVpeXM`.
+- **Subnet registered at block:** `5813454` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎185.278258761𑀁‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.003885085` · α-out `‎1.000000000𑀁‎` · α-in `‎0.489625995𑀁‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.007934804`
+- **Market cap:** `22985566067442.71825302`
+- **Liquidity:** `18533360895479`
+- **Total τ:** `9281737127341`
+- **Total α:** `3616571728691498`
+- **α in pool:** `1165954920643047`
+- **α staked:** `1730848335926708`
+- **Price Δ 1h:** `-0.112805451822907651`
+- **Price Δ 1d:** `-0.50620832771694665`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `13`
+- **Active miners:** `2`
+- **Active dual:** `1`
+- **Emission:** `3883802`
+- **Max neurons:** `256`
+- **Validators (metadata):** `13`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<a id="readme-top"></a>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/swarm-subnet/swarm/main/swarm/assets/Swarm_2.png" alt="Swarm" width="60%" />
+</p>
+
+<h1 align="center">Swarm — Autonomous Drone Navigation</h1>
+
+<p align="center">
+  <b>The open benchmark where AI learns to fly.</b><br/>
+  <i>Train a neural network to navigate drones through 3D worlds it has never seen —<br/>
+  using nothing but a depth camera and raw flight state. No maps. No rules. No shortcuts.</i>
+</p>
+
+<p align="center">
+  <a href="https://github.com/swarm-subnet/swarm/releases"><img alt="Version" src="https://img.shields.io/badge/version-v4.0.0-green?style=flat-square" /></a>
+  <a href="https://discord.gg/8dPqPDw7GC"><img alt="Discord" src="https://img.shields.io/badge/Discord-Join-5865F2?style=flat-square&logo=discord&logoColor=white" /></a>
+  <a href="https://x.com/SwarmSubnet"><img alt="X" src="https://img.shields.io/badge/X-Follow-000000?style=flat-square&logo=x&logoColor=white" /></a>
+  <a href="https://swarm124.com"><img alt="Website" src="https://img.shields.io/badge/swarm124.com-visit-orange?style=flat-square&logo=googlechrome&logoColor=white" /></a>
+</p>
+
+<p align="center">
+  <a href="docs/miner.md">
+    <img alt="Start Training" src="https://img.shields.io/badge/Start%20Training-Miner%20Guide-111111?style=for-the-badge" />
+  </a>
+  &nbsp;
+  <a href="#cli">
+    <img alt="Run Benchmark" src="https://img.shields.io/badge/Run%20Benchmark-CLI-111111?style=for-the-badge" />
+  </a>
+  &nbsp;
+  <a href="docs/validator.md">
+    <img alt="Run Validator" src="https://img.shields.io/badge/Run%20Validator-Guide-111111?style=for-the-badge" />
+  </a>
+</p>
+
+---
+
+<details>
+  <summary><b>Table of Contents</b></summary>
+  <ol>
+    <li><a href="#about-swarm">About Swarm</a></li>
+    <li><a href="#see-it-fly">See It Fly</a></li>
+    <li><a href="#environments">Environments</a></li>
+    <li><a href="#cli">CLI</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#scoring">Scoring</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#from-simulation-to-reality">From Simulation to Reality</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
+
+---
+
+<!-- ABOUT SWARM -->
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** A global arena for autonomous drone flight, backed by real-world impact and on-chain notarization.
+
+**Fetched document title:** Swarm124
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -121,8 +227,6 @@ Every benchmark run generates unique worlds. Six environment types test complete
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - Submissions must be ≤ **50 MiB** compressed.
 - `| Screening threshold | >= champion score + 0.015 (or >= 0.01 bootstrap) |`
 - `| Max submission size | 50 MiB (compressed) |`
@@ -135,8 +239,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 ##### Extra scrape: `validator.md` (grep only)
 
 #### CPU / GPU / RAM lines (automatic grep)
-
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
 
 - `| CPU | 12 cores | |`
 - `| RAM | 48 GB | |`
@@ -149,8 +251,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - Submissions must be ≤ **50 MiB** compressed.
 - `| Screening threshold | >= champion score + 0.015 (or >= 0.01 bootstrap) |`
 - `| Max submission size | 50 MiB (compressed) |`
@@ -164,8 +264,6 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
-
 - `| CPU | 12 cores | |`
 - `| RAM | 48 GB | |`
 - `| Disk | 50 GB | Environment + model cache |`
@@ -174,17 +272,15 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 *Primary README URL used: `https://raw.githubusercontent.com/swarm-subnet/swarm/main/README.md`*
 
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
-
 ## On-chain identity — description
 
 
-*Empty — no description bytes set in `SubnetIdentity`.*
+*Unset in `SubnetIdentity`.*
 
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -199,21 +295,21 @@ Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / 
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.007943785 |
-| 8103891 | 0.007943773 |
-| 8103939 | 0.007943759 |
-| 8103987 | 0.007943749 |
-| 8104035 | 0.007943739 |
+| 8104024 | 0.007943742 |
+| 8104072 | 0.007943728 |
+| 8104120 | 0.007943711 |
+| 8104168 | 0.007943697 |
+| 8104216 | 0.007934802 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

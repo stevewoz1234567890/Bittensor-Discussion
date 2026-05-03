@@ -2,12 +2,116 @@
 
 ## Overview
 
+**Mainframe** (NetUID **25**) (`א`).
+
 Powering decentralized science on Bittensor
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `153`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,901.769443110. **Alpha liquidity in pool (`alpha_in`)** = ‎2,344,983.412465104א‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,617,465.083674610א‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004649537`** *(also **moving-average price** `0.004660719074308872` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎404,079.377470174א‎`. **Owner hotkey / coldkey (chain):** `5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D` / `5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D`.
+- **Subnet registered at block:** `2998801` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎115.446736542א‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000א‎` · α-in `‎0.000000000א‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.004649537`
+- **Market cap:** `20485610704200.579203526`
+- **Liquidity:** `21804856583744`
+- **Total τ:** `10901769690931`
+- **Total α:** `4962435496139714`
+- **α in pool:** `2344983359163256`
+- **α staked:** `2060963018766542`
+- **Price Δ 1h:** `-0.000408641169178304`
+- **Price Δ 1d:** `-0.734763991013573364`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `14`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `0`
+- **Max neurons:** `256`
+- **Validators (metadata):** `14`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
+Powering decentralized science on Bittensor
+
+### Repository README excerpt *(everything before first `##` heading)*
+
+<!-- <div align="center">
+    <img src="./assets/macrocosmos-black.png" alt="Alt generative-folding-tao">
+</div> -->
+
+<picture>
+    <source srcset="./assets/macrocosmos-white.png"  media="(prefers-color-scheme: dark)">
+    <img src="macrocosmos-white.png">
+</picture>
+
+<picture>
+    <source srcset="./assets/macrocosmos-black.png"  media="(prefers-color-scheme: light)">
+    <img src="macrocosmos-black.png">
+</picture>
+
+<div align="center">
+
+</div>
+
+
+<div align="center">
+    <img src="./assets/mainframe_official.png" alt="mainframe-official">
+</div>
+
+*inspiration from [owl_posting](https://x.com/owl_posting)*
+
+<div align="center">
+
+# Mainframe
+
+</div>
+
+Subnet 25, Mainframe (formerly known as Protein-Folding) is the first decentralized science subnet on Bittensor. Its focus is on creating DeSci technology for pharmaceutical companies, researchers, and academics. Presently, its focus is on using global computing power to simulate protein molecular dynamics via OpenMM, and protein-ligand docking using DiffDock; both processes essential in most drug discovery pipelines. However, this subnet is designed to be adaptive to a wide array of computing-based problems in the life sciences, utilizing Bittensor’s tokenomics and incentive structure to offer affordable solutions.
+
+Mainframe asks a simple question: can a decentralized, incentivized pool of people be used for generalized scientific compute? At Macrocosmos, we believe it is possible. Not only that, we believe that decentralized and accessible in-silico experimentation is imperative to accelerate science.
+
+"Rational simulation-guided design of atomic systems has been a dream of researchers across the chemical sciences for decades. Enabling rapid and performant experimentation to experts would unlock massive potential to accelerate chemical science" [Mann et al. 2025](https://rowansci.com/publications/egret-1-pretrained-neural-network-potentials)
+
+Mainframe attempts to tackle this very important challenge.
+
+
+
+<div align="center">
+
+<a href="https://app.macrocosmos.ai/mainframe">
+  <img src="./assets/mainframe-link.png" alt="mainframe" width="300"/>
+</a>
+
+👆🏼 enter the mainframe app 👆🏼
+
+</div>
+
+<div align="center">
+
+### Supplementary site crawl *(marketing HTML)*
+
+**Landing meta / crawler:** Decentralizing AI, delivering fast, flexible, and efficient compute
+
+**Fetched document title:** Macrocosmos.ai
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -124,12 +228,10 @@ As Mainframe is meant to be a collection of different scientific computation tas
 
 #### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 
 *Primary README URL used: `https://raw.githubusercontent.com/macrocosm-os/mainframe/main/README.md`*
-
-*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -139,7 +241,7 @@ Powering decentralized science on Bittensor
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -155,22 +257,81 @@ Powering decentralized science on Bittensor
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103795 | 0.004649653 |
-| 8103843 | 0.00464956 |
-| 8103891 | 0.004649557 |
-| 8103939 | 0.004649554 |
-| 8103987 | 0.004649551 |
-| 8104035 | 0.004649549 |
+| 8103976 | 0.004649552 |
+| 8104024 | 0.00464955 |
+| 8104072 | 0.004649546 |
+| 8104120 | 0.004649542 |
+| 8104168 | 0.004649539 |
+| 8104216 | 0.004649537 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
+
+| Timestamp (UTC) | Block | Pool price |
+|-----------------|------:|-----------:|
+| 2026-03-09T23:59:48Z | 7711060 | 0.00572984 |
+| 2026-03-10T23:59:48Z | 7718257 | 0.00556628 |
+| 2026-03-11T23:59:48Z | 7725455 | 0.005553626 |
+| 2026-03-12T23:59:48.001Z | 7732653 | 0.005596661 |
+| 2026-03-13T23:59:48Z | 7739841 | 0.005265075 |
+| 2026-03-14T23:59:48.001Z | 7747036 | 0.005285914 |
+| 2026-03-15T23:59:48Z | 7754226 | 0.005135098 |
+| 2026-03-16T23:59:48Z | 7761426 | 0.005093337 |
+| 2026-03-17T23:59:48Z | 7768619 | 0.004909771 |
+| 2026-03-18T23:59:48Z | 7775819 | 0.005111273 |
+| 2026-03-19T23:59:48Z | 7783014 | 0.00504636825097816742 |
+| 2026-03-20T23:59:48Z | 7790201 | 0.005020874 |
+| 2026-03-21T23:59:48Z | 7797398 | 0.004955577 |
+| 2026-03-22T23:59:48Z | 7804598 | 0.004972931 |
+| 2026-03-23T23:59:48Z | 7811798 | 0.004992892 |
+| 2026-03-24T23:59:48.001Z | 7818996 | 0.00516771600140668403 |
+| 2026-03-25T23:59:48Z | 7826196 | 0.005177074 |
+| 2026-03-26T23:59:48Z | 7833396 | 0.00487797 |
+| 2026-03-27T23:59:48Z | 7840596 | 0.004715387 |
+| 2026-03-28T23:59:48.001Z | 7847743 | 0.004701788 |
+| 2026-03-29T23:59:48Z | 7854902 | 0.004720373 |
+| 2026-03-30T23:59:48.001Z | 7862095 | 0.004725232 |
+| 2026-03-31T23:59:48Z | 7869291 | 0.004770379 |
+| 2026-04-01T23:59:48Z | 7876474 | 0.004829654 |
+| 2026-04-02T23:59:48Z | 7883622 | 0.004842767 |
+| 2026-04-03T23:59:48Z | 7890794 | 0.004870667 |
+| 2026-04-04T23:59:48.001Z | 7897988 | 0.004966587 |
+| 2026-04-05T23:59:48Z | 7905188 | 0.005030836 |
+| 2026-04-06T23:59:48Z | 7912388 | 0.005065682 |
+| 2026-04-07T23:59:48Z | 7919588 | 0.005119279 |
+| 2026-04-08T23:59:48Z | 7926788 | 0.005096496 |
+| 2026-04-09T23:59:48Z | 7933987 | 0.004738891 |
+| 2026-04-10T23:59:48Z | 7941184 | 0.004817607 |
+| 2026-04-11T23:59:48Z | 7948384 | 0.004816521 |
+| 2026-04-12T23:59:48Z | 7955584 | 0.004778441 |
+| 2026-04-13T23:59:48Z | 7962784 | 0.004897487 |
+| 2026-04-14T23:59:48Z | 7969979 | 0.004724628 |
+| 2026-04-15T23:59:48.001Z | 7977179 | 0.004767052 |
+| 2026-04-16T23:59:48Z | 7984379 | 0.004750254 |
+| 2026-04-17T23:59:48Z | 7991579 | 0.004769579 |
+| 2026-04-18T23:59:48Z | 7998779 | 0.004790607 |
+| 2026-04-19T23:59:48Z | 8005979 | 0.004917179 |
+| 2026-04-20T23:59:48Z | 8013179 | 0.005027552 |
+| 2026-04-21T23:59:48Z | 8020376 | 0.00498748 |
+| 2026-04-22T23:59:48Z | 8027562 | 0.004872269 |
+| 2026-04-23T23:59:48Z | 8034762 | 0.004872594 |
+| 2026-04-24T23:59:48Z | 8041962 | 0.004856358 |
+| 2026-04-25T23:59:48Z | 8049151 | 0.004823309 |
+| 2026-04-26T23:59:48Z | 8056274 | 0.004759109 |
+| 2026-04-27T23:59:48.001Z | 8063454 | 0.004734224 |
+| 2026-04-28T23:59:48Z | 8070646 | 0.004635471 |
+| 2026-04-29T23:59:48Z | 8077790 | 0.004653862 |
+| 2026-04-30T23:59:48Z | 8084984 | 0.004706979 |
+| 2026-05-01T23:59:48Z | 8092168 | 0.00467523 |
+| 2026-05-02T23:59:48Z | 8099357 | 0.004682274 |
+| 2026-05-03T16:10:00Z | 8104202 | 0.004649537 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

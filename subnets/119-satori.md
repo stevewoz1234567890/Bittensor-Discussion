@@ -2,12 +2,55 @@
 
 ## Overview
 
+**Satori** (NetUID **119**) (`Ⲃ`).
+
+Satori constructs a persistent 'Second Life' in Japan.
+
+### Chain & market snapshot *(from `DynamicInfo`)*
+
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `247`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ5,203.365728496. **Alpha liquidity in pool (`alpha_in`)** = ‎764,204.164805707Ⲃ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,146,438.371797916Ⲃ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.006811619`** *(also **moving-average price** `0.006949411705136299` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎56,041.136734130Ⲃ‎`. **Owner hotkey / coldkey (chain):** `5HMwvi1dHWCBHTNTtizL5peRBwqvd8HtGrTVouN51p75JNd4` / `5GbLENPLG8Takn1puaz5HorPmrFtDT7i2PojiJsqutbaGwWu`.
+- **Subnet registered at block:** `5740660` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
+- **Pending emissions cues:** pending α emission `‎169.082484226Ⲃ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.001584494` · α-out `‎1.000000000Ⲃ‎` · α-in `‎0.232616339Ⲃ‎`.
+
+### TAOStats snapshot *(off-chain index)*
+
+Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
+#### Liquidity pool (TAOStats)
+
+- **Block (API):** `8104202`
+- **Time (API):** `2026-05-03T16:10:00Z`
+- **Price τ/α:** `0.006811621`
+- **Market cap:** `9150078971176.966736048`
+- **Liquidity:** `10408793652218`
+- **Total τ:** `5203345901979`
+- **Total α:** `1910626511365488`
+- **α in pool:** `764201025018833`
+- **α staked:** `579103156346655`
+- **Price Δ 1h:** `-0.108051208177634544`
+- **Price Δ 1d:** `-7.389081990103458895`
+#### Subnet activity (TAOStats)
+
+- **Block (API):** `8104199`
+- **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Active keys:** `256`
+- **Active validators:** `8`
+- **Active miners:** `1`
+- **Active dual:** `0`
+- **Emission:** `1583970`
+- **Max neurons:** `256`
+- **Validators (metadata):** `8`
+- **Neuron reg. cost:** `500000`
+
+### On-chain declared purpose *(SubnetIdentity)*
+
 Satori constructs a persistent 'Second Life' in Japan. We merge deep AI companionship with authentic Digital Residency, creating a seamless bridge where virtual emotional connections unlock real-world value and physical experiences.
 
 ## Operational parameters — registration, limits, economics (chain)
 
-
-**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +92,7 @@ Satori constructs a persistent 'Second Life' in Japan. We merge deep AI companio
 
 ## Miner / validator hardware (CPU/GPU/RAM)
 
-No matching README sections were auto-detected for [https://github.com/Satori119/Satori](https://github.com/Satori119/Satori). Open the repository for miner/validator machine requirements, dependencies, and cloud sizing.
+*No miner/validator sections auto-matched.* Open [https://github.com/Satori119/Satori](https://github.com/Satori119/Satori) for requirements.
 
 ## On-chain identity — description
 
@@ -59,7 +102,7 @@ Satori constructs a persistent 'Second Life' in Japan. We merge deep AI companio
 ## On-chain identity — additional field
 
 
-*Empty — no additional field set, or identity missing.*
+*Unset.*
 
 ## Registered contact & links
 
@@ -73,21 +116,80 @@ Satori constructs a persistent 'Second Life' in Japan. We merge deep AI companio
 
 ### Short window — on-chain α price (public RPC state retention)
 
-Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
+*Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103843 | 0.006819033 |
-| 8103891 | 0.006819005 |
-| 8103939 | 0.006818975 |
-| 8103987 | 0.00681895 |
-| 8104035 | 0.006818934 |
+| 8104024 | 0.00681894 |
+| 8104072 | 0.006818908 |
+| 8104120 | 0.006818867 |
+| 8104168 | 0.006818837 |
+| 8104216 | 0.006811619 |
 
 ### Extended history — TAOStats pool price (daily)
 
-Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
+[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
+
+| Timestamp (UTC) | Block | Pool price |
+|-----------------|------:|-----------:|
+| 2026-03-09T23:59:48Z | 7711060 | 0.008460254 |
+| 2026-03-10T23:59:48Z | 7718257 | 0.008303009 |
+| 2026-03-11T23:59:48Z | 7725455 | 0.008458324 |
+| 2026-03-12T23:59:48.001Z | 7732653 | 0.00846541 |
+| 2026-03-13T23:59:48Z | 7739841 | 0.008239374 |
+| 2026-03-14T23:59:48.001Z | 7747036 | 0.008229195 |
+| 2026-03-15T23:59:48Z | 7754226 | 0.007791865 |
+| 2026-03-16T23:59:48Z | 7761426 | 0.007648909 |
+| 2026-03-17T23:59:48Z | 7768619 | 0.007135936 |
+| 2026-03-18T23:59:48Z | 7775819 | 0.007124287 |
+| 2026-03-19T23:59:48Z | 7783014 | 0.00717332362752389905 |
+| 2026-03-20T23:59:48Z | 7790201 | 0.00710352 |
+| 2026-03-21T23:59:48Z | 7797398 | 0.006928345 |
+| 2026-03-22T23:59:48Z | 7804598 | 0.006815421 |
+| 2026-03-23T23:59:48Z | 7811798 | 0.006920038 |
+| 2026-03-24T23:59:48.001Z | 7818996 | 0.00713142222628766816 |
+| 2026-03-25T23:59:48Z | 7826196 | 0.00697647 |
+| 2026-03-26T23:59:48Z | 7833396 | 0.00694823 |
+| 2026-03-27T23:59:48Z | 7840596 | 0.006936116 |
+| 2026-03-28T23:59:48.001Z | 7847743 | 0.006995853 |
+| 2026-03-29T23:59:48Z | 7854902 | 0.006962294 |
+| 2026-03-30T23:59:48.001Z | 7862095 | 0.007010649 |
+| 2026-03-31T23:59:48Z | 7869291 | 0.007053536 |
+| 2026-04-01T23:59:48Z | 7876474 | 0.006889868 |
+| 2026-04-02T23:59:48Z | 7883622 | 0.006821147 |
+| 2026-04-03T23:59:48Z | 7890794 | 0.006825717 |
+| 2026-04-04T23:59:48.001Z | 7897988 | 0.006770149 |
+| 2026-04-05T23:59:48Z | 7905188 | 0.006686691 |
+| 2026-04-06T23:59:48Z | 7912388 | 0.006727335 |
+| 2026-04-07T23:59:48Z | 7919588 | 0.006820858 |
+| 2026-04-08T23:59:48Z | 7926788 | 0.006453119 |
+| 2026-04-09T23:59:48Z | 7933987 | 0.006490826 |
+| 2026-04-10T23:59:48Z | 7941184 | 0.006404363 |
+| 2026-04-11T23:59:48Z | 7948384 | 0.006422572 |
+| 2026-04-12T23:59:48Z | 7955584 | 0.006421028 |
+| 2026-04-13T23:59:48Z | 7962784 | 0.006435404 |
+| 2026-04-14T23:59:48Z | 7969979 | 0.006460991 |
+| 2026-04-15T23:59:48.001Z | 7977179 | 0.00637737 |
+| 2026-04-16T23:59:48Z | 7984379 | 0.006339874 |
+| 2026-04-17T23:59:48Z | 7991579 | 0.006159529 |
+| 2026-04-18T23:59:48Z | 7998779 | 0.006136099 |
+| 2026-04-19T23:59:48Z | 8005979 | 0.006110076 |
+| 2026-04-20T23:59:48Z | 8013179 | 0.006059326 |
+| 2026-04-21T23:59:48Z | 8020376 | 0.006018822 |
+| 2026-04-22T23:59:48Z | 8027562 | 0.006086868 |
+| 2026-04-23T23:59:48Z | 8034762 | 0.006008762 |
+| 2026-04-24T23:59:48Z | 8041962 | 0.006203704 |
+| 2026-04-25T23:59:48Z | 8049151 | 0.006140822 |
+| 2026-04-26T23:59:48Z | 8056274 | 0.006149221 |
+| 2026-04-27T23:59:48.001Z | 8063454 | 0.006279254 |
+| 2026-04-28T23:59:48Z | 8070646 | 0.006550932 |
+| 2026-04-29T23:59:48Z | 8077790 | 0.006470663 |
+| 2026-04-30T23:59:48Z | 8084984 | 0.006730855 |
+| 2026-05-01T23:59:48Z | 8092168 | 0.006969994 |
+| 2026-05-02T23:59:48Z | 8099357 | 0.006937906 |
+| 2026-05-03T16:10:00Z | 8104202 | 0.006811621 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 
