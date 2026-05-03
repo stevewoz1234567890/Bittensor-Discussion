@@ -1,8 +1,8 @@
 # Subnet pages (one file per NetUID)
 
-Generated from Finney/`finney` at block **8103809** (2026-05-03 14:51 UTC).
+Generated from `finney` at block **8103882** (2026-05-03 15:06 UTC).
 
-Each file includes **full verbatim** `SubnetIdentity` sections, an **Overview** that merges chain text with optional crawled excerpts, and **registered links**. Thin subnets may fetch the marketing site or GitHub project page.
+Each page now adds **chain registration/limit tables**, heuristic **README hardware/miner excerpts** from GitHub, **short-window on-chain alpha price samples**, plus optional **TAOStats daily prices** (`TAOSTATS_API_KEY`).
 
 ## Index
 
@@ -138,4 +138,4 @@ Each file includes **full verbatim** `SubnetIdentity` sections, an **Overview** 
 
 ---
 
-Regenerate: `python scripts/generate_subnet_pages.py` (auto-fetches websites for subnets with short on-chain text). Options: `--fetch-all-websites`, `--no-supplement-web`.
+Regenerate: `python scripts/generate_subnet_pages.py` · optional `TAOSTATS_API_KEY=…` · `--no-readme-specs` / `--no-supplement-web` to reduce HTTP traffic.
