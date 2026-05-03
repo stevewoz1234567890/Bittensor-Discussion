@@ -7,6 +7,7 @@ Notes and summaries on Bittensor (TAO) ecosystem topics—governance, subnets, a
 | Topic | File |
 |--------|------|
 | Covenant AI departure, governance allegations, and TAO price reaction | [discussions/covenant-ai-governance-dispute.md](discussions/covenant-ai-governance-dispute.md) |
+| dTAO alpha price (TAO/alpha from pool reserves), wallet/testnet hints, emissions and pool links | [discussions/dtao-alpha-price-and-resources.md](discussions/dtao-alpha-price-and-resources.md) |
 
 ## Disclaimer
 
