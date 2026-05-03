@@ -7,7 +7,7 @@ and hardware scrape, and optional crawl / TAOStats pool history.
 Usage (from repo root, with bittensor installed):
     python3 -m venv .venv && .venv/bin/pip install -r scripts/requirements-catalog.txt
     .venv/bin/python scripts/generate_subnet_pages.py
-    TAOSTATS_API_KEY=… .venv/bin/python scripts/generate_subnet_pages.py   # add daily history
+    Optional: create repo-root `.env` with `TAOSTATS_API_KEY=…` (see `.env.example`) for TAOStats index + history.
 """
 
 from __future__ import annotations
@@ -17,6 +17,7 @@ import html as html_lib
 import json
 import os
 import re
+import sys
 import time
 import urllib.error
 import urllib.parse
@@ -26,6 +27,10 @@ from pathlib import Path
 
 from bittensor import Subtensor
 from bittensor.utils.balance import Balance
+from dotenv import load_dotenv
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+TAOSTATS_API_BASE = "https://api.taostats.io"
 
 ROOT_OVERVIEW = """The **root network** (NetUID 0) is Bittensor’s top-level coordination layer. TAO holders delegate stake to root validators, who set **weights** on other subnets. Those weights help determine how network **emissions** are allocated across subnets. Root is not an application or “task” subnet like higher netuids; it is the mechanism through which the protocol routes incentive and security across the rest of the network."""
 
@@ -83,10 +88,9 @@ _HARDWARE_PATTERN = re.compile(
 
 HW_GREP_EMPTY_STUB = """#### CPU / GPU / RAM lines (automatic grep)
 
-*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+*No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 """
-
 OVERVIEW_README_INTRO_CHARS = 9_600
 
 
@@ -115,18 +119,19 @@ def _readme_intro_until_first_section(readme_plain: str | None, *, max_chars: in
     return snippet
 
 
-def _subnet_lead_sentence(name: str, netuid: int, sym: str, desc_text: str) -> str:
-    sym_bit = f" using alpha ticker **`{sym}`**" if sym else ""
-    anchor = (
-        f"**{name}** (NetUID **{netuid}**) is a Bittensor subnet{sym_bit}; "
-        "the material below expands on how operators describe its mission on-chain and in their repository."
-    )
+def _title_line_subnet(name: str, netuid: int, sym: str) -> str:
+    frag = f"**{name}** (NetUID **{netuid}**)"
+    if sym:
+        frag += f" (`{sym}`)"
+    return frag + "."
 
+
+def _lead_from_identity(name: str, netuid: int, sym: str, desc_text: str) -> str:
     trimmed = (desc_text or "").strip()
     first_para = trimmed.split("\n\n", 1)[0].strip() if trimmed else ""
     if first_para and len(first_para) > 30:
-        return f"{anchor}\n\n{_first_meaningful_sentence(first_para)}"
-    return anchor
+        return f"{_title_line_subnet(name, netuid, sym)}\n\n{_first_meaningful_sentence(first_para)}"
+    return _title_line_subnet(name, netuid, sym)
 
 
 def _first_meaningful_sentence(blob: str) -> str:
@@ -138,6 +143,151 @@ def _first_meaningful_sentence(blob: str) -> str:
     return blob[: min(440, len(blob))].strip() + ("…" if len(blob) > 440 else "")
 
 
+def _taostats_request_json(
+    api_key: str, path: str, query: dict[str, str | int], *, timeout: float = 38.0
+) -> tuple[dict | None, str | None]:
+    q = urllib.parse.urlencode({str(k): str(v) for k, v in query.items() if v is not None})
+    url = f"{TAOSTATS_API_BASE}{path}?{q}"
+    stripped = api_key.strip()
+    auth_seq = [stripped]
+    if not stripped.lower().startswith("bearer "):
+        auth_seq.append(f"Bearer {stripped}")
+    last_err: str | None = None
+    for auth in auth_seq:
+        req = urllib.request.Request(url)
+        req.add_header("Authorization", auth)
+        req.add_header("User-Agent", "Bittensor-Discussion-catalog/1.0")
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                raw = resp.read().decode("utf-8", errors="ignore")
+                return json.loads(raw), None
+        except urllib.error.HTTPError as e:
+            try:
+                body = e.read().decode("utf-8", errors="ignore")[:420]
+            except Exception:
+                body = str(e.reason)
+            last_err = f"HTTP {e.code}: {body}"
+            if e.code not in (401, 403):
+                return None, last_err
+        except Exception as e:
+            return None, str(e)
+    return None, last_err
+
+
+def prefetch_taostats_index_maps(
+    api_key: str, *, delay_s: float
+) -> tuple[dict[int, dict], dict[int, dict], str | None]:
+    """Paged [subnet/latest](...) and [pool/latest](...) into netuid-keyed maps (minimal HTTP)."""
+
+    def pull(endpoint: str, order: str) -> dict[int, dict]:
+        accum: dict[int, dict] = {}
+        page = 1
+        while page <= 120:
+            payload, err = _taostats_request_json(api_key, endpoint, {"page": page, "limit": 1024, "order": order})
+            time.sleep(delay_s)
+            if err or not isinstance(payload, dict):
+                break
+            rows = payload.get("data")
+            if not isinstance(rows, list) or not rows:
+                break
+            for r in rows:
+                if not isinstance(r, dict):
+                    continue
+                nu = r.get("netuid")
+                if nu is None:
+                    continue
+                try:
+                    accum[int(nu)] = r
+                except (TypeError, ValueError):
+                    continue
+            pag = payload.get("pagination") if isinstance(payload.get("pagination"), dict) else {}
+            np = pag.get("next_page")
+            if np in (None, ""):
+                break
+            try:
+                nxt = int(np)
+            except (TypeError, ValueError):
+                break
+            if nxt == page:
+                break
+            page = nxt
+        return accum
+
+    subnets = pull("/api/subnet/latest/v1", "netuid_asc")
+    pools = pull("/api/dtao/pool/latest/v1", "netuid_asc")
+    warning = (
+        None
+        if (subnets or pools)
+        else "TAOStats index prefetch returned no rows (invalid key, outage, or empty account quota)."
+    )
+    return subnets, pools, warning
+
+
+def format_taostats_snapshot_markdown(subnet: dict | None, pool: dict | None) -> str | None:
+    """One Overview subsection when either [pool/latest](get-subnet-pools) or [subnet/latest](get-subnets-1) row exists."""
+
+    bits: list[str] = []
+
+    def add_block(title: str, row: dict, fields: tuple[tuple[str, str], ...]) -> None:
+        lines_out: list[str] = []
+        for label, k in fields:
+            if k not in row:
+                continue
+            v = row.get(k)
+            if v is None or v == "":
+                continue
+            lines_out.append(f"- **{label}:** `{v}`")
+        if lines_out:
+            bits.append(f"#### {title}\n")
+            bits.extend(lines_out)
+
+    if isinstance(pool, dict) and pool:
+        add_block(
+            "Liquidity pool (TAOStats)",
+            pool,
+            (
+                ("Block (API)", "block_number"),
+                ("Time (API)", "timestamp"),
+                ("Price τ/α", "price"),
+                ("Market cap", "market_cap"),
+                ("Liquidity", "liquidity"),
+                ("Total τ", "total_tao"),
+                ("Total α", "total_alpha"),
+                ("α in pool", "alpha_in_pool"),
+                ("α staked", "alpha_staked"),
+                ("Price Δ 1h", "price_change_1_hour"),
+                ("Price Δ 1d", "price_change_1_day"),
+            ),
+        )
+
+    if isinstance(subnet, dict) and subnet:
+        add_block(
+            "Subnet activity (TAOStats)",
+            subnet,
+            (
+                ("Block (API)", "block_number"),
+                ("Time (API)", "timestamp"),
+                ("Active keys", "active_keys"),
+                ("Active validators", "active_validators"),
+                ("Active miners", "active_miners"),
+                ("Active dual", "active_dual"),
+                ("Emission", "emission"),
+                ("Max neurons", "max_neurons"),
+                ("Validators (metadata)", "validators"),
+                ("Neuron reg. cost", "neuron_registration_cost"),
+            ),
+        )
+
+    if not bits:
+        return None
+    header = (
+        "### TAOStats snapshot *(off-chain index)*\n\n"
+        "Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), "
+        "[pool latest](https://docs.taostats.io/reference/get-subnet-pools).\n"
+    )
+    return header + "\n".join(bits)
+
+
 def build_detailed_overview(
     dyn,
     *,
@@ -147,6 +297,8 @@ def build_detailed_overview(
     fetch_desc: str | None,
     readme_intro: str | None,
     block: int,
+    taostats_subnet: dict | None = None,
+    taostats_pool: dict | None = None,
 ) -> str:
     """Structured multi-section Overview (purpose + chain snapshot + README intro + crawler hints)."""
 
@@ -163,14 +315,16 @@ def build_detailed_overview(
         dyn_bits.append(f"- **`tao_in` (pool-facing TAO):** {dyn.tao_in}")
         dyn_bits.append(f"- **Root alpha bookkeeping (`alpha_in` / `alpha_out`):** {dyn.alpha_in} / {dyn.alpha_out}")
         dyn_bits.append(f"- **Reported subnet volume rolling figure:** {dyn.subnet_volume}")
-        return (
+        root_body = (
             ROOT_OVERVIEW.strip()
             + f"\n\n### Root snapshot *(block {block})*\n\n"
             + "\n".join(dyn_bits)
             + "\n"
         )
+        ts_root = format_taostats_snapshot_markdown(taostats_subnet, taostats_pool)
+        return root_body + (f"\n{ts_root}\n" if ts_root else "")
 
-    parts: list[str] = [_subnet_lead_sentence(name, netuid, sym, desc)]
+    parts: list[str] = [_lead_from_identity(name, netuid, sym, desc)]
 
     snapshot_hdr = "### Chain & market snapshot *(from `DynamicInfo`)*\n"
     snap_lines = [
@@ -199,7 +353,7 @@ def build_detailed_overview(
         identity_body.append(dd)
     else:
         identity_body.append(
-            "*This subnet left the **description** field empty on-chain. Rely on README introductions, outbound links, and community docs.*"
+            "*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*"
         )
     if aa and aa.lower() != dd.lower():
         identity_body.append("")
@@ -207,6 +361,10 @@ def build_detailed_overview(
         identity_body.append(aa)
 
     parts.append(snapshot_hdr.rstrip("\n") + "\n\n" + "\n".join(snap_lines))
+    ts_ov = format_taostats_snapshot_markdown(taostats_subnet, taostats_pool)
+    if ts_ov:
+        parts.append("")
+        parts.append(ts_ov)
 
     parts.append("")
     parts.append(identity_hdr.rstrip("\n") + "\n\n" + "\n\n".join(identity_body).strip())
@@ -218,8 +376,7 @@ def build_detailed_overview(
         redundant = dd and len(dd) > 40 and dd[:120].strip().lower() in intro_body[:800].lower()
         if redundant:
             intro_body += (
-                "\n\n*(This README prelude largely restates the on-chain elevator pitch "
-                "+ links; substantive procedure usually appears under deeper headings.)*\n"
+                "\n\n*(Often repeats the headline blurb — check deeper headings for runbooks.)*\n"
             )
         parts.append("")
         parts.append(readme_hdr.rstrip("\n") + "\n\n" + intro_body)
@@ -433,8 +590,6 @@ def _format_hw_grep_block(lines: list[str]) -> str | None:
             bl.append(f"- {s}")
     return (
         "#### CPU / GPU / RAM lines (automatic grep)\n\n"
-        "Lines caught by patterns such as **\\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. "
-        "*(Heuristic — confirm on the subnet’s official repo / docs.)*\n\n"
         + "\n".join(bl)
     )
 
@@ -560,29 +715,19 @@ def chain_price_recent_rows(
 def fetch_taostats_pool_history_daily(
     api_key: str, netuid: int, *, limit: int = 56, timeout: float = 25.0
 ) -> tuple[list[dict] | None, str | None]:
-    q = urllib.parse.urlencode(
+    payload, err = _taostats_request_json(
+        api_key,
+        "/api/dtao/pool/history/v1",
         {
             "netuid": netuid,
             "frequency": "by_day",
             "limit": min(limit, 200),
             "order": "timestamp_desc",
-        }
+        },
+        timeout=timeout,
     )
-    url = f"https://api.taostats.io/api/dtao/pool/history/v1?{q}"
-    req = urllib.request.Request(url)
-    req.add_header("Authorization", api_key)
-    req.add_header("User-Agent", "Bittensor-Discussion-catalog/1.0")
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            payload = json.loads(resp.read().decode("utf-8", errors="ignore"))
-    except urllib.error.HTTPError as e:
-        try:
-            err_body = e.read().decode("utf-8", errors="ignore")[:300]
-        except Exception:
-            err_body = str(e.reason)
-        return None, f"HTTP {e.code}: {err_body}"
-    except Exception as e:
-        return None, str(e)
+    if err or payload is None:
+        return None, err
 
     data = payload.get("data") if isinstance(payload, dict) else None
     if not isinstance(data, list):
@@ -597,12 +742,6 @@ def format_chain_ops(st: Subtensor, netuid: int, block: int) -> str:
         return "*Could not query subnet hyperparameters or info via RPC.*\n"
 
     lines: list[str] = []
-
-    lines.append(
-        "**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. "
-        "**CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below "
-        "(GitHub README scrape) and the subnet’s live documentation.\n"
-    )
 
     lines.append("### Topology & economics (`SubnetInfo` snapshot)\n")
     if si:
@@ -673,18 +812,13 @@ def format_readme_specs_block(
             readme_excerpt.strip()
             + "\n"
             + src
-            + "\n\n*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* "
-            "Always verify against the subnet’s current repository branch.*\n"
+            + "\n"
         )
     if gh.startswith("https://github.com"):
         return (
-            f"No matching README sections were auto-detected for [{gh}]({gh}). "
-            "Open the repository for miner/validator machine requirements, dependencies, and cloud sizing.\n"
+            f"*No miner/validator sections auto-matched.* Open [{gh}]({gh}) for requirements.\n"
         )
-    return (
-        "No GitHub URL is registered on-chain for this subnet, so README-based hardware notes were not fetched. "
-        "Use the website or community links above when available.\n"
-    )
+    return "*No GitHub URL on-chain; hardware notes not fetched automatically.*\n"
 
 
 def format_price_block(
@@ -705,19 +839,21 @@ def format_price_block(
     )
     lines.append("### Short window — on-chain α price (public RPC state retention)\n")
     if netuid == 0:
-        lines.append("Root uses TAO directly; protocol surfaces **1 τ per root weight unit** for pricing helpers.\n")
+        lines.append("Root: protocol uses **1 τ per root weight unit** in pricing helpers.\n")
+    note_rpc = (
+        f"*Probes every **{chain_step}** blocks, lookback ≈ **{chain_max_offset}** blocks "
+        "(bounded by typical public RPC history depth).*"
+    )
     if rows:
-        lines.append(
-            "Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but "
-            f"**very short** slice of history (samples every **{chain_step}** blocks out to roughly **{chain_max_offset}** blocks)."
-        )
+        lines.append(note_rpc)
         lines.append("| Block | α price (TAO) |")
         lines.append("|------:|----------------:|")
         for b, px in rows:
             lines.append(f"| {b} | {px:.12g} |")
         lines.append("")
     else:
-        lines.append("*Could not sample historical blocks (RPC returned no usable state).*")
+        lines.append("*No probes returned in this window.*")
+        lines.append(note_rpc)
         lines.append("")
 
     if netuid == 0:
@@ -734,8 +870,8 @@ def format_price_block(
             return "\n".join(lines)
 
         lines.append(
-            "Daily pool **`price`** (TAO per α) via [TAOStats `GET /api/dtao/pool/history/v1`](https://docs.taostats.io/reference/get-historical-subnet-pools) "
-            f"(`frequency=by_day`, last **{len(hist)}** rows returned in this snapshot).\n"
+            f"[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** "
+            f"(TAO per α), **{len(hist)}** rows in this snapshot.\n"
         )
         lines.append("| Timestamp (UTC) | Block | Pool price |")
         lines.append("|-----------------|------:|-----------:|")
@@ -755,9 +891,7 @@ def format_price_block(
         lines.append("")
     else:
         lines.append(
-            "Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** "
-            "cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate "
-            "automatically.\n"
+            "*Daily pools from TAOStats require `TAOSTATS_API_KEY` or `--taostats-api-key` (see conventions in this folder’s README).*\n"
         )
 
     return "\n".join(lines)
@@ -808,6 +942,8 @@ def render_page(
     chain_price_step: int,
     chain_price_max_offset: int,
     skip_specs_readme: bool,
+    taostats_subnet_row: dict | None,
+    taostats_pool_row: dict | None,
 ) -> str:
     netuid = d.netuid
     name = getattr(d, "subnet_name", "") or f"netuid-{netuid}"
@@ -853,6 +989,8 @@ def render_page(
             fetch_desc=fetch_desc,
             readme_intro=readme_intro,
             block=block,
+            taostats_subnet=taostats_subnet_row,
+            taostats_pool=taostats_pool_row,
         ),
         "",
         "## Operational parameters — registration, limits, economics (chain)\n",
@@ -864,13 +1002,13 @@ def render_page(
         "",
     ]
 
-    lines.append(desc if desc else "*Empty — no description bytes set in `SubnetIdentity`.*")
+    lines.append(desc if desc else "*Unset in `SubnetIdentity`.*")
     lines.extend(
         [
             "",
             "## On-chain identity — additional field\n",
             "",
-            additional if additional else "*Empty — no additional field set, or identity missing.*",
+            additional if additional else "*Unset.*",
             "",
             "## Registered contact & links\n",
             "",
@@ -901,9 +1039,8 @@ def render_page(
         [
             "---",
             "",
-            f"*Snapshot: Subtensor `{network}`, head block **{block}**, {snapshot_utc}. Regenerate via "
-            "`scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is "
-            "heuristic; TAOStats history requires API access.*",
+            f"*Subtensor `{network}`, block **{block}**, {snapshot_utc}. Regenerate: "
+            "`scripts/generate_subnet_pages.py`.*",
             "",
         ]
     )
@@ -914,6 +1051,7 @@ def render_page(
 
 
 def main() -> None:
+    load_dotenv(REPO_ROOT / ".env")
     ap = argparse.ArgumentParser()
     ap.add_argument("--network", default="finney")
     ap.add_argument("--out-dir", default="subnets")
@@ -943,14 +1081,14 @@ def main() -> None:
     )
     ap.add_argument(
         "--taostats-api-key",
-        default=os.environ.get("TAOSTATS_API_KEY", ""),
-        help="TAOStats Authorization token (daily pool history)",
+        default="",
+        help="TAOStats Authorization header value (fallback: TAOSTATS_API_KEY from environment / `.env`)",
     )
     ap.add_argument(
         "--taostats-limit",
         type=int,
-        default=56,
-        help="Max rows requested from TAOStats history per subnet (<=200)",
+        default=120,
+        help="Max rows requested from TAOStats pool history per subnet (<=200)",
     )
     ap.add_argument(
         "--taostats-delay",
@@ -971,7 +1109,18 @@ def main() -> None:
     subs = sorted(st.all_subnets() or [], key=lambda x: x.netuid)
     block = st.get_current_block()
     snapshot_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    taostats_key = (args.taostats_api_key or "").strip() or None
+    taostats_key = (
+        (args.taostats_api_key or os.environ.get("TAOSTATS_API_KEY", "") or "").strip() or None
+    )
+
+    ts_subnet_map: dict[int, dict] = {}
+    ts_pool_map: dict[int, dict] = {}
+    if taostats_key:
+        ts_subnet_map, ts_pool_map, ts_prefetch_warn = prefetch_taostats_index_maps(
+            taostats_key, delay_s=max(0.05, args.taostats_delay)
+        )
+        if ts_prefetch_warn:
+            print(ts_prefetch_warn, file=sys.stderr)
 
     out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -981,8 +1130,19 @@ def main() -> None:
         "",
         f"Generated from `{args.network}` at block **{block}** ({snapshot_utc}).",
         "",
-        "Detailed **Overview** per page: **`DynamicInfo` market snapshot**, full **SubnetIdentity** copy, README text **before first `##`**, optional marketing crawl snippet. "
-        "Also **`SubnetHyperparameters`/registration** tables, **hardware README grep**, on-chain α **price samples**, optional **TAOStats** history (`TAOSTATS_API_KEY`).",
+        "Each page pulls **`DynamicInfo`**, **`SubnetInfo`**, **`SubnetHyperparameters`**, `SubnetIdentity`, "
+        "GitHub README (preface + hardware scrape where applicable), on-chain α **price probes**. "
+        "With **`TAOSTATS_API_KEY`** (repo `.env` or env): bulk **subnet/pool snapshots** plus optional **daily pool history**.",
+        "",
+        "### Conventions (read once)",
+        "",
+        "- **Operational parameters** = consensus registration economics, caps, tempo, weight-commit settings. Hardware notes in **Miner / validator hardware** are repo scrapes, not consensus fields.",
+        "",
+        "**α price — short window:** row spacing follows `--chain-price-step` / `--chain-price-max-offset` (bounded by RPC retention).",
+        "",
+        "**TAOStats:** prefetch fills **subnet + pool index** bullets in Overview; `--taostats-limit` caps **daily** price rows per page.",
+        "",
+        "---",
         "",
         "## Index",
         "",
@@ -1040,6 +1200,8 @@ def main() -> None:
             chain_price_step=args.chain_price_step,
             chain_price_max_offset=args.chain_price_max_offset,
             skip_specs_readme=not args.readme_specs,
+            taostats_subnet_row=ts_subnet_map.get(netuid),
+            taostats_pool_row=ts_pool_map.get(netuid),
         )
         (out / fname).write_text(body, encoding="utf-8")
 
@@ -1052,7 +1214,7 @@ def main() -> None:
             "",
             "---",
             "",
-            "Regenerate: `python scripts/generate_subnet_pages.py` · optional `TAOSTATS_API_KEY=…` · "
+            "Regenerate: `python scripts/generate_subnet_pages.py` · optional `.env` with `TAOSTATS_API_KEY` · "
             "`--no-readme-specs` / `--no-supplement-web` to reduce HTTP traffic.",
             "",
         ]
