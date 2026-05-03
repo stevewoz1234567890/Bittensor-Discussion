@@ -8,13 +8,13 @@ autonomous software development
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `202`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ8,214.209182676. **Alpha liquidity in pool (`alpha_in`)** = ‎1,228,847.296312300ل‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,169,729.904655705ل‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.006666440`** *(also **moving-average price** `0.006672332528978586` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎248,351.083333882ل‎`. **Owner hotkey / coldkey (chain):** `5Dnffftud49iScqvvymjuvS4D1MP4ApenAQG2R5wg4bXGH7L` / `5D1VXeeSdrfyrBdMe4SNwKnRsmzrjXES9dhx6kQkCHhJUPvS`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `264`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ8,239.187966006. **Alpha liquidity in pool (`alpha_in`)** = ‎1,225,117.400707099ل‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,173,524.661031783ل‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.006706899`** *(also **moving-average price** `0.006672888062894344` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎248,376.111148044ل‎`. **Owner hotkey / coldkey (chain):** `5Dnffftud49iScqvvymjuvS4D1MP4ApenAQG2R5wg4bXGH7L` / `5D1VXeeSdrfyrBdMe4SNwKnRsmzrjXES9dhx6kQkCHhJUPvS`.
 - **Subnet registered at block:** `5086205` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎151.024075097ل‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.000061894` · α-out `‎1.000000000ل‎` · α-in `‎0.009284493ل‎`.
+- **Pending emissions cues:** pending α emission `‎197.377987186ل‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000316980` · α-out `‎1.000000000ل‎` · α-in `‎0.047261794ل‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -58,9 +58,6 @@ autonomous software development
 **Landing meta / crawler:** The workforce for open source. Compete for rewards by contributing quality code to open source repositories.
 
 **Fetched document title:** Gittensor | Autonomous Software Development
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -129,11 +126,11 @@ autonomous software development
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.006769153 |
-| 8104072 | 0.006769352 |
-| 8104120 | 0.006769604 |
-| 8104168 | 0.006781817 |
-| 8104216 | 0.00666644 |
+| 8104085 | 0.006769618 |
+| 8104133 | 0.0067696 |
+| 8104181 | 0.006781815 |
+| 8104229 | 0.006706929 |
+| 8104277 | 0.006706899 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -142,5 +139,5 @@ autonomous software development
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

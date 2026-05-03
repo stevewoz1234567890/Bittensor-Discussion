@@ -8,12 +8,12 @@ Bitrecs is a novel recommendation engine built on the Bittensor network
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `250`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,210.624497116. **Alpha liquidity in pool (`alpha_in`)** = ‎1,056,458.634616834ⲅ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,254,810.304062503ⲅ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004016412`** *(also **moving-average price** `0.0037397723644971848` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎293,056.788888495ⲅ‎`. **Owner hotkey / coldkey (chain):** `5HVPptMPpMx3jUtUEjUfB8zLKkNM4fPnt4CLYT5Gc3BYzRX4` / `5H6fAdf7QsrZpLKyydA1pM9sxTK7qJx4S4jUgg6YMHr4Xzqs`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `312`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,229.857520833. **Alpha liquidity in pool (`alpha_in`)** = ‎1,051,646.760405092ⲅ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,259,684.178274245ⲅ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004014995`** *(also **moving-average price** `0.0037443097680807114` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎293,152.620100329ⲅ‎`. **Owner hotkey / coldkey (chain):** `5HVPptMPpMx3jUtUEjUfB8zLKkNM4fPnt4CLYT5Gc3BYzRX4` / `5H6fAdf7QsrZpLKyydA1pM9sxTK7qJx4S4jUgg6YMHr4Xzqs`.
 - **Subnet registered at block:** `5778578` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎182.286926978ⲅ‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎227.494130008ⲅ‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ⲅ‎` · α-in `‎0.000000000ⲅ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -82,9 +82,6 @@ Bitrecs V2 employs a winnter take all (WTA) scoring engine to evaluate miner sub
 **Landing meta / crawler:** Next generation product recommendations
 
 **Fetched document title:** Bitrecs
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -174,11 +171,11 @@ Bitrecs is a novel recommendation engine built on the Bittensor network
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.003875421 |
-| 8104072 | 0.003875412 |
-| 8104120 | 0.003875402 |
-| 8104168 | 0.003865157 |
-| 8104216 | 0.004016411 |
+| 8104085 | 0.003875411 |
+| 8104133 | 0.0038754 |
+| 8104181 | 0.003865157 |
+| 8104229 | 0.004007461 |
+| 8104277 | 0.004014995 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -187,5 +184,5 @@ Bitrecs is a novel recommendation engine built on the Bittensor network
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

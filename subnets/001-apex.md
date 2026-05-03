@@ -8,12 +8,12 @@ Open competitions for algorithmic and agentic optimization
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `99` blocks between steps; **blocks since last step:** `18`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ28,975.675953037. **Alpha liquidity in pool (`alpha_in`)** = ‎2,725,045.840394222α‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,166,444.792323265α‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.010633535`** *(also **moving-average price** `0.010649996111169457` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎769,857.409522212α‎`. **Owner hotkey / coldkey (chain):** `5HCFWvRqzSHWRPecN7q8J6c7aKQnrCZTMHstPv39xL1wgDHh` / `5HCFWvRqzSHWRPecN7q8J6c7aKQnrCZTMHstPv39xL1wgDHh`.
+- **Tempo / epoch pacing:** `99` blocks between steps; **blocks since last step:** `80`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ28,975.630845795. **Alpha liquidity in pool (`alpha_in`)** = ‎2,725,050.082385217α‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,166,502.550332270α‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.010633502`** *(also **moving-average price** `0.010649694595485926` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎769,859.454125907α‎`. **Owner hotkey / coldkey (chain):** `5HCFWvRqzSHWRPecN7q8J6c7aKQnrCZTMHstPv39xL1wgDHh` / `5HCFWvRqzSHWRPecN7q8J6c7aKQnrCZTMHstPv39xL1wgDHh`.
 - **Subnet registered at block:** `1497824` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎13.567628858α‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎60.300579461α‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000α‎` · α-in `‎0.000000000α‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -94,9 +94,6 @@ Visit the SN1 channel in the [Macrocosmos Discord server](https://discord.gg/vdy
 **Landing meta / crawler:** Mining intelligence
 
 **Fetched document title:** APEX | Macrocosmos.ai
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -194,12 +191,12 @@ Open competitions for algorithmic and agentic optimization
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103976 | 0.010633564 |
-| 8104024 | 0.01063356 |
-| 8104072 | 0.010633554 |
-| 8104120 | 0.010633545 |
-| 8104168 | 0.010633539 |
-| 8104216 | 0.010633534 |
+| 8104037 | 0.010633557 |
+| 8104085 | 0.010633553 |
+| 8104133 | 0.010633543 |
+| 8104181 | 0.010633538 |
+| 8104229 | 0.010633518 |
+| 8104277 | 0.010633502 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -262,10 +259,10 @@ Open competitions for algorithmic and agentic optimization
 | 2026-04-30T23:59:48Z | 8084984 | 0.010943509 |
 | 2026-05-01T23:59:48Z | 8092168 | 0.010683822 |
 | 2026-05-02T23:59:48Z | 8099357 | 0.010650877 |
-| 2026-05-03T16:08:12Z | 8104193 | 0.010633538 |
+| 2026-05-03T16:10:00Z | 8104202 | 0.010633535 |
 
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

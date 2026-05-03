@@ -8,12 +8,12 @@ A decentralized, incentive-driven web scraping engine
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `154`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ7,027.231811579. **Alpha liquidity in pool (`alpha_in`)** = ‎2,163,116.604301162ב‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,781,993.271119092ב‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.003251032`** *(also **moving-average price** `0.0032410004641860723` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎389,402.017820892ב‎`. **Owner hotkey / coldkey (chain):** `5FnLxqpzUFgrzW8aLjR5oYB8BUUS7XN9efw3N3diPpaxmTgt` / `5GsfAD4a3KXYKx2TF9UcajcW6C85Bw5vZsCTmrFep7RgMjcm`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `216`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ7,024.874437569. **Alpha liquidity in pool (`alpha_in`)** = ‎2,163,841.961640078ב‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,781,329.913780176ב‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.003248864`** *(also **moving-average price** `0.003241161582991481` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎389,410.663820188ב‎`. **Owner hotkey / coldkey (chain):** `5FnLxqpzUFgrzW8aLjR5oYB8BUUS7XN9efw3N3diPpaxmTgt` / `5GsfAD4a3KXYKx2TF9UcajcW6C85Bw5vZsCTmrFep7RgMjcm`.
 - **Subnet registered at block:** `4893280` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎116.171608006ב‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎162.941963307ב‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ב‎` · α-in `‎0.000000000ב‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -55,9 +55,6 @@ A decentralized, incentive-driven web scraping engine
 
 
 בְּקַר
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -127,12 +124,12 @@ A decentralized, incentive-driven web scraping engine
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103976 | 0.003242927 |
-| 8104024 | 0.003250414 |
-| 8104072 | 0.003251312 |
-| 8104120 | 0.003251309 |
-| 8104168 | 0.003251742 |
-| 8104216 | 0.003251032 |
+| 8104037 | 0.003250413 |
+| 8104085 | 0.003251312 |
+| 8104133 | 0.003251571 |
+| 8104181 | 0.003251742 |
+| 8104229 | 0.003251365 |
+| 8104277 | 0.003248864 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -200,5 +197,5 @@ A decentralized, incentive-driven web scraping engine
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

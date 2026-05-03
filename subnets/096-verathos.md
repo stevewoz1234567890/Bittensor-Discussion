@@ -8,13 +8,13 @@ Verified AI inference and training subnet.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `224`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ63.754288588. **Alpha liquidity in pool (`alpha_in`)** = ‎2,879.932801789᚛‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎60,772.453572421᚛‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.022133219`** *(also **moving-average price** `0.014719460159540176` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎1,308.394185054᚛‎`. **Owner hotkey / coldkey (chain):** `5GpKXttD7h1spLMvFADW6pnpftakhiWy8iUAipq1najWMz8c` / `5CGq1JQhmZmR8w3pXFqycUgX9mcLt8bPwMZ8YDJbEmELpw7X`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `286`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ62.701759749. **Alpha liquidity in pool (`alpha_in`)** = ‎2,940.673907254᚛‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎60,779.854614984᚛‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.021322390`** *(also **moving-average price** `0.014749454101547599` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,309.580403409᚛‎`. **Owner hotkey / coldkey (chain):** `5GpKXttD7h1spLMvFADW6pnpftakhiWy8iUAipq1najWMz8c` / `5CGq1JQhmZmR8w3pXFqycUgX9mcLt8bPwMZ8YDJbEmELpw7X`.
 - **Subnet registered at block:** `7692872` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎97.639351691᚛‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.002159834` · α-out `‎1.000000000᚛‎` · α-in `‎0.097562644᚛‎`.
+- **Pending emissions cues:** pending α emission `‎124.668186946᚛‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002147374` · α-out `‎1.000000000᚛‎` · α-in `‎0.100709822᚛‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -80,9 +80,6 @@ The same proof system extends to training. The training prover verifies forward 
 **Landing meta / crawler:** Cryptographically verified AI inference and training on Bittensor. Trust the math, not the server.
 
 **Fetched document title:** Verathos — Verified Intelligence for Everyone
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -225,11 +222,11 @@ Verified AI inference and training subnet.
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.023869921 |
-| 8104072 | 0.023394761 |
-| 8104120 | 0.022928382 |
-| 8104168 | 0.021779155 |
-| 8104216 | 0.022133219 |
+| 8104085 | 0.023394689 |
+| 8104133 | 0.023119193 |
+| 8104181 | 0.02177199 |
+| 8104229 | 0.021867693 |
+| 8104277 | 0.02132239 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -238,5 +235,5 @@ Verified AI inference and training subnet.
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

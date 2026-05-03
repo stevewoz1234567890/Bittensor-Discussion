@@ -8,12 +8,12 @@ Blockchain-backed cloud: storage, VMs, and apps with unmatched transparency, tru
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `203`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ37,780.497900320. **Alpha liquidity in pool (`alpha_in`)** = ‎1,601,651.763601387م‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,956,672.344341799م‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.023547973`** *(also **moving-average price** `0.023555793100968003` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎1,269,204.683030188م‎`. **Owner hotkey / coldkey (chain):** `5G1Qj93Fy22grpiGKq6BEvqqmS2HVRs3jaEdMhq9absQzs6g` / `5DAQpczEK4vzBn1waHkC4BZGqGPZ1dwPxKVsj36JDofHAw3a`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `265`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ37,779.872342936. **Alpha liquidity in pool (`alpha_in`)** = ‎1,601,678.329271967م‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,956,707.778671219م‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.023547198`** *(also **moving-average price** `0.02355563803575933` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,269,205.308587572م‎`. **Owner hotkey / coldkey (chain):** `5G1Qj93Fy22grpiGKq6BEvqqmS2HVRs3jaEdMhq9absQzs6g` / `5DAQpczEK4vzBn1waHkC4BZGqGPZ1dwPxKVsj36JDofHAw3a`.
 - **Subnet registered at block:** `5102795` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎152.198325007م‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎198.682517636م‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000م‎` · α-in `‎0.000000000م‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -60,9 +60,6 @@ A comprehensive Bittensor subnet providing distributed storage, compute, and blo
 **Landing meta / crawler:** Decentralized and transparent storage. Cloud solutions. Storage, virtual machines, apps backed by a blockchain for unmatched transparency and trust.
 
 **Fetched document title:** Hippius – Decentralized Cloud Storage
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -146,11 +143,11 @@ Blockchain-backed cloud: storage, VMs, and apps with unmatched transparency, tru
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.023596436 |
-| 8104072 | 0.023596314 |
-| 8104120 | 0.023534159 |
-| 8104168 | 0.023534389 |
-| 8104216 | 0.023547973 |
+| 8104085 | 0.02359631 |
+| 8104133 | 0.023534408 |
+| 8104181 | 0.023534385 |
+| 8104229 | 0.023547904 |
+| 8104277 | 0.023547198 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -159,5 +156,5 @@ Blockchain-backed cloud: storage, VMs, and apps with unmatched transparency, tru
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

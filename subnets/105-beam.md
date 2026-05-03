@@ -8,13 +8,13 @@ Decentralized bandwidth. A global network. Powering the open internet.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `233`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,382.186379228. **Alpha liquidity in pool (`alpha_in`)** = ‎358,648.676187797Գ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,336,676.932360872Գ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.012188949`** *(also **moving-average price** `0.012315032305195928` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎244,619.598303201Գ‎`. **Owner hotkey / coldkey (chain):** `5HBSExJPHsaHV3TuohhRi4oajphhVXFyanhWN96Ed3DHHTY4` / `5G3ic2pAzVu1gZmeUQfKGox3P8TetJw87asvyAdkb2o8aCCX`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `295`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,382.032627132. **Alpha liquidity in pool (`alpha_in`)** = ‎358,723.313914433Գ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,336,691.191519255Գ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.012186001`** *(also **moving-average price** `0.012313137296587229` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎244,647.377221223Գ‎`. **Owner hotkey / coldkey (chain):** `5HBSExJPHsaHV3TuohhRi4oajphhVXFyanhWN96Ed3DHHTY4` / `5G3ic2pAzVu1gZmeUQfKGox3P8TetJw87asvyAdkb2o8aCCX`.
 - **Subnet registered at block:** `6841399` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎156.922476245Գ‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.006094473` · α-out `‎1.000000000Գ‎` · α-in `‎0.500000000Գ‎`.
+- **Pending emissions cues:** pending α emission `‎198.679150484Գ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.006093020` · α-out `‎1.000000000Գ‎` · α-in `‎0.500000000Գ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -59,9 +59,6 @@ Decentralized bandwidth. A global network. Powering the open internet.
 
 **Fetched document title:** BEAM - Decentralized distributed Bandwidth Infrastructure
 
-## Operational parameters — registration, limits, economics (chain)
-
-
 ### Topology & economics (`SubnetInfo` snapshot)
 
 - **`max_n` (max registered UIDs):** 256
@@ -75,7 +72,7 @@ Decentralized bandwidth. A global network. Powering the open internet.
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 7500
-- **Registration recycle cost snapshot (`burn`):** τ0.070571296
+- **Registration recycle cost snapshot (`burn`):** τ0.062750912
 - **Owner SS58 (`owner_ss58`):** `5G3ic2pAzVu1gZmeUQfKGox3P8TetJw87asvyAdkb2o8aCCX`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -131,11 +128,11 @@ Decentralized bandwidth. A global network. Powering the open internet.
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.012076146 |
-| 8104072 | 0.012112269 |
-| 8104120 | 0.012112346 |
-| 8104168 | 0.012135567 |
-| 8104216 | 0.012188949 |
+| 8104085 | 0.012111335 |
+| 8104133 | 0.012111559 |
+| 8104181 | 0.01218918 |
+| 8104229 | 0.012208913 |
+| 8104277 | 0.012186001 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -144,5 +141,5 @@ Decentralized bandwidth. A global network. Powering the open internet.
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

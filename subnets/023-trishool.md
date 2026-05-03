@@ -8,12 +8,12 @@ Trishool is the AI alignment protocol built on Bittensor
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `151`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ6,880.046877832. **Alpha liquidity in pool (`alpha_in`)** = ‎1,690,325.248510458ψ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,248,499.469655475ψ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004070134`** *(also **moving-average price** `0.0039326047990471125` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎351,811.873003927ψ‎`. **Owner hotkey / coldkey (chain):** `5HKsvivbcTKKTJEWQpsQD5Fur8CdyibHwZb8xQzrJw5rM28H` / `5CqTRwoFmme25YAbbwovR9rEic1UY7hYBLHxSk1PSfZ2jpmN`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `213`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ6,882.028592471. **Alpha liquidity in pool (`alpha_in`)** = ‎1,689,838.496179574ψ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,249,048.221986359ψ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004072465`** *(also **moving-average price** `0.003934990614652634` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎351,813.890280194ψ‎`. **Owner hotkey / coldkey (chain):** `5HKsvivbcTKKTJEWQpsQD5Fur8CdyibHwZb8xQzrJw5rM28H` / `5CqTRwoFmme25YAbbwovR9rEic1UY7hYBLHxSk1PSfZ2jpmN`.
 - **Subnet registered at block:** `2063528` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎113.897930639ψ‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎160.663936711ψ‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ψ‎` · α-in `‎0.000000000ψ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -66,9 +66,6 @@ A Bittensor subnet building the SOTA AI guard model. Miners submit adversarial p
 **Landing meta / crawler:** A decentralized defense grid for humanity.
 
 **Fetched document title:** Trishool
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -240,12 +237,12 @@ Trishool is the AI alignment protocol built on Bittensor
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103976 | 0.004066626 |
-| 8104024 | 0.004066623 |
-| 8104072 | 0.004066619 |
-| 8104120 | 0.00407014 |
-| 8104168 | 0.004070136 |
-| 8104216 | 0.004070134 |
+| 8104037 | 0.004066621 |
+| 8104085 | 0.004070144 |
+| 8104133 | 0.004070139 |
+| 8104181 | 0.004070136 |
+| 8104229 | 0.004072474 |
+| 8104277 | 0.004072465 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -254,5 +251,5 @@ Trishool is the AI alignment protocol built on Bittensor
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

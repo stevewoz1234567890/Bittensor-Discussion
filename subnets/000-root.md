@@ -4,12 +4,12 @@
 
 The **root network** (NetUID 0) is Bittensor’s top-level coordination layer. TAO holders delegate stake to root validators, who set **weights** on other subnets. Those weights help determine how network **emissions** are allocated across subnets. Root is not an application or “task” subnet like higher netuids; it is the mechanism through which the protocol routes incentive and security across the rest of the network.
 
-### Root snapshot *(block 8104216)*
+### Root snapshot *(block 8104277)*
 
 - **Root tempo:** `100` blocks between epoch strides (see [`SubnetHyperparameters`](https://learnbittensor.org/explore/concept/subnet-hyperparameters)). Validators allocate weight across subnets rather than miners competing inside a commodity task.
-- **`tao_in` (pool-facing TAO):** τ5,237,076.441389917
-- **Root alpha bookkeeping (`alpha_in` / `alpha_out`):** τ1,370,188.099459281 / τ4,680,425.258368280
-- **Reported subnet volume rolling figure:** τ48,484,159.059189916
+- **`tao_in` (pool-facing TAO):** τ5,237,130.341341128
+- **Root alpha bookkeeping (`alpha_in` / `alpha_out`):** τ1,370,134.199508070 / τ4,680,479.158319491
+- **Reported subnet volume rolling figure:** τ48,484,518.003940649
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -39,9 +39,6 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Max neurons:** `64`
 - **Validators (metadata):** `8`
 - **Neuron reg. cost:** `500000`
-
-
-## Operational parameters — registration, limits, economics (chain)
 
 
 ### Topology & economics (`SubnetInfo` snapshot)
@@ -111,22 +108,22 @@ Root: protocol uses **1 τ per root weight unit** in pricing helpers.
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103640 | 1 |
-| 8103688 | 1 |
-| 8103736 | 1 |
-| 8103784 | 1 |
-| 8103832 | 1 |
-| 8103880 | 1 |
-| 8103928 | 1 |
-| 8103976 | 1 |
-| 8104024 | 1 |
-| 8104072 | 1 |
-| 8104120 | 1 |
-| 8104168 | 1 |
-| 8104216 | 1 |
+| 8103701 | 1 |
+| 8103749 | 1 |
+| 8103797 | 1 |
+| 8103845 | 1 |
+| 8103893 | 1 |
+| 8103941 | 1 |
+| 8103989 | 1 |
+| 8104037 | 1 |
+| 8104085 | 1 |
+| 8104133 | 1 |
+| 8104181 | 1 |
+| 8104229 | 1 |
+| 8104277 | 1 |
 
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

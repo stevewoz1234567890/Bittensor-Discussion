@@ -8,12 +8,12 @@ Distributed DEX aggregator and swap intent solver engine
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `240`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,983.568134611. **Alpha liquidity in pool (`alpha_in`)** = ‎905,112.971844370Ђ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,610,721.400315817Ђ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005506140`** *(also **moving-average price** `0.005540274083614349` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎71,923.726041303Ђ‎`. **Owner hotkey / coldkey (chain):** `5E1ohAszHfhyQUEtz6mvCCkW4pYHsinPjxXS938fAZ2jFvCt` / `5D7Rf7HbeE7ti49fyLg3TM3F96uWFUwzYBo9SkzBpAUTQMhM`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `302`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,983.529742240. **Alpha liquidity in pool (`alpha_in`)** = ‎905,119.944553792Ђ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,610,776.427606395Ђ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005506056`** *(also **moving-average price** `0.005539696663618088` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎71,923.764433674Ђ‎`. **Owner hotkey / coldkey (chain):** `5E1ohAszHfhyQUEtz6mvCCkW4pYHsinPjxXS938fAZ2jFvCt` / `5D7Rf7HbeE7ti49fyLg3TM3F96uWFUwzYBo9SkzBpAUTQMhM`.
 - **Subnet registered at block:** `5633022` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎169.980110418Ђ‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎213.891754512Ђ‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000Ђ‎` · α-in `‎0.000000000Ђ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -60,9 +60,6 @@ Minotaur is a Bittensor subnet (Subnet 112) focused on swap-intent processing an
 **Landing meta / crawler:** Verifiable financial coordination layer. DEX aggregation & swap intent routing.
 
 **Fetched document title:** minotaur - Powering DEX aggregation & swap intent routing
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -318,11 +315,11 @@ Distributed DEX aggregator and swap intent solver engine
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.005506205 |
-| 8104072 | 0.005506189 |
-| 8104120 | 0.005506168 |
-| 8104168 | 0.005506151 |
-| 8104216 | 0.00550614 |
+| 8104085 | 0.005506186 |
+| 8104133 | 0.005506163 |
+| 8104181 | 0.005506149 |
+| 8104229 | 0.005506097 |
+| 8104277 | 0.005506056 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -331,5 +328,5 @@ Distributed DEX aggregator and swap intent solver engine
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

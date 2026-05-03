@@ -6,13 +6,13 @@
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `252`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ9,281.787107902. **Alpha liquidity in pool (`alpha_in`)** = ‎1,165,961.357176709𑀁‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,450,629.739233198𑀁‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.007934802`** *(also **moving-average price** `0.008029140997678041` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎178,647.247212534𑀁‎`. **Owner hotkey / coldkey (chain):** `5GZPtUjyp5d4j7aWWV9774caQAxxbsxNNM3nuaJYDPAEDjmt` / `5HKYqfJrUFKYPMRFZZ7kfhUNEyHUbY2ZyEjQqKJf2RKVpeXM`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `314`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ9,281.984746659. **Alpha liquidity in pool (`alpha_in`)** = ‎1,165,997.089697164𑀁‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,450,686.326958885𑀁‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.007934729`** *(also **moving-average price** `0.00802752305753529` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎178,647.290157615𑀁‎`. **Owner hotkey / coldkey (chain):** `5GZPtUjyp5d4j7aWWV9774caQAxxbsxNNM3nuaJYDPAEDjmt` / `5HKYqfJrUFKYPMRFZZ7kfhUNEyHUbY2ZyEjQqKJf2RKVpeXM`.
 - **Subnet registered at block:** `5813454` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎185.278258761𑀁‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.003885085` · α-out `‎1.000000000𑀁‎` · α-in `‎0.489625995𑀁‎`.
+- **Pending emissions cues:** pending α emission `‎230.862709443𑀁‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.003871384` · α-out `‎1.000000000𑀁‎` · α-in `‎0.487903527𑀁‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -111,9 +111,6 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 **Landing meta / crawler:** A global arena for autonomous drone flight, backed by real-world impact and on-chain notarization.
 
 **Fetched document title:** Swarm124
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -298,18 +295,77 @@ Every benchmark run generates unique worlds. Six environment types test complete
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.007943742 |
-| 8104072 | 0.007943728 |
-| 8104120 | 0.007943711 |
-| 8104168 | 0.007943697 |
-| 8104216 | 0.007934802 |
+| 8104085 | 0.007943726 |
+| 8104133 | 0.007943707 |
+| 8104181 | 0.007943678 |
+| 8104229 | 0.007934765 |
+| 8104277 | 0.007934729 |
 
 ### Extended history — TAOStats pool price (daily)
 
-*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
+[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
+
+| Timestamp (UTC) | Block | Pool price |
+|-----------------|------:|-----------:|
+| 2026-03-09T23:59:48Z | 7711060 | 0.007325266 |
+| 2026-03-10T23:59:48Z | 7718257 | 0.007426409 |
+| 2026-03-11T23:59:48Z | 7725455 | 0.007318977 |
+| 2026-03-12T23:59:48.001Z | 7732653 | 0.007213149 |
+| 2026-03-13T23:59:48Z | 7739841 | 0.00691531 |
+| 2026-03-14T23:59:48.001Z | 7747036 | 0.00677298 |
+| 2026-03-15T23:59:48Z | 7754226 | 0.006856603 |
+| 2026-03-16T23:59:48Z | 7761426 | 0.006981994 |
+| 2026-03-17T23:59:48Z | 7768619 | 0.006846894 |
+| 2026-03-18T23:59:48Z | 7775819 | 0.006968007 |
+| 2026-03-19T23:59:48Z | 7783014 | 0.00687189855481453306 |
+| 2026-03-20T23:59:48Z | 7790201 | 0.006897139 |
+| 2026-03-21T23:59:48Z | 7797398 | 0.007092453 |
+| 2026-03-22T23:59:48Z | 7804598 | 0.007130817 |
+| 2026-03-23T23:59:48Z | 7811798 | 0.007305417 |
+| 2026-03-24T23:59:48.001Z | 7818996 | 0.00737107385648094852 |
+| 2026-03-25T23:59:48Z | 7826196 | 0.00721196 |
+| 2026-03-26T23:59:48Z | 7833396 | 0.00703599 |
+| 2026-03-27T23:59:48Z | 7840596 | 0.007089794 |
+| 2026-03-28T23:59:48.001Z | 7847743 | 0.006888923 |
+| 2026-03-29T23:59:48Z | 7854902 | 0.006863073 |
+| 2026-03-30T23:59:48.001Z | 7862095 | 0.007146856 |
+| 2026-03-31T23:59:48Z | 7869291 | 0.006953866 |
+| 2026-04-01T23:59:48Z | 7876474 | 0.007021415 |
+| 2026-04-02T23:59:48Z | 7883622 | 0.007041335 |
+| 2026-04-03T23:59:48Z | 7890794 | 0.007570873 |
+| 2026-04-04T23:59:48.001Z | 7897988 | 0.008435784 |
+| 2026-04-05T23:59:48Z | 7905188 | 0.007940308 |
+| 2026-04-06T23:59:48Z | 7912388 | 0.008107736 |
+| 2026-04-07T23:59:48Z | 7919588 | 0.008128422 |
+| 2026-04-08T23:59:48Z | 7926788 | 0.008328521 |
+| 2026-04-09T23:59:48Z | 7933987 | 0.007845681 |
+| 2026-04-10T23:59:48Z | 7941184 | 0.007738566 |
+| 2026-04-11T23:59:48Z | 7948384 | 0.007659707 |
+| 2026-04-12T23:59:48Z | 7955584 | 0.007725038 |
+| 2026-04-13T23:59:48Z | 7962784 | 0.0074741 |
+| 2026-04-14T23:59:48Z | 7969979 | 0.007239342 |
+| 2026-04-15T23:59:48.001Z | 7977179 | 0.007270236 |
+| 2026-04-16T23:59:48Z | 7984379 | 0.006949688 |
+| 2026-04-17T23:59:48Z | 7991579 | 0.006855539 |
+| 2026-04-18T23:59:48Z | 7998779 | 0.006923281 |
+| 2026-04-19T23:59:48Z | 8005979 | 0.00689414 |
+| 2026-04-20T23:59:48Z | 8013179 | 0.006858698 |
+| 2026-04-21T23:59:48Z | 8020376 | 0.006903822 |
+| 2026-04-22T23:59:48Z | 8027562 | 0.007109222 |
+| 2026-04-23T23:59:48Z | 8034762 | 0.007267011 |
+| 2026-04-24T23:59:48Z | 8041962 | 0.007186561 |
+| 2026-04-25T23:59:48Z | 8049151 | 0.007816332 |
+| 2026-04-26T23:59:48Z | 8056274 | 0.007825525 |
+| 2026-04-27T23:59:48.001Z | 8063454 | 0.008656012 |
+| 2026-04-28T23:59:48Z | 8070646 | 0.008321686 |
+| 2026-04-29T23:59:48Z | 8077790 | 0.008657129 |
+| 2026-04-30T23:59:48Z | 8084984 | 0.007975393 |
+| 2026-05-01T23:59:48Z | 8092168 | 0.008073327 |
+| 2026-05-02T23:59:48Z | 8099357 | 0.00807603 |
+| 2026-05-03T16:10:00Z | 8104202 | 0.007934804 |
 
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

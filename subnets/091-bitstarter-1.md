@@ -8,13 +8,13 @@ A new subnet launch on Bitstarter - coming soon!
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `219`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,849.970017833. **Alpha liquidity in pool (`alpha_in`)** = ‎99,004.321719661ᚁ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎402,575.230782007ᚁ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.018686529`** *(also **moving-average price** `0.017559592612087727` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎15,673.825532563ᚁ‎`. **Owner hotkey / coldkey (chain):** `5DnPJe7FP8U1oqy2XmQRBEAKD2tdReJmzjhNdogrbN1eCztw` / `5HEe7NjS4exuP9SptWZdwWqWrMrGTTEHf5ieQH8yZXA3zXtW`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `281`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,850.375629783. **Alpha liquidity in pool (`alpha_in`)** = ‎99,044.611940858ᚁ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎402,625.898868758ᚁ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.018683081`** *(also **moving-average price** `0.017573328455910087` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎15,674.475311214ᚁ‎`. **Owner hotkey / coldkey (chain):** `5DnPJe7FP8U1oqy2XmQRBEAKD2tdReJmzjhNdogrbN1eCztw` / `5HEe7NjS4exuP9SptWZdwWqWrMrGTTEHf5ieQH8yZXA3zXtW`.
 - **Subnet registered at block:** `7633645` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎120.968307238ᚁ‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.009343290` · α-out `‎1.000000000ᚁ‎` · α-in `‎0.500000000ᚁ‎`.
+- **Pending emissions cues:** pending α emission `‎155.217201297ᚁ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.009341783` · α-out `‎1.000000000ᚁ‎` · α-in `‎0.500000000ᚁ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -58,9 +58,6 @@ A new subnet launch on Bitstarter - coming soon!
 **Landing meta / crawler:** Bittensor's first crowdfunding platform. Discover new teams. Pledge TAO. And get liftoff All on-chain. Built for Bittensor. Open for all.
 
 **Fetched document title:** Bitstarter | Kickstarter For Bittensor
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -130,11 +127,11 @@ A new subnet launch on Bitstarter - coming soon!
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.018414567 |
-| 8104072 | 0.018413531 |
-| 8104120 | 0.018412149 |
-| 8104168 | 0.018561389 |
-| 8104216 | 0.018686529 |
+| 8104085 | 0.01841346 |
+| 8104133 | 0.018471867 |
+| 8104181 | 0.018561345 |
+| 8104229 | 0.018682473 |
+| 8104277 | 0.018683081 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -202,5 +199,5 @@ A new subnet launch on Bitstarter - coming soon!
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

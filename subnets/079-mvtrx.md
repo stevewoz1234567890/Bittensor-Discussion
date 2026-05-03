@@ -8,13 +8,13 @@ Building a SOTA Exchange for dTAO and Beyond
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `207`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,159.740270794. **Alpha liquidity in pool (`alpha_in`)** = ‎1,098,046.484969202ي‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,154,926.114383308ي‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.009214584`** *(also **moving-average price** `0.008716988377273083` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎274,816.303629384ي‎`. **Owner hotkey / coldkey (chain):** `5EWwdZB7qCCMaAso5Mzcks4UUcPxKYvpAj32t5Mg1v6HSxoF` / `5Fxp7QBG81X7PLdMkAe1RLCvqqfQSw9rJC5ppEQs9FP8qez9`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `269`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,160.809970532. **Alpha liquidity in pool (`alpha_in`)** = ‎1,097,992.405718469ي‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,154,968.566548733ي‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.009215975`** *(also **moving-average price** `0.008725561434403062` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎274,817.447926970ي‎`. **Owner hotkey / coldkey (chain):** `5EWwdZB7qCCMaAso5Mzcks4UUcPxKYvpAj32t5Mg1v6HSxoF` / `5Fxp7QBG81X7PLdMkAe1RLCvqqfQSw9rJC5ppEQs9FP8qez9`.
 - **Subnet registered at block:** `5173967` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎154.342903609ي‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.004607282` · α-out `‎1.000000000ي‎` · α-in `‎0.500000000ي‎`.
+- **Pending emissions cues:** pending α emission `‎200.571054449ي‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.004607976` · α-out `‎1.000000000ي‎` · α-in `‎0.500000000ي‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -114,9 +114,6 @@ Powered by TAOS Matrix of Simulations Sandbox
 
 **Fetched document title:** TAOS – Simulation of Automated Trading in Intelligent Markets (a.k.a. Sn-79)
 
-## Operational parameters — registration, limits, economics (chain)
-
-
 ### Topology & economics (`SubnetInfo` snapshot)
 
 - **`max_n` (max registered UIDs):** 256
@@ -130,7 +127,7 @@ Powered by TAOS Matrix of Simulations Sandbox
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 7200
-- **Registration recycle cost snapshot (`burn`):** τ0.004367194
+- **Registration recycle cost snapshot (`burn`):** τ0.003883213
 - **Owner SS58 (`owner_ss58`):** `5Fxp7QBG81X7PLdMkAe1RLCvqqfQSw9rJC5ppEQs9FP8qez9`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -241,11 +238,11 @@ Powered by TAOS Matrix of Simulations Sandbox
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.009234651 |
-| 8104072 | 0.009200746 |
-| 8104120 | 0.00920208 |
-| 8104168 | 0.009188778 |
-| 8104216 | 0.009214584 |
+| 8104085 | 0.009201109 |
+| 8104133 | 0.009202442 |
+| 8104181 | 0.009164374 |
+| 8104229 | 0.009214853 |
+| 8104277 | 0.009215975 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -313,5 +310,5 @@ Powered by TAOS Matrix of Simulations Sandbox
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

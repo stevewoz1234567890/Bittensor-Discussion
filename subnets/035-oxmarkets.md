@@ -8,12 +8,12 @@ Liquidity-as-a-Service subnet powering 0xMarkets - a permissionless perp DEX for
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `163`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,297.942182820. **Alpha liquidity in pool (`alpha_in`)** = ‎1,964,845.051710098ך‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,983,346.607881821ך‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005272048`** *(also **moving-average price** `0.005424379138275981` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎698,767.129671646ך‎`. **Owner hotkey / coldkey (chain):** `5EsmkLf4VnpgNM31syMjAWsUrQdW2Yu5xzWbv6oDQydP9vVx` / `5EqZVDbW5sKXE5qB5zVaH6SQT2sud3LkmFBo2dn79NdY9RTr`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `225`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,297.919492707. **Alpha liquidity in pool (`alpha_in`)** = ‎1,964,849.355580461ך‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,983,404.304011458ך‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005272025`** *(also **moving-average price** `0.005421733250841498` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎698,767.152361759ך‎`. **Owner hotkey / coldkey (chain):** `5EsmkLf4VnpgNM31syMjAWsUrQdW2Yu5xzWbv6oDQydP9vVx` / `5EqZVDbW5sKXE5qB5zVaH6SQT2sud3LkmFBo2dn79NdY9RTr`.
 - **Subnet registered at block:** `3037158` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎122.966460609ך‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎169.738945068ך‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ך‎` · α-in `‎0.000000000ך‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -67,9 +67,6 @@ https://x.com/0x_Markets
 **Landing meta / crawler:** Decentralized exchange for commodities and crypto
 
 **Fetched document title:** 0xMarkets
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -273,11 +270,11 @@ https://x.com/0x_Markets
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.005273702 |
-| 8104072 | 0.00527371 |
-| 8104120 | 0.005273704 |
-| 8104168 | 0.005272051 |
-| 8104216 | 0.005272048 |
+| 8104085 | 0.005273709 |
+| 8104133 | 0.005273703 |
+| 8104181 | 0.00527205 |
+| 8104229 | 0.005272036 |
+| 8104277 | 0.005272025 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -286,5 +283,5 @@ https://x.com/0x_Markets
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

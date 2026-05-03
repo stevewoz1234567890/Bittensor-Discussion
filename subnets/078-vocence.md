@@ -8,13 +8,13 @@ The voice layer for decentralized intelligence
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `206`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ255.356357594. **Alpha liquidity in pool (`alpha_in`)** = ‎22,490.818604294و‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎142,374.903225335و‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.011353823`** *(also **moving-average price** `0.009278750279918313` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎5,494.706797450و‎`. **Owner hotkey / coldkey (chain):** `5Fk765B4CRBekwErwE5VxvveWhHztHSfsnsLt8cbDayDWsuk` / `5FnQCJW2Rm1BijNBUJzPetcpZx43RWutYiyaxA8j88fy9i9L`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `268`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ258.089062176. **Alpha liquidity in pool (`alpha_in`)** = ‎22,288.394417507و‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎142,657.325023342و‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.011579766`** *(also **moving-average price** `0.009294761577621102` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎5,500.177350144و‎`. **Owner hotkey / coldkey (chain):** `5Fk765B4CRBekwErwE5VxvveWhHztHSfsnsLt8cbDayDWsuk` / `5FnQCJW2Rm1BijNBUJzPetcpZx43RWutYiyaxA8j88fy9i9L`.
 - **Subnet registered at block:** `7966145` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎97.024809243و‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.003306940` · α-out `‎1.000000000و‎` · α-in `‎0.291256777و‎`.
+- **Pending emissions cues:** pending α emission `‎126.229714223و‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.003324218` · α-out `‎1.000000000و‎` · α-in `‎0.287071278و‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -70,9 +70,6 @@ Validators evaluate how well models produce high-quality audio that matches both
 **Landing meta / crawler:** Generate speech from prompts, clone any voice, design custom voices, and create music — powered by a decentralized network on Bittensor.
 
 **Fetched document title:** Vocence — Decentralized Voice AI
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -226,11 +223,11 @@ The voice layer for decentralized intelligence
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.011553355 |
-| 8104072 | 0.011425673 |
-| 8104120 | 0.011246674 |
-| 8104168 | 0.011385104 |
-| 8104216 | 0.011353823 |
+| 8104085 | 0.010994639 |
+| 8104133 | 0.011290009 |
+| 8104181 | 0.011491889 |
+| 8104229 | 0.011338701 |
+| 8104277 | 0.011579766 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -298,5 +295,5 @@ The voice layer for decentralized intelligence
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

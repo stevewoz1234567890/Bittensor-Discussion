@@ -8,13 +8,13 @@ Counterfactual impact prediction for advertising interventions
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `149`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ8,988.947254955. **Alpha liquidity in pool (`alpha_in`)** = ‎1,742,642.530607266φ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,203,706.095407824φ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005152665`** *(also **moving-average price** `0.005070148268714547` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎434,426.532716284φ‎`. **Owner hotkey / coldkey (chain):** `5HiWPApiuXz9DDnkyFu4M2tWs2ar6LTKt54Bo18EL6pgZsdn` / `5HjCYVfrWSkzTfJM5rkWBW3qTTJqXEFUzZrKty5hodpgfjyW`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `211`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ8,988.965932505. **Alpha liquidity in pool (`alpha_in`)** = ‎1,742,654.863664474φ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,203,763.741300113φ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005152639`** *(also **moving-average price** `0.005071559920907021` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎434,426.555151440φ‎`. **Owner hotkey / coldkey (chain):** `5HiWPApiuXz9DDnkyFu4M2tWs2ar6LTKt54Bo18EL6pgZsdn` / `5HjCYVfrWSkzTfJM5rkWBW3qTTJqXEFUzZrKty5hodpgfjyW`.
 - **Subnet registered at block:** `3156578` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎112.401841979φ‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.000663911` · α-out `‎1.000000000φ‎` · α-in `‎0.128848258φ‎`.
+- **Pending emissions cues:** pending α emission `‎159.173056183φ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000661570` · α-out `‎1.000000000φ‎` · α-in `‎0.128394468φ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -58,9 +58,6 @@ Counterfactual impact prediction for advertising interventions
 **Landing meta / crawler:** AI-powered Google Ads management that works 24/7. Join the rebellion against outdated PPC management.
 
 **Fetched document title:** AdTAO by PPC Rebel - Your 24/7 Google Ads Manager | AI-Powered PPC Optimization
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -129,12 +126,12 @@ Counterfactual impact prediction for advertising interventions
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103976 | 0.005149784 |
-| 8104024 | 0.005149967 |
-| 8104072 | 0.005150371 |
-| 8104120 | 0.005150551 |
-| 8104168 | 0.005152668 |
-| 8104216 | 0.005152665 |
+| 8104037 | 0.005150128 |
+| 8104085 | 0.005150557 |
+| 8104133 | 0.00515055 |
+| 8104181 | 0.005152667 |
+| 8104229 | 0.005152652 |
+| 8104277 | 0.005152639 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -143,5 +140,5 @@ Counterfactual impact prediction for advertising interventions
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

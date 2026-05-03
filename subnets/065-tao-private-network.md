@@ -8,12 +8,12 @@ Developer-friendly Decentralised VPN infrastructure.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `193`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ7,665.214837107. **Alpha liquidity in pool (`alpha_in`)** = ‎1,904,699.625701946ص‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,008,302.691886448ص‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004024152`** *(also **moving-average price** `0.004010349046438932` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎191,818.793574729ص‎`. **Owner hotkey / coldkey (chain):** `5DAmVrUgpTX9xmRyZ7R3UUFNSzh7ZNY6qYxv9N4VeCq6mHHL` / `5GxEEHxLWpvcAGghL8LG7xNjrxZk4SEPW1VT43hGPZ2TP9mZ`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `255`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ7,665.139865305. **Alpha liquidity in pool (`alpha_in`)** = ‎1,904,718.256355243ص‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,008,346.061233151ص‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004024073`** *(also **moving-average price** `0.004010578151792288` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎191,818.868546531ص‎`. **Owner hotkey / coldkey (chain):** `5DAmVrUgpTX9xmRyZ7R3UUFNSzh7ZNY6qYxv9N4VeCq6mHHL` / `5GxEEHxLWpvcAGghL8LG7xNjrxZk4SEPW1VT43hGPZ2TP9mZ`.
 - **Subnet registered at block:** `4950813` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎145.522227046ص‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎192.270266448ص‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ص‎` · α-in `‎0.000000000ص‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -75,9 +75,6 @@ Want to know more? Please read the [FAQ](#faq).
 **Landing meta / crawler:** TAO Private Network
 
 **Fetched document title:** TPN
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -313,11 +310,11 @@ Developer-friendly Decentralised VPN infrastructure.
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.004018882 |
-| 8104072 | 0.004018879 |
-| 8104120 | 0.004024115 |
-| 8104168 | 0.004024154 |
-| 8104216 | 0.004024151 |
+| 8104085 | 0.004024119 |
+| 8104133 | 0.004024114 |
+| 8104181 | 0.004024154 |
+| 8104229 | 0.004024142 |
+| 8104277 | 0.004024073 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -385,5 +382,5 @@ Developer-friendly Decentralised VPN infrastructure.
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

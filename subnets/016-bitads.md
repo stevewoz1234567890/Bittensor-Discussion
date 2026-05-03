@@ -8,12 +8,12 @@ BitAds is a decentralized, Proof of Sale marketing network where merchandisers s
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `144`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ8,525.707565267. **Alpha liquidity in pool (`alpha_in`)** = ‎1,819,375.674765991π‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,031,256.844611708π‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004686428`** *(also **moving-average price** `0.004689811961725354` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎304,463.761987181π‎`. **Owner hotkey / coldkey (chain):** `5FRfiDbLxWAiac97ig4c5mgkb5yxSUVJDijmwJxw5RE5Ew9g` / `5CqRkhQUEgkQ4nBB4SCKnc9AzKPs9VLYv28erjeXPqQYVt9V`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `206`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ8,525.687863354. **Alpha liquidity in pool (`alpha_in`)** = ‎1,819,379.878821755π‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,031,314.640555944π‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004686407`** *(also **moving-average price** `0.0046897397842258215` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎304,463.781689094π‎`. **Owner hotkey / coldkey (chain):** `5FRfiDbLxWAiac97ig4c5mgkb5yxSUVJDijmwJxw5RE5Ew9g` / `5CqRkhQUEgkQ4nBB4SCKnc9AzKPs9VLYv28erjeXPqQYVt9V`.
 - **Subnet registered at block:** `2765446` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎108.473835143π‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎155.177818374π‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000π‎` · α-in `‎0.000000000π‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -80,9 +80,6 @@ BitAds is a decentralized, proof of sale marketing network where merchandisers s
 **Landing meta / crawler:** BitAds is a decentralized performance marketing network where brands pay only for verified sales. Connect Pixel + Stripe, stake ALPHA for marketing bandwidth, and eliminate wasted ad spend forever.
 
 **Fetched document title:** BitAds – Decentralized Marketing Network
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -221,78 +218,19 @@ https://x.com/bitads_ai
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103976 | 0.004686448 |
-| 8104024 | 0.004686445 |
-| 8104072 | 0.004686441 |
-| 8104120 | 0.004686435 |
-| 8104168 | 0.004686431 |
-| 8104216 | 0.004686428 |
+| 8104037 | 0.004686443 |
+| 8104085 | 0.00468644 |
+| 8104133 | 0.004686434 |
+| 8104181 | 0.004686431 |
+| 8104229 | 0.004686417 |
+| 8104277 | 0.004686407 |
 
 ### Extended history — TAOStats pool price (daily)
 
-[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
-
-| Timestamp (UTC) | Block | Pool price |
-|-----------------|------:|-----------:|
-| 2026-03-09T23:59:48Z | 7711060 | 0.005413 |
-| 2026-03-10T23:59:48Z | 7718257 | 0.005326224 |
-| 2026-03-11T23:59:48Z | 7725455 | 0.005357516 |
-| 2026-03-12T23:59:48.001Z | 7732653 | 0.005287908 |
-| 2026-03-13T23:59:48Z | 7739841 | 0.005196321 |
-| 2026-03-14T23:59:48.001Z | 7747036 | 0.005285167 |
-| 2026-03-15T23:59:48Z | 7754226 | 0.005177829 |
-| 2026-03-16T23:59:48Z | 7761426 | 0.005470077 |
-| 2026-03-17T23:59:48Z | 7768619 | 0.005462637 |
-| 2026-03-18T23:59:48Z | 7775819 | 0.00501762 |
-| 2026-03-19T23:59:48Z | 7783014 | 0.00500185828439039218 |
-| 2026-03-20T23:59:48Z | 7790201 | 0.005000151 |
-| 2026-03-21T23:59:48Z | 7797398 | 0.004995832 |
-| 2026-03-22T23:59:48Z | 7804598 | 0.005025805 |
-| 2026-03-23T23:59:48Z | 7811798 | 0.005039735 |
-| 2026-03-24T23:59:48.001Z | 7818996 | 0.00505952754620248907 |
-| 2026-03-25T23:59:48Z | 7826196 | 0.005010238 |
-| 2026-03-26T23:59:48Z | 7833396 | 0.004957642 |
-| 2026-03-27T23:59:48Z | 7840596 | 0.004943464 |
-| 2026-03-28T23:59:48.001Z | 7847743 | 0.004940996 |
-| 2026-03-29T23:59:48Z | 7854902 | 0.004944664 |
-| 2026-03-30T23:59:48.001Z | 7862095 | 0.004962506 |
-| 2026-03-31T23:59:48Z | 7869291 | 0.005032776 |
-| 2026-04-01T23:59:48Z | 7876474 | 0.005001342 |
-| 2026-04-02T23:59:48Z | 7883622 | 0.005020229 |
-| 2026-04-03T23:59:48Z | 7890794 | 0.005034223 |
-| 2026-04-04T23:59:48.001Z | 7897988 | 0.005034172 |
-| 2026-04-05T23:59:48Z | 7905188 | 0.005024304 |
-| 2026-04-06T23:59:48Z | 7912388 | 0.005081429 |
-| 2026-04-07T23:59:48Z | 7919588 | 0.004989348 |
-| 2026-04-08T23:59:48Z | 7926788 | 0.005067768 |
-| 2026-04-09T23:59:48Z | 7933987 | 0.004985602 |
-| 2026-04-10T23:59:48Z | 7941184 | 0.004975125 |
-| 2026-04-11T23:59:48Z | 7948384 | 0.004984129 |
-| 2026-04-12T23:59:48Z | 7955584 | 0.004943079 |
-| 2026-04-13T23:59:48Z | 7962784 | 0.004789527 |
-| 2026-04-14T23:59:48Z | 7969979 | 0.00478166 |
-| 2026-04-15T23:59:48.001Z | 7977179 | 0.004759383 |
-| 2026-04-16T23:59:48Z | 7984379 | 0.004718666 |
-| 2026-04-17T23:59:48Z | 7991579 | 0.004705145 |
-| 2026-04-18T23:59:48Z | 7998779 | 0.004718356 |
-| 2026-04-19T23:59:48Z | 8005979 | 0.00470898 |
-| 2026-04-20T23:59:48Z | 8013179 | 0.004679722 |
-| 2026-04-21T23:59:48Z | 8020376 | 0.004683453 |
-| 2026-04-22T23:59:48Z | 8027562 | 0.00468353 |
-| 2026-04-23T23:59:48Z | 8034762 | 0.004717933 |
-| 2026-04-24T23:59:48Z | 8041962 | 0.004710451 |
-| 2026-04-25T23:59:48Z | 8049151 | 0.004700618 |
-| 2026-04-26T23:59:48Z | 8056274 | 0.004699555 |
-| 2026-04-27T23:59:48.001Z | 8063454 | 0.004675381 |
-| 2026-04-28T23:59:48Z | 8070646 | 0.00470749 |
-| 2026-04-29T23:59:48Z | 8077790 | 0.004690174 |
-| 2026-04-30T23:59:48Z | 8084984 | 0.004686294 |
-| 2026-05-01T23:59:48Z | 8092168 | 0.00467959 |
-| 2026-05-02T23:59:48Z | 8099357 | 0.004695183 |
-| 2026-05-03T16:10:00Z | 8104202 | 0.004686429 |
+*TAOStats fetch failed:* `IncompleteRead(85279 bytes read, 10749 more expected)`
 
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

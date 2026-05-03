@@ -8,13 +8,13 @@ Halftime is a Bittensor subnet for decentralized multimodal intelligence project
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `159`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,345.931016426. **Alpha liquidity in pool (`alpha_in`)** = ‎254,308.689394338ז‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎882,143.616728173ז‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005292469`** *(also **moving-average price** `0.005303943995386362` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎15,154.599959899ז‎`. **Owner hotkey / coldkey (chain):** `5CDZ527X1CiStK1ViGkbC4EjVoouwiGW4ijRKRFfrLpQfftn` / `5H3mfhC8DS853nezGzh73rRnrFqPaPXtaCR8jDtgkSCHrfvb`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `221`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,346.050385130. **Alpha liquidity in pool (`alpha_in`)** = ‎254,348.133934116ז‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎882,193.354065379ז‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005292119`** *(also **moving-average price** `0.005303744226694107` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎15,154.685063755ז‎`. **Owner hotkey / coldkey (chain):** `5CDZ527X1CiStK1ViGkbC4EjVoouwiGW4ijRKRFfrLpQfftn` / `5H3mfhC8DS853nezGzh73rRnrFqPaPXtaCR8jDtgkSCHrfvb`.
 - **Subnet registered at block:** `7173591` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎100.822314180ז‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.002646234` · α-out `‎1.000000000ז‎` · α-in `‎0.500000000ז‎`.
+- **Pending emissions cues:** pending α emission `‎140.137354367ז‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002646073` · α-out `‎1.000000000ז‎` · α-in `‎0.500000000ז‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -48,9 +48,6 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 ### On-chain declared purpose *(SubnetIdentity)*
 
 Halftime is a Bittensor subnet for decentralized multimodal intelligence project, focused on context-aware analysis for media and advertising. Planned go-live Q2 2026.
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -117,12 +114,12 @@ Halftime is a Bittensor subnet for decentralized multimodal intelligence project
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103976 | 0.005292308 |
-| 8104024 | 0.005292361 |
-| 8104072 | 0.005292384 |
-| 8104120 | 0.005292385 |
-| 8104168 | 0.005292412 |
-| 8104216 | 0.005292469 |
+| 8104037 | 0.005292346 |
+| 8104085 | 0.005292403 |
+| 8104133 | 0.005292391 |
+| 8104181 | 0.005292433 |
+| 8104229 | 0.005292243 |
+| 8104277 | 0.005292119 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -131,5 +128,5 @@ Halftime is a Bittensor subnet for decentralized multimodal intelligence project
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

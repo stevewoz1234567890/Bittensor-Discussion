@@ -8,13 +8,13 @@ This project is a decentralized Large Language Model (LLM) inference subnet buil
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `220`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,819.559528732. **Alpha liquidity in pool (`alpha_in`)** = ‎341,678.516446451ᚂ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎951,797.201466336ᚂ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005324986`** *(also **moving-average price** `0.005046713165938854` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎22,593.876467128ᚂ‎`. **Owner hotkey / coldkey (chain):** `5GCR7hqR4JjBNrApho6NJkeD6wy5zHvvWU3RpxkGamjzPTDf` / `5Ck9Wu6bQ923pPgb7KWfszAWo6uraNryxw88JLfmRx7xUBTT`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `282`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,819.744418699. **Alpha liquidity in pool (`alpha_in`)** = ‎341,705.795383375ᚂ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎951,847.796890014ᚂ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005325097`** *(also **moving-average price** `0.005050938343629241` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎22,594.017740560ᚂ‎`. **Owner hotkey / coldkey (chain):** `5GCR7hqR4JjBNrApho6NJkeD6wy5zHvvWU3RpxkGamjzPTDf` / `5Ck9Wu6bQ923pPgb7KWfszAWo6uraNryxw88JLfmRx7xUBTT`.
 - **Subnet registered at block:** `7013758` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎142.374343713ᚂ‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.002662487` · α-out `‎1.000000000ᚂ‎` · α-in `‎0.500000000ᚂ‎`.
+- **Pending emissions cues:** pending α emission `‎182.498646244ᚂ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002662555` · α-out `‎1.000000000ᚂ‎` · α-in `‎0.500000000ᚂ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -56,9 +56,6 @@ This project is a decentralized Large Language Model (LLM) inference subnet buil
 ### Supplementary site crawl *(marketing HTML)*
 
 **Fetched document title:** Tensorclaw Network | Subnet 92
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -158,11 +155,11 @@ This project is a decentralized Large Language Model (LLM) inference subnet buil
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.005345313 |
-| 8104072 | 0.005312402 |
-| 8104120 | 0.005324369 |
-| 8104168 | 0.005324667 |
-| 8104216 | 0.005324986 |
+| 8104085 | 0.00531249 |
+| 8104133 | 0.005324448 |
+| 8104181 | 0.005324757 |
+| 8104229 | 0.005324905 |
+| 8104277 | 0.005325097 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -230,5 +227,5 @@ This project is a decentralized Large Language Model (LLM) inference subnet buil
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

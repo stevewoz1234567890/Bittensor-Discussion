@@ -8,13 +8,13 @@ Structured OTC deals for subnet tokens.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `148`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ8,503.331832987. **Alpha liquidity in pool (`alpha_in`)** = ‎2,085,842.605662775υ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,826,775.936582711υ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004078639`** *(also **moving-average price** `0.004111216636374593` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎255,147.477484298υ‎`. **Owner hotkey / coldkey (chain):** `5EALa14jRfwHf69ZbNyFLxsPrZgZ47T2qhYxGjXxRM1qriNk` / `5FuzgvtfbZWdKSRxyYVPAPYNaNnf9cMnpT7phL3s2T3Kkrzo`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `210`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ8,503.344052195. **Alpha liquidity in pool (`alpha_in`)** = ‎2,085,853.882019267υ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,826,833.796358096υ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004078623`** *(also **moving-average price** `0.004110634792596102` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎255,147.494370701υ‎`. **Owner hotkey / coldkey (chain):** `5EALa14jRfwHf69ZbNyFLxsPrZgZ47T2qhYxGjXxRM1qriNk` / `5FuzgvtfbZWdKSRxyYVPAPYNaNnf9cMnpT7phL3s2T3Kkrzo`.
 - **Subnet registered at block:** `1970929` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎111.591513158υ‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.000470014` · α-out `‎1.000000000υ‎` · α-in `‎0.115238068υ‎`.
+- **Pending emissions cues:** pending α emission `‎158.339286876υ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000468356` · α-out `‎1.000000000υ‎` · α-in `‎0.114832098υ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -65,9 +65,6 @@ The Capital Layer for Bittensor
 **Landing meta / crawler:** Structured OTC deals for the subnet economy. Raise capital, allocate funds, and earn rewards.
 
 **Fetched document title:** GroundLayer — The Capital Layer for Bittensor
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -137,12 +134,12 @@ The Capital Layer for Bittensor
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103976 | 0.004078653 |
-| 8104024 | 0.004078651 |
-| 8104072 | 0.004078648 |
-| 8104120 | 0.004078644 |
-| 8104168 | 0.004078641 |
-| 8104216 | 0.004078639 |
+| 8104037 | 0.00407865 |
+| 8104085 | 0.004078648 |
+| 8104133 | 0.004078643 |
+| 8104181 | 0.004078641 |
+| 8104229 | 0.004078631 |
+| 8104277 | 0.004078623 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -151,5 +148,5 @@ The Capital Layer for Bittensor
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

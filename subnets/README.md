@@ -1,12 +1,12 @@
 # Subnet pages (one file per NetUID)
 
-Generated from `finney` at block **8104216** (2026-05-03 16:12 UTC).
+Generated from `finney` at block **8104277** (2026-05-03 16:25 UTC).
 
 Each page pulls **`DynamicInfo`**, **`SubnetInfo`**, **`SubnetHyperparameters`**, `SubnetIdentity`, GitHub README (preface + hardware scrape where applicable), on-chain α **price probes**. With **`TAOSTATS_API_KEY`** (repo `.env` or env): bulk **subnet/pool snapshots** plus optional **daily pool history**.
 
 ### Conventions (read once)
 
-- **Operational parameters** = consensus registration economics, caps, tempo, weight-commit settings. Hardware notes in **Miner / validator hardware** are repo scrapes, not consensus fields.
+- **`SubnetInfo` / `SubnetHyperparameters` blocks:** on-chain registration limits, tempo, burns, weight rules. **Miner / validator hardware:** repo scrape, not consensus.
 
 **α price — short window:** row spacing follows `--chain-price-step` / `--chain-price-max-offset` (bounded by RPC retention).
 

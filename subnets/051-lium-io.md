@@ -8,13 +8,13 @@ revolutionizing the democratization of compute
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `179`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ125,553.613955565. **Alpha liquidity in pool (`alpha_in`)** = ‎1,960,751.266053382ת‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,926,766.538406085ת‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.064031185`** *(also **moving-average price** `0.06366371409967542` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎1,581,848.758276075ת‎`. **Owner hotkey / coldkey (chain):** `5FTVrwEpjvpNeKwczFtYjs62GHKKLHLCdqCThtj2unZouKg1` / `5FqACMtcegZxxopgu1g7TgyrnyD8skurr9QDPLPhxNQzsThe`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `241`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ125,547.747001302. **Alpha liquidity in pool (`alpha_in`)** = ‎1,960,904.896755307ת‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,926,637.532345324ת‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.064023114`** *(also **moving-average price** `0.06366990529932082` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,581,867.859435499ת‎`. **Owner hotkey / coldkey (chain):** `5FTVrwEpjvpNeKwczFtYjs62GHKKLHLCdqCThtj2unZouKg1` / `5FqACMtcegZxxopgu1g7TgyrnyD8skurr9QDPLPhxNQzsThe`.
 - **Subnet registered at block:** `3966206` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎134.914678908ת‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.032015522` · α-out `‎1.000000000ת‎` · α-in `‎0.500000000ת‎`.
+- **Pending emissions cues:** pending α emission `‎181.644817283ת‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.032011529` · α-out `‎1.000000000ת‎` · α-in `‎0.500000000ת‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -64,9 +64,6 @@ Welcome to **Lium.io powered by Bittensor Subnet 51**! This project enables a de
 **Landing meta / crawler:** Contribute to Datura-ai/lium-io development by creating an account on GitHub.
 
 **Fetched document title:** GitHub - Datura-ai/lium-io · GitHub
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -171,11 +168,11 @@ revolutionizing the democratization of compute
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.063980175 |
-| 8104072 | 0.063997065 |
-| 8104120 | 0.06401239 |
-| 8104168 | 0.06402012 |
-| 8104216 | 0.064031185 |
+| 8104085 | 0.064010359 |
+| 8104133 | 0.064013316 |
+| 8104181 | 0.064027671 |
+| 8104229 | 0.064031985 |
+| 8104277 | 0.064023114 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -243,5 +240,5 @@ revolutionizing the democratization of compute
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

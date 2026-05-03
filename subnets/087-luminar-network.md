@@ -6,13 +6,13 @@
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `215`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,187.580813536. **Alpha liquidity in pool (`alpha_in`)** = ‎230,878.709850886Ы‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎852,684.530250103Ы‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005144822`** *(also **moving-average price** `0.004713969537988305` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎17,277.874386037Ы‎`. **Owner hotkey / coldkey (chain):** `5Do9743TzawQr4TKapjkxEnvNeaZC6Ldk1GephdJai7cQsN5` / `5GquyFXCVX4dAB1GFNSfZemYZm43H8KWa1BSTjV9UKeSYt2x`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `277`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,198.816128289. **Alpha liquidity in pool (`alpha_in`)** = ‎228,777.055224605Ы‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎854,869.795543452Ы‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005241099`** *(also **moving-average price** `0.004721102770417929` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎17,289.092030791Ы‎`. **Owner hotkey / coldkey (chain):** `5Do9743TzawQr4TKapjkxEnvNeaZC6Ldk1GephdJai7cQsN5` / `5GquyFXCVX4dAB1GFNSfZemYZm43H8KWa1BSTjV9UKeSYt2x`.
 - **Subnet registered at block:** `7208725` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎135.288173500Ы‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.002572407` · α-out `‎1.000000000Ы‎` · α-in `‎0.500000000Ы‎`.
+- **Pending emissions cues:** pending α emission `‎174.302371704Ы‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002620564` · α-out `‎1.000000000Ы‎` · α-in `‎0.500000000Ы‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -56,9 +56,6 @@ Video Surveillance Agents
 **Landing meta / crawler:** Intelligent Video Infrastructure Built with AI Systems
 
 **Fetched document title:** Luminar Network | Intelligent Video Infrastructure
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -127,11 +124,11 @@ Video Surveillance Agents
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.005138672 |
-| 8104072 | 0.005138865 |
-| 8104120 | 0.005139037 |
-| 8104168 | 0.005144575 |
-| 8104216 | 0.005144822 |
+| 8104085 | 0.005138935 |
+| 8104133 | 0.005139101 |
+| 8104181 | 0.005144652 |
+| 8104229 | 0.0051446 |
+| 8104277 | 0.005241099 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -140,5 +137,5 @@ Video Surveillance Agents
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

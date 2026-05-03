@@ -8,12 +8,12 @@ The Decentralized Creators Economy
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `221`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ20,145.101552536. **Alpha liquidity in pool (`alpha_in`)** = ‎1,325,619.829291534ᚃ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,720,316.213421645ᚃ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.015196794`** *(also **moving-average price** `0.014806873397901654` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎810,537.787292101ᚃ‎`. **Owner hotkey / coldkey (chain):** `5DAoDtMxVqtMu2Nd5E7QhPEGXDMgrySvE1b3rRT5ARDhfNNK` / `5FLfN276taTF6Ud62soChQhPNbtF2EPK4dr3pJB9oTsTpUvr`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `283`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ20,145.028048495. **Alpha liquidity in pool (`alpha_in`)** = ‎1,325,624.666124129ᚃ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,720,373.376589050ᚃ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.015196685`** *(also **moving-average price** `0.01481353654526174` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎810,537.860796142ᚃ‎`. **Owner hotkey / coldkey (chain):** `5DAoDtMxVqtMu2Nd5E7QhPEGXDMgrySvE1b3rRT5ARDhfNNK` / `5FLfN276taTF6Ud62soChQhPNbtF2EPK4dr3pJB9oTsTpUvr`.
 - **Subnet registered at block:** `5370681` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎164.098843557ᚃ‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎210.135618308ᚃ‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ᚃ‎` · α-in `‎0.000000000ᚃ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -66,9 +66,6 @@ Bitcast is a decentralized platform that incentivizes content creators to connec
 ### Supplementary site crawl *(marketing HTML)*
 
 **Fetched document title:** bitcast
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -185,11 +182,11 @@ The Decentralized Creators Economy
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.015201989 |
-| 8104072 | 0.015190096 |
-| 8104120 | 0.015160214 |
-| 8104168 | 0.015174541 |
-| 8104216 | 0.015196794 |
+| 8104085 | 0.01515994 |
+| 8104133 | 0.015160208 |
+| 8104181 | 0.015174454 |
+| 8104229 | 0.015196739 |
+| 8104277 | 0.015196685 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -257,5 +254,5 @@ The Decentralized Creators Economy
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

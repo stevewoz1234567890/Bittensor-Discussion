@@ -8,13 +8,13 @@ Bittensor subnet built to crush the long-context barrier.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `152`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ16,078.026481599. **Alpha liquidity in pool (`alpha_in`)** = ‎1,088,005.987752441ω‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,802,931.231559627ω‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.014641783`** *(also **moving-average price** `0.014582769013941288` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎1,066,166.684866813ω‎`. **Owner hotkey / coldkey (chain):** `5GE25P2qGpGmjzGipqezZckMvyR2mpcsJS387bbcpitNSfm5` / `5EjSHN7ZH4y21tgf8ACe5WtRQYvoWdLS6xsYvBktEycbmKYi`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `214`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ16,029.824030232. **Alpha liquidity in pool (`alpha_in`)** = ‎1,091,342.632315822ω‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,799,673.908790764ω‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.014554123`** *(also **moving-average price** `0.014582769945263863` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,066,242.042835127ω‎`. **Owner hotkey / coldkey (chain):** `5GE25P2qGpGmjzGipqezZckMvyR2mpcsJS387bbcpitNSfm5` / `5EjSHN7ZH4y21tgf8ACe5WtRQYvoWdLS6xsYvBktEycbmKYi`.
 - **Subnet registered at block:** `2538424` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎114.570187218ω‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.004408906` · α-out `‎1.000000000ω‎` · α-in `‎0.301118083ω‎`.
+- **Pending emissions cues:** pending α emission `‎161.302754530ω‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.003898955` · α-out `‎1.000000000ω‎` · α-in `‎0.267893397ω‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -73,9 +73,6 @@ weights to the current king.
 **Landing meta / crawler:** Building the next generation of long-context foundation models. Open weights, novel architectures, real benchmarks.
 
 **Fetched document title:** SILX AI
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -244,12 +241,12 @@ Bittensor subnet built to crush the long-context barrier.
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103976 | 0.014802216 |
-| 8104024 | 0.014549214 |
-| 8104072 | 0.014469004 |
-| 8104120 | 0.014640507 |
-| 8104168 | 0.014641801 |
-| 8104216 | 0.014641783 |
+| 8104037 | 0.014543948 |
+| 8104085 | 0.014613382 |
+| 8104133 | 0.0146405 |
+| 8104181 | 0.014641797 |
+| 8104229 | 0.01464172 |
+| 8104277 | 0.014554123 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -258,5 +255,5 @@ Bittensor subnet built to crush the long-context barrier.
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

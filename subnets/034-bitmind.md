@@ -6,12 +6,12 @@
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `162`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ36,243.535230933. **Alpha liquidity in pool (`alpha_in`)** = ‎2,646,060.149877818י‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,051,747.910296441י‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.013696064`** *(also **moving-average price** `0.013715578941628337` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎596,388.762163037י‎`. **Owner hotkey / coldkey (chain):** `5HjBSeeoz52CLfvDWDkzupqrYLHz1oToDPHjdmJjc4TF68LQ` / `5DthmKBR83sUdudSfgFnsxBkTYtYTFLJUgovNfb1TSKVLiTH`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `224`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ36,243.472303073. **Alpha liquidity in pool (`alpha_in`)** = ‎2,646,064.744483049י‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,051,805.315691210י‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.013696017`** *(also **moving-average price** `0.01371523248963058` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎596,388.825090897י‎`. **Owner hotkey / coldkey (chain):** `5HjBSeeoz52CLfvDWDkzupqrYLHz1oToDPHjdmJjc4TF68LQ` / `5DthmKBR83sUdudSfgFnsxBkTYtYTFLJUgovNfb1TSKVLiTH`.
 - **Subnet registered at block:** `3493948` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎121.740243941י‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎168.332158037י‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000י‎` · α-in `‎0.000000000י‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -71,9 +71,6 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 **Landing meta / crawler:** Contribute to BitMind-AI/bitmind-subnet development by creating an account on GitHub.
 
 **Fetched document title:** GitHub - BitMind-AI/bitmind-subnet · GitHub
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -249,11 +246,11 @@ Validators are responsible for challenging and scoring both miner types. Generat
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.013706484 |
-| 8104072 | 0.013706475 |
-| 8104120 | 0.01370644 |
-| 8104168 | 0.013706431 |
-| 8104216 | 0.013696064 |
+| 8104085 | 0.013706451 |
+| 8104133 | 0.013706437 |
+| 8104181 | 0.01370643 |
+| 8104229 | 0.01369604 |
+| 8104277 | 0.013696017 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -262,5 +259,5 @@ Validators are responsible for challenging and scoring both miner types. Generat
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

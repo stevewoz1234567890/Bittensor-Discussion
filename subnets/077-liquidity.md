@@ -8,12 +8,12 @@ Supply liquidity on external chains via uniswap, incentivize any project
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `205`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ9,694.545461050. **Alpha liquidity in pool (`alpha_in`)** = ‎2,326,346.099361032ه‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,157,164.874242164ه‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004168789`** *(also **moving-average price** `0.0041702608577907085` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎299,116.666306140ه‎`. **Owner hotkey / coldkey (chain):** `5DqALXRZumwGDyaJWRJ2fMzBqPxEuoqWypnexcwuYMDdohsE` / `5GxxsUeYRyJSJKCuPeG1jZZiCummHJttmTNsfgDRSfxVnhGi`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `267`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ9,694.526550210. **Alpha liquidity in pool (`alpha_in`)** = ‎2,326,350.635673789ه‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,157,222.337929407ه‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004168772`** *(also **moving-average price** `0.004170217551290989` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎299,116.685216980ه‎`. **Owner hotkey / coldkey (chain):** `5DqALXRZumwGDyaJWRJ2fMzBqPxEuoqWypnexcwuYMDdohsE` / `5GxxsUeYRyJSJKCuPeG1jZZiCummHJttmTNsfgDRSfxVnhGi`.
 - **Subnet registered at block:** `5128460` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎153.499226791ه‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎199.923360518ه‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ه‎` · α-in `‎0.000000000ه‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -60,9 +60,6 @@ This project manages a liquidity mining system for the Bittensor ecosystem, wher
 **Landing meta / crawler:** Incentivizing $299,973.26 worth of liquidity on chain via Bittensor
 
 **Fetched document title:** SN77 - Liquidity
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -242,11 +239,11 @@ Supply liquidity on external chains via uniswap, incentivize any project
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.004168801 |
-| 8104072 | 0.004168798 |
-| 8104120 | 0.004168794 |
-| 8104168 | 0.004168791 |
-| 8104216 | 0.004168788 |
+| 8104085 | 0.004168798 |
+| 8104133 | 0.004168793 |
+| 8104181 | 0.00416879 |
+| 8104229 | 0.00416878 |
+| 8104277 | 0.004168772 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -314,5 +311,5 @@ Supply liquidity on external chains via uniswap, incentivize any project
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

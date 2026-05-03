@@ -8,12 +8,12 @@ Intent-driven AI for modern sales teams.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `199`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ5,734.939596086. **Alpha liquidity in pool (`alpha_in`)** = ‎1,026,323.120352335ف‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,683,986.355534556ف‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005532996`** *(also **moving-average price** `0.006131076952442527` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎1,090,575.010132299ف‎`. **Owner hotkey / coldkey (chain):** `5FNVgRnrxMibhcBGEAaajGrYjsaCn441a5HuGUBUNnxEBLo9` / `5DwHzMhBXPGPSSxnPzp3J8Y12UyYmU17nppQ8oHum6yrRjSk`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `261`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ5,802.406087380. **Alpha liquidity in pool (`alpha_in`)** = ‎1,014,331.050699237ف‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,696,040.425187654ف‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005689508`** *(also **moving-average price** `0.00612194649875164` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,090,847.636494036ف‎`. **Owner hotkey / coldkey (chain):** `5FNVgRnrxMibhcBGEAaajGrYjsaCn441a5HuGUBUNnxEBLo9` / `5DwHzMhBXPGPSSxnPzp3J8Y12UyYmU17nppQ8oHum6yrRjSk`.
 - **Subnet registered at block:** `5048438` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎149.575262455ف‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎196.176571646ف‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ف‎` · α-in `‎0.000000000ف‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -54,9 +54,6 @@ Intent-driven AI for modern sales teams.
 # Leadpoet | AI Sales Agents Powered by Bittensor
 
 Leadpoet is Subnet 71, the decentralized AI sales agent subnet built on Bittensor. Leadpoet's vision is streamlining the top of sales funnel, starting with high-quality lead generation today and evolving into a fully automated sales engine where meetings with your ideal customers seamlessly appear on your calendar.
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -296,11 +293,11 @@ Intent-driven AI for modern sales teams.
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.005766956 |
-| 8104072 | 0.005772638 |
-| 8104120 | 0.005761178 |
-| 8104168 | 0.005677373 |
-| 8104216 | 0.005532996 |
+| 8104085 | 0.005772637 |
+| 8104133 | 0.005700686 |
+| 8104181 | 0.005745138 |
+| 8104229 | 0.005550419 |
+| 8104277 | 0.005689508 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -309,5 +306,5 @@ Intent-driven AI for modern sales teams.
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

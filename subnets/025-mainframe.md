@@ -8,12 +8,12 @@ Powering decentralized science on Bittensor
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `153`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,901.769443110. **Alpha liquidity in pool (`alpha_in`)** = ‎2,344,983.412465104א‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,617,465.083674610א‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004649537`** *(also **moving-average price** `0.004660719074308872` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎404,079.377470174א‎`. **Owner hotkey / coldkey (chain):** `5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D` / `5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `215`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,901.750240956. **Alpha liquidity in pool (`alpha_in`)** = ‎2,344,987.542387744א‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,617,522.953751970א‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004649521`** *(also **moving-average price** `0.004660516977310181` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎404,079.396672328א‎`. **Owner hotkey / coldkey (chain):** `5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D` / `5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D`.
 - **Subnet registered at block:** `2998801` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎115.446736542א‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎162.229041897א‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000א‎` · α-in `‎0.000000000א‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -109,9 +109,6 @@ Mainframe attempts to tackle this very important challenge.
 **Landing meta / crawler:** Decentralizing AI, delivering fast, flexible, and efficient compute
 
 **Fetched document title:** Macrocosmos.ai
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -260,78 +257,19 @@ Powering decentralized science on Bittensor
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103976 | 0.004649552 |
-| 8104024 | 0.00464955 |
-| 8104072 | 0.004649546 |
-| 8104120 | 0.004649542 |
-| 8104168 | 0.004649539 |
-| 8104216 | 0.004649537 |
+| 8104037 | 0.004649548 |
+| 8104085 | 0.004649546 |
+| 8104133 | 0.004649542 |
+| 8104181 | 0.004649539 |
+| 8104229 | 0.004649529 |
+| 8104277 | 0.004649521 |
 
 ### Extended history — TAOStats pool price (daily)
 
-[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
-
-| Timestamp (UTC) | Block | Pool price |
-|-----------------|------:|-----------:|
-| 2026-03-09T23:59:48Z | 7711060 | 0.00572984 |
-| 2026-03-10T23:59:48Z | 7718257 | 0.00556628 |
-| 2026-03-11T23:59:48Z | 7725455 | 0.005553626 |
-| 2026-03-12T23:59:48.001Z | 7732653 | 0.005596661 |
-| 2026-03-13T23:59:48Z | 7739841 | 0.005265075 |
-| 2026-03-14T23:59:48.001Z | 7747036 | 0.005285914 |
-| 2026-03-15T23:59:48Z | 7754226 | 0.005135098 |
-| 2026-03-16T23:59:48Z | 7761426 | 0.005093337 |
-| 2026-03-17T23:59:48Z | 7768619 | 0.004909771 |
-| 2026-03-18T23:59:48Z | 7775819 | 0.005111273 |
-| 2026-03-19T23:59:48Z | 7783014 | 0.00504636825097816742 |
-| 2026-03-20T23:59:48Z | 7790201 | 0.005020874 |
-| 2026-03-21T23:59:48Z | 7797398 | 0.004955577 |
-| 2026-03-22T23:59:48Z | 7804598 | 0.004972931 |
-| 2026-03-23T23:59:48Z | 7811798 | 0.004992892 |
-| 2026-03-24T23:59:48.001Z | 7818996 | 0.00516771600140668403 |
-| 2026-03-25T23:59:48Z | 7826196 | 0.005177074 |
-| 2026-03-26T23:59:48Z | 7833396 | 0.00487797 |
-| 2026-03-27T23:59:48Z | 7840596 | 0.004715387 |
-| 2026-03-28T23:59:48.001Z | 7847743 | 0.004701788 |
-| 2026-03-29T23:59:48Z | 7854902 | 0.004720373 |
-| 2026-03-30T23:59:48.001Z | 7862095 | 0.004725232 |
-| 2026-03-31T23:59:48Z | 7869291 | 0.004770379 |
-| 2026-04-01T23:59:48Z | 7876474 | 0.004829654 |
-| 2026-04-02T23:59:48Z | 7883622 | 0.004842767 |
-| 2026-04-03T23:59:48Z | 7890794 | 0.004870667 |
-| 2026-04-04T23:59:48.001Z | 7897988 | 0.004966587 |
-| 2026-04-05T23:59:48Z | 7905188 | 0.005030836 |
-| 2026-04-06T23:59:48Z | 7912388 | 0.005065682 |
-| 2026-04-07T23:59:48Z | 7919588 | 0.005119279 |
-| 2026-04-08T23:59:48Z | 7926788 | 0.005096496 |
-| 2026-04-09T23:59:48Z | 7933987 | 0.004738891 |
-| 2026-04-10T23:59:48Z | 7941184 | 0.004817607 |
-| 2026-04-11T23:59:48Z | 7948384 | 0.004816521 |
-| 2026-04-12T23:59:48Z | 7955584 | 0.004778441 |
-| 2026-04-13T23:59:48Z | 7962784 | 0.004897487 |
-| 2026-04-14T23:59:48Z | 7969979 | 0.004724628 |
-| 2026-04-15T23:59:48.001Z | 7977179 | 0.004767052 |
-| 2026-04-16T23:59:48Z | 7984379 | 0.004750254 |
-| 2026-04-17T23:59:48Z | 7991579 | 0.004769579 |
-| 2026-04-18T23:59:48Z | 7998779 | 0.004790607 |
-| 2026-04-19T23:59:48Z | 8005979 | 0.004917179 |
-| 2026-04-20T23:59:48Z | 8013179 | 0.005027552 |
-| 2026-04-21T23:59:48Z | 8020376 | 0.00498748 |
-| 2026-04-22T23:59:48Z | 8027562 | 0.004872269 |
-| 2026-04-23T23:59:48Z | 8034762 | 0.004872594 |
-| 2026-04-24T23:59:48Z | 8041962 | 0.004856358 |
-| 2026-04-25T23:59:48Z | 8049151 | 0.004823309 |
-| 2026-04-26T23:59:48Z | 8056274 | 0.004759109 |
-| 2026-04-27T23:59:48.001Z | 8063454 | 0.004734224 |
-| 2026-04-28T23:59:48Z | 8070646 | 0.004635471 |
-| 2026-04-29T23:59:48Z | 8077790 | 0.004653862 |
-| 2026-04-30T23:59:48Z | 8084984 | 0.004706979 |
-| 2026-05-01T23:59:48Z | 8092168 | 0.00467523 |
-| 2026-05-02T23:59:48Z | 8099357 | 0.004682274 |
-| 2026-05-03T16:10:00Z | 8104202 | 0.004649537 |
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

@@ -6,12 +6,12 @@
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `150`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ9,424.427375381. **Alpha liquidity in pool (`alpha_in`)** = ‎1,946,997.925816086χ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,094,318.403255436χ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004840380`** *(also **moving-average price** `0.004846023628488183` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎238,935.940732947χ‎`. **Owner hotkey / coldkey (chain):** `5CUu1QhvrfyMDBELUPJLt4c7uJFbi7TKqDHkS1Zz41oD4dyP` / `5DFuaMasyQtPhXcsuoYEyJmCVSRtzKxsTKFTA4SrpcGXBxJn`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `212`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ9,424.404958400. **Alpha liquidity in pool (`alpha_in`)** = ‎1,947,002.557080652χ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,094,375.771990870χ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004840357`** *(also **moving-average price** `0.004845922579988837` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎238,935.963149928χ‎`. **Owner hotkey / coldkey (chain):** `5CUu1QhvrfyMDBELUPJLt4c7uJFbi7TKqDHkS1Zz41oD4dyP` / `5DFuaMasyQtPhXcsuoYEyJmCVSRtzKxsTKFTA4SrpcGXBxJn`.
 - **Subnet registered at block:** `2009702` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎113.312470080χ‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎160.148258487χ‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000χ‎` · α-in `‎0.000000000χ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -69,9 +69,6 @@ available at [desearch.ai](https://desearch.ai).
 **Landing meta / crawler:** AI-powered search APIs for web and Twitter/X data. Build intelligent agents with real-time search, semantic retrieval, and structured responses.
 
 **Fetched document title:** Desearch - AI Search APIs for Web and X Data
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -175,12 +172,12 @@ Decentralized search engine
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103976 | 0.004840401 |
-| 8104024 | 0.004840398 |
-| 8104072 | 0.004840393 |
-| 8104120 | 0.004840387 |
-| 8104168 | 0.004840383 |
-| 8104216 | 0.00484038 |
+| 8104037 | 0.004840395 |
+| 8104085 | 0.004840392 |
+| 8104133 | 0.004840386 |
+| 8104181 | 0.004840382 |
+| 8104229 | 0.004840368 |
+| 8104277 | 0.004840357 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -189,5 +186,5 @@ Decentralized search engine
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

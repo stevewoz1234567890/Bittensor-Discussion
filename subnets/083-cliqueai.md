@@ -8,13 +8,13 @@ CliqueAI - AI-Powered Maximum Clique Solver Network
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `211`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ5,185.009316050. **Alpha liquidity in pool (`alpha_in`)** = ‎998,938.483347191ᚦ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,742,431.179889548ᚦ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005188253`** *(also **moving-average price** `0.005219500511884689` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎103,685.031604122ᚦ‎`. **Owner hotkey / coldkey (chain):** `5EHGayLmiXfwz6oYmQFYmDz12RPXkhJw8Ty8RYVDeVZH9Q5L` / `5DqEjRLyNN8k3WbEXhA36tyGG4YpWyPEcVSTa47XxspNHhc3`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `273`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ5,185.147432825. **Alpha liquidity in pool (`alpha_in`)** = ‎998,973.862145213ᚦ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,742,485.821583279ᚦ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005188208`** *(also **moving-average price** `0.005218961974605918` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎103,685.085239005ᚦ‎`. **Owner hotkey / coldkey (chain):** `5EHGayLmiXfwz6oYmQFYmDz12RPXkhJw8Ty8RYVDeVZH9Q5L` / `5DqEjRLyNN8k3WbEXhA36tyGG4YpWyPEcVSTa47XxspNHhc3`.
 - **Subnet registered at block:** `5231190` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎150.884258746ᚦ‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.002594126` · α-out `‎1.000000000ᚦ‎` · α-in `‎0.500000000ᚦ‎`.
+- **Pending emissions cues:** pending α emission `‎195.220091715ᚦ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002594106` · α-out `‎1.000000000ᚦ‎` · α-in `‎0.500000000ᚦ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -56,9 +56,6 @@ CliqueAI - AI-Powered Maximum Clique Solver Network
 ### Supplementary site crawl *(marketing HTML)*
 
 **Fetched document title:** CliqueAI - AI-Powered Maximum Clique Solver Network
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -157,11 +154,11 @@ CliqueAI - AI-Powered Maximum Clique Solver Network
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.005200171 |
-| 8104072 | 0.005198852 |
-| 8104120 | 0.005198862 |
-| 8104168 | 0.005198876 |
-| 8104216 | 0.005188253 |
+| 8104085 | 0.005198858 |
+| 8104133 | 0.005198865 |
+| 8104181 | 0.005188244 |
+| 8104229 | 0.005188222 |
+| 8104277 | 0.005188208 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -170,5 +167,5 @@ CliqueAI - AI-Powered Maximum Clique Solver Network
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

@@ -8,12 +8,12 @@ Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, saf
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `139`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ23,536.285002524. **Alpha liquidity in pool (`alpha_in`)** = ‎2,076,205.816755946λ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,837,598.035999111λ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.011345255`** *(also **moving-average price** `0.011461847927421331` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎824,680.490830589λ‎`. **Owner hotkey / coldkey (chain):** `5ECzcM7sixWNEeD6RbpeEHW1YcYMFejwHuvDBgQxVSjGyrMS` / `5D2Jhtbnm7iAdKfjRk6DisXBnr1MEsYat8kXqaPNrVqJP3uE`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `201`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ23,536.335911346. **Alpha liquidity in pool (`alpha_in`)** = ‎2,076,201.329535452λ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,837,664.523219605λ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.011345304`** *(also **moving-average price** `0.011459824396297336` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎824,680.639871413λ‎`. **Owner hotkey / coldkey (chain):** `5ECzcM7sixWNEeD6RbpeEHW1YcYMFejwHuvDBgQxVSjGyrMS` / `5D2Jhtbnm7iAdKfjRk6DisXBnr1MEsYat8kXqaPNrVqJP3uE`.
 - **Subnet registered at block:** `2918568` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎104.807406512λ‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎151.556005988λ‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000λ‎` · α-in `‎0.000000000λ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -71,9 +71,6 @@ One install gives any agent (Claude Code, Cursor, Codex, OpenClaw, Hermes, Manus
 **Landing meta / crawler:** The open factory for AI agent skills. Open-source skills, vetted by continuous competition, that work with any agent harness. TrajectoryRL runs a 24/7 competition on Bittensor Subnet 11 to produce the best skills. The winners surface automatically and anyone can use them.
 
 **Fetched document title:** TrajectoryRL | Bittensor Subnet 11
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -190,12 +187,12 @@ Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, saf
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103976 | 0.01129859 |
-| 8104024 | 0.01132659 |
-| 8104072 | 0.011326581 |
-| 8104120 | 0.01134577 |
-| 8104168 | 0.011345761 |
-| 8104216 | 0.011345255 |
+| 8104037 | 0.011326585 |
+| 8104085 | 0.011345781 |
+| 8104133 | 0.011345768 |
+| 8104181 | 0.011346032 |
+| 8104229 | 0.011345232 |
+| 8104277 | 0.011345304 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -204,5 +201,5 @@ Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, saf
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

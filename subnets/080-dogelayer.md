@@ -8,13 +8,13 @@ Dogelayer is the world's first mining pool enabling Scrypt miners to join Bitten
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `208`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,129.146773201. **Alpha liquidity in pool (`alpha_in`)** = ‎266,777.390510579ى‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎895,927.513785182ى‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004233148`** *(also **moving-average price** `0.004035596735775471` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎19,284.368176383ى‎`. **Owner hotkey / coldkey (chain):** `5HTwtytUfeUhK4p8NRCGppjUZrhJ5ckoRHeVWEQafg2N1Zo6` / `5ERJCUPWkgEmVDFCcdwMgaBbtEqGmzZnhdqNRcf3W29JsJJs`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `270`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,129.241178574. **Alpha liquidity in pool (`alpha_in`)** = ‎266,817.088075723ى‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎895,976.149655204ى‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004232872`** *(also **moving-average price** `0.004038559272885323` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎19,284.444500136ى‎`. **Owner hotkey / coldkey (chain):** `5HTwtytUfeUhK4p8NRCGppjUZrhJ5ckoRHeVWEQafg2N1Zo6` / `5ERJCUPWkgEmVDFCcdwMgaBbtEqGmzZnhdqNRcf3W29JsJJs`.
 - **Subnet registered at block:** `7151800` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎132.375002325ى‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.002116573` · α-out `‎1.000000000ى‎` · α-in `‎0.500000000ى‎`.
+- **Pending emissions cues:** pending α emission `‎171.833748530ى‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002116450` · α-out `‎1.000000000ى‎` · α-in `‎0.500000000ى‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -72,9 +72,6 @@ more information on website: dogelayer.ai
 **Landing meta / crawler:** The world's first mining pool enabling Scrypt miners to join Bittensor subnet.
 
 **Fetched document title:** DogeLayer - Triple Mining, Triple Rewards
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -339,11 +336,11 @@ more information on website: dogelayer.ai
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.004232985 |
-| 8104072 | 0.004233014 |
-| 8104120 | 0.004233027 |
-| 8104168 | 0.004233082 |
-| 8104216 | 0.004233148 |
+| 8104085 | 0.004233035 |
+| 8104133 | 0.004233043 |
+| 8104181 | 0.004233108 |
+| 8104229 | 0.004232963 |
+| 8104277 | 0.004232872 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -411,5 +408,5 @@ more information on website: dogelayer.ai
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

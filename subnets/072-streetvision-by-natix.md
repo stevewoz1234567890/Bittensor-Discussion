@@ -8,12 +8,12 @@ Powered by NATIX’s Internet of Cameras, StreetVision is advancing autonomous d
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `200`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ7,765.440806709. **Alpha liquidity in pool (`alpha_in`)** = ‎2,316,139.487915074ق‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,103,097.084731022ق‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.003353437`** *(also **moving-average price** `0.0033649515826255083` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎194,580.522543499ق‎`. **Owner hotkey / coldkey (chain):** `5Fmvr2VJs9EpyR5NbNpLTKgEXS8fRnQA6F349xqswsz6VL88` / `5HTYVBxrF2WbVN8RBtFxAkBGuHJxjgLd9Sze5gxH4KC6GLCv`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `262`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ7,765.510706961. **Alpha liquidity in pool (`alpha_in`)** = ‎2,316,118.643760597ق‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,103,154.518686438ق‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.003353498`** *(also **moving-average price** `0.00336473505012691` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎194,580.623111073ق‎`. **Owner hotkey / coldkey (chain):** `5Fmvr2VJs9EpyR5NbNpLTKgEXS8fRnQA6F349xqswsz6VL88` / `5HTYVBxrF2WbVN8RBtFxAkBGuHJxjgLd9Sze5gxH4KC6GLCv`.
 - **Subnet registered at block:** `5064327` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎149.584602460ق‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎195.955780391ق‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ق‎` · α-in `‎0.000000000ق‎`.
 
 ### TAOStats snapshot *(off-chain index)*
@@ -88,9 +88,6 @@ This network is a decentralized subnet designed to inference images to extract i
 
 **Fetched document title:** NATIX Network | Smartphone DePIN with IoT, Web3 & AI
 
-## Operational parameters — registration, limits, economics (chain)
-
-
 ### Topology & economics (`SubnetInfo` snapshot)
 
 - **`max_n` (max registered UIDs):** 256
@@ -104,7 +101,7 @@ This network is a decentralized subnet designed to inference images to extract i
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 21600
-- **Registration recycle cost snapshot (`burn`):** τ0.086246001
+- **Registration recycle cost snapshot (`burn`):** τ0.096627672
 - **Owner SS58 (`owner_ss58`):** `5HTYVBxrF2WbVN8RBtFxAkBGuHJxjgLd9Sze5gxH4KC6GLCv`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -163,11 +160,11 @@ Powered by NATIX’s Internet of Cameras, StreetVision is advancing autonomous d
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.003340432 |
-| 8104072 | 0.003349052 |
-| 8104120 | 0.003349126 |
-| 8104168 | 0.003353439 |
-| 8104216 | 0.003353437 |
+| 8104085 | 0.003349129 |
+| 8104133 | 0.003349125 |
+| 8104181 | 0.003353438 |
+| 8104229 | 0.003353504 |
+| 8104277 | 0.003353497 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -176,5 +173,5 @@ Powered by NATIX’s Internet of Cameras, StreetVision is advancing autonomous d
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

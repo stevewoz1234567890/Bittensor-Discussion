@@ -6,13 +6,13 @@
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `245`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104216)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ3,116.502763464. **Alpha liquidity in pool (`alpha_in`)** = ‎749,023.438072246Ⲁ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,263,265.401694636Ⲁ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004160516`** *(also **moving-average price** `0.004073479911312461` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎96,868.753276175Ⲁ‎`. **Owner hotkey / coldkey (chain):** `5CyXUidjedyVBR2UsuafJ128DMhWsxzaAxB1Zi7Uyf7jjKVG` / `5D9j5tWvXahPCbHnkhNAhB6Dg4cgGFuDiz4KNHBBxPRTSAYX`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `307`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ3,110.418336419. **Alpha liquidity in pool (`alpha_in`)** = ‎750,550.732477299Ⲁ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,261,819.253428423Ⲁ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004144017`** *(also **moving-average price** `0.004074668977409601` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎96,875.064610944Ⲁ‎`. **Owner hotkey / coldkey (chain):** `5CyXUidjedyVBR2UsuafJ128DMhWsxzaAxB1Zi7Uyf7jjKVG` / `5D9j5tWvXahPCbHnkhNAhB6Dg4cgGFuDiz4KNHBBxPRTSAYX`.
 - **Subnet registered at block:** `5710859` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎168.855000496Ⲁ‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.002080256` · α-out `‎1.000000000Ⲁ‎` · α-in `‎0.500000000Ⲁ‎`.
+- **Pending emissions cues:** pending α emission `‎211.585998394Ⲁ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002072007` · α-out `‎1.000000000Ⲁ‎` · α-in `‎0.500000000Ⲁ‎`.
 
 ### TAOStats snapshot *(off-chain index)*
 
@@ -65,9 +65,6 @@ Made by Const <3
 **Landing meta / crawler:** Vibe-codable Bittensor Subnet Template. Contribute to helionlink/Chi development by creating an account on GitHub.
 
 **Fetched document title:** GitHub - helionlink/Chi: Vibe-codable Bittensor Subnet Template · GitHub
-
-## Operational parameters — registration, limits, economics (chain)
-
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -142,11 +139,11 @@ Made by Const <3
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104024 | 0.004136582 |
-| 8104072 | 0.004141955 |
-| 8104120 | 0.004160343 |
-| 8104168 | 0.004160427 |
-| 8104216 | 0.004160516 |
+| 8104085 | 0.00414198 |
+| 8104133 | 0.004160366 |
+| 8104181 | 0.004160454 |
+| 8104229 | 0.00414398 |
+| 8104277 | 0.004144017 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -214,5 +211,5 @@ Made by Const <3
 
 ---
 
-*Subtensor `finney`, block **8104216**, 2026-05-03 16:12 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 
