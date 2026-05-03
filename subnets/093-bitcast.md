@@ -2,29 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Bitcast** (NetUID **93**) (`ᚃ`).
 
 The Decentralized Creators Economy
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `283`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ20,145.028048495. **Alpha liquidity in pool (`alpha_in`)** = ‎1,325,624.666124129ᚃ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,720,373.376589050ᚃ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.015196685`** *(also **moving-average price** `0.01481353654526174` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎810,537.860796142ᚃ‎`. **Owner hotkey / coldkey (chain):** `5DAoDtMxVqtMu2Nd5E7QhPEGXDMgrySvE1b3rRT5ARDhfNNK` / `5FLfN276taTF6Ud62soChQhPNbtF2EPK4dr3pJB9oTsTpUvr`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `80`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ20,144.468865562. **Alpha liquidity in pool (`alpha_in`)** = ‎1,325,661.463521005ᚃ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,720,494.579192174ᚃ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.015195847`** *(also **moving-average price** `0.014830001397058368` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎810,538.458198690ᚃ‎`. **Owner hotkey / coldkey (chain):** `5DAoDtMxVqtMu2Nd5E7QhPEGXDMgrySvE1b3rRT5ARDhfNNK` / `5FLfN276taTF6Ud62soChQhPNbtF2EPK4dr3pJB9oTsTpUvr`.
 - **Subnet registered at block:** `5370681` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎210.135618308ᚃ‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎59.402730611ᚃ‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ᚃ‎` · α-in `‎0.000000000ᚃ‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104355`
+- **Liquidity constant `k`:** `26704746078174240238508129810`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Bitcast`
+- **Symbol (API):** `ᚃ`
+- **Rank:** `22`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.015196797`
 - **Market cap:** `49084607871830.900218311`
+- **Market cap Δ 1d:** `6.728626147190394987`
 - **Liquidity:** `40290276997444`
 - **Total τ:** `20145102500971`
 - **Total α:** `4045923042713179`
@@ -34,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `6.58027122821639738`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `93`
+- **Owner SS58 (API):** `5FLfN276taTF6Ud62soChQhPNbtF2EPK4dr3pJB9oTsTpUvr`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `5370681`
+- **Registration wall time:** `2025-04-17T10:49:48Z`
+- **Registration cost snapshot:** `290836604849`
 - **Active keys:** `256`
 - **Active validators:** `9`
 - **Active miners:** `7`
-- **Active dual:** `1`
+- **Active dual-role:** `1`
 - **Emission:** `0`
 - **Max neurons:** `256`
-- **Validators (metadata):** `9`
+- **Validator slots (metadata):** `9`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `5000000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-The Decentralized Creators Economy
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -157,17 +176,10 @@ Bitcast employs a dynamic, multi-layered scoring and rewards mechanism to fairly
 
 *Primary README URL used: `https://raw.githubusercontent.com/bitcast-network/bitcast/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-The Decentralized Creators Economy
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://www.bitcast.network/](https://www.bitcast.network/)
@@ -182,11 +194,11 @@ The Decentralized Creators Economy
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.01515994 |
-| 8104133 | 0.015160208 |
-| 8104181 | 0.015174454 |
-| 8104229 | 0.015196739 |
-| 8104277 | 0.015196685 |
+| 8104244 | 0.015196724 |
+| 8104292 | 0.015196677 |
+| 8104340 | 0.015196596 |
+| 8104388 | 0.015196591 |
+| 8104436 | 0.015195847 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -254,5 +266,5 @@ The Decentralized Creators Economy
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

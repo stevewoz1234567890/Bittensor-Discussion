@@ -2,27 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Djinn** (NetUID **103**) (`Ա`).
+
+Information X Execution
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `293`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ5,420.996353690. **Alpha liquidity in pool (`alpha_in`)** = ‎849,126.595870016Ա‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,441,659.334755824Ա‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005573142`** *(also **moving-average price** `0.0055637245532125235` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎391,922.316214687Ա‎`. **Owner hotkey / coldkey (chain):** `5FqBe8tHboYWtNxJaBjz95a94GfHPcPkR9kStsMirSJwanaN` / `5E6wTZZipkTmm6mci5jZp1FwXoUSGgG8CemFeC3DsV2nUGiM`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `90`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ5,426.390890419. **Alpha liquidity in pool (`alpha_in`)** = ‎848,172.557576755Ա‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,442,777.559971806Ա‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005583732`** *(also **moving-average price** `0.005564115708693862` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎391,944.471675651Ա‎`. **Owner hotkey / coldkey (chain):** `5FqBe8tHboYWtNxJaBjz95a94GfHPcPkR9kStsMirSJwanaN` / `5E6wTZZipkTmm6mci5jZp1FwXoUSGgG8CemFeC3DsV2nUGiM`.
 - **Subnet registered at block:** `5515448` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎213.511133179Ա‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.000225699` · α-out `‎1.000000000Ա‎` · α-in `‎0.040497667Ա‎`.
+- **Pending emissions cues:** pending α emission `‎65.584274830Ա‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000280580` · α-out `‎1.000000000Ա‎` · α-in `‎0.050249569Ա‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104345`
+- **Liquidity constant `k`:** `4602515839937888109386610345`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Djinn`
+- **Symbol (API):** `Ա`
+- **Rank:** `76`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.005534226`
 - **Market cap:** `15223704120139.692450204`
+- **Market cap Δ 1d:** `0.107955717072861913`
 - **Liquidity:** `10120173529745`
 - **Total τ:** `5401256294834`
 - **Total α:** `3290710057022097`
@@ -32,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-0.072243337082427282`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `103`
+- **Owner SS58 (API):** `5E6wTZZipkTmm6mci5jZp1FwXoUSGgG8CemFeC3DsV2nUGiM`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `5515448`
+- **Registration wall time:** `2025-05-07T13:23:12.001Z`
+- **Registration cost snapshot:** `135476471008`
 - **Active keys:** `256`
 - **Active validators:** `9`
 - **Active miners:** `237`
-- **Active dual:** `1`
+- **Active dual-role:** `1`
 - **Emission:** `23794`
 - **Max neurons:** `256`
-- **Validators (metadata):** `9`
+- **Validator slots (metadata):** `9`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `614863`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Information X Execution
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -107,7 +128,7 @@ Bittensor Subnet 103 · Base Chain · USDC
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 10000
-- **Registration recycle cost snapshot (`burn`):** τ0.000839984
+- **Registration recycle cost snapshot (`burn`):** τ0.000981805
 - **Owner SS58 (`owner_ss58`):** `5E6wTZZipkTmm6mci5jZp1FwXoUSGgG8CemFeC3DsV2nUGiM`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -302,17 +323,10 @@ cd miner && uv run pytest
 
 *Primary README URL used: `https://raw.githubusercontent.com/Djinn-Inc/djinn/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Information X Execution
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://djinn.gg/](https://djinn.gg/)
@@ -328,11 +342,11 @@ Information X Execution
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.005615012 |
-| 8104133 | 0.005614994 |
-| 8104181 | 0.005553897 |
-| 8104229 | 0.005534191 |
-| 8104277 | 0.005573142 |
+| 8104244 | 0.005534185 |
+| 8104292 | 0.005573137 |
+| 8104340 | 0.005573093 |
+| 8104388 | 0.005556587 |
+| 8104436 | 0.005583732 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -341,5 +355,5 @@ Information X Execution
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

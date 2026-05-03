@@ -2,29 +2,50 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **dogelayer** (NetUID **80**) (`ى`).
 
-Dogelayer is the world's first mining pool enabling Scrypt miners to join Bittensor subnet.
+Dogelayer is the world's first mining pool enabling Scrypt miners to join Bittensor subnet. Our merged mining technology allows traditional miners to earn Alpha tokens through subnet validation while mining LTC/DOGE
+
+
+
+#### SubnetIdentity `additional` *(chain)*
+
+
+
+more information on website: dogelayer.ai
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `270`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,129.241178574. **Alpha liquidity in pool (`alpha_in`)** = ‎266,817.088075723ى‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎895,976.149655204ى‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004232872`** *(also **moving-average price** `0.004038559272885323` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎19,284.444500136ى‎`. **Owner hotkey / coldkey (chain):** `5HTwtytUfeUhK4p8NRCGppjUZrhJ5ckoRHeVWEQafg2N1Zo6` / `5ERJCUPWkgEmVDFCcdwMgaBbtEqGmzZnhdqNRcf3W29JsJJs`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `67`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,128.983569658. **Alpha liquidity in pool (`alpha_in`)** = ‎267,035.943740684ى‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎895,982.733194709ى‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004228445`** *(also **moving-average price** `0.004045746987685561` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎19,287.133454401ى‎`. **Owner hotkey / coldkey (chain):** `5HTwtytUfeUhK4p8NRCGppjUZrhJ5ckoRHeVWEQafg2N1Zo6` / `5ERJCUPWkgEmVDFCcdwMgaBbtEqGmzZnhdqNRcf3W29JsJJs`.
 - **Subnet registered at block:** `7151800` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎171.833748530ى‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.002116450` · α-out `‎1.000000000ى‎` · α-in `‎0.500000000ى‎`.
+- **Pending emissions cues:** pending α emission `‎42.642587839ى‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002114221` · α-out `‎1.000000000ى‎` · α-in `‎0.500000000ى‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104368`
+- **Liquidity constant `k`:** `301479192991350283802566072`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `dogelayer`
+- **Symbol (API):** `ى`
+- **Rank:** `112`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.004233121`
 - **Market cap:** `4744404005505.835053295`
+- **Market cap Δ 1d:** `8.135438562701952393`
 - **Liquidity:** `2258392716621`
 - **Total τ:** `1129115695064`
 - **Total α:** `1162686394583431`
@@ -34,27 +55,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `7.129568915142292497`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `80`
+- **Owner SS58 (API):** `5ERJCUPWkgEmVDFCcdwMgaBbtEqGmzZnhdqNRcf3W29JsJJs`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `7151800`
+- **Registration wall time:** `2025-12-22T05:00:24Z`
+- **Registration cost snapshot:** `219601306590`
 - **Active keys:** `226`
 - **Active validators:** `15`
 - **Active miners:** `9`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `2116561`
 - **Max neurons:** `256`
-- **Validators (metadata):** `15`
+- **Validator slots (metadata):** `15`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `500000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Dogelayer is the world's first mining pool enabling Scrypt miners to join Bittensor subnet. Our merged mining technology allows traditional miners to earn Alpha tokens through subnet validation while mining LTC/DOGE
-
-
-
-**Additional commentary (on-chain)**
-
-
-more information on website: dogelayer.ai
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -309,17 +329,10 @@ SUBNET_PROXY_API_TOKEN="2z1gLMqF6yZuf9G56iCLi5H6lKPMWJ_kgiYp-61…
 
 *Primary README URL used: `https://raw.githubusercontent.com/dogelayer-ai/dogelayer/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Dogelayer is the world's first mining pool enabling Scrypt miners to join Bittensor subnet. Our merged mining technology allows traditional miners to earn Alpha tokens through subnet validation while mining LTC/DOGE
-
-## On-chain identity — additional field
-
-
-more information on website: dogelayer.ai
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://dogelayer.ai](https://dogelayer.ai)
@@ -336,11 +349,11 @@ more information on website: dogelayer.ai
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.004233035 |
-| 8104133 | 0.004233043 |
-| 8104181 | 0.004233108 |
-| 8104229 | 0.004232963 |
-| 8104277 | 0.004232872 |
+| 8104244 | 0.004232945 |
+| 8104292 | 0.004232877 |
+| 8104340 | 0.00422143 |
+| 8104388 | 0.004228997 |
+| 8104436 | 0.004228447 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -408,5 +421,5 @@ more information on website: dogelayer.ai
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

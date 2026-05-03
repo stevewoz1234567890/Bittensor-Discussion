@@ -2,29 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **ByteLeap** (NetUID **128**) (`න`).
 
 Pioneering the Future of Cloud & Blockchain
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `318`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,006.202978404. **Alpha liquidity in pool (`alpha_in`)** = ‎1,207,180.036916299න‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,093,299.882223897න‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.003304085`** *(also **moving-average price** `0.0033066037576645613` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎74,002.162723071න‎`. **Owner hotkey / coldkey (chain):** `5FpsgU3JFa8S2GnngH92J9vtHHi4PYgZzxGXnwdFNwEwt9h8` / `5GgMeLFN4YssT6f9i9pZpRmczt8GYDsCZ1nYPiGRcTPWn3AA`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `115`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,006.181797325. **Alpha liquidity in pool (`alpha_in`)** = ‎1,207,186.447554841න‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,093,451.471585355න‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.003304050`** *(also **moving-average price** `0.0033064752351492643` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎74,012.181386412න‎`. **Owner hotkey / coldkey (chain):** `5FpsgU3JFa8S2GnngH92J9vtHHi4PYgZzxGXnwdFNwEwt9h8` / `5GgMeLFN4YssT6f9i9pZpRmczt8GYDsCZ1nYPiGRcTPWn3AA`.
 - **Subnet registered at block:** `5856038` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎231.795104423න‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎83.826035286න‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000න‎` · α-in `‎0.000000000න‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104320`
+- **Liquidity constant `k`:** `4836208372171634768884600325`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `ByteLeap`
+- **Symbol (API):** `න`
+- **Rank:** `95`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.003304118`
 - **Market cap:** `10343739933201.364912248`
+- **Market cap Δ 1d:** `0.082280901260970396`
 - **Liquidity:** `7994868267471`
 - **Total τ:** `4006223337268`
 - **Total α:** `3300404919140196`
@@ -34,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-0.147899131221041205`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `128`
+- **Owner SS58 (API):** `5GgMeLFN4YssT6f9i9pZpRmczt8GYDsCZ1nYPiGRcTPWn3AA`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `5856038`
+- **Registration wall time:** `2025-06-25T04:45:00Z`
+- **Registration cost snapshot:** `145645807991`
 - **Active keys:** `256`
 - **Active validators:** `13`
 - **Active miners:** `41`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `0`
 - **Max neurons:** `256`
-- **Validators (metadata):** `13`
+- **Validator slots (metadata):** `13`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `500000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Pioneering the Future of Cloud & Blockchain
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -158,17 +177,10 @@ python scripts/run_miner.py --config config/miner_config.yaml
 
 *Primary README URL used: `https://raw.githubusercontent.com/byteleapai/byteleap-Miner/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Pioneering the Future of Cloud & Blockchain
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **GitHub:** [https://github.com/byteleapai/byteleap-Miner](https://github.com/byteleapai/byteleap-Miner)
@@ -184,76 +196,18 @@ Pioneering the Future of Cloud & Blockchain
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104133 | 0.003304126 |
-| 8104181 | 0.003304121 |
-| 8104229 | 0.003304101 |
-| 8104277 | 0.003304085 |
+| 8104244 | 0.003304096 |
+| 8104292 | 0.003304083 |
+| 8104340 | 0.003304059 |
+| 8104388 | 0.003304057 |
+| 8104436 | 0.00330405 |
 
 ### Extended history — TAOStats pool price (daily)
 
-[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
-
-| Timestamp (UTC) | Block | Pool price |
-|-----------------|------:|-----------:|
-| 2026-03-09T23:59:48Z | 7711060 | 0.003778133 |
-| 2026-03-10T23:59:48Z | 7718257 | 0.003729261 |
-| 2026-03-11T23:59:48Z | 7725455 | 0.003748368 |
-| 2026-03-12T23:59:48.001Z | 7732653 | 0.003737538 |
-| 2026-03-13T23:59:48Z | 7739841 | 0.003596596 |
-| 2026-03-14T23:59:48.001Z | 7747036 | 0.003720709 |
-| 2026-03-15T23:59:48Z | 7754226 | 0.003554782 |
-| 2026-03-16T23:59:48Z | 7761426 | 0.003555709 |
-| 2026-03-17T23:59:48Z | 7768619 | 0.003551613 |
-| 2026-03-18T23:59:48Z | 7775819 | 0.00357841 |
-| 2026-03-19T23:59:48Z | 7783014 | 0.003638763034288994 |
-| 2026-03-20T23:59:48Z | 7790201 | 0.00369698 |
-| 2026-03-21T23:59:48Z | 7797398 | 0.003644133 |
-| 2026-03-22T23:59:48Z | 7804598 | 0.003629737 |
-| 2026-03-23T23:59:48Z | 7811798 | 0.003792318 |
-| 2026-03-24T23:59:48.001Z | 7818996 | 0.00361712277628454546 |
-| 2026-03-25T23:59:48Z | 7826196 | 0.003579704 |
-| 2026-03-26T23:59:48Z | 7833396 | 0.003643616 |
-| 2026-03-27T23:59:48Z | 7840596 | 0.00364794 |
-| 2026-03-28T23:59:48.001Z | 7847743 | 0.00364938 |
-| 2026-03-29T23:59:48Z | 7854902 | 0.003578554 |
-| 2026-03-30T23:59:48.001Z | 7862095 | 0.003630225 |
-| 2026-03-31T23:59:48Z | 7869291 | 0.003665121 |
-| 2026-04-01T23:59:48Z | 7876474 | 0.003729465 |
-| 2026-04-02T23:59:48Z | 7883622 | 0.003987799 |
-| 2026-04-03T23:59:48Z | 7890794 | 0.003857525 |
-| 2026-04-04T23:59:48.001Z | 7897988 | 0.003885666 |
-| 2026-04-05T23:59:48Z | 7905188 | 0.003950535 |
-| 2026-04-06T23:59:48Z | 7912388 | 0.003948929 |
-| 2026-04-07T23:59:48Z | 7919588 | 0.003858658 |
-| 2026-04-08T23:59:48Z | 7926788 | 0.003709563 |
-| 2026-04-09T23:59:48Z | 7933987 | 0.003480005 |
-| 2026-04-10T23:59:48Z | 7941184 | 0.003551686 |
-| 2026-04-11T23:59:48Z | 7948384 | 0.003563905 |
-| 2026-04-12T23:59:48Z | 7955584 | 0.003516075 |
-| 2026-04-13T23:59:48Z | 7962784 | 0.003439112 |
-| 2026-04-14T23:59:48Z | 7969979 | 0.003507974 |
-| 2026-04-15T23:59:48.001Z | 7977179 | 0.00343377 |
-| 2026-04-16T23:59:48Z | 7984379 | 0.003379046 |
-| 2026-04-17T23:59:48Z | 7991579 | 0.003383817 |
-| 2026-04-18T23:59:48Z | 7998779 | 0.003375152 |
-| 2026-04-19T23:59:48Z | 8005979 | 0.003375012 |
-| 2026-04-20T23:59:48Z | 8013179 | 0.003380131 |
-| 2026-04-21T23:59:48Z | 8020376 | 0.003402733 |
-| 2026-04-22T23:59:48Z | 8027562 | 0.003328042 |
-| 2026-04-23T23:59:48Z | 8034762 | 0.003331278 |
-| 2026-04-24T23:59:48Z | 8041962 | 0.003331605 |
-| 2026-04-25T23:59:48Z | 8049151 | 0.003402883 |
-| 2026-04-26T23:59:48Z | 8056274 | 0.003383164 |
-| 2026-04-27T23:59:48.001Z | 8063454 | 0.003397319 |
-| 2026-04-28T23:59:48Z | 8070646 | 0.003383044 |
-| 2026-04-29T23:59:48Z | 8077790 | 0.003296998 |
-| 2026-04-30T23:59:48Z | 8084984 | 0.003258766 |
-| 2026-05-01T23:59:48Z | 8092168 | 0.003297143 |
-| 2026-05-02T23:59:48Z | 8099357 | 0.003310554 |
-| 2026-05-03T16:10:00Z | 8104202 | 0.003304118 |
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

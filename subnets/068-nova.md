@@ -2,27 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **NOVA** (NetUID **68**) (`ظ`).
+
+Accelerating drug discovery.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `258`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ36,642.622850365. **Alpha liquidity in pool (`alpha_in`)** = ‎2,019,402.182273509ظ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,818,223.496777057ظ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.018144446`** *(also **moving-average price** `0.018109704134985805` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎1,369,222.382392978ظ‎`. **Owner hotkey / coldkey (chain):** `5CSuegTfX4Gf7SoXXJoPEyMEicXBjm5Z1QgoPPcU424rQbbb` / `5EcdJLAeYoxM3Tsf5VZ3NQPenPku218gqnjSoo3iJNy4V12V`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `55`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ36,644.008185232. **Alpha liquidity in pool (`alpha_in`)** = ‎2,019,483.831463273ظ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,818,374.131828793ظ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.018144398`** *(also **moving-average price** `0.018111180048435926` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,369,222.959728592ظ‎`. **Owner hotkey / coldkey (chain):** `5CSuegTfX4Gf7SoXXJoPEyMEicXBjm5Z1QgoPPcU424rQbbb` / `5EcdJLAeYoxM3Tsf5VZ3NQPenPku218gqnjSoo3iJNy4V12V`.
 - **Subnet registered at block:** `4972413` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎194.309852487ظ‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.009072225` · α-out `‎1.000000000ظ‎` · α-in `‎0.500000000ظ‎`.
+- **Pending emissions cues:** pending α emission `‎41.423000944ظ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.009072198` · α-out `‎1.000000000ظ‎` · α-in `‎0.500000000ظ‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104380`
+- **Liquidity constant `k`:** `74001982050083856587788984336`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `NOVA`
+- **Symbol (API):** `ظ`
+- **Rank:** `12`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.018144322`
 - **Market cap:** `77416824124981.66712384`
+- **Market cap Δ 1d:** `-0.648989834150088384`
 - **Liquidity:** `73281945468262`
 - **Total τ:** `36641817236475`
 - **Total α:** `4837515522060466`
@@ -32,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-0.822154660579085795`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `68`
+- **Owner SS58 (API):** `5EcdJLAeYoxM3Tsf5VZ3NQPenPku218gqnjSoo3iJNy4V12V`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `4972413`
+- **Registration wall time:** `2025-02-21T03:15:12.001Z`
+- **Registration cost snapshot:** `199768252064`
 - **Active keys:** `64`
 - **Active validators:** `6`
 - **Active miners:** `3`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `9072161`
 - **Max neurons:** `64`
-- **Validators (metadata):** `6`
+- **Validator slots (metadata):** `6`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `141653716`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Accelerating drug discovery.
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -70,7 +91,7 @@ Accelerating drug discovery.
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.121900274
+- **Registration recycle cost snapshot (`burn`):** τ0.089753096
 - **Owner SS58 (`owner_ss58`):** `5EcdJLAeYoxM3Tsf5VZ3NQPenPku218gqnjSoo3iJNy4V12V`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -184,17 +205,10 @@ DM the NOVA team to obtain an API key.
 
 *Primary README URL used: `https://raw.githubusercontent.com/metanova-labs/nova/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Accelerating drug discovery.
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://www.metanova-labs.ai](https://www.metanova-labs.ai)
@@ -209,11 +223,11 @@ Accelerating drug discovery.
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.018146671 |
-| 8104133 | 0.018144189 |
-| 8104181 | 0.018144204 |
-| 8104229 | 0.018144297 |
-| 8104277 | 0.018144446 |
+| 8104244 | 0.018144296 |
+| 8104292 | 0.018144219 |
+| 8104340 | 0.018144347 |
+| 8104388 | 0.01814437 |
+| 8104436 | 0.018144399 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -281,5 +295,5 @@ Accelerating drug discovery.
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

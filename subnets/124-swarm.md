@@ -2,27 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Swarm** (NetUID **124**) (`𑀁`).
+
+*No **`description`** field on-chain.* Use the README excerpt (below), TAOStats snapshots, **Topology / hyperparameters** further down this page, and outbound links.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `314`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ9,281.984746659. **Alpha liquidity in pool (`alpha_in`)** = ‎1,165,997.089697164𑀁‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,450,686.326958885𑀁‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.007934729`** *(also **moving-average price** `0.00802752305753529` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎178,647.290157615𑀁‎`. **Owner hotkey / coldkey (chain):** `5GZPtUjyp5d4j7aWWV9774caQAxxbsxNNM3nuaJYDPAEDjmt` / `5HKYqfJrUFKYPMRFZZ7kfhUNEyHUbY2ZyEjQqKJf2RKVpeXM`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `111`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ9,282.552925735. **Alpha liquidity in pool (`alpha_in`)** = ‎1,166,079.650853858𑀁‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,450,838.849894637𑀁‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.007934655`** *(also **moving-average price** `0.008023520931601524` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎178,647.333616307𑀁‎`. **Owner hotkey / coldkey (chain):** `5GZPtUjyp5d4j7aWWV9774caQAxxbsxNNM3nuaJYDPAEDjmt` / `5HKYqfJrUFKYPMRFZZ7kfhUNEyHUbY2ZyEjQqKJf2RKVpeXM`.
 - **Subnet registered at block:** `5813454` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎230.862709443𑀁‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.003871384` · α-out `‎1.000000000𑀁‎` · α-in `‎0.487903527𑀁‎`.
+- **Pending emissions cues:** pending α emission `‎81.611618146𑀁‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.003868073` · α-out `‎1.000000000𑀁‎` · α-in `‎0.487490989𑀁‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104324`
+- **Liquidity constant `k`:** `10824196074673526868812235630`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Swarm`
+- **Symbol (API):** `𑀁`
+- **Rank:** `46`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.007934804`
 - **Market cap:** `22985566067442.71825302`
+- **Market cap Δ 1d:** `-0.254028887837676229`
 - **Liquidity:** `18533360895479`
 - **Total τ:** `9281737127341`
 - **Total α:** `3616571728691498`
@@ -32,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-0.50620832771694665`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `124`
+- **Owner SS58 (API):** `5HKYqfJrUFKYPMRFZZ7kfhUNEyHUbY2ZyEjQqKJf2RKVpeXM`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `5813454`
+- **Registration wall time:** `2025-06-19T06:48:12Z`
+- **Registration cost snapshot:** `79312501676`
 - **Active keys:** `256`
 - **Active validators:** `13`
 - **Active miners:** `2`
-- **Active dual:** `1`
+- **Active dual-role:** `1`
 - **Emission:** `3883802`
 - **Max neurons:** `256`
-- **Validators (metadata):** `13`
+- **Validator slots (metadata):** `13`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `500000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -269,17 +290,10 @@ Every benchmark run generates unique worlds. Six environment types test complete
 
 *Primary README URL used: `https://raw.githubusercontent.com/swarm-subnet/swarm/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-*Unset in `SubnetIdentity`.*
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://www.swarm124.com](https://www.swarm124.com)
@@ -295,11 +309,11 @@ Every benchmark run generates unique worlds. Six environment types test complete
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.007943726 |
-| 8104133 | 0.007943707 |
-| 8104181 | 0.007943678 |
-| 8104229 | 0.007934765 |
-| 8104277 | 0.007934729 |
+| 8104244 | 0.007934755 |
+| 8104292 | 0.007934724 |
+| 8104340 | 0.007934674 |
+| 8104388 | 0.00793467 |
+| 8104436 | 0.007934655 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -367,5 +381,5 @@ Every benchmark run generates unique worlds. Six environment types test complete
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

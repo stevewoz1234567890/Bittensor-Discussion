@@ -2,27 +2,50 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Ditto** (NetUID **118**) (`ⲁ`).
+
+Open-Source Claude Cowork
+
+
+
+#### SubnetIdentity `additional` *(chain)*
+
+
+
+The Ditto Agent OS and Harness enable SOTA memory, healing, and speed for 1/100th of the frontier cost.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `308`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ3,858.080012181. **Alpha liquidity in pool (`alpha_in`)** = ‎541,865.056412173ⲁ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,417,328.128320598ⲁ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.007109335`** *(also **moving-average price** `0.0073297396302223206` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎123,448.900886392ⲁ‎`. **Owner hotkey / coldkey (chain):** `5HmP9732JFjnut2RY9yg4Gz2qJ38vF8xFwZb5dQVPF7FsmZz` / `5DUJfND9r2BjiJHNKSxJxzT7ptrxiseFe1GxeMwcTov52Y55`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `105`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ3,876.958250878. **Alpha liquidity in pool (`alpha_in`)** = ‎539,380.453070109ⲁ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,419,936.824009720ⲁ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.007176782`** *(also **moving-average price** `0.007323272759094834` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎123,664.933469567ⲁ‎`. **Owner hotkey / coldkey (chain):** `5HmP9732JFjnut2RY9yg4Gz2qJ38vF8xFwZb5dQVPF7FsmZz` / `5DUJfND9r2BjiJHNKSxJxzT7ptrxiseFe1GxeMwcTov52Y55`.
 - **Subnet registered at block:** `5724794` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎211.538038912ⲁ‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.003554665` · α-out `‎1.000000000ⲁ‎` · α-in `‎0.500000000ⲁ‎`.
+- **Pending emissions cues:** pending α emission `‎72.116375680ⲁ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.003588381` · α-out `‎1.000000000ⲁ‎` · α-in `‎0.500000000ⲁ‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104330`
+- **Liquidity constant `k`:** `2091155497892472953744805702`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Ditto`
+- **Symbol (API):** `ⲁ`
+- **Rank:** `83`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.007124284`
 - **Market cap:** `13382774130574.970169368`
+- **Market cap Δ 1d:** `-1.875394031936708742`
 - **Liquidity:** `7717942992664`
 - **Total τ:** `3861879518433`
 - **Total α:** `1959133579272516`
@@ -32,27 +55,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-1.965537388803985952`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `118`
+- **Owner SS58 (API):** `5DUJfND9r2BjiJHNKSxJxzT7ptrxiseFe1GxeMwcTov52Y55`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `5724794`
+- **Registration wall time:** `2025-06-06T23:15:36Z`
+- **Registration cost snapshot:** `110644724664`
 - **Active keys:** `256`
 - **Active validators:** `14`
 - **Active miners:** `1`
-- **Active dual:** `1`
+- **Active dual-role:** `1`
 - **Emission:** `3562108`
 - **Max neurons:** `256`
-- **Validators (metadata):** `14`
+- **Validator slots (metadata):** `14`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `723690`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Open-Source Claude Cowork
-
-
-
-**Additional commentary (on-chain)**
-
-
-The Ditto Agent OS and Harness enable SOTA memory, healing, and speed for 1/100th of the frontier cost.
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -77,7 +99,7 @@ The Ditto Agent OS and Harness enable SOTA memory, healing, and speed for 1/100t
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 300
-- **Registration recycle cost snapshot (`burn`):** τ0.000988660
+- **Registration recycle cost snapshot (`burn`):** τ0.000727871
 - **Owner SS58 (`owner_ss58`):** `5DUJfND9r2BjiJHNKSxJxzT7ptrxiseFe1GxeMwcTov52Y55`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -106,17 +128,10 @@ The Ditto Agent OS and Harness enable SOTA memory, healing, and speed for 1/100t
 
 *No miner/validator sections auto-matched.* Open [https://github.com/orgs/ditto-assistant/repositories](https://github.com/orgs/ditto-assistant/repositories) for requirements.
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Open-Source Claude Cowork
-
-## On-chain identity — additional field
-
-
-The Ditto Agent OS and Harness enable SOTA memory, healing, and speed for 1/100th of the frontier cost.
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://heyditto.ai](https://heyditto.ai)
@@ -133,11 +148,11 @@ The Ditto Agent OS and Harness enable SOTA memory, healing, and speed for 1/100t
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.007274259 |
-| 8104133 | 0.007271766 |
-| 8104181 | 0.007168028 |
-| 8104229 | 0.007090637 |
-| 8104277 | 0.007109335 |
+| 8104244 | 0.007101465 |
+| 8104292 | 0.007109591 |
+| 8104340 | 0.00708018 |
+| 8104388 | 0.007238449 |
+| 8104436 | 0.007176801 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -146,5 +161,5 @@ The Ditto Agent OS and Harness enable SOTA memory, healing, and speed for 1/100t
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

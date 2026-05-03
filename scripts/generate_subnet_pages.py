@@ -91,7 +91,62 @@ HW_GREP_EMPTY_STUB = """#### CPU / GPU / RAM lines (automatic grep)
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
 
 """
-OVERVIEW_README_INTRO_CHARS = 9_600
+
+OVERVIEW_README_INTRO_CHARS = 14_000
+
+
+def _title_line_subnet(name: str, netuid: int, sym: str) -> str:
+    frag = f"**{name}** (NetUID **{netuid}**)"
+    if sym:
+        frag += f" (`{sym}`)"
+    return frag + "."
+
+
+def _subnet_narrative_markdown(name: str, netuid: int, sym: str, desc: str, additional: str) -> str:
+    """Full SubnetIdentity description + optional additional — primary operator-facing prose."""
+    title = _title_line_subnet(name, netuid, sym)
+    dd = (desc or "").strip()
+    aa = (additional or "").strip()
+    if dd:
+        core = dd
+        placeholder_used = False
+    else:
+        core = (
+            "*No **`description`** field on-chain.* Use the README excerpt (below), TAOStats snapshots, "
+            "**Topology / hyperparameters** further down this page, and outbound links."
+        )
+        placeholder_used = True
+    blocks = [title, core]
+    if aa and aa.lower() != dd.lower():
+        blocks.extend(["", "#### SubnetIdentity `additional` *(chain)*", "", aa])
+    elif placeholder_used and aa and len(aa) > 20:
+        # Only additional when description empty
+        blocks.extend(["", "#### SubnetIdentity `additional` *(chain)*", "", aa])
+
+    inner = "\n\n".join(blocks)
+    return f"### Subnet narrative *(full `SubnetIdentity` text)*\n\n{inner}"
+
+
+def _dynamicinfo_deep_lines(dyn) -> list[str]:
+    """Optional `DynamicInfo` fields omitted from the main snapshot list."""
+    lines: list[str] = []
+    candidates = (
+        ("`last_step` (block)", "last_step"),
+        ("Liquidity constant `k`", "k"),
+    )
+    seen: set[int] = set()
+    for label, key in candidates:
+        if not hasattr(dyn, key):
+            continue
+        v = getattr(dyn, key)
+        if callable(v):
+            continue
+        oid = id(v)
+        if oid in seen:
+            continue
+        seen.add(oid)
+        lines.append(f"- **{label}:** `{v}`")
+    return lines
 
 
 def _readme_intro_until_first_section(readme_plain: str | None, *, max_chars: int) -> str | None:
@@ -117,30 +172,6 @@ def _readme_intro_until_first_section(readme_plain: str | None, *, max_chars: in
     if len(snippet) > max_chars:
         snippet = snippet[: max_chars - 3].rstrip() + "…"
     return snippet
-
-
-def _title_line_subnet(name: str, netuid: int, sym: str) -> str:
-    frag = f"**{name}** (NetUID **{netuid}**)"
-    if sym:
-        frag += f" (`{sym}`)"
-    return frag + "."
-
-
-def _lead_from_identity(name: str, netuid: int, sym: str, desc_text: str) -> str:
-    trimmed = (desc_text or "").strip()
-    first_para = trimmed.split("\n\n", 1)[0].strip() if trimmed else ""
-    if first_para and len(first_para) > 30:
-        return f"{_title_line_subnet(name, netuid, sym)}\n\n{_first_meaningful_sentence(first_para)}"
-    return _title_line_subnet(name, netuid, sym)
-
-
-def _first_meaningful_sentence(blob: str) -> str:
-    blob = blob.replace("\n", " ").strip()
-    for delim in ".?!":
-        idx = blob.find(delim)
-        if 28 <= idx <= 520:
-            return blob[: idx + 1].strip()
-    return blob[: min(440, len(blob))].strip() + ("…" if len(blob) > 440 else "")
 
 
 def _taostats_request_json(
@@ -236,6 +267,13 @@ def format_taostats_snapshot_markdown(subnet: dict | None, pool: dict | None) ->
             v = row.get(k)
             if v is None or v == "":
                 continue
+            if isinstance(v, dict) and "ss58" in v:
+                v = v["ss58"]
+            elif isinstance(v, dict):
+                try:
+                    v = json.dumps(v, separators=(",", ":"))[:520]
+                except (TypeError, ValueError):
+                    v = str(v)[:520]
             lines_out.append(f"- **{label}:** `{v}`")
         if lines_out:
             bits.append(f"#### {title}\n")
@@ -246,10 +284,14 @@ def format_taostats_snapshot_markdown(subnet: dict | None, pool: dict | None) ->
             "Liquidity pool (TAOStats)",
             pool,
             (
+                ("Subnet name (API)", "name"),
+                ("Symbol (API)", "symbol"),
+                ("Rank", "rank"),
                 ("Block (API)", "block_number"),
                 ("Time (API)", "timestamp"),
                 ("Price τ/α", "price"),
                 ("Market cap", "market_cap"),
+                ("Market cap Δ 1d", "market_cap_change_1_day"),
                 ("Liquidity", "liquidity"),
                 ("Total τ", "total_tao"),
                 ("Total α", "total_alpha"),
@@ -265,16 +307,26 @@ def format_taostats_snapshot_markdown(subnet: dict | None, pool: dict | None) ->
             "Subnet activity (TAOStats)",
             subnet,
             (
+                ("NetUID (API)", "netuid"),
+                ("Owner SS58 (API)", "owner"),
                 ("Block (API)", "block_number"),
                 ("Time (API)", "timestamp"),
+                ("Registration block", "registration_block_number"),
+                ("Registration wall time", "registration_timestamp"),
+                ("Registration cost snapshot", "registration_cost"),
                 ("Active keys", "active_keys"),
                 ("Active validators", "active_validators"),
                 ("Active miners", "active_miners"),
-                ("Active dual", "active_dual"),
+                ("Active dual-role", "active_dual"),
                 ("Emission", "emission"),
                 ("Max neurons", "max_neurons"),
-                ("Validators (metadata)", "validators"),
+                ("Validator slots (metadata)", "validators"),
+                ("Max validators (API)", "max_validators"),
                 ("Neuron reg. cost", "neuron_registration_cost"),
+                ("Tempo (API)", "tempo"),
+                ("Min allowed weights (API)", "min_allowed_weights"),
+                ("Max weights limit (API)", "max_weights_limit"),
+                ("Activity cutoff", "activity_cutoff"),
             ),
         )
 
@@ -307,6 +359,10 @@ def build_detailed_overview(
     sym = getattr(dyn, "symbol", "") or ""
 
     if netuid == 0:
+        prelude: list[str] = []
+        if (desc or "").strip() or (additional or "").strip():
+            prelude.append(_subnet_narrative_markdown(name, netuid, sym, desc, additional))
+
         dyn_bits = []
         dyn_bits.append(
             f"- **Root tempo:** `{dyn.tempo}` blocks between epoch strides (see [`SubnetHyperparameters`](https://learnbittensor.org/explore/concept/subnet-hyperparameters)). "
@@ -315,16 +371,18 @@ def build_detailed_overview(
         dyn_bits.append(f"- **`tao_in` (pool-facing TAO):** {dyn.tao_in}")
         dyn_bits.append(f"- **Root alpha bookkeeping (`alpha_in` / `alpha_out`):** {dyn.alpha_in} / {dyn.alpha_out}")
         dyn_bits.append(f"- **Reported subnet volume rolling figure:** {dyn.subnet_volume}")
-        root_body = (
-            ROOT_OVERVIEW.strip()
-            + f"\n\n### Root snapshot *(block {block})*\n\n"
-            + "\n".join(dyn_bits)
-            + "\n"
-        )
+        root_deep = _dynamicinfo_deep_lines(dyn)
+        if root_deep:
+            dyn_bits.extend(["", "#### Further numeric `DynamicInfo` fields", "", *root_deep])
+
+        root_body = ("\n\n".join(prelude).strip() + "\n\n" if prelude else "") + ROOT_OVERVIEW.strip()
+        root_body += f"\n\n### Root snapshot *(block {block})*\n\n" + "\n".join(dyn_bits) + "\n"
         ts_root = format_taostats_snapshot_markdown(taostats_subnet, taostats_pool)
         return root_body + (f"\n{ts_root}\n" if ts_root else "")
 
-    parts: list[str] = [_lead_from_identity(name, netuid, sym, desc)]
+    dd = (desc or "").strip()
+    aa = (additional or "").strip()
+    parts: list[str] = [_subnet_narrative_markdown(name, netuid, sym, desc, additional)]
 
     snapshot_hdr = "### Chain & market snapshot *(from `DynamicInfo`)*\n"
     snap_lines = [
@@ -343,31 +401,21 @@ def build_detailed_overview(
         f"- **Pending emissions cues:** pending α emission `{dyn.pending_alpha_emission}`; pending root emission `{dyn.pending_root_emission}`.",
         f"- **Per-flow emission splits:** τ-in `{dyn.tao_in_emission}` · α-out `{dyn.alpha_out_emission}` · α-in `{dyn.alpha_in_emission}`.",
     ]
+    snap_core = "\n".join(snap_lines)
+    dip = _dynamicinfo_deep_lines(dyn)
+    if dip:
+        snap_core += "\n\n#### Further numeric `DynamicInfo` fields\n\n" + "\n".join(dip)
+    snap_core += (
+        f"\n\n*Values are pallet **`DynamicInfo`** at head block **{block}**. **`last_step`** anchors the most recent epoch advance. "
+        "On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. "
+        "**`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*"
+    )
 
-    identity_hdr = "### On-chain declared purpose *(SubnetIdentity)*\n"
-    identity_body: list[str] = []
-
-    dd = (desc or "").strip()
-    aa = (additional or "").strip()
-    if dd:
-        identity_body.append(dd)
-    else:
-        identity_body.append(
-            "*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*"
-        )
-    if aa and aa.lower() != dd.lower():
-        identity_body.append("")
-        identity_body.append("**Additional commentary (on-chain)**\n")
-        identity_body.append(aa)
-
-    parts.append(snapshot_hdr.rstrip("\n") + "\n\n" + "\n".join(snap_lines))
+    parts.append(snapshot_hdr.rstrip() + "\n\n" + snap_core)
     ts_ov = format_taostats_snapshot_markdown(taostats_subnet, taostats_pool)
     if ts_ov:
         parts.append("")
         parts.append(ts_ov)
-
-    parts.append("")
-    parts.append(identity_hdr.rstrip("\n") + "\n\n" + "\n\n".join(identity_body).strip())
 
     readme_hdr = "### Repository README excerpt *(everything before first `##` heading)*\n"
     if readme_intro:
@@ -376,7 +424,7 @@ def build_detailed_overview(
         redundant = dd and len(dd) > 40 and dd[:120].strip().lower() in intro_body[:800].lower()
         if redundant:
             intro_body += (
-                "\n\n*(Often repeats the headline blurb — check deeper headings for runbooks.)*\n"
+                "\n\n*(README prelude often echoes the subnet tagline — miner/validator runbooks typically live further down in-repo.)*\n"
             )
         parts.append("")
         parts.append(readme_hdr.rstrip("\n") + "\n\n" + intro_body)
@@ -996,24 +1044,13 @@ def render_page(
         format_chain_ops(st, netuid, block),
         readme_block.rstrip(),
         "",
-        "## On-chain identity — description\n",
+        "## SubnetIdentity links *(from chain)*\n",
+        "",
+        "*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*\n",
+        "",
+        _links_markdown(sid),
         "",
     ]
-
-    lines.append(desc if desc else "*Unset in `SubnetIdentity`.*")
-    lines.extend(
-        [
-            "",
-            "## On-chain identity — additional field\n",
-            "",
-            additional if additional else "*Unset.*",
-            "",
-            "## Registered contact & links\n",
-            "",
-            _links_markdown(sid),
-            "",
-        ]
-    )
 
     lines.extend(
         [
@@ -1128,9 +1165,7 @@ def main() -> None:
         "",
         f"Generated from `{args.network}` at block **{block}** ({snapshot_utc}).",
         "",
-        "Each page pulls **`DynamicInfo`**, **`SubnetInfo`**, **`SubnetHyperparameters`**, `SubnetIdentity`, "
-        "GitHub README (preface + hardware scrape where applicable), on-chain α **price probes**. "
-        "With **`TAOSTATS_API_KEY`** (repo `.env` or env): bulk **subnet/pool snapshots** plus optional **daily pool history**.",
+        "Each page opens with **Subnet narrative** (full **`SubnetIdentity`** `description`/`additional`), **`DynamicInfo`** (core fields + swap/slippage helpers), **`SubnetInfo`** / **`SubnetHyperparameters`**, README preface + hardware scrape, on-chain α probes, and **TAOStats** index + optional daily history when **`TAOSTATS_API_KEY`** is set (`.env`).",
         "",
         "### Conventions (read once)",
         "",

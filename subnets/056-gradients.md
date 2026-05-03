@@ -2,29 +2,50 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Gradients** (NetUID **56**) (`ج`).
 
 Best AutoML plaftorm in the world
 
+
+
+#### SubnetIdentity `additional` *(chain)*
+
+
+
+None
+
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `246`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ58,403.655449649. **Alpha liquidity in pool (`alpha_in`)** = ‎2,668,413.675835575ج‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,286,823.997752578ج‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.021916582`** *(also **moving-average price** `0.021880623884499073` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎2,781,279.592231399ج‎`. **Owner hotkey / coldkey (chain):** `5GU4Xkd3dCGTU3s8VLcHGc5wsD5M8XyxDca5yDQhYm1mVXFu` / `5EJ1zbdwhumTRYFx3VCGnR6SW7CJWP28tEJCo2gw1dFbVL5g`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `43`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ58,418.715203001. **Alpha liquidity in pool (`alpha_in`)** = ‎2,667,726.712901977ج‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,287,668.960686176ج‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.021927861`** *(also **moving-average price** `0.02188245113939047` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎2,781,294.845012071ج‎`. **Owner hotkey / coldkey (chain):** `5GU4Xkd3dCGTU3s8VLcHGc5wsD5M8XyxDca5yDQhYm1mVXFu` / `5EJ1zbdwhumTRYFx3VCGnR6SW7CJWP28tEJCo2gw1dFbVL5g`.
 - **Subnet registered at block:** `4312927` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎185.600363904ج‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎32.442565514ج‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ج‎` · α-in `‎0.000000000ج‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104392`
+- **Liquidity constant `k`:** `155845167080458607745369232977`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Gradients`
+- **Symbol (API):** `ج`
+- **Rank:** `9`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.02191718`
 - **Market cap:** `96390365342539.71639004`
+- **Market cap Δ 1d:** `0.716526109150182969`
 - **Liquidity:** `116887758286451`
 - **Total τ:** `58404454587183`
 - **Total α:** `4955162673588153`
@@ -34,27 +55,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `0.605699449448013555`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `56`
+- **Owner SS58 (API):** `5EJ1zbdwhumTRYFx3VCGnR6SW7CJWP28tEJCo2gw1dFbVL5g`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `4312927`
+- **Registration wall time:** `2024-11-21T08:47:24Z`
+- **Registration cost snapshot:** `0`
 - **Active keys:** `256`
 - **Active validators:** `15`
 - **Active miners:** `15`
-- **Active dual:** `1`
+- **Active dual-role:** `1`
 - **Emission:** `0`
 - **Max neurons:** `256`
-- **Validators (metadata):** `15`
+- **Validator slots (metadata):** `15`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `500000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Best AutoML plaftorm in the world
-
-
-
-**Additional commentary (on-chain)**
-
-
-None
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -154,17 +174,10 @@ For technical documentation on GRPO reward functions and implementation details,
 
 *Primary README URL used: `https://raw.githubusercontent.com/gradients-ai/G.O.D/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Best AutoML plaftorm in the world
-
-## On-chain identity — additional field
-
-
-None
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://www.gradients.io/](https://www.gradients.io/)
@@ -181,11 +194,11 @@ None
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.021917645 |
-| 8104133 | 0.021917626 |
-| 8104181 | 0.021917186 |
-| 8104229 | 0.021917144 |
-| 8104277 | 0.021916582 |
+| 8104244 | 0.021917135 |
+| 8104292 | 0.021916576 |
+| 8104340 | 0.021924135 |
+| 8104388 | 0.021927875 |
+| 8104436 | 0.021927861 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -253,5 +266,5 @@ None
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

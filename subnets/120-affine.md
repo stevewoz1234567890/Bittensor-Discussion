@@ -2,27 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Affine** (NetUID **120**) (`ⴷ`).
+
+Reason Mining
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `310`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ84,499.440983625. **Alpha liquidity in pool (`alpha_in`)** = ‎1,254,413.172941338ⲃ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,941,680.461286908ⲃ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.067100438`** *(also **moving-average price** `0.06717778113670647` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎958,574.735972357ⲃ‎`. **Owner hotkey / coldkey (chain):** `5Fn7rj78bfSrNcFQCHShC7aoVSneGLbiPD7xFHu3zhwFrQhs` / `5Fc3ZZQAYB3SPXKcFnd1WJeyQvArSZZeB6LU1rb7zvQ6XvDh`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `107`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ84,549.330714557. **Alpha liquidity in pool (`alpha_in`)** = ‎1,253,670.100773425ⲃ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,942,581.517304091ⲃ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.067179222`** *(also **moving-average price** `0.06717729126103222` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎958,627.822479238ⲃ‎`. **Owner hotkey / coldkey (chain):** `5Fn7rj78bfSrNcFQCHShC7aoVSneGLbiPD7xFHu3zhwFrQhs` / `5Fc3ZZQAYB3SPXKcFnd1WJeyQvArSZZeB6LU1rb7zvQ6XvDh`.
 - **Subnet registered at block:** `5749344` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎225.251582290ⲃ‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎77.748879484ⲃ‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ⲃ‎` · α-in `‎0.000000000ⲃ‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104328`
+- **Liquidity constant `k`:** `105996967957244311753606247725`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Affine`
+- **Symbol (API):** `ⴷ`
+- **Rank:** `4`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.067101102`
 - **Market cap:** `204312276156669.302747358`
+- **Market cap Δ 1d:** `0.706607283399214011`
 - **Liquidity:** `168671947249165`
 - **Total τ:** `84499861658075`
 - **Total α:** `3196018634228246`
@@ -32,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `0.468473353615653492`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `120`
+- **Owner SS58 (API):** `5Fc3ZZQAYB3SPXKcFnd1WJeyQvArSZZeB6LU1rb7zvQ6XvDh`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `5749344`
+- **Registration wall time:** `2025-06-10T09:05:36Z`
+- **Registration cost snapshot:** `138829019156`
 - **Active keys:** `256`
 - **Active validators:** `9`
 - **Active miners:** `1`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `0`
 - **Max neurons:** `256`
-- **Validators (metadata):** `9`
+- **Validator slots (metadata):** `9`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `500000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Reason Mining
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -70,7 +91,7 @@ Reason Mining
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.000500000
+- **Registration recycle cost snapshot (`burn`):** τ0.000625146
 - **Owner SS58 (`owner_ss58`):** `5Fc3ZZQAYB3SPXKcFnd1WJeyQvArSZZeB6LU1rb7zvQ6XvDh`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -165,17 +186,10 @@ Learn how to:
 
 *Primary README URL used: `https://raw.githubusercontent.com/AffineFoundation/affine/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Reason Mining
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://www.affine.io](https://www.affine.io)
@@ -192,11 +206,11 @@ Reason Mining
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.067083834 |
-| 8104133 | 0.067101256 |
-| 8104181 | 0.067101157 |
-| 8104229 | 0.067100773 |
-| 8104277 | 0.067100438 |
+| 8104244 | 0.067100656 |
+| 8104292 | 0.06710039 |
+| 8104340 | 0.067177804 |
+| 8104388 | 0.067177774 |
+| 8104436 | 0.067179222 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -205,5 +219,5 @@ Reason Mining
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

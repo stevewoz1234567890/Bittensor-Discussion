@@ -2,27 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Coldint** (NetUID **29**) (`ה`).
+
+*No **`description`** field on-chain.* Use the README excerpt (below), TAOStats snapshots, **Topology / hyperparameters** further down this page, and outbound links.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `219`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ18,447.978613400. **Alpha liquidity in pool (`alpha_in`)** = ‎1,345,277.405919450ה‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,645,837.164328954ה‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.013634540`** *(also **moving-average price** `0.013630791567265987` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎179,064.801903774ה‎`. **Owner hotkey / coldkey (chain):** `5HHHHHzgLnYRvnKkHd45cRUDMHXTSwx7MjUzxBrKbY4JfZWn` / `5HHHHHzgLnYRvnKkHd45cRUDMHXTSwx7MjUzxBrKbY4JfZWn`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `16`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ18,448.025509365. **Alpha liquidity in pool (`alpha_in`)** = ‎1,345,289.556428242ה‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,645,990.808830417ה‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.013634453`** *(also **moving-average price** `0.013630910310894251` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎179,064.861288687ה‎`. **Owner hotkey / coldkey (chain):** `5HHHHHzgLnYRvnKkHd45cRUDMHXTSwx7MjUzxBrKbY4JfZWn` / `5HHHHHzgLnYRvnKkHd45cRUDMHXTSwx7MjUzxBrKbY4JfZWn`.
 - **Subnet registered at block:** `3379782` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎165.316343845ה‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.000672709` · α-out `‎1.000000000ה‎` · α-in `‎0.049338593ה‎`.
+- **Pending emissions cues:** pending α emission `‎12.077999999ה‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000672133` · α-out `‎1.000000000ה‎` · α-in `‎0.049296724ה‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104419`
+- **Liquidity constant `k`:** `24817936054470534032121486330`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Coldint`
+- **Symbol (API):** `ה`
+- **Rank:** `17`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.013634629`
 - **Market cap:** `59984730710980.506371574`
+- **Market cap Δ 1d:** `0.221588250323626218`
 - **Liquidity:** `36790235775469`
 - **Total τ:** `18447987854876`
 - **Total α:** `4991035860222206`
@@ -32,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `0.049978653956194601`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `29`
+- **Owner SS58 (API):** `5HHHHHzgLnYRvnKkHd45cRUDMHXTSwx7MjUzxBrKbY4JfZWn`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `3379782`
+- **Registration wall time:** `2024-07-13T23:26:48.003Z`
+- **Registration cost snapshot:** `0`
 - **Active keys:** `256`
 - **Active validators:** `8`
 - **Active miners:** `1`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `674867`
 - **Max neurons:** `256`
-- **Validators (metadata):** `8`
+- **Validator slots (metadata):** `8`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `500000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -160,17 +181,10 @@ See the [Miner](docs/miner.md) and [Validator](docs/validator.md) docs for more 
 
 *Primary README URL used: `https://raw.githubusercontent.com/coldint/coldint_validator/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-*Unset in `SubnetIdentity`.*
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **GitHub:** [https://github.com/coldint/coldint_validator](https://github.com/coldint/coldint_validator)
@@ -183,12 +197,12 @@ See the [Miner](docs/miner.md) and [Validator](docs/validator.md) docs for more 
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104037 | 0.013634686 |
-| 8104085 | 0.013634675 |
-| 8104133 | 0.013634651 |
-| 8104181 | 0.013634637 |
-| 8104229 | 0.013634582 |
-| 8104277 | 0.01363454 |
+| 8104196 | 0.013634632 |
+| 8104244 | 0.013634571 |
+| 8104292 | 0.013634534 |
+| 8104340 | 0.013634475 |
+| 8104388 | 0.01363447 |
+| 8104436 | 0.013634453 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -256,5 +270,5 @@ See the [Miner](docs/miner.md) and [Validator](docs/validator.md) docs for more 
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

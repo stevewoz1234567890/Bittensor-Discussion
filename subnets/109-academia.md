@@ -2,29 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Academia** (NetUID **109**) (`՞`).
 
 Academia: where builders become subnet owners.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `299`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,273.800209350. **Alpha liquidity in pool (`alpha_in`)** = ‎202,374.243248822՞‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎812,511.003807773՞‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.006293275`** *(also **moving-average price** `0.006168779684230685` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎22,444.280232280՞‎`. **Owner hotkey / coldkey (chain):** `5DyQkk4x6CwDtjtxe1NG2aMgQVXe9ZpZdT14SdYYwEVd3XUk` / `5EZcsP7SqGLNfXujcX6ZRJ3epRQ2yCDXURjr8XcaEY45eZdm`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `96`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ1,278.331672393. **Alpha liquidity in pool (`alpha_in`)** = ‎201,814.588058757՞‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎813,288.052667563՞‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.006333144`** *(also **moving-average price** `0.00617447099648416` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎22,448.494223272՞‎`. **Owner hotkey / coldkey (chain):** `5DyQkk4x6CwDtjtxe1NG2aMgQVXe9ZpZdT14SdYYwEVd3XUk` / `5EZcsP7SqGLNfXujcX6ZRJ3epRQ2yCDXURjr8XcaEY45eZdm`.
 - **Subnet registered at block:** `7257480` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎186.141711014՞‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.003146660` · α-out `‎1.000000000՞‎` · α-in `‎0.500000000՞‎`.
+- **Pending emissions cues:** pending α emission `‎59.768200905՞‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.003166568` · α-out `‎1.000000000՞‎` · α-in `‎0.500000000՞‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104339`
+- **Liquidity constant `k`:** `257985979866455203158795501`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Academia`
+- **Symbol (API):** `՞`
+- **Rank:** `115`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.006293581`
 - **Market cap:** `4331695648721.370937791`
+- **Market cap Δ 1d:** `6.261685629322546882`
 - **Liquidity:** `2546986598515`
 - **Total τ:** `1273595072902`
 - **Total α:** `1014782070596411`
@@ -34,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `5.213743227271131499`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `109`
+- **Owner SS58 (API):** `5EZcsP7SqGLNfXujcX6ZRJ3epRQ2yCDXURjr8XcaEY45eZdm`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `7257480`
+- **Registration wall time:** `2026-01-05T21:25:12Z`
+- **Registration cost snapshot:** `279657398124`
 - **Active keys:** `256`
 - **Active validators:** `14`
 - **Active miners:** `1`
-- **Active dual:** `1`
+- **Active dual-role:** `1`
 - **Emission:** `3146787`
 - **Max neurons:** `256`
-- **Validators (metadata):** `14`
+- **Validator slots (metadata):** `14`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `500000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Academia: where builders become subnet owners.
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -108,17 +127,10 @@ We're building a Bittensor subnet incubation academy - modeled after La Masia, w
 
 *Primary README URL used: `https://raw.githubusercontent.com/fx-integral/academia/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Academia: where builders become subnet owners.
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **GitHub:** [https://github.com/fx-integral/academia](https://github.com/fx-integral/academia)
@@ -132,11 +144,11 @@ Academia: where builders become subnet owners.
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.006361966 |
-| 8104133 | 0.006362136 |
-| 8104181 | 0.00629349 |
-| 8104229 | 0.006318493 |
-| 8104277 | 0.006293275 |
+| 8104244 | 0.006293337 |
+| 8104292 | 0.006293329 |
+| 8104340 | 0.006332608 |
+| 8104388 | 0.006332945 |
+| 8104436 | 0.006333151 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -145,5 +157,5 @@ Academia: where builders become subnet owners.
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

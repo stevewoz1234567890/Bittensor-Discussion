@@ -2,29 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **TrajectoryRL** (NetUID **11**) (`λ`).
 
 Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, safer, and more reliable.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `201`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ23,536.335911346. **Alpha liquidity in pool (`alpha_in`)** = ‎2,076,201.329535452λ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,837,664.523219605λ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.011345304`** *(also **moving-average price** `0.011459824396297336` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎824,680.639871413λ‎`. **Owner hotkey / coldkey (chain):** `5ECzcM7sixWNEeD6RbpeEHW1YcYMFejwHuvDBgQxVSjGyrMS` / `5D2Jhtbnm7iAdKfjRk6DisXBnr1MEsYat8kXqaPNrVqJP3uE`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `359`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ23,578.085818579. **Alpha liquidity in pool (`alpha_in`)** = ‎2,072,527.896483271λ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,841,495.956271786λ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.011385460`** *(also **moving-average price** `0.011456589912995696` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎824,738.864786794λ‎`. **Owner hotkey / coldkey (chain):** `5ECzcM7sixWNEeD6RbpeEHW1YcYMFejwHuvDBgQxVSjGyrMS` / `5D2Jhtbnm7iAdKfjRk6DisXBnr1MEsYat8kXqaPNrVqJP3uE`.
 - **Subnet registered at block:** `2918568` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎151.556005988λ‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎270.690043520λ‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000λ‎` · α-in `‎0.000000000λ‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104076`
+- **Liquidity constant `k`:** `48866240604681577691414491909`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `TrajectoryRL`
+- **Symbol (API):** `λ`
+- **Rank:** `25`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.011346027`
 - **Market cap:** `44367605731640.375071272`
+- **Market cap Δ 1d:** `-0.536749910855577071`
 - **Liquidity:** `47092972229722`
 - **Total τ:** `23537088251013`
 - **Total α:** `4913790852755057`
@@ -34,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-0.674329181262877465`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `11`
+- **Owner SS58 (API):** `5D2Jhtbnm7iAdKfjRk6DisXBnr1MEsYat8kXqaPNrVqJP3uE`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `2918568`
+- **Registration wall time:** `2024-05-09T10:17:36.002Z`
+- **Registration cost snapshot:** `0`
 - **Active keys:** `256`
 - **Active validators:** `10`
 - **Active miners:** `2`
-- **Active dual:** `1`
+- **Active dual-role:** `1`
 - **Emission:** `0`
 - **Max neurons:** `256`
-- **Validators (metadata):** `10`
+- **Validator slots (metadata):** `10`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `200000000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, safer, and more reliable.
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -161,17 +180,10 @@ docker pull ghcr.io/trajectoryrl/hermes-agent:latest
 
 *Primary README URL used: `https://raw.githubusercontent.com/trajectoryRL/trajectoryRL/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, safer, and more reliable.
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://trajrl.com](https://trajrl.com)
@@ -187,12 +199,12 @@ Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, saf
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104037 | 0.011326585 |
-| 8104085 | 0.011345781 |
-| 8104133 | 0.011345768 |
-| 8104181 | 0.011346032 |
-| 8104229 | 0.011345232 |
-| 8104277 | 0.011345304 |
+| 8104196 | 0.011346029 |
+| 8104244 | 0.011345321 |
+| 8104292 | 0.0113451 |
+| 8104340 | 0.011393141 |
+| 8104388 | 0.011393139 |
+| 8104436 | 0.01138546 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -201,5 +213,5 @@ Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, saf
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

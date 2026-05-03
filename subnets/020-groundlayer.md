@@ -2,29 +2,50 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **GroundLayer** (NetUID **20**) (`υ`).
 
 Structured OTC deals for subnet tokens.
 
+
+
+#### SubnetIdentity `additional` *(chain)*
+
+
+
+The Capital Layer for Bittensor
+
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `210`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ8,503.344052195. **Alpha liquidity in pool (`alpha_in`)** = ‎2,085,853.882019267υ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,826,833.796358096υ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004078623`** *(also **moving-average price** `0.004110634792596102` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎255,147.494370701υ‎`. **Owner hotkey / coldkey (chain):** `5EALa14jRfwHf69ZbNyFLxsPrZgZ47T2qhYxGjXxRM1qriNk` / `5FuzgvtfbZWdKSRxyYVPAPYNaNnf9cMnpT7phL3s2T3Kkrzo`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `7`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ8,503.401070110. **Alpha liquidity in pool (`alpha_in`)** = ‎2,085,876.186910979υ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,826,987.633775362υ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004078607`** *(also **moving-average price** `0.004109193570911884` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎255,147.511348156υ‎`. **Owner hotkey / coldkey (chain):** `5EALa14jRfwHf69ZbNyFLxsPrZgZ47T2qhYxGjXxRM1qriNk` / `5FuzgvtfbZWdKSRxyYVPAPYNaNnf9cMnpT7phL3s2T3Kkrzo`.
 - **Subnet registered at block:** `1970929` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎158.339286876υ‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.000468356` · α-out `‎1.000000000υ‎` · α-in `‎0.114832098υ‎`.
+- **Pending emissions cues:** pending α emission `‎5.278019911υ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.000467956` · α-out `‎1.000000000υ‎` · α-in `‎0.114734354υ‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104428`
+- **Liquidity constant `k`:** `17737041799895785203907737690`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `GroundLayer`
+- **Symbol (API):** `υ`
+- **Rank:** `74`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.004078639`
 - **Market cap:** `15750403064139.107643175`
+- **Market cap Δ 1d:** `1.194845528362184273`
 - **Liquidity:** `17010718606965`
 - **Total τ:** `8503325941297`
 - **Total α:** `4912604043543200`
@@ -34,27 +55,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `1.057493398718867065`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `20`
+- **Owner SS58 (API):** `5FuzgvtfbZWdKSRxyYVPAPYNaNnf9cMnpT7phL3s2T3Kkrzo`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `1970929`
+- **Registration wall time:** `2023-12-20T14:36:12Z`
+- **Registration cost snapshot:** `0`
 - **Active keys:** `256`
 - **Active validators:** `11`
 - **Active miners:** `1`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `469859`
 - **Max neurons:** `256`
-- **Validators (metadata):** `11`
+- **Validator slots (metadata):** `11`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `500000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Structured OTC deals for subnet tokens.
-
-
-
-**Additional commentary (on-chain)**
-
-
-The Capital Layer for Bittensor
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -108,17 +128,10 @@ The Capital Layer for Bittensor
 
 *No miner/validator sections auto-matched.* Open [https://github.com/RogueTensor/comingsoon](https://github.com/RogueTensor/comingsoon) for requirements.
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Structured OTC deals for subnet tokens.
-
-## On-chain identity — additional field
-
-
-The Capital Layer for Bittensor
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://groundlayer.xyz](https://groundlayer.xyz)
@@ -134,12 +147,12 @@ The Capital Layer for Bittensor
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104037 | 0.00407865 |
-| 8104085 | 0.004078648 |
-| 8104133 | 0.004078643 |
-| 8104181 | 0.004078641 |
-| 8104229 | 0.004078631 |
-| 8104277 | 0.004078623 |
+| 8104196 | 0.00407864 |
+| 8104244 | 0.004078628 |
+| 8104292 | 0.004078621 |
+| 8104340 | 0.00407861 |
+| 8104388 | 0.004078609 |
+| 8104436 | 0.004078607 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -148,5 +161,5 @@ The Capital Layer for Bittensor
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

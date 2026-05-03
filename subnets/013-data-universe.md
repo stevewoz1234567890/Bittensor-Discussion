@@ -2,29 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Data Universe** (NetUID **13**) (`ν`).
 
 Scraping the world's social media data
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `203`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ23,339.304164146. **Alpha liquidity in pool (`alpha_in`)** = ‎2,991,249.378162328ν‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,050,817.132050958ν‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.007803037`** *(also **moving-average price** `0.007842267630621791` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎950,522.612269067ν‎`. **Owner hotkey / coldkey (chain):** `5HBswBt1A9Ahx6U76abXXGd7VmabmCNBGhSK2vrP71GSxtgZ` / `5HBswBt1A9Ahx6U76abXXGd7VmabmCNBGhSK2vrP71GSxtgZ`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `0`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ23,339.271676398. **Alpha liquidity in pool (`alpha_in`)** = ‎2,991,253.541658200ν‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,050,970.968555086ν‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.007803015`** *(also **moving-average price** `0.007840533275157213` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎950,522.644756815ν‎`. **Owner hotkey / coldkey (chain):** `5HBswBt1A9Ahx6U76abXXGd7VmabmCNBGhSK2vrP71GSxtgZ` / `5HBswBt1A9Ahx6U76abXXGd7VmabmCNBGhSK2vrP71GSxtgZ`.
 - **Subnet registered at block:** `1907637` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎153.351012693ν‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎0.000000000ν‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ν‎` · α-in `‎0.000000000ν‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104435`
+- **Liquidity constant `k`:** `69813679061748432242723163600`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Data Universe`
+- **Symbol (API):** `ν`
+- **Rank:** `28`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.007803058`
 - **Market cap:** `36376910122290.578700744`
+- **Market cap Δ 1d:** `-1.094199230214482085`
 - **Liquidity:** `46680196554309`
 - **Total τ:** `23339336641073`
 - **Total α:** `5041991510213286`
@@ -34,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-1.202201871661816499`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `13`
+- **Owner SS58 (API):** `5HBswBt1A9Ahx6U76abXXGd7VmabmCNBGhSK2vrP71GSxtgZ`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `1907637`
+- **Registration wall time:** `2023-12-11T19:24:48Z`
+- **Registration cost snapshot:** `0`
 - **Active keys:** `256`
 - **Active validators:** `12`
 - **Active miners:** `240`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `0`
 - **Max neurons:** `256`
-- **Validators (metadata):** `12`
+- **Validator slots (metadata):** `12`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `596903`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Scraping the world's social media data
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -101,7 +120,7 @@ By participating as a miner on Subnet 13, you are agreeing to adhere to our [Min
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 10000000
 - **`immunity_period` (blocks):** 12000
-- **Registration recycle cost snapshot (`burn`):** τ0.000513635
+- **Registration recycle cost snapshot (`burn`):** τ0.000500000
 - **Owner SS58 (`owner_ss58`):** `5HBswBt1A9Ahx6U76abXXGd7VmabmCNBGhSK2vrP71GSxtgZ`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -228,17 +247,10 @@ Validators remain suspicious of Miners and so they periodically check a sample o
 
 *Primary README URL used: `https://raw.githubusercontent.com/macrocosm-os/data-universe/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Scraping the world's social media data
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://www.macrocosmos.ai/gravity](https://www.macrocosmos.ai/gravity)
@@ -255,12 +267,12 @@ Scraping the world's social media data
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104037 | 0.00780341 |
-| 8104085 | 0.007803079 |
-| 8104133 | 0.007803073 |
-| 8104181 | 0.00780306 |
-| 8104229 | 0.007803047 |
-| 8104277 | 0.007803037 |
+| 8104196 | 0.007803059 |
+| 8104244 | 0.007803044 |
+| 8104292 | 0.007803035 |
+| 8104340 | 0.007803019 |
+| 8104388 | 0.007803018 |
+| 8104436 | 0.007803015 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -269,5 +281,5 @@ Scraping the world's social media data
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

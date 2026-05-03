@@ -2,29 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Bitrecs** (NetUID **122**) (`ⲅ`).
 
 Bitrecs is a novel recommendation engine built on the Bittensor network
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `312`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,229.857520833. **Alpha liquidity in pool (`alpha_in`)** = ‎1,051,646.760405092ⲅ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,259,684.178274245ⲅ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004014995`** *(also **moving-average price** `0.0037443097680807114` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎293,152.620100329ⲅ‎`. **Owner hotkey / coldkey (chain):** `5HVPptMPpMx3jUtUEjUfB8zLKkNM4fPnt4CLYT5Gc3BYzRX4` / `5H6fAdf7QsrZpLKyydA1pM9sxTK7qJx4S4jUgg6YMHr4Xzqs`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `109`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,229.238132862. **Alpha liquidity in pool (`alpha_in`)** = ‎1,051,801.051375371ⲅ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,259,687.638125668ⲅ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004013835`** *(also **moving-average price** `0.0037554102018475533` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎293,180.643043968ⲅ‎`. **Owner hotkey / coldkey (chain):** `5HVPptMPpMx3jUtUEjUfB8zLKkNM4fPnt4CLYT5Gc3BYzRX4` / `5H6fAdf7QsrZpLKyydA1pM9sxTK7qJx4S4jUgg6YMHr4Xzqs`.
 - **Subnet registered at block:** `5778578` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎227.494130008ⲅ‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎79.477843271ⲅ‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ⲅ‎` · α-in `‎0.000000000ⲅ‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104326`
+- **Liquidity constant `k`:** `4448317114661062585132541802`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Bitrecs`
+- **Symbol (API):** `ⲅ`
+- **Rank:** `93`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.004037063`
 - **Market cap:** `10979057705521.885055641`
+- **Market cap Δ 1d:** `12.243371089945931991`
 - **Liquidity:** `8475389441177`
 - **Total τ:** `4241629089565`
 - **Total α:** `3311255938679337`
@@ -34,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `12.057062996070985945`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `122`
+- **Owner SS58 (API):** `5H6fAdf7QsrZpLKyydA1pM9sxTK7qJx4S4jUgg6YMHr4Xzqs`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `5778578`
+- **Registration wall time:** `2025-06-14T10:32:24Z`
+- **Registration cost snapshot:** `130264686152`
 - **Active keys:** `256`
 - **Active validators:** `10`
 - **Active miners:** `2`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `0`
 - **Max neurons:** `256`
-- **Validators (metadata):** `10`
+- **Validator slots (metadata):** `10`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `1000000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Bitrecs is a novel recommendation engine built on the Bittensor network
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -96,7 +115,7 @@ Bitrecs V2 employs a winnter take all (WTA) scoring engine to evaluate miner sub
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.001000000
+- **Registration recycle cost snapshot (`burn`):** τ0.001173340
 - **Owner SS58 (`owner_ss58`):** `5H6fAdf7QsrZpLKyydA1pM9sxTK7qJx4S4jUgg6YMHr4Xzqs`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -144,17 +163,10 @@ See [Miner Setup](docs/miner_setup.md)
 
 *Primary README URL used: `https://raw.githubusercontent.com/bitrecs/bitrecs-v2/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Bitrecs is a novel recommendation engine built on the Bittensor network
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://bitrecs.ai](https://bitrecs.ai)
@@ -171,11 +183,11 @@ Bitrecs is a novel recommendation engine built on the Bittensor network
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.003875411 |
-| 8104133 | 0.0038754 |
-| 8104181 | 0.003865157 |
-| 8104229 | 0.004007461 |
-| 8104277 | 0.004014995 |
+| 8104244 | 0.003996321 |
+| 8104292 | 0.003996301 |
+| 8104340 | 0.004007995 |
+| 8104388 | 0.004011172 |
+| 8104436 | 0.004013835 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -184,5 +196,5 @@ Bitrecs is a novel recommendation engine built on the Bittensor network
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

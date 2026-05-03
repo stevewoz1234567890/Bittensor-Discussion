@@ -2,27 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **ReadyAI** (NetUID **33**) (`ט`).
+
+*No **`description`** field on-chain.* Use the README excerpt (below), TAOStats snapshots, **Topology / hyperparameters** further down this page, and outbound links.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `223`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ17,139.945105073. **Alpha liquidity in pool (`alpha_in`)** = ‎2,500,948.269072749ט‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,834,880.445682930ט‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.006877727`** *(also **moving-average price** `0.006938733160495758` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎824,612.772764618ט‎`. **Owner hotkey / coldkey (chain):** `5HinUfk5SqBUAbkMtgdNoum3VJvwrLgdvwW5sbXA1UPYZ8uB` / `5HinUfk5SqBUAbkMtgdNoum3VJvwrLgdvwW5sbXA1UPYZ8uB`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `20`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ17,139.913222095. **Alpha liquidity in pool (`alpha_in`)** = ‎2,500,952.904783360ט‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,835,033.550210785ט‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.006877702`** *(also **moving-average price** `0.006936060730367899` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎824,612.808221623ט‎`. **Owner hotkey / coldkey (chain):** `5HinUfk5SqBUAbkMtgdNoum3VJvwrLgdvwW5sbXA1UPYZ8uB` / `5HinUfk5SqBUAbkMtgdNoum3VJvwrLgdvwW5sbXA1UPYZ8uB`.
 - **Subnet registered at block:** `2943950` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎166.532602272ט‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎14.935794915ט‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000ט‎` · α-in `‎0.000000000ט‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104415`
+- **Liquidity constant `k`:** `42866115760533209635540339200`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `ReadyAI`
+- **Symbol (API):** `ט`
+- **Rank:** `40`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.006877753`
 - **Market cap:** `27050392621367.798896169`
+- **Market cap Δ 1d:** `-0.566449061666474246`
 - **Liquidity:** `34340849565417`
 - **Total τ:** `17139977740543`
 - **Total α:** `4335753714755679`
@@ -32,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-0.680173184878699248`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `33`
+- **Owner SS58 (API):** `5HinUfk5SqBUAbkMtgdNoum3VJvwrLgdvwW5sbXA1UPYZ8uB`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `2943950`
+- **Registration wall time:** `2024-05-12T23:17:24Z`
+- **Registration cost snapshot:** `0`
 - **Active keys:** `256`
 - **Active validators:** `14`
 - **Active miners:** `236`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `0`
 - **Max neurons:** `256`
-- **Validators (metadata):** `14`
+- **Validator slots (metadata):** `14`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `1053795`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -102,7 +123,7 @@ If you are new to Bittensor, please checkout the [Bittensor Website](https://bit
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 10000000
 - **`immunity_period` (blocks):** 7200
-- **Registration recycle cost snapshot (`burn`):** τ0.000906810
+- **Registration recycle cost snapshot (`burn`):** τ0.001059907
 - **Owner SS58 (`owner_ss58`):** `5HinUfk5SqBUAbkMtgdNoum3VJvwrLgdvwW5sbXA1UPYZ8uB`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -290,17 +311,10 @@ Now, you can deploy your instan…
 
 *Primary README URL used: `https://raw.githubusercontent.com/afterpartyai/bittensor-conversation-genome-project/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-*Unset in `SubnetIdentity`.*
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **GitHub:** [https://github.com/afterpartyai/bittensor-conversation-genome-project](https://github.com/afterpartyai/bittensor-conversation-genome-project)
@@ -314,12 +328,12 @@ Now, you can deploy your instan…
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104037 | 0.006877769 |
-| 8104085 | 0.006877766 |
-| 8104133 | 0.00687776 |
-| 8104181 | 0.006877755 |
-| 8104229 | 0.00687774 |
-| 8104277 | 0.006877727 |
+| 8104196 | 0.006877754 |
+| 8104244 | 0.006877736 |
+| 8104292 | 0.006877725 |
+| 8104340 | 0.006877707 |
+| 8104388 | 0.006877707 |
+| 8104436 | 0.006877702 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -328,5 +342,5 @@ Now, you can deploy your instan…
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

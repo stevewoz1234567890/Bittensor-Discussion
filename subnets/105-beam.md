@@ -2,29 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Beam** (NetUID **105**) (`Գ`).
 
 Decentralized bandwidth. A global network. Powering the open internet.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `295`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,382.032627132. **Alpha liquidity in pool (`alpha_in`)** = ‎358,723.313914433Գ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,336,691.191519255Գ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.012186001`** *(also **moving-average price** `0.012313137296587229` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎244,647.377221223Գ‎`. **Owner hotkey / coldkey (chain):** `5HBSExJPHsaHV3TuohhRi4oajphhVXFyanhWN96Ed3DHHTY4` / `5G3ic2pAzVu1gZmeUQfKGox3P8TetJw87asvyAdkb2o8aCCX`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `92`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ4,343.441716411. **Alpha liquidity in pool (`alpha_in`)** = ‎362,076.938266012Գ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,333,566.251219817Գ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.011967616`** *(also **moving-average price** `0.012303878786042333` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎244,747.118746649Գ‎`. **Owner hotkey / coldkey (chain):** `5HBSExJPHsaHV3TuohhRi4oajphhVXFyanhWN96Ed3DHHTY4` / `5G3ic2pAzVu1gZmeUQfKGox3P8TetJw87asvyAdkb2o8aCCX`.
 - **Subnet registered at block:** `6841399` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎198.679150484Գ‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.006093020` · α-out `‎1.000000000Գ‎` · α-in `‎0.500000000Գ‎`.
+- **Pending emissions cues:** pending α emission `‎61.962989599Գ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.005983807` · α-out `‎1.000000000Գ‎` · α-in `‎0.500000000Գ‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104343`
+- **Liquidity constant `k`:** `1572660078214966847383922932`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Beam`
+- **Symbol (API):** `Գ`
+- **Rank:** `71`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.0121889`
 - **Market cap:** `16209465805670.0217858`
+- **Market cap Δ 1d:** `-3.748828659209737306`
 - **Liquidity:** `8753560772535`
 - **Total τ:** `4382098046273`
 - **Total α:** `1695306970526699`
@@ -34,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-4.455263547765313425`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `105`
+- **Owner SS58 (API):** `5G3ic2pAzVu1gZmeUQfKGox3P8TetJw87asvyAdkb2o8aCCX`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `6841399`
+- **Registration wall time:** `2025-11-09T01:33:00.001Z`
+- **Registration cost snapshot:** `284712547529`
 - **Active keys:** `256`
 - **Active validators:** `6`
 - **Active miners:** `13`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `6094597`
 - **Max neurons:** `256`
-- **Validators (metadata):** `6`
+- **Validator slots (metadata):** `6`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `72919460`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Decentralized bandwidth. A global network. Powering the open internet.
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -72,7 +91,7 @@ Decentralized bandwidth. A global network. Powering the open internet.
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 7500
-- **Registration recycle cost snapshot (`burn`):** τ0.062750912
+- **Registration recycle cost snapshot (`burn`):** τ0.046202388
 - **Owner SS58 (`owner_ss58`):** `5G3ic2pAzVu1gZmeUQfKGox3P8TetJw87asvyAdkb2o8aCCX`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -101,17 +120,10 @@ Decentralized bandwidth. A global network. Powering the open internet.
 
 *No miner/validator sections auto-matched.* Open [https://github.com/orgs/Beam-Network/repositories](https://github.com/orgs/Beam-Network/repositories) for requirements.
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Decentralized bandwidth. A global network. Powering the open internet.
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://b1m.ai](https://b1m.ai)
@@ -128,11 +140,11 @@ Decentralized bandwidth. A global network. Powering the open internet.
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.012111335 |
-| 8104133 | 0.012111559 |
-| 8104181 | 0.01218918 |
-| 8104229 | 0.012208913 |
-| 8104277 | 0.012186001 |
+| 8104244 | 0.012208907 |
+| 8104292 | 0.012186014 |
+| 8104340 | 0.01220131 |
+| 8104388 | 0.011976629 |
+| 8104436 | 0.011967619 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -141,5 +153,5 @@ Decentralized bandwidth. A global network. Powering the open internet.
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

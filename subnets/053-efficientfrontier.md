@@ -2,27 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **EfficientFrontier** (NetUID **53**) (`ب`).
+
+*No **`description`** field on-chain.* Use the README excerpt (below), TAOStats snapshots, **Topology / hyperparameters** further down this page, and outbound links.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `243`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ14,863.876565610. **Alpha liquidity in pool (`alpha_in`)** = ‎2,477,423.141380866ب‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,464,662.257326749ب‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005998237`** *(also **moving-average price** `0.005982734030112624` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎464,130.622160777ب‎`. **Owner hotkey / coldkey (chain):** `5F2HTUqtk9VWQwXkkUX9oFSXUkAib74qw7s3W7KyZP88AmYe` / `5Fv2Qm2w9tnotv9xpGq9EVKaSjRtFzGdas5RBsUswpdsE5Sh`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `40`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ14,864.537071162. **Alpha liquidity in pool (`alpha_in`)** = ‎2,477,471.026685844ب‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,464,773.454850655ب‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.005998387`** *(also **moving-average price** `0.005983374547213316` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎464,131.370274549ب‎`. **Owner hotkey / coldkey (chain):** `5F2HTUqtk9VWQwXkkUX9oFSXUkAib74qw7s3W7KyZP88AmYe` / `5Fv2Qm2w9tnotv9xpGq9EVKaSjRtFzGdas5RBsUswpdsE5Sh`.
 - **Subnet registered at block:** `4203869` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎183.301355552ب‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.002999117` · α-out `‎1.000000000ب‎` · α-in `‎0.500000000ب‎`.
+- **Pending emissions cues:** pending α emission `‎30.173275092ب‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002999192` · α-out `‎1.000000000ب‎` · α-in `‎0.500000000ب‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104395`
+- **Liquidity constant `k`:** `36826459918901508715246030728`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `EfficientFrontier`
+- **Symbol (API):** `ب`
+- **Rank:** `37`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.006006154`
 - **Market cap:** `28090328604980.087654362`
+- **Market cap Δ 1d:** `-1.499305959202648069`
 - **Liquidity:** `29743204779681`
 - **Total τ:** `14873447629407`
 - **Total α:** `4942010378633353`
@@ -32,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-1.577392418376140717`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `53`
+- **Owner SS58 (API):** `5Fv2Qm2w9tnotv9xpGq9EVKaSjRtFzGdas5RBsUswpdsE5Sh`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `4203869`
+- **Registration wall time:** `2024-11-06T03:34:48Z`
+- **Registration cost snapshot:** `0`
 - **Active keys:** `256`
 - **Active validators:** `13`
 - **Active miners:** `1`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `3003072`
 - **Max neurons:** `256`
-- **Validators (metadata):** `13`
+- **Validator slots (metadata):** `13`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `500000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-*SubnetIdentity **description** is empty on-chain; see README, links below, or off-chain docs.*
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -171,17 +192,10 @@ By handling the TAO acquisition and payment process, we aim to make it as easy a
 
 *Primary README URL used: `https://raw.githubusercontent.com/EfficientFrontier-SignalPlus/EfficientFrontier/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-*Unset in `SubnetIdentity`.*
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **GitHub:** [https://github.com/EfficientFrontier-SignalPlus/EfficientFrontier](https://github.com/EfficientFrontier-SignalPlus/EfficientFrontier)
@@ -194,11 +208,11 @@ By handling the TAO acquisition and payment process, we aim to make it as easy a
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.006005956 |
-| 8104133 | 0.006006071 |
-| 8104181 | 0.006006104 |
-| 8104229 | 0.005998131 |
-| 8104277 | 0.005998237 |
+| 8104244 | 0.005998164 |
+| 8104292 | 0.005998271 |
+| 8104340 | 0.005998371 |
+| 8104388 | 0.005998485 |
+| 8104436 | 0.00599839 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -207,5 +221,5 @@ By handling the TAO acquisition and payment process, we aim to make it as easy a
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

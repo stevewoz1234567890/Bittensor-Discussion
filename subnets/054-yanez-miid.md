@@ -2,29 +2,50 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Yanez MIID** (NetUID **54**) (`ت`).
 
 Yanez MIID generates synthetic identities for testing financial crime prevention systems
 
+
+
+#### SubnetIdentity `additional` *(chain)*
+
+
+
+This subnet powers Yanez Compliance, an AI-powered platform for detecting and correcting exposure, weaknesses, and configuration flaws in financial crime prevention systems. Effective financial crime prevention depends on how well these systems can detect fraudulent identities, prevent money laundering, and reduce regulatory risks. To properly test these systems, a diverse and controlled dataset of inorganic identities is essential. By leveraging Bittensor’s decentralized AI infrastructure, the Yanez subnet enables the generation of high-quality inorganic identities, which serve as the foundation for testing, tuning, and validating fraud detection, sanctions screening, and broader financial crime prevention measures. With a direct business use case and existing clients, the Yanez subnet brings practical, real-world adoption to the Bittensor ecosystem — demonstrating how decentralized AI can support financial institutions in strengthening their compliance and security frameworks.
+
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `244`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,295.914296287. **Alpha liquidity in pool (`alpha_in`)** = ‎1,441,572.904083948ت‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,387,445.340570807ت‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.007106681`** *(also **moving-average price** `0.007172345416620374` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎697,028.875989525ت‎`. **Owner hotkey / coldkey (chain):** `5DUB7kNLvvx8Dj7D8tn54N1C7Xok6GodNPQE2WECCaL9Wgpr` / `5FUfruyVDoDsCty1Sh7tCmHVdpoC3XV1nUZYjhcpfe31Defk`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `41`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,302.881601243. **Alpha liquidity in pool (`alpha_in`)** = ‎1,440,677.378034572ت‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎3,388,541.016991834ت‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.007115810`** *(also **moving-average price** `0.007169150281697512` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎697,149.216484676ت‎`. **Owner hotkey / coldkey (chain):** `5DUB7kNLvvx8Dj7D8tn54N1C7Xok6GodNPQE2WECCaL9Wgpr` / `5FUfruyVDoDsCty1Sh7tCmHVdpoC3XV1nUZYjhcpfe31Defk`.
 - **Subnet registered at block:** `4742549` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎183.741632400ت‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.001948211` · α-out `‎1.000000000ت‎` · α-in `‎0.274137651ت‎`.
+- **Pending emissions cues:** pending α emission `‎30.874876597ت‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002014963` · α-out `‎1.000000000ت‎` · α-in `‎0.283167163ت‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104394`
+- **Liquidity constant `k`:** `14843128451479398003572172996`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Yanez MIID`
+- **Symbol (API):** `ت`
+- **Rank:** `32`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.007107177`
 - **Market cap:** `31682054221106.834103174`
+- **Market cap Δ 1d:** `-0.127352808615535652`
 - **Liquidity:** `20541134754032`
 - **Total τ:** `10296129995584`
 - **Total α:** `4828922609100613`
@@ -34,27 +55,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-0.291626051983427526`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `54`
+- **Owner SS58 (API):** `5FUfruyVDoDsCty1Sh7tCmHVdpoC3XV1nUZYjhcpfe31Defk`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `4742549`
+- **Registration wall time:** `2025-01-20T01:04:48Z`
+- **Registration cost snapshot:** `0`
 - **Active keys:** `256`
 - **Active validators:** `7`
 - **Active miners:** `190`
-- **Active dual:** `1`
+- **Active dual-role:** `1`
 - **Emission:** `1957813`
 - **Max neurons:** `256`
-- **Validators (metadata):** `7`
+- **Validator slots (metadata):** `7`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `500000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Yanez MIID generates synthetic identities for testing financial crime prevention systems
-
-
-
-**Additional commentary (on-chain)**
-
-
-This subnet powers Yanez Compliance, an AI-powered platform for detecting and correcting exposure, weaknesses, and configuration flaws in financial crime prevention systems. Effective financial crime prevention depends on how well these systems can detect fraudulent identities, prevent money laundering, and reduce regulatory risks. To properly test these systems, a diverse and controlled dataset of inorganic identities is essential. By leveraging Bittensor’s decentralized AI infrastructure, the Yanez subnet enables the generation of high-quality inorganic identities, which serve as the foundation for testing, tuning, and validating fraud detection, sanctions screening, and broader financial crime prevention measures. With a direct business use case and existing clients, the Yanez subnet brings practical, real-world adoption to the Bittensor ecosystem — demonstrating how decentralized AI can support financial institutions in strengthening their compliance and security frameworks.
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -247,17 +267,10 @@ source validator_env/bin/activate
 
 *Primary README URL used: `https://raw.githubusercontent.com/yanez-compliance/MIID-subnet/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Yanez MIID generates synthetic identities for testing financial crime prevention systems
-
-## On-chain identity — additional field
-
-
-This subnet powers Yanez Compliance, an AI-powered platform for detecting and correcting exposure, weaknesses, and configuration flaws in financial crime prevention systems. Effective financial crime prevention depends on how well these systems can detect fraudulent identities, prevent money laundering, and reduce regulatory risks. To properly test these systems, a diverse and controlled dataset of inorganic identities is essential. By leveraging Bittensor’s decentralized AI infrastructure, the Yanez subnet enables the generation of high-quality inorganic identities, which serve as the foundation for testing, tuning, and validating fraud detection, sanctions screening, and broader financial crime prevention measures. With a direct business use case and existing clients, the Yanez subnet brings practical, real-world adoption to the Bittensor ecosystem — demonstrating how decentralized AI can support financial institutions in strengthening their compliance and security frameworks.
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://www.yanez.ai](https://www.yanez.ai)
@@ -274,11 +287,11 @@ This subnet powers Yanez Compliance, an AI-powered platform for detecting and co
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.007179003 |
-| 8104133 | 0.007159655 |
-| 8104181 | 0.007107181 |
-| 8104229 | 0.007107155 |
-| 8104277 | 0.007106681 |
+| 8104244 | 0.007106962 |
+| 8104292 | 0.007113343 |
+| 8104340 | 0.007094666 |
+| 8104388 | 0.007089335 |
+| 8104436 | 0.00711581 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -287,5 +300,5 @@ This subnet powers Yanez Compliance, an AI-powered platform for detecting and co
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

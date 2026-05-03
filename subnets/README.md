@@ -1,8 +1,8 @@
 # Subnet pages (one file per NetUID)
 
-Generated from `finney` at block **8104277** (2026-05-03 16:25 UTC).
+Generated from `finney` at block **8104436** (2026-05-03 16:56 UTC).
 
-Each page pulls **`DynamicInfo`**, **`SubnetInfo`**, **`SubnetHyperparameters`**, `SubnetIdentity`, GitHub README (preface + hardware scrape where applicable), on-chain α **price probes**. With **`TAOSTATS_API_KEY`** (repo `.env` or env): bulk **subnet/pool snapshots** plus optional **daily pool history**.
+Each page opens with **Subnet narrative** (full **`SubnetIdentity`** `description`/`additional`), **`DynamicInfo`** (core fields + swap/slippage helpers), **`SubnetInfo`** / **`SubnetHyperparameters`**, README preface + hardware scrape, on-chain α probes, and **TAOStats** index + optional daily history when **`TAOSTATS_API_KEY`** is set (`.env`).
 
 ### Conventions (read once)
 

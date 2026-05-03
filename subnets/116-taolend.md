@@ -2,29 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **TaoLend** (NetUID **116**) (`ⴵ`).
 
-TaoLend is a decentralized lending protocol for the Bittensor ($TAO) ecosystem.
+TaoLend is a decentralized lending protocol for the Bittensor ($TAO) ecosystem.It allows users to lend TAO with confidence while borrowers secure their loans using subnet ALPHA as collateral.By unlocking TAO liquidity and keeping ALPHA staked within the subnet, TaoLend strengthens both capital efficiency and network security.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `306`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ3,664.447166653. **Alpha liquidity in pool (`alpha_in`)** = ‎890,901.064213179ъ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,731,655.996991599ъ‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004113042`** *(also **moving-average price** `0.0040591927245259285` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎43,884.492582489ъ‎`. **Owner hotkey / coldkey (chain):** `5FFFjWqpNcu2yweMNaYcya5bq6zRuAAWJsudCyN462nLKhtj` / `5GgjJXbcDyiGenKGfPrPhRxJ7p91EdC22fcAAF4ccbATgu6H`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `103`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ3,664.902458236. **Alpha liquidity in pool (`alpha_in`)** = ‎890,948.358103387ъ‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎1,731,806.821508213ъ‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004113335`** *(also **moving-average price** `0.004061349667608738` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎43,886.681458266ъ‎`. **Owner hotkey / coldkey (chain):** `5FFFjWqpNcu2yweMNaYcya5bq6zRuAAWJsudCyN462nLKhtj` / `5GgjJXbcDyiGenKGfPrPhRxJ7p91EdC22fcAAF4ccbATgu6H`.
 - **Subnet registered at block:** `5699219` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎217.747492660ъ‎`; pending root emission `τ0.000000000`.
-- **Per-flow emission splits:** τ-in `τ0.002056522` · α-out `‎1.000000000ъ‎` · α-in `‎0.500000000ъ‎`.
+- **Pending emissions cues:** pending α emission `‎73.295247161ъ‎`; pending root emission `τ0.000000000`.
+- **Per-flow emission splits:** τ-in `τ0.002056666` · α-out `‎1.000000000ъ‎` · α-in `‎0.500000000ъ‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104332`
+- **Liquidity constant `k`:** `3265238827774431046937645332`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `TaoLend`
+- **Symbol (API):** `ⴵ`
+- **Rank:** `97`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.004112943`
 - **Market cap:** `10004530514074.753492035`
+- **Market cap Δ 1d:** `4.604642682738308506`
 - **Liquidity:** `7328363989135`
 - **Total τ:** `3664248759613`
 - **Total α:** `2622463225648214`
@@ -34,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `4.219147550055911193`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `116`
+- **Owner SS58 (API):** `5GgjJXbcDyiGenKGfPrPhRxJ7p91EdC22fcAAF4ccbATgu6H`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `5699219`
+- **Registration wall time:** `2025-06-03T09:58:48Z`
+- **Registration cost snapshot:** `89944262256`
 - **Active keys:** `256`
 - **Active validators:** `11`
 - **Active miners:** `4`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `2056468`
 - **Max neurons:** `256`
-- **Validators (metadata):** `11`
+- **Validator slots (metadata):** `11`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `500000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-TaoLend is a decentralized lending protocol for the Bittensor ($TAO) ecosystem.It allows users to lend TAO with confidence while borrowers secure their loans using subnet ALPHA as collateral.By unlocking TAO liquidity and keeping ALPHA staked within the subnet, TaoLend strengthens both capital efficiency and network security.
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `1000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -193,17 +212,10 @@ pm2 start --name sn116-auto-upgrade python3 -- start_validator.py \
 
 *Primary README URL used: `https://raw.githubusercontent.com/xpenlab/taolend/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-TaoLend is a decentralized lending protocol for the Bittensor ($TAO) ecosystem.It allows users to lend TAO with confidence while borrowers secure their loans using subnet ALPHA as collateral.By unlocking TAO liquidity and keeping ALPHA staked within the subnet, TaoLend strengthens both capital efficiency and network security.
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://taolend.io](https://taolend.io)
@@ -220,77 +232,18 @@ TaoLend is a decentralized lending protocol for the Bittensor ($TAO) ecosystem.I
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.004112729 |
-| 8104133 | 0.004112823 |
-| 8104181 | 0.004112923 |
-| 8104229 | 0.004112972 |
-| 8104277 | 0.004113042 |
+| 8104244 | 0.004112998 |
+| 8104292 | 0.004110829 |
+| 8104340 | 0.004110892 |
+| 8104388 | 0.004113241 |
+| 8104436 | 0.004113337 |
 
 ### Extended history — TAOStats pool price (daily)
 
-[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
-
-| Timestamp (UTC) | Block | Pool price |
-|-----------------|------:|-----------:|
-| 2026-03-09T23:59:48Z | 7711060 | 0.003891604 |
-| 2026-03-10T23:59:48Z | 7718257 | 0.004002175 |
-| 2026-03-11T23:59:48Z | 7725455 | 0.004232136 |
-| 2026-03-12T23:59:48.001Z | 7732653 | 0.004359964 |
-| 2026-03-13T23:59:48Z | 7739841 | 0.004072252 |
-| 2026-03-14T23:59:48.001Z | 7747036 | 0.004077209 |
-| 2026-03-15T23:59:48Z | 7754226 | 0.00390888 |
-| 2026-03-16T23:59:48Z | 7761426 | 0.003893888 |
-| 2026-03-17T23:59:48Z | 7768619 | 0.003834026 |
-| 2026-03-18T23:59:48Z | 7775819 | 0.003669153 |
-| 2026-03-19T23:59:48Z | 7783014 | 0.00366914828954794521 |
-| 2026-03-20T23:59:48Z | 7790201 | 0.003688948 |
-| 2026-03-21T23:59:48Z | 7797398 | 0.003767131 |
-| 2026-03-22T23:59:48Z | 7804598 | 0.003800576 |
-| 2026-03-23T23:59:48Z | 7811798 | 0.003844143 |
-| 2026-03-24T23:59:48.001Z | 7818996 | 0.00385020895647993514 |
-| 2026-03-25T23:59:48Z | 7826196 | 0.003740848 |
-| 2026-03-26T23:59:48Z | 7833396 | 0.003608283 |
-| 2026-03-27T23:59:48Z | 7840596 | 0.003594411 |
-| 2026-03-28T23:59:48.001Z | 7847743 | 0.003668794 |
-| 2026-03-29T23:59:48Z | 7854902 | 0.003712866 |
-| 2026-03-30T23:59:48.001Z | 7862095 | 0.00365265 |
-| 2026-03-31T23:59:48Z | 7869291 | 0.003667979 |
-| 2026-04-01T23:59:48Z | 7876474 | 0.003687838 |
-| 2026-04-02T23:59:48Z | 7883622 | 0.003687826 |
-| 2026-04-03T23:59:48Z | 7890794 | 0.003686951 |
-| 2026-04-04T23:59:48.001Z | 7897988 | 0.003727075 |
-| 2026-04-05T23:59:48Z | 7905188 | 0.003720969 |
-| 2026-04-06T23:59:48Z | 7912388 | 0.003775407 |
-| 2026-04-07T23:59:48Z | 7919588 | 0.003762101 |
-| 2026-04-08T23:59:48Z | 7926788 | 0.003627645 |
-| 2026-04-09T23:59:48Z | 7933987 | 0.00357732 |
-| 2026-04-10T23:59:48Z | 7941184 | 0.003651722 |
-| 2026-04-11T23:59:48Z | 7948384 | 0.003644198 |
-| 2026-04-12T23:59:48Z | 7955584 | 0.003607883 |
-| 2026-04-13T23:59:48Z | 7962784 | 0.00358766 |
-| 2026-04-14T23:59:48Z | 7969979 | 0.003634473 |
-| 2026-04-15T23:59:48.001Z | 7977179 | 0.00359481 |
-| 2026-04-16T23:59:48Z | 7984379 | 0.003670028 |
-| 2026-04-17T23:59:48Z | 7991579 | 0.003658789 |
-| 2026-04-18T23:59:48Z | 7998779 | 0.003693944 |
-| 2026-04-19T23:59:48Z | 8005979 | 0.003725337 |
-| 2026-04-20T23:59:48Z | 8013179 | 0.003685564 |
-| 2026-04-21T23:59:48Z | 8020376 | 0.003674143 |
-| 2026-04-22T23:59:48Z | 8027562 | 0.003650747 |
-| 2026-04-23T23:59:48Z | 8034762 | 0.003644254 |
-| 2026-04-24T23:59:48Z | 8041962 | 0.003625527 |
-| 2026-04-25T23:59:48Z | 8049151 | 0.003605104 |
-| 2026-04-26T23:59:48Z | 8056274 | 0.003604287 |
-| 2026-04-27T23:59:48.001Z | 8063454 | 0.003589571 |
-| 2026-04-28T23:59:48Z | 8070646 | 0.003622355 |
-| 2026-04-29T23:59:48Z | 8077790 | 0.003731774 |
-| 2026-04-30T23:59:48Z | 8084984 | 0.003901594 |
-| 2026-05-01T23:59:48Z | 8092168 | 0.003853916 |
-| 2026-05-02T23:59:48Z | 8099357 | 0.004144309 |
-| 2026-05-03T16:10:00Z | 8104202 | 0.004112943 |
+*TAOStats fetch failed:* `HTTP 429: {"status_code":429,"message":"Rate Limited. Try Again Later."}`
 
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

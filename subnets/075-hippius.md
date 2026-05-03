@@ -2,29 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Hippius** (NetUID **75**) (`م`).
 
 Blockchain-backed cloud: storage, VMs, and apps with unmatched transparency, trust, and power.
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `265`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ37,779.872342936. **Alpha liquidity in pool (`alpha_in`)** = ‎1,601,678.329271967م‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,956,707.778671219م‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.023547198`** *(also **moving-average price** `0.02355563803575933` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎1,269,205.308587572م‎`. **Owner hotkey / coldkey (chain):** `5G1Qj93Fy22grpiGKq6BEvqqmS2HVRs3jaEdMhq9absQzs6g` / `5DAQpczEK4vzBn1waHkC4BZGqGPZ1dwPxKVsj36JDofHAw3a`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `62`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ37,779.461606597. **Alpha liquidity in pool (`alpha_in`)** = ‎1,601,695.772574658م‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,956,848.335368528م‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.023546688`** *(also **moving-average price** `0.023556157713755965` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎1,269,375.519351411م‎`. **Owner hotkey / coldkey (chain):** `5G1Qj93Fy22grpiGKq6BEvqqmS2HVRs3jaEdMhq9absQzs6g` / `5DAQpczEK4vzBn1waHkC4BZGqGPZ1dwPxKVsj36JDofHAw3a`.
 - **Subnet registered at block:** `5102795` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎198.682517636م‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎46.484536443م‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000م‎` · α-in `‎0.000000000م‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104373`
+- **Liquidity constant `k`:** `60511203945433012055807818826`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Hippius`
+- **Symbol (API):** `م`
+- **Rank:** `10`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.023547976`
 - **Market cap:** `95906272000473.929857552`
+- **Market cap Δ 1d:** `-0.085810883058705399`
 - **Liquidity:** `75496155189951`
 - **Total τ:** `37780499394282`
 - **Total α:** `4558311107943186`
@@ -34,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-0.190561284554041284`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `75`
+- **Owner SS58 (API):** `5DAQpczEK4vzBn1waHkC4BZGqGPZ1dwPxKVsj36JDofHAw3a`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `5102795`
+- **Registration wall time:** `2025-03-11T05:52:36Z`
+- **Registration cost snapshot:** `247485227056`
 - **Active keys:** `256`
 - **Active validators:** `13`
 - **Active miners:** `141`
-- **Active dual:** `1`
+- **Active dual-role:** `1`
 - **Emission:** `0`
 - **Max neurons:** `256`
-- **Validators (metadata):** `13`
+- **Validator slots (metadata):** `13`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `100000000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Blockchain-backed cloud: storage, VMs, and apps with unmatched transparency, trust, and power.
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -117,17 +136,10 @@ A comprehensive Bittensor subnet providing distributed storage, compute, and blo
 
 *Primary README URL used: `https://raw.githubusercontent.com/thenervelab/thebrain/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Blockchain-backed cloud: storage, VMs, and apps with unmatched transparency, trust, and power.
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://hippius.com/](https://hippius.com/)
@@ -143,11 +155,11 @@ Blockchain-backed cloud: storage, VMs, and apps with unmatched transparency, tru
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104085 | 0.02359631 |
-| 8104133 | 0.023534408 |
-| 8104181 | 0.023534385 |
-| 8104229 | 0.023547904 |
-| 8104277 | 0.023547198 |
+| 8104244 | 0.023547248 |
+| 8104292 | 0.023547187 |
+| 8104340 | 0.023547087 |
+| 8104388 | 0.023565308 |
+| 8104436 | 0.023546688 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -156,5 +168,5 @@ Blockchain-backed cloud: storage, VMs, and apps with unmatched transparency, tru
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 

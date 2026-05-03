@@ -2,29 +2,42 @@
 
 ## Overview
 
+### Subnet narrative *(full `SubnetIdentity` text)*
+
 **Mainframe** (NetUID **25**) (`א`).
 
 Powering decentralized science on Bittensor
 
 ### Chain & market snapshot *(from `DynamicInfo`)*
 
-- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `215`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104277)*.
-- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,901.750240956. **Alpha liquidity in pool (`alpha_in`)** = ‎2,344,987.542387744א‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,617,522.953751970א‎.
-- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004649521`** *(also **moving-average price** `0.004660516977310181` used in some dashboards)*.
-- **Outstanding subnet volume accumulator:** `‎404,079.396672328א‎`. **Owner hotkey / coldkey (chain):** `5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D` / `5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D`.
+- **Tempo / epoch pacing:** `360` blocks between steps; **blocks since last step:** `12`. **Emission allocation field:** `τ0.000000000` *(protocol snapshot at block 8104436)*.
+- **TAO routed into swap pool reserves:** **`tao_in`** = τ10,901.069132570. **Alpha liquidity in pool (`alpha_in`)** = ‎2,345,134.041554046א‎; **`alpha_out`** (off-pool bonded/staked tally) = ‎2,617,534.454585668א‎.
+- **Implied Alpha spot:** **`price`** τ per α unit ≈ **`τ0.004648941`** *(also **moving-average price** `0.004659978440031409` used in some dashboards)*.
+- **Outstanding subnet volume accumulator:** `‎404,080.077780714א‎`. **Owner hotkey / coldkey (chain):** `5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D` / `5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D`.
 - **Subnet registered at block:** `2998801` (see explorers for approximate wall-clock age). **Is dynamic liquidity subnet:** `True`.
-- **Pending emissions cues:** pending α emission `‎162.229041897א‎`; pending root emission `τ0.000000000`.
+- **Pending emissions cues:** pending α emission `‎9.054713089א‎`; pending root emission `τ0.000000000`.
 - **Per-flow emission splits:** τ-in `τ0.000000000` · α-out `‎1.000000000א‎` · α-in `‎0.000000000א‎`.
+
+#### Further numeric `DynamicInfo` fields
+
+- **`last_step` (block):** `8104423`
+- **Liquidity constant `k`:** `25564468312123942563993878220`
+
+*Values are pallet **`DynamicInfo`** at head block **8104436**. **`last_step`** anchors the most recent epoch advance. On-chain swap math also exposes callables on this object in Python (e.g. `tao_to_alpha`); see Bittensor `DynamicInfo` docs. **`tempo`** / **`blocks_since_last_step`** describe pacing; **`tao_in`** / **`alpha_in`** / **`alpha_out`** split liquidity; **`price`** reflects τ-per-α (see **`moving_price`**).*
 
 ### TAOStats snapshot *(off-chain index)*
 
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
+- **Subnet name (API):** `Mainframe`
+- **Symbol (API):** `א`
+- **Rank:** `55`
 - **Block (API):** `8104202`
 - **Time (API):** `2026-05-03T16:10:00Z`
 - **Price τ/α:** `0.004649537`
 - **Market cap:** `20485610704200.579203526`
+- **Market cap Δ 1d:** `-0.639149996718469547`
 - **Liquidity:** `21804856583744`
 - **Total τ:** `10901769690931`
 - **Total α:** `4962435496139714`
@@ -34,20 +47,26 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 - **Price Δ 1d:** `-0.734763991013573364`
 #### Subnet activity (TAOStats)
 
+- **NetUID (API):** `25`
+- **Owner SS58 (API):** `5F6aRdsBHajN2NhZHBTB6ibBFu7YuZZEWruWzB8x6B6GiZ4D`
 - **Block (API):** `8104199`
 - **Time (API):** `2026-05-03T16:09:24.001Z`
+- **Registration block:** `2998801`
+- **Registration wall time:** `2024-05-20T14:44:24Z`
+- **Registration cost snapshot:** `0`
 - **Active keys:** `256`
 - **Active validators:** `14`
 - **Active miners:** `1`
-- **Active dual:** `0`
+- **Active dual-role:** `0`
 - **Emission:** `0`
 - **Max neurons:** `256`
-- **Validators (metadata):** `14`
+- **Validator slots (metadata):** `14`
+- **Max validators (API):** `64`
 - **Neuron reg. cost:** `500000`
-
-### On-chain declared purpose *(SubnetIdentity)*
-
-Powering decentralized science on Bittensor
+- **Tempo (API):** `360`
+- **Min allowed weights (API):** `1`
+- **Max weights limit (API):** `65535`
+- **Activity cutoff:** `5000`
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -230,17 +249,10 @@ As Mainframe is meant to be a collection of different scientific computation tas
 
 *Primary README URL used: `https://raw.githubusercontent.com/macrocosm-os/mainframe/main/README.md`*
 
-## On-chain identity — description
+## SubnetIdentity links *(from chain)*
 
 
-Powering decentralized science on Bittensor
-
-## On-chain identity — additional field
-
-
-*Unset.*
-
-## Registered contact & links
+*Full **`description`** / **`additional`** text is under **Overview → Subnet narrative**.*
 
 
 - **Website:** [https://macrocosmos.ai/sn25](https://macrocosmos.ai/sn25)
@@ -257,12 +269,12 @@ Powering decentralized science on Bittensor
 *Probes every **48** blocks, lookback ≈ **576** blocks (bounded by typical public RPC history depth).*
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8104037 | 0.004649548 |
-| 8104085 | 0.004649546 |
-| 8104133 | 0.004649542 |
-| 8104181 | 0.004649539 |
-| 8104229 | 0.004649529 |
-| 8104277 | 0.004649521 |
+| 8104196 | 0.004649538 |
+| 8104244 | 0.004649526 |
+| 8104292 | 0.00464952 |
+| 8104340 | 0.004648944 |
+| 8104388 | 0.004648943 |
+| 8104436 | 0.00464894 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -271,5 +283,5 @@ Powering decentralized science on Bittensor
 
 ---
 
-*Subtensor `finney`, block **8104277**, 2026-05-03 16:25 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
+*Subtensor `finney`, block **8104436**, 2026-05-03 16:56 UTC. Regenerate: `scripts/generate_subnet_pages.py`.*
 
