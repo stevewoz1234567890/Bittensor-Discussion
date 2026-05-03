@@ -74,6 +74,11 @@ def generate(network: str) -> str:
     )
     lines.append("")
     lines.append(
+        "**Per-netuid detail pages** (full verbatim identity + overview + optional web/GitHub crawl): "
+        "see [`subnets/README.md`](../subnets/README.md) (from `scripts/generate_subnet_pages.py`)."
+    )
+    lines.append("")
+    lines.append(
         "**How to regenerate:** install `bittensor` (see repo `scripts/requirements-catalog.txt`), "
         "then run `python scripts/generate_subnet_catalog.py`. "
         f"Latest generation used network `{network}` at block **{block}** ({utc}). "

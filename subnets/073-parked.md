@@ -1,0 +1,21 @@
+# NetUID 73 — Parked (`ك`)
+
+## Overview
+
+**Parked** (NetUID 73) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
+
+## On-chain description (full)
+
+*Empty — no description bytes set in `SubnetIdentity`.*
+
+## On-chain additional details (full)
+
+*Empty — no additional field set, or identity missing.*
+
+## Registered contact & links
+
+*No links or contacts in chain identity.*
+
+---
+
+*Snapshot: Subtensor network `finney`, block **8103809**, 2026-05-03 14:51 UTC. Regenerate with `scripts/generate_subnet_pages.py`. On-chain fields are authoritative for registration data; website excerpts may be outdated or fail for some URLs.*

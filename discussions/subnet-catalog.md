@@ -2,7 +2,9 @@
 
 On-chain subnet names, symbols (alpha tickers where applicable), and identity descriptions copied from Subtensor **`all_subnets()`** (dynamic info + optional `SubnetIdentity`). This is documentation of what the chain stores, not an endorsement of any subnet.
 
-**How to regenerate:** install `bittensor` (see repo `scripts/requirements-catalog.txt`), then run `python scripts/generate_subnet_catalog.py`. Latest generation used network `finney` at block **8103770** (2026-05-03 14:43 UTC). Subnets appear and change over time — verify critical details against current explorers and docs.
+**Per-netuid detail pages** (full verbatim identity + overview + optional web/GitHub crawl): see [`subnets/README.md`](../subnets/README.md) (from `scripts/generate_subnet_pages.py`).
+
+**How to regenerate:** install `bittensor` (see repo `scripts/requirements-catalog.txt`), then run `python scripts/generate_subnet_catalog.py`. Latest generation used network `finney` at block **8103819** (2026-05-03 14:53 UTC). Subnets appear and change over time — verify critical details against current explorers and docs.
 
 ---
 
