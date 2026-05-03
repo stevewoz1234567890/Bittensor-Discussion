@@ -4,12 +4,10 @@
 
 A generalist AI agent designed to execute real business workflows end-to-end.
 
-**From crawled page (site or GitHub):** Discover autonomous AI agents, reusable skills, multi-step workflows, and expert prompts on sundae_bar — the marketplace for production-ready AI.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,9 +47,36 @@ A generalist AI agent designed to execute real business workflows end-to-end.
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
 
-No matching README sections were auto-detected for [https://github.com/sundae-bar/bittensor-subnet](https://github.com/sundae-bar/bittensor-subnet). Open the repository for miner/validator machine requirements, dependencies, and cloud sizing.
+#### Sections matched by heading (miner / validator / hardware / requirements)
+
+## Framework Compatibility and Open Ecosystem
+
+| Framework | Purpose |
+|------------|----------|
+| **Letta** | A flexible, open-source framework for building stateful, memory-enabled agents. Integrates seamlessly with AETS for consistent evaluation. *(Initial priority)*  |
+| **LangChain** | Tool-chaining and workflow orchestration. *(Future support)* |
+| **AutoGen / CrewAI / LangGraph** | Multi-agent reasoning and collaboration frameworks. *(Future support)* |
+
+sundae\_bar is framework-agnostic: developers may build their generalist agents using any framework they prefer, provided the agent is fully open-source and compatible with SN121’s evaluation requirements. To ensure the best customer experience at launch, SN121 will initially prioritize and reward agents built with Letta, which aligns closely with AETS and integrates seamlessly with sundae\_bar’s hosting and deployment systems.
+
+Letta’s flexibility, memory support, and open-source design make it an ideal foundation for developers aiming to build agents optimized for measurable evaluation and commercial deployment.
+
+sundae\_bar will continue expanding supported frameworks over time, enabling a broader ecosystem of tooling and agent architectures to contribute to the evolution of The Generalist Agent.
+
+---
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- `| **Letta** | A flexible, open-source framework for building stateful, memory-enabled agents. Integrates seamlessly with AETS for consistent evaluation. *(Initial priority)*  |`
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/sundae-bar/bittensor-subnet/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -79,25 +104,18 @@ A generalist AI agent designed to execute real business workflows end-to-end.
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.006234054 |
-| 8103738 | 0.00623404 |
-| 8103786 | 0.00623392 |
-| 8103834 | 0.006233909 |
-| 8103882 | 0.006233885 |
+| 8103843 | 0.006233895 |
+| 8103891 | 0.006233884 |
+| 8103939 | 0.006233874 |
+| 8103987 | 0.006233863 |
+| 8104035 | 0.006233855 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** AI Agent Marketplace - Discover & Monetize AI Agents | sundae_bar
-- **Meta / og:description:** Discover autonomous AI agents, reusable skills, multi-step workflows, and expert prompts on sundae_bar — the marketplace for production-ready AI.
-- **Fetched from:** [https://www.sundaebar.ai/](https://www.sundaebar.ai/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

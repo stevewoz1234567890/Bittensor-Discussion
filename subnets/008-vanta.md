@@ -9,7 +9,7 @@ Vanta Network is the first decentralized, trustless liquidity and execution engi
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +49,9 @@ Vanta Network is the first decentralized, trustless liquidity and execution engi
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Miners
 
@@ -78,10 +80,56 @@ Please see our [Validator Installation](https://github.com/taoshidev/vanta-netwo
 
 Please see our [Miner Installation](https://github.com/taoshidev/vanta-network/blob/main/docs/miner.md) guide.
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/taoshidev/vanta-network/main/README.md`.*
+##### Extra scrape: `miner.md` (grep only)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- `| NVDA   | NVIDIA                  | Technology             |`
+- `| AMD    | Advanced Micro Devices  | Technology             |`
+- - 2 vCPU + 8 GB memory
+- - Run the miner using CPU
+
+---
+
+##### Extra scrape: `validator.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - **Hardware**: 4 vCPU + 16 GB memory with 1 TB balanced persistent disk
+
+---
+
+##### Extra scrape: `miner.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- `| NVDA   | NVIDIA                  | Technology             |`
+- `| AMD    | Advanced Micro Devices  | Technology             |`
+- - 2 vCPU + 8 GB memory
+- - Run the miner using CPU
+
+---
+
+##### Extra scrape: `validator.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - **Hardware**: 4 vCPU + 16 GB memory with 1 TB balanced persistent disk
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/taoshidev/vanta-network/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -109,12 +157,12 @@ Vanta Network is the first decentralized, trustless liquidity and execution engi
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.035309888 |
-| 8103690 | 0.035309458 |
-| 8103738 | 0.035309427 |
-| 8103786 | 0.035325081 |
-| 8103834 | 0.035325464 |
-| 8103882 | 0.035341576 |
+| 8103795 | 0.035325481 |
+| 8103843 | 0.035325432 |
+| 8103891 | 0.035342545 |
+| 8103939 | 0.035342644 |
+| 8103987 | 0.035342624 |
+| 8104035 | 0.035343032 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -123,5 +171,5 @@ Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

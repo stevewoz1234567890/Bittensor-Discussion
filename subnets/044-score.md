@@ -4,12 +4,10 @@
 
 Making every camera intelligent
 
-**From crawled page (site or GitHub):** Democratising visual intelligence by building an open, permissionless computer vision layer for sports and beyond.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,9 +47,38 @@ Making every camera intelligent
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
 
-No matching README sections were auto-detected for [https://github.com/score-technologies/score-vision](https://github.com/score-technologies/score-vision). Open the repository for miner/validator machine requirements, dependencies, and cloud sizing.
+##### Extra scrape: `README.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - Manages GPU memory for optimal performance
+- - Monitors system resources (GPU/CPU usage)
+- DEVICE=cuda                                   # Computing device (cuda/cpu/mps)
+- - Check CUDA/GPU availability
+- - Monitor GPU memory usage
+
+---
+
+##### Extra scrape: `README.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - Manages GPU memory for optimal performance
+- - Monitors system resources (GPU/CPU usage)
+- DEVICE=cuda                                   # Computing device (cuda/cpu/mps)
+- - Check CUDA/GPU availability
+- - Monitor GPU memory usage
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/score-technologies/score-vision/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -79,26 +106,19 @@ Making every camera intelligent
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.03499357 |
-| 8103690 | 0.03500801 |
-| 8103738 | 0.035008012 |
-| 8103786 | 0.035013202 |
-| 8103834 | 0.035014456 |
-| 8103882 | 0.035014109 |
+| 8103795 | 0.035013195 |
+| 8103843 | 0.03501441 |
+| 8103891 | 0.035014107 |
+| 8103939 | 0.035014075 |
+| 8103987 | 0.034977723 |
+| 8104035 | 0.03497598 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** We Are Score | Making Every Camera Intelligent
-- **Meta / og:description:** Democratising visual intelligence by building an open, permissionless computer vision layer for sports and beyond.
-- **Fetched from:** [https://www.wearescore.com/](https://www.wearescore.com/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

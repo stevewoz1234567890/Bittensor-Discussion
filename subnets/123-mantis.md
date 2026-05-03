@@ -2,12 +2,12 @@
 
 ## Overview
 
-**From crawled page (site or GitHub):** Contribute to Barbariandev/MANTIS development by creating an account on GitHub.
+**MANTIS** (NetUID 123) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
 
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -22,7 +22,7 @@
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.360930112
+- **Registration recycle cost snapshot (`burn`):** τ0.300000000
 - **Owner SS58 (`owner_ss58`):** `5HVuEdEGMYisecwjkWC7dKDPEzgs9cECdsdCQagfPRVf6FxZ`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -47,9 +47,30 @@
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
 
-No matching README sections were auto-detected for [https://github.com/Barbariandev/MANTIS](https://github.com/Barbariandev/MANTIS). Open the repository for miner/validator machine requirements, dependencies, and cloud sizing.
+#### Sections matched by heading (miner / validator / hardware / requirements)
+
+## Dependencies
+
+Declared in `pyproject.toml`. Core: `bittensor`, `torch`, `scikit-learn`, `numpy`, `requests`, `aiohttp`, `tqdm`, `boto3`.
+
+See `MINER_GUIDE.md` for submission details per challenge type.
+
+---
+
+---
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - Size: ≤ 25 MB
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/Barbariandev/MANTIS/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -74,25 +95,18 @@ No matching README sections were auto-detected for [https://github.com/Barbarian
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.004992717 |
-| 8103738 | 0.005007774 |
-| 8103786 | 0.005026937 |
-| 8103834 | 0.00497395 |
-| 8103882 | 0.004959292 |
+| 8103843 | 0.004973941 |
+| 8103891 | 0.004959291 |
+| 8103939 | 0.004958143 |
+| 8103987 | 0.004974707 |
+| 8104035 | 0.00497514 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** GitHub - Barbariandev/MANTIS · GitHub
-- **Meta / og:description:** Contribute to Barbariandev/MANTIS development by creating an account on GitHub.
-- **Fetched from:** [https://github.com/Barbariandev/MANTIS](https://github.com/Barbariandev/MANTIS)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

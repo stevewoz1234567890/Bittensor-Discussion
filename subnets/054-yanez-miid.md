@@ -9,7 +9,7 @@ This subnet powers Yanez Compliance, an AI-powered platform for detecting and co
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +49,9 @@ This subnet powers Yanez Compliance, an AI-powered platform for detecting and co
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### 🛠️ **Miners: Generate KAV and Image Variations**
 
@@ -103,6 +105,14 @@ source miner_env/bin/activate
 
 ---
 
+# Start mining
+
+pm2 start python --name neuron-miner -- neurons/miner.py --netuid 54 --wallet.name your-wallet --wallet.hotkey your-hotkey --subtensor.network finney
+
+```
+
+---
+
 ### 2️⃣ **Setup for Validators**
 
 ```bash
@@ -128,10 +138,55 @@ source validator_env/bin/activate
 - Support new evasion tactics, including nickname-based threats, transliteration-based alterations, and middle name manipulations.
 - Improve validator scoring and introduce penalties for repetitive or low-value submissions.
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/yanez-compliance/MIID-subnet/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - **8GB+ RAM (16GB recommended)**
+
+---
+
+##### Extra scrape: `miner.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - CPU: 4 physical cores minimum (8+ recommended for better throughput)
+- - Sufficient storage for LLM model weights (~10GB or more depending on model)
+- - Storage recommendation (Basic path): 30GB minimum free disk, 50GB+ recommended (OS + repo + venv + Ollama models + logs)
+- - At least 8GB RAM (16GB+ recommended)
+- - GPU with at least 8GB VRAM recommended (NVIDIA CUDA or Apple Silicon MPS)
+- - CPU: 8 physical cores recommended (12+ preferred when handling image jobs continuously)
+- - Additional storage for diffusion model weights (typically ~10GB for FLUX.2-klein; more if you also use Kontext/Qwen)
+- - Storage recommendation (Full path): 80GB minimum free disk, 150GB+ recommended (base stack + multiple image models + cache + outputs)
+- > **Machine sizing quick guide:** For **Basic** mining, target at least **4 cores / 8GB RAM / 30GB free disk** (better: 8 cores / 16GB / 50GB+). For **Full** mining, target at least **8 cores / 16GB RAM / 80GB free disk + 8GB VRAM GPU** (better: 12+ cores / 32GB RAM / 150GB+ disk + higher-VRAM GPU).
+- `| Path | What it does | Extra packages | GPU needed? |`
+- `| **Full (recommended)** | Name variations **+ face image variations** (Phase 4) | `requirements-miner.txt` (`diffusers`, `transformers`, `accelerate`, `opencv-python`, AdaFace setup) | Yes (8+ GB VRAM) |`
+- > **Which should I pick?** If you have a GPU and want to earn the maximum possible rewards (including face-variation reputation), choose **Full**. If you just want to get started quickly or do not have a GPU, choose **Basic** -- you can upgrade to Full later without losing anything.
+- 4. **If you chose Full**, set your Hugging Face token and GPU device **before** the first miner run (create a token at [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) and accept model licenses—see [Path B](#path-b-full-setup-name--image-variations) for details):
+- export FLUX_DEVICE="cuda"   # or mps (Apple) or cpu (slow)
+- - **Production**: After either path, consider a process manager (systemd, supervisor, tmux, pm2—see [Background Mining Guide](background_mining.md)), monitoring, logging, and a GPU for LLM and image workloads.
+- export FLUX_DEVICE="cuda"    # NVIDIA
+- export FLUX_DEVICE="cuda"
+- - `FLUX_DEVICE`: Device for image generation (`cuda`, `mps`, or `cpu`)
+- `| `FLUX_DEVICE` | `cuda`, `mps`, or `cpu` | `cpu` | Full |`
+- `| Model | Description | VRAM needed |`
+- `| **FLUX.2-klein** (`flux_klein`) | Fast baseline model; lowest overhead and most stable default path | ~8 GB |`
+- `| **PuLID** (`pulid`) | Identity-focused path: tries Nunchaku PuLID on CUDA, otherwise falls back to FLUX.1-Kontext | ~12 GB+ (Nunchaku path); fallback depends on Kontext |`
+- `| **PuLID-FLUX2** (`pulid_flux2`) | FLUX.2-klein backbone for PuLID-FLUX2-style identity experiments | ~8 GB |`
+- - Best on higher-memory GPUs (commonly ~24 GB class).
+- `| **KAV (Known Attack Vectors)** | 15% | All miners, based on quality score |`
+- `| Tier | Score Range | Multiplier |`
+- 4. Use a powerful GPU if available to speed up LLM inference
+- 1. **Use a GPU** -- image generation on CPU is too slow for production.
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/yanez-compliance/MIID-subnet/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -160,12 +215,12 @@ This subnet powers Yanez Compliance, an AI-powered platform for detecting and co
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.007280552 |
-| 8103690 | 0.007280532 |
-| 8103738 | 0.007280423 |
-| 8103786 | 0.007274337 |
-| 8103834 | 0.007274329 |
-| 8103882 | 0.007274312 |
+| 8103795 | 0.007274335 |
+| 8103843 | 0.007274318 |
+| 8103891 | 0.007274311 |
+| 8103939 | 0.007274303 |
+| 8103987 | 0.007276638 |
+| 8104035 | 0.007275944 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -174,5 +229,5 @@ Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

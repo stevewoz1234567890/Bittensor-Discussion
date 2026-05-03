@@ -1,8 +1,8 @@
 # Subnet pages (one file per NetUID)
 
-Generated from `finney` at block **8103882** (2026-05-03 15:06 UTC).
+Generated from `finney` at block **8104035** (2026-05-03 15:36 UTC).
 
-Each page now adds **chain registration/limit tables**, heuristic **README hardware/miner excerpts** from GitHub, **short-window on-chain alpha price samples**, plus optional **TAOStats daily prices** (`TAOSTATS_API_KEY`).
+Each page combines **`SubnetInfo` / hyperparameter** tables, README **miner/validator heading blocks**, an automatic **CPU/GPU/RAM line grep** (`GB`/VRAM/GPU/CUDA/vCPU/etc., or an explicit stub if none found), **short-window** on-chain α prices, plus optional **TAOStats** daily pools (`TAOSTATS_API_KEY`).
 
 ## Index
 

@@ -4,12 +4,10 @@
 
 TAOHash is a Subnet for decentralizing PoW mining hashrate- rental and financialization. Validators incentivize miners to pool hashrate with them, rewarding them with Alpha based on the value of that hashrate.
 
-**From crawled page (site or GitHub):** Incentivizing Hashrate - Powered by Subnet 14 on Bittensor
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,15 @@ TAOHash is a Subnet for decentralizing PoW mining hashrate- rental and financial
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
+
+# Reward System
+
+TAOHash operates two distinct reward mechanisms:
+
+---
 
 ## 1. TIDES Protocol (All Miners)
 
@@ -132,6 +138,22 @@ After completing the common setup, the easiest way to start mining is:
 
 ---
 
+### Quick Start (Direct Mining)
+
+1. **Get Mining Pool Credentials**: Run the [`miner.py`](taohash/miner/miner.py) script to fetch your pool information:
+   ```bash
+   python taohash/miner/miner.py --subtensor.network finney --wallet.name WALLET_NAME --wallet.hotkey WALLET_HOTKEY --btc_address YOUR_BTC_ADDRESS
+   ```
+   This script will display your unique worker credentials and pool connection details. The username format will be `YOUR_BTC_ADDRESS.WORKER_SUFFIX`.
+
+2. **Configure Your Miners**: Point your mining hardware directly to the subnet pool using the credentials from step 1.
+
+3. **Monitor Your Performance**: Check your statistics at [https://taohash.com/leaderboard](https://taohash.com/leaderboard)
+
+For complete details, see the [TAOHash Miner Setup Guide](docs/running_miner.md).
+
+---
+
 ## Validator Specific Setup
 
 After completing the common setup, follow the detailed steps in the Validator Guide:
@@ -142,10 +164,16 @@ After completing the common setup, follow the detailed steps in the Validator Gu
 
 For the complete, step-by-step instructions for setting up and running your validator, please refer to the [TAOHash Validator Setup](docs/running_validator.md).
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/latent-to/taohash/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/latent-to/taohash/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -174,26 +202,19 @@ TAOHash is a Subnet for decentralizing PoW mining hashrate- rental and financial
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.009189106 |
-| 8103690 | 0.009189093 |
-| 8103738 | 0.009188934 |
-| 8103786 | 0.009188873 |
-| 8103834 | 0.009188868 |
-| 8103882 | 0.009188856 |
+| 8103795 | 0.009188872 |
+| 8103843 | 0.009188861 |
+| 8103891 | 0.009188856 |
+| 8103939 | 0.009188851 |
+| 8103987 | 0.009188845 |
+| 8104035 | 0.009188842 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** TAOHash - Bitcoin Mining
-- **Meta / og:description:** Incentivizing Hashrate - Powered by Subnet 14 on Bittensor
-- **Fetched from:** [https://taohash.ai/](https://taohash.ai/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

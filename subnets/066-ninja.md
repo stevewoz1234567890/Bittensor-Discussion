@@ -4,12 +4,10 @@
 
 Distilling software agents
 
-**From crawled page (site or GitHub):** Contribute to unarbos/tau development by creating an account on GitHub.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -24,7 +22,7 @@ Distilling software agents
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 6080
-- **Registration recycle cost snapshot (`burn`):** τ0.018559526
+- **Registration recycle cost snapshot (`burn`):** τ0.013823787
 - **Owner SS58 (`owner_ss58`):** `5DRtWRDDrcKfgwPBkjADBVPSFzpLSGXejzNXXRtfSCpkFKHP`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -49,7 +47,9 @@ Distilling software agents
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ## Prerequisites
 
@@ -81,10 +81,39 @@ CURSOR_API_KEY=your_cursor_api_key
 
 `tau` loads `.env` automatically from the project root.
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/unarbos/tau/main/README.md`.*
+## Cursor Agent In Docker
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+When you pass `--agent cursor`, tau builds a Docker image, runs the Cursor CLI inside it, and collects the resulting diff.
+
+---
+
+### Docker options
+
+| Flag | Purpose |
+|------|---------|
+| `--solver-model <model>` | Override the model used by Cursor |
+| `--agent-timeout <seconds>` | Time limit for the solve |
+| `--docker-solver-memory 2g` | Container memory limit |
+| `--docker-solver-cpus 2` | Container CPU limit |
+| `--docker-solver-no-cache` | Force rebuild the Docker image |
+| `--debug` | Enable debug logging |
+
+---
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- 2. A container starts with resource limits (memory, CPU, pids, tmpfs).
+- `| `--docker-solver-memory 2g` | Container memory limit |`
+- `| `--docker-solver-cpus 2` | Container CPU limit |`
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/unarbos/tau/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -112,26 +141,18 @@ Distilling software agents
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.014205284 |
-| 8103690 | 0.01422739 |
-| 8103738 | 0.014262419 |
-| 8103786 | 0.014270806 |
-| 8103834 | 0.014285602 |
-| 8103882 | 0.014265888 |
+| 8103843 | 0.014285634 |
+| 8103891 | 0.014306904 |
+| 8103939 | 0.014172476 |
+| 8103987 | 0.014158346 |
+| 8104035 | 0.014176615 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** GitHub - unarbos/tau · GitHub
-- **Meta / og:description:** Contribute to unarbos/tau development by creating an account on GitHub.
-- **Fetched from:** [https://github.com/unarbos/tau](https://github.com/unarbos/tau)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

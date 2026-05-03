@@ -6,12 +6,10 @@ Pioneering Simulation-First Robotics Development
 
 https://x.com/nepher_robotics
 
-**From crawled page (site or GitHub):** Pioneering simulation-first robotics development platform powered by NVIDIA Isaac Sim and Isaac Lab.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -51,7 +49,9 @@ https://x.com/nepher_robotics
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Miners
 
@@ -111,10 +111,24 @@ nepher-validator run --config config/validator_config.yaml --mode cpu
 docker compose build validator-cpu && docker compose up -d validator-cpu
 ```
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/nepher-ai/nepher-subnet/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- Requires NVIDIA GPU (A100+ recommended), Isaac Sim 5.1, Isaac Lab 2.3.0, Docker + NVIDIA Container Toolkit.
+- A lightweight alternative (`~200 MB` image, no Isaac Sim, no NVIDIA drivers) that handles **weight-setting and burning only**. Use this on a cheap VPS to keep your validator online 24/7 while reserving the GPU machine solely for evaluation windows.
+- docker compose build validator-cpu
+- docker compose up -d validator-cpu
+- nepher-validator run --config config/validator_config.yaml --mode cpu
+- > **CPU/GPU split deployment:** run `validator-cpu` on a cheap VPS for 24/7 weight-setting and burn, and only spin up the full GPU validator during evaluation. See the [validator guide](docs/validator-guide.md#8-cpugpu-split-deployment).
+- docker compose build validator-cpu && docker compose up -d validator-cpu
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/nepher-ai/nepher-subnet/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -143,26 +157,19 @@ https://x.com/nepher_robotics
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.005136065 |
-| 8103690 | 0.005135942 |
-| 8103738 | 0.005135874 |
-| 8103786 | 0.005135342 |
-| 8103834 | 0.005135293 |
-| 8103882 | 0.005135179 |
+| 8103795 | 0.005135332 |
+| 8103843 | 0.005135223 |
+| 8103891 | 0.005135176 |
+| 8103939 | 0.005135125 |
+| 8103987 | 0.005135078 |
+| 8104035 | 0.005135043 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Pioneering Simulation-First Robotics Development | Nepher AI
-- **Meta / og:description:** Pioneering simulation-first robotics development platform powered by NVIDIA Isaac Sim and Isaac Lab.
-- **Fetched from:** [https://www.nepher.ai/](https://www.nepher.ai/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

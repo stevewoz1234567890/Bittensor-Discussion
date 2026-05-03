@@ -7,7 +7,7 @@ Satori constructs a persistent 'Second Life' in Japan. We merge deep AI companio
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -47,7 +47,7 @@ Satori constructs a persistent 'Second Life' in Japan. We merge deep AI companio
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
 
 No matching README sections were auto-detected for [https://github.com/Satori119/Satori](https://github.com/Satori119/Satori). Open the repository for miner/validator machine requirements, dependencies, and cloud sizing.
 
@@ -76,11 +76,11 @@ Satori constructs a persistent 'Second Life' in Japan. We merge deep AI companio
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.006819792 |
-| 8103738 | 0.006819438 |
-| 8103786 | 0.006819104 |
-| 8103834 | 0.006819074 |
-| 8103882 | 0.006819006 |
+| 8103843 | 0.006819033 |
+| 8103891 | 0.006819005 |
+| 8103939 | 0.006818975 |
+| 8103987 | 0.00681895 |
+| 8104035 | 0.006818934 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -89,5 +89,5 @@ Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

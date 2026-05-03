@@ -6,12 +6,10 @@ Bittensor subnet built to crush the long-context barrier.
 
 -
 
-**From crawled page (site or GitHub):** Building the next generation of long-context foundation models. Open weights, novel architectures, real benchmarks.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -26,7 +24,7 @@ Bittensor subnet built to crush the long-context barrier.
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 10000000
 - **`immunity_period` (blocks):** 10800
-- **Registration recycle cost snapshot (`burn`):** τ0.000564489
+- **Registration recycle cost snapshot (`burn`):** τ0.000500000
 - **Owner SS58 (`owner_ss58`):** `5EjSHN7ZH4y21tgf8ACe5WtRQYvoWdLS6xsYvBktEycbmKYi`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -51,7 +49,9 @@ Bittensor subnet built to crush the long-context barrier.
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ## Model Requirements
 
@@ -70,6 +70,44 @@ A valid model must:
 - Stay public and unchanged after the committed revision.
 - Avoid quantized formats such as GPTQ, AWQ, GGUF, and FP8.
 - Use unique weights that are not identical to an earlier committed model.
+
+---
+
+## Mining Guide
+
+Requirements:
+
+- Bittensor wallet registered on subnet 24.
+- Hugging Face account for model hosting.
+- Training infrastructure of your choice.
+
+Install the miner dependencies:
+
+```bash
+python -m pip install -r requirements-miner.txt
+```
+
+Check your model before committing:
+
+```bash
+python miner/check_model.py --model-repo your-username/your-model
+python miner/test_miner.py --model-repo your-username/your-model
+```
+
+Submit a dry run first:
+
+```bash
+python miner/miner.py \
+  --network finney \
+  --netuid 24 \
+  --wallet-name my_wallet \
+  --hotkey-name my_hotkey \
+  --model-repo your-username/your-model \
+  --dry-run
+```
+
+Remove `--dry-run` only after the checks pass and you are ready to commit that
+repo revision on-chain.
 
 ---
 
@@ -103,10 +141,19 @@ QUASAR_STATE_DIR=/path/to/state
 Keep wallet files, provider keys, Hugging Face tokens, and state credentials out
 of git. Use a private environment file or your process manager's secret store.
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/SILX-LABS/QUASAR-SUBNET/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - Pre-checks run before GPU evaluation: architecture compliance, tokenizer
+- - GPU capacity for the current evaluator.
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/SILX-LABS/QUASAR-SUBNET/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -135,26 +182,19 @@ Bittensor subnet built to crush the long-context barrier.
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.014548731 |
-| 8103690 | 0.014578242 |
-| 8103738 | 0.014589056 |
-| 8103786 | 0.01457274 |
-| 8103834 | 0.014572145 |
-| 8103882 | 0.014534076 |
+| 8103795 | 0.014572736 |
+| 8103843 | 0.014572113 |
+| 8103891 | 0.014534075 |
+| 8103939 | 0.014534549 |
+| 8103987 | 0.01462203 |
+| 8104035 | 0.014543955 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** SILX AI
-- **Meta / og:description:** Building the next generation of long-context foundation models. Open weights, novel architectures, real benchmarks.
-- **Fetched from:** [https://silxinc.com/](https://silxinc.com/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

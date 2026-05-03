@@ -7,12 +7,12 @@
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
 - **`max_n` (max registered UIDs):** 256
-- **`subnetwork_n`:** 153
+- **`subnetwork_n`:** 154
 - **Max validators allowed (`max_allowed_validators`):** 64
 - **Min weights per neuron (`min_allowed_weights`):** 1
 - **`max_weights_limit` (consensus-encoded cap):** 65535
@@ -22,7 +22,7 @@
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.000628788
+- **Registration recycle cost snapshot (`burn`):** τ0.000590038
 - **Owner SS58 (`owner_ss58`):** `5GLGTwG6n4dFPMwcN5BWJ1tw7fwcgQsjxCV4xb5ft3vKLUxc`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -47,7 +47,7 @@
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
 
 No GitHub URL is registered on-chain for this subnet, so README-based hardware notes were not fetched. Use the website or community links above when available.
 
@@ -74,12 +74,12 @@ No GitHub URL is registered on-chain for this subnet, so README-based hardware n
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.008190769 |
-| 8103690 | 0.008187667 |
-| 8103738 | 0.008185938 |
-| 8103786 | 0.008179396 |
-| 8103834 | 0.00817833 |
-| 8103882 | 0.008175565 |
+| 8103795 | 0.00817915 |
+| 8103843 | 0.008176611 |
+| 8103891 | 0.00817549 |
+| 8103939 | 0.008190426 |
+| 8103987 | 0.008052198 |
+| 8104035 | 0.008005679 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -88,5 +88,5 @@ Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

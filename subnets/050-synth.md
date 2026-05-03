@@ -4,12 +4,10 @@
 
 Predictive intelligence for financial markets and beyond
 
-**From crawled page (site or GitHub):** Synth delivers synthetic asset price path data generated through a decentralized network of AI models. Our innovative approach simulates diverse market conditions, providing unparalleled forecasting accuracy and actionable insights for optimal financial decision-making.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Predictive intelligence for financial markets and beyond
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### 1.2. Task Presented to the Miners
 
@@ -143,20 +143,18 @@ If they fail to return predictions by the start_time or the predictions are in t
 
 ### 1.3. Validator's Scoring Methodology
 
-The role of the validators is, after the time horizon has passed, to judge the accuracy of each miner’s predicted paths compared to how the price moved in reality. The validator evaluates the miners' probabilistic forecasts using the Continuous Ranked Probability Score (CRPS). The CRPS is a proper scoring rule that measures the accuracy of probabilistic forecasts for continuous variables, considering both the calibration and sharpness of the predicted distribution. The lower the CRPS, the better the forecasted distribution predicted the observed value.
+Th…
 
 ---
 
-### 2.2. Validators
+#### CPU / GPU / RAM lines (automatic grep)
 
-Please refer to this [guide](./docs/validator_guide.md) for more detailed instructions on getting a validator up and running.
-
-<sup>[Back to top ^][table-of-contents]</sup>
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
 
 
-*README source used for excerpts: `https://raw.githubusercontent.com/mode-network/synth-subnet/main/README.md`.*
+*Primary README URL used: `https://raw.githubusercontent.com/mode-network/synth-subnet/main/README.md`*
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -183,26 +181,19 @@ Predictive intelligence for financial markets and beyond
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.009229283 |
-| 8103690 | 0.009229149 |
-| 8103738 | 0.009229112 |
-| 8103786 | 0.009228977 |
-| 8103834 | 0.009228968 |
-| 8103882 | 0.009241261 |
+| 8103795 | 0.009228975 |
+| 8103843 | 0.009228956 |
+| 8103891 | 0.00924126 |
+| 8103939 | 0.00935273 |
+| 8103987 | 0.009377381 |
+| 8104035 | 0.009383555 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Synth | Succeed in Financial Markets with Predictive Intelligence
-- **Meta / og:description:** Synth delivers synthetic asset price path data generated through a decentralized network of AI models. Our innovative approach simulates diverse market conditions, providing unparalleled forecasting accuracy and actionable insights for optimal financial decision-making.
-- **Fetched from:** [https://synthdata.co](https://synthdata.co)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

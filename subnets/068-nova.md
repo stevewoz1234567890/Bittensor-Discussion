@@ -4,12 +4,10 @@
 
 Accelerating drug discovery.
 
-**From crawled page (site or GitHub):** METANOVA LABS is a crypto-native biotech company at the forefront of drug discovery. We are developing next generation therapeutics that regulate mental states and restore critical biological processes.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -24,7 +22,7 @@ Accelerating drug discovery.
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.164271046
+- **Registration recycle cost snapshot (`burn`):** τ0.122355371
 - **Owner SS58 (`owner_ss58`):** `5EcdJLAeYoxM3Tsf5VZ3NQPenPku218gqnjSoo3iJNy4V12V`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -49,7 +47,9 @@ Accelerating drug discovery.
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ## System Requirements for validators
 
@@ -100,6 +100,12 @@ AUTO_UPDATE="1" # Set to "0" to disable auto-updates (not recommended)
 
 ---
 
+# Activate your virtual environment:
+
+source .venv/bin/activate
+
+---
+
 # miner:
 
 python3 neurons/miner.py --wallet.name <your_wallet> --wallet.hotkey <your_hotkey> --logging.info
@@ -117,10 +123,22 @@ python3 neurons/validator/validator.py --wallet.name <your_wallet> --wallet.hotk
 
 DM the NOVA team to obtain an API key.
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/metanova-labs/nova/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - CUDA 12.6 (for GPU support)
+- - Sufficient RAM for ML model operations
+- - 2 GPU devices for parallel inference. If only one is available, inference will run sequentially which may result in delayed/missing scoring rounds.
+- DEVICE_OVERRIDE="cpu" # None to run on GPU
+- ./install_deps.sh [--cuda <version>]  #cuda version is optional, default is 12.6
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/metanova-labs/nova/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -147,26 +165,18 @@ Accelerating drug discovery.
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.018138764 |
-| 8103690 | 0.018141308 |
-| 8103738 | 0.018141555 |
-| 8103786 | 0.018141721 |
-| 8103834 | 0.018141736 |
-| 8103882 | 0.018135701 |
+| 8103843 | 0.018141722 |
+| 8103891 | 0.018135705 |
+| 8103939 | 0.018135712 |
+| 8103987 | 0.018135296 |
+| 8104035 | 0.018136353 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Metanova Labs
-- **Meta / og:description:** METANOVA LABS is a crypto-native biotech company at the forefront of drug discovery. We are developing next generation therapeutics that regulate mental states and restore critical biological processes.
-- **Fetched from:** [https://www.metanova-labs.ai](https://www.metanova-labs.ai)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

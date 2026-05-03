@@ -4,12 +4,10 @@
 
 A subnet focused on the research, development, and evaluation of evolving AI systems
 
-**From crawled page (site or GitHub):** Contribute to openevolai/evolai development by creating an account on GitHub.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ A subnet focused on the research, development, and evaluation of evolving AI sys
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ## Installation
 
@@ -72,10 +72,50 @@ Verify:
 evolcli --help
 ```
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/openevolai/evolai/main/README.md`.*
+## Mining
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Requirements:
+
+- Model name must contain `evolai`
+- Model must be public on HuggingFace
+- Supported tracks: `transformer`, `mamba2`
+
+Check eligibility:
+
+```bash
+evolcli miner check --model username/evolai-0.4b --track transformer
+evolcli miner check --model username/evolai-mamba2-0.4b --track mamba2
+```
+
+Get your challenge:
+
+```bash
+evolcli miner get-challenge <validator-uid>
+```
+
+Register your model:
+
+```bash
+evolcli miner register --wallet-name miner1 --hotkey my-hotkey --track transformer
+evolcli miner register --wallet-name miner1 --hotkey my-hotkey --track mamba2
+```
+
+Re-register after you publish a new model version.
+
+---
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- A GPU 80 GB is required to run validator evaluations.
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/openevolai/evolai/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -100,26 +140,19 @@ A subnet focused on the research, development, and evaluation of evolving AI sys
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.005354438 |
-| 8103690 | 0.005363855 |
-| 8103738 | 0.005366884 |
-| 8103786 | 0.005418137 |
-| 8103834 | 0.005418174 |
-| 8103882 | 0.005417973 |
+| 8103795 | 0.005418139 |
+| 8103843 | 0.005418 |
+| 8103891 | 0.005417998 |
+| 8103939 | 0.005420608 |
+| 8103987 | 0.005418943 |
+| 8104035 | 0.00541466 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** GitHub - openevolai/evolai · GitHub
-- **Meta / og:description:** Contribute to openevolai/evolai development by creating an account on GitHub.
-- **Fetched from:** [https://github.com/openevolai/evolai.git](https://github.com/openevolai/evolai.git)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

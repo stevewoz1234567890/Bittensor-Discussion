@@ -6,12 +6,10 @@ Developer-friendly Decentralised VPN infrastructure.
 
 -
 
-**From crawled page (site or GitHub):** TAO Private Network
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -51,7 +49,15 @@ Developer-friendly Decentralised VPN infrastructure.
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
+
+## Preparing your machine
+
+Before starting your server, please prepare your machine by setting up the required enrivonment.
+
+---
 
 ### 1: Installing dependencies
 
@@ -98,6 +104,27 @@ git clone https://github.com/taofu-labs/tpn-subnet.git
 
 ---
 
+# Add the current user to docker for rootless docker running
+
+if [ -z "$USER" ]; then
+    USER=$(whoami)
+fi
+sudo groupadd docker &> /dev/null
+sudo usermod -aG docker $USER
+newgrp docker << EOF
+    sudo service docker start
+EOF
+```
+
+For miners and validators, you also need to install python and Bittensor components:
+
+> [!CAUTION]
+> Workers: ignore the setup steps below, you do NOT need them.
+
+```bash
+
+---
+
 # Install python, node and pm2
 
 sudo apt install -y nodejs npm python3 python3-venv python3-pip
@@ -123,6 +150,15 @@ export WANDB_CACHE_DIR=$TPN_CACHE
 pip3 install -r requirements.txt
 export PYTHONPATH=.
 ```
+
+---
+
+### 2: Configure your environment
+
+You need so set some settings so make sure your server operates how you want. This influences things like on what address you get paid and so forth.
+
+```bash
+cd tpn-subnet/federated-container
 
 ---
 
@@ -167,51 +203,24 @@ btcli w new_hotkey --wallet.name tpn_coldkey --wallet.hotkey tpn_hotkey
 
 Note that the above will generate a private key for your coldkey as well. This is a key with security implications and should be stored securely. Ideally you delete it from your miner server after backing it up safely. This can be done by running `rm ~/.bittensor/wallets/tpn_coldkey/coldkey`, only do this AFTER YOU SECURELY BACKED UP YOUR KEY AND SEED PHRASE.
 
-You will now need to register your key with Bittensor. The registration costs for this can be found on our [Taostats subnet page](https://taostats.io/subnets/65/registration), as well as the amount of available registration slots. The slots become available every 72 minutes, so if there are none available you should wait.
-
-To register:
-
-1. Get your cold key public key by runing: `cat ~/.bittensor/wallets/tpn_coldkey/coldkeypub.txt | jq -r '.ss58Address'`
-2. Send TAO to your public key, we recommend sending the registration cost and some extra for gas fees
-3. Verify that you have a balance on your wallet using `btcli wallet balance --ss58 YOUR_ss58_ADDRESS`
-4. Register by running `btcli s register --wallet.name tpn_coldkey --hotkey tpn_hotkey --netuid 65`, this commamnd will ask for the colekey password you created previously
-
-You may now continue with the rest of the setup. Your registration is immune to being deregistered for 5000 blocks which is about 16 hours. Make sure you finish your setup within this window.
+You will now need to register your key with Bittensor. The registration costs for this can be found on our [Taostats subnet page](https://taostats.io/subnets/65/registration), as well as the amount of available registration s…
 
 ---
 
-### Updating your miner
+#### CPU / GPU / RAM lines (automatic grep)
 
-The miner automatically updates some components periodically, but not all. You should regularly run the following commands to keep your miner up to date:
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
 
-```bash
-
----
-
-## Running a validator
-
-Validators are the interface between end users and miners. They send work requests to miners, which the miners complete and submit to the validator. Running a validator is more complicated than a miner and requires more setup than a miner.
-
----
-
-### Step 1: Configure the validator settings
-
-The validator neuron needs you to supply a WanDB API key. You can get one by signing up at [WanDB](https://wandb.ai/site). Once you have the key, add it to your environment by running the code below:
-
-```bash
-
----
-
-### Step 2: Start the validator
-
-The validator also consists out of two components:
-
-1. A validator neuron that is managed through `pm2`…
+- - [ ] Have a Debian/Ubuntu machine with 2 cores and 2GiB+ RAM ready
+- 3. While speed and bandwidth size will matter soon, at this stage what matters most is that your workers and mining pool respond with reasonable speed. What matters most there is having a decent CPU and not being stingy on RAM
+- - 2 CPU cores
+- - 1-2GB RAM for a worker, 4-8GB RAM for a mining pool, 8-16GB RAM for a validator
+- - 10-20 GB disk space for a worker, 50GB disk space for a mining pool or validator
 
 
-*README source used for excerpts: `https://raw.githubusercontent.com/taofu-labs/tpn-subnet/main/README.md`.*
+*Primary README URL used: `https://raw.githubusercontent.com/taofu-labs/tpn-subnet/main/README.md`*
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -240,26 +249,19 @@ Developer-friendly Decentralised VPN infrastructure.
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.003998093 |
-| 8103690 | 0.004029497 |
-| 8103738 | 0.004029493 |
-| 8103786 | 0.004029453 |
-| 8103834 | 0.00402945 |
-| 8103882 | 0.004018891 |
+| 8103795 | 0.004029453 |
+| 8103843 | 0.004029446 |
+| 8103891 | 0.00401889 |
+| 8103939 | 0.004018887 |
+| 8103987 | 0.004018884 |
+| 8104035 | 0.004018882 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** TPN
-- **Meta / og:description:** TAO Private Network
-- **Fetched from:** [https://tpn.taofu.xyz/](https://tpn.taofu.xyz/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

@@ -4,12 +4,10 @@
 
 Reason Mining
 
-**From crawled page (site or GitHub):** Affine: Reason Mining
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Reason Mining
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ## Installation
 
@@ -102,10 +102,22 @@ Learn how to:
 - Troubleshoot common issues
 - Set weights on-chain
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/AffineFoundation/affine/main/README.md`.*
+### Additional Resources
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+- 📚 **[FAQ](docs/FAQ.md)** - Frequently asked questions
+
+---
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/AffineFoundation/affine/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -134,25 +146,18 @@ Reason Mining
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.067034278 |
-| 8103738 | 0.06703412 |
-| 8103786 | 0.067033629 |
-| 8103834 | 0.067034306 |
-| 8103882 | 0.067034226 |
+| 8103843 | 0.067034149 |
+| 8103891 | 0.067034218 |
+| 8103939 | 0.067064609 |
+| 8103987 | 0.067066865 |
+| 8104035 | 0.067068357 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Affine
-- **Meta / og:description:** Affine: Reason Mining
-- **Fetched from:** [https://www.affine.io](https://www.affine.io)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

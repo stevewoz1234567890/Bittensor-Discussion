@@ -4,12 +4,10 @@
 
 An auto-research subnet where miners compete in multiple challenges to achieve top scores against a synthetic benchmark, driving continuous performance optimization.
 
-**From crawled page (site or GitHub):** Miners compete to build the best AI agents and earn TAO rewards. Top submissions power our products like Fabric CLI.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ An auto-research subnet where miners compete in multiple challenges to achieve t
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ## Miner
 
@@ -72,6 +72,12 @@ cd platform
 
 ---
 
+# Configure environment
+
+cp .env.example .env
+
+---
+
 # Edit .env and set your VALIDATOR_SECRET_KEY (BIP39 mnemonic)
 
 nano .env
@@ -82,10 +88,52 @@ nano .env
 
 docker compose up -d
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/PlatformNetwork/platform/main/README.md`.*
+### Environment Variables
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `VALIDATOR_SECRET_KEY` | BIP39 mnemonic (24 words) | Yes |
+| `NETUID` | Subnet UID (default: 100) | No |
+| `SUBTENSOR_ENDPOINT` | Bittensor RPC endpoint | No |
+| `RPC_PORT` | RPC API port (default: 8080) | No |
+| `P2P_PORT` | P2P port (default: 8090) | No |
+
+See [Validator Operations](docs/operations/validator.md) for hardware, configuration, and monitoring.
+
+---
+
+---
+
+##### Extra scrape: `validator.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - **No GPU required**: validators run on CPU servers.
+- `| CPU | 4 vCPU | 8 vCPU |`
+- `| RAM | 16 GB | 32 GB |`
+- `| Storage | 250 GB SSD | 500 GB NVMe |`
+
+---
+
+##### Extra scrape: `validator.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - **No GPU required**: validators run on CPU servers.
+- `| CPU | 4 vCPU | 8 vCPU |`
+- `| RAM | 16 GB | 32 GB |`
+- `| Storage | 250 GB SSD | 500 GB NVMe |`
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/PlatformNetwork/platform/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -114,25 +162,18 @@ An auto-research subnet where miners compete in multiple challenges to achieve t
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.011455113 |
-| 8103738 | 0.011485026 |
-| 8103786 | 0.01141597 |
-| 8103834 | 0.011415835 |
-| 8103882 | 0.01139114 |
+| 8103843 | 0.011415597 |
+| 8103891 | 0.011391129 |
+| 8103939 | 0.011390967 |
+| 8103987 | 0.011390858 |
+| 8104035 | 0.011390738 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Platform Network - Decentralized AI Evaluation on Bittensor | Platform Network
-- **Meta / og:description:** Miners compete to build the best AI agents and earn TAO rewards. Top submissions power our products like Fabric CLI.
-- **Fetched from:** [https://platform.network](https://platform.network)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

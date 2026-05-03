@@ -6,12 +6,10 @@ Dogelayer is the world's first mining pool enabling Scrypt miners to join Bitten
 
 more information on website: dogelayer.ai
 
-**From crawled page (site or GitHub):** The world's first mining pool enabling Scrypt miners to join Bittensor subnet.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -51,7 +49,26 @@ more information on website: dogelayer.ai
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
+
+# Reward System
+
+DogeLayer operates a dual reward mechanism:
+
+---
+
+## 1. Mining Rewards (LTC/DOGE)
+
+Direct cryptocurrency earnings from actual mining with **secondary distribution**:
+- **Mining Revenue**: Earn LTC/DOGE from contributing hashpower
+- **Platform Collection**: All mining rewards are first collected by the platform
+- **Secondary Distribution**: Platform redistributes rewards to miners and validators based on contributions
+- **Manual Withdrawal Required**: Both miners and validators must login to DogeLayer website to set withdrawal addresses and submit withdrawal requests
+- **Processing Time**: 1-3 business days for withdrawal processing
+
+---
 
 ## Miner Requirements
 
@@ -123,6 +140,13 @@ After completing the common setup:
 
 ---
 
+# Create hotkey (used for mining operations)
+
+btcli wallet new_hotkey --wallet.name my_miner --wallet.hotkey default
+```
+
+---
+
 ### 3. Connect Your Mining Hardware
 
 Use your **48-character hotkey** as the miner username to connect to the mining pool.
@@ -149,6 +173,16 @@ DogeLayer supports two formats for miner usernames:
 - Password: `x`
 
 **Important:** All rigs with the same hotkey share the same rewards. The suffix is only used to identify individual rigs.
+
+---
+
+### 4. Start Mining
+
+Once connected, your mining hardware will:
+- Automatically contribute hashrate to the pool
+- Have contributions recorded by validators
+- Earn TAO rewards sent to your hotkey
+- Accumulate LTC/DOGE rewards for withdrawal
 
 ---
 
@@ -183,70 +217,37 @@ btcli stake add \
 
 ---
 
+### 5. Configure Environment
+
+Navigate to the validator directory and create a `.env` file:
+
+```bash
+cd dogelayer/validator
+cp env.example .env
+nano .env
+```
+
+Update the `.env` file with your wallet information:
+
+```env
+
+---
+
 # Note: This is a shared API token for all validators
 
 SUBNET_PROXY_API_URL="http://dogelayer-205dd0511d5781e4.elb.ap-southeast-1.amazonaws.com:8889"
-SUBNET_PROXY_API_TOKEN="2z1gLMqF6yZuf9G56iCLi5H6lKPMWJ_kgiYp-61_gAI"
+SUBNET_PROXY_API_TOKEN="2z1gLMqF6yZuf9G56iCLi5H6lKPMWJ_kgiYp-61…
 
 ---
 
-### 6. Run Validator
+#### CPU / GPU / RAM lines (automatic grep)
 
-**Using Docker Compose (Recommended)**:
-
-1. **Ensure Docker is installed**  
-   Get more details here: https://docs.docker.com/engine/install/
-
-2. **Ensure your wallet is accessible**  
-   Make sure your Bittensor wallet is in `~/.bittensor/wallets/`
-
-3. **Start the validator**
-   ```bash
-   docker compose down && docker compose pull && docker compose up -d && docker compose logs -f
-   ```
-
-4. **Verify it's running**  
-   The validator should start and you should see info logs showing it's scoring miners.
-
-**Common Commands**:
-
-```bash
-
----
-
-# Stop validator
-
-docker compose down
-```
-
-**For complete step-by-step instructions**, see the [Validator Setup Guide](./docs/running_validator.md).
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
 
 
----
+*Primary README URL used: `https://raw.githubusercontent.com/dogelayer-ai/dogelayer/main/README.md`*
 
----
-
-#### Validator Module (`dogelayer/validator`)
-
-- **Validator**: Main validator logic
-- **Storage**: State persistence
-- **Connection Manager**: Subtensor connection handling
-- **Metrics**: Performance tracking
-
----
-
-#### Miner Module (`dogelayer/miner`)
-
-- **Miner**: Main miner logic
-- **Storage**: State persistence
-- **Pool Integration**: Mining pool connectivity
-
----
-
-
-*README source used for excerpts: `https://raw.githubusercontent.com/dogelayer-ai/dogelayer/main/README.md`.*
-
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -275,26 +276,18 @@ more information on website: dogelayer.ai
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.004180431 |
-| 8103690 | 0.004184839 |
-| 8103738 | 0.004188559 |
-| 8103786 | 0.004207971 |
-| 8103834 | 0.004208015 |
-| 8103882 | 0.004207957 |
+| 8103843 | 0.004207927 |
+| 8103891 | 0.004207973 |
+| 8103939 | 0.00421922 |
+| 8103987 | 0.004217976 |
+| 8104035 | 0.004232995 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** DogeLayer - Triple Mining, Triple Rewards
-- **Meta / og:description:** The world's first mining pool enabling Scrypt miners to join Bittensor subnet.
-- **Fetched from:** [https://dogelayer.ai](https://dogelayer.ai)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

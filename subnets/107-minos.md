@@ -4,12 +4,10 @@
 
 The Foundational Layer of Genomics
 
-**From crawled page (site or GitHub):** Minos is a Bittensor subnet for decentralized genomic variant calling. Miners compete to detect DNA mutations with clinical-grade precision, advancing precision medicine.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ The Foundational Layer of Genomics
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ## System Prerequisites
 
@@ -77,9 +77,46 @@ pip install -r requirements.txt
 
 ---
 
+#### 2. Configure Environment
+
+```bash
+cp .env.miner.example .env    # for miners
+cp .env.validator.example .env # for validators
+```
+
+---
+
+#### 3. Pull Docker Images
+
+```bash
+docker pull broadinstitute/gatk:4.5.0.0
+docker pull google/deepvariant:1.5.0
+docker pull staphb/freebayes:1.3.7
+docker pull genonet/hap-py@sha256:03acabe84bbfba35f5a7234129d524c563f5657e1f21150a2ea2797f8e6d05f2
+docker pull quay.io/biocontainers/bcftools:1.20--h8b25389_0
+docker pull quay.io/biocontainers/samtools:1.20--h50ea8bc_0
+```
+
+> **Note:** The hap.py image is pinned by SHA256 digest for reproducible scoring. The tag `genonet/hap-py:0.3.15` points to the same image but the digest is what validators use internally.
+
+---
+
 #### 4. Run Setup Wizard
 
 ```bash
+
+---
+
+### Environment Variables
+
+```bash
+
+---
+
+# aws_s3 = R2/AWS first. Both serve the same files; this just controls fetch order.
+
+STORAGE_PRIMARY_BACKEND=hippius
+```
 
 ---
 
@@ -142,9 +179,22 @@ To override, set `MINOS_VALIDATOR_CONCURRENCY`, `SCORING_THREADS`, or `SCORING_M
 
 ---
 
+### Environment Variables
+
+```bash
+
+---
+
 # Miner
 
 MINER_TEMPLATE=gatk
+
+---
+
+# aws_s3 = R2/AWS first. Both serve the same files; this just controls fetch order.
+
+STORAGE_PRIMARY_BACKEND=hippius
+```
 
 ---
 
@@ -153,46 +203,37 @@ MINER_TEMPLATE=gatk
 ```bash
 bash start-miner.sh
 bash start-miner.sh --wallet-name miner --miner-template deepvariant  # Pre-fill values
-bash start-miner.sh --setup                                           # Re-run setup wizard
-```
-
-For production-style supervision, use **[Running with PM2 (optional)](#running-with-pm2-optional)** (`bash pm2-miner.sh`).
-
-Or manually:
-
-```bash
-source .venv/bin/activate
-python -m neurons.miner \
-  --netuid 107 \
-  --subtensor.network finney \
-  --wallet.name miner \
-  --wallet.hotkey default
-```
+bash start-miner.sh --setup                                           # Re-run setup wiz…
 
 ---
 
-### Miner Workflow
+#### CPU / GPU / RAM lines (automatic grep)
 
-1. **Registration**: Register with platform via hotkey authentication
-2. **Task Poll**: Poll platform for pending evaluation tasks
-3. **BAM Download**: Fetch benchmark BAM from platform via presigned URL
-4. **Variant Calling**: Run configured variant caller (GATK, DeepVariant, freebayes, or bcftools)
-5. **Config Submit**: Submit tool config you've used (hyperparameters only based on the template)
-6. **Reward**: Earn alpha based on accuracy score — validators re-run the config to verify
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
 
----
+- `| CPU/RAM (Validator) | ≥8 cores / 32 GB RAM | hap.py scoring benefits from cores |`
+- `| CPU/RAM (Miner) | ≥4 cores / 8–16 GB RAM | 8 GB for BCFtools/FreeBayes, 16 GB for DeepVariant |`
+- `| Disk | ≥60 GB (miner) / ≥100 GB (validator) | Reference: ~2 GB miner, ~14 GB validator (SDF expands ~6×). Plus per-round BAMs (~6 GB each) until cleaned. |`
+- Each round, the validator runs many miners' variant-calling configs concurrently. Concurrency, per-job thread count, and memory ceiling are auto-tuned at startup from host CPU/RAM:
+- - Reserves 4 cores + 16 GB for the OS, Docker daemon, and hap.py
+- - Pins memory at 16 GB per job (DeepVariant's documented minimum)
+- `| 8c / 32 GB | 1 concurrent × 2 threads × 16 GB |`
+- `| 16c / 64 GB | 3 concurrent × 3 threads × 16 GB |`
+- `| 32c / 128 GB | 4 concurrent × 7 threads × 16 GB |`
+- `| 64c / 256 GB | 7 concurrent × 8 threads × 16 GB |`
+- `| `POST /v2/submit-score`         | Validator | Submit per-miner scores                        |`
+- `| `POST /v2/get-backfill-scores`  | Validator | Fetch peer scores after scoring window closes  |`
+- `| `POST /v2/submit-weight-history`| Validator | Submit EMA scores and weights after round      |`
+- `| Core F1      | 60%    |`
+- `| `GATK timeout`                | Insufficient resources                     | Increase threads/memory or timeout                                                                               |`
+- `| DeepVariant OOM / killed      | <16 GB available to the container          | DeepVariant needs ≥16 GB. Free RAM, close other tools, or switch template to GATK/FreeBayes/BCFtools             |`
+- `| `hap.py zero scores`          | VCF format issues                          | Ensure single-sample VCF output                                                                                  |`
+- `| Validator: "no scoring rounds"| Round still in submission window           | Validators only score AFTER the submission window closes. Wait for the next tempo boundary                       |`
 
----
 
-# PM2 (recommended)
+*Primary README URL used: `https://raw.githubusercontent.com/minos-protocol/minos_subnet/main/README.md`*
 
-pm2 logs minos-miner
-pm2 logs minos-validator
-
-
-*README source used for excerpts: `https://raw.githubusercontent.com/minos-protocol/minos_subnet/main/README.md`.*
-
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -221,25 +262,18 @@ The Foundational Layer of Genomics
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.032214739 |
-| 8103738 | 0.032241442 |
-| 8103786 | 0.032206376 |
-| 8103834 | 0.032203994 |
-| 8103882 | 0.032050915 |
+| 8103843 | 0.032208913 |
+| 8103891 | 0.031562135 |
+| 8103939 | 0.031574375 |
+| 8103987 | 0.031795831 |
+| 8104035 | 0.031764333 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Minos | The Foundational Layer of Genomics
-- **Meta / og:description:** Minos is a Bittensor subnet for decentralized genomic variant calling. Miners compete to detect DNA mutations with clinical-grade precision, advancing precision medicine.
-- **Fetched from:** [https://theminos.ai](https://theminos.ai)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

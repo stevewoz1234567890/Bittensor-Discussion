@@ -4,12 +4,10 @@
 
 Supply liquidity on external chains via uniswap, incentivize any project
 
-**From crawled page (site or GitHub):** Incentivizing $289,037.21 worth of liquidity on chain via Bittensor
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Supply liquidity on external chains via uniswap, incentivize any project
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Validator (`validator/index.ts`)
 
@@ -111,6 +111,14 @@ Miners provide liquidity to pools and can register their addresses to participat
 
 ---
 
+## Environment Variables
+
+Create a `.env` file in the project root. The most important keys are:
+
+```dotenv
+
+---
+
 # VALIDATOR ONLY: used to fetch uniswap v3 LP positions for miners
 
 THEGRAPH_API_KEY=
@@ -136,10 +144,24 @@ AUTO_UPDATE_ENABLED=false
 
 • **The Graph**: Log in to [Subgraph Studio](https://thegraph.com/studio/apikeys/) → **API Keys** in the sidebar → *Create API Key* → copy the generated token. See the official guide for details ([docs](https://thegraph.com/docs/en/subgraphs/querying/managing-api-keys/)).
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/creativebuilds/sn77/master/README.md`.*
+#### Environment Variables
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+- `AUTO_UPDATE_ENABLED`: Set to `true` to enable automatic updates (default: `false`)
+- `TEST_MODE`: Set to `true` to run in test mode (default: `false`)
+- `LOG`: Set to `true` to enable console logging (default: `false`)
+
+---
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/creativebuilds/sn77/master/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -167,26 +189,18 @@ Supply liquidity on external chains via uniswap, incentivize any project
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.004168869 |
-| 8103690 | 0.004168861 |
-| 8103738 | 0.004168857 |
-| 8103786 | 0.004168823 |
-| 8103834 | 0.00416882 |
-| 8103882 | 0.004168809 |
+| 8103843 | 0.004168816 |
+| 8103891 | 0.004168809 |
+| 8103939 | 0.004168806 |
+| 8103987 | 0.004168803 |
+| 8104035 | 0.004168801 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** SN77 - Liquidity
-- **Meta / og:description:** Incentivizing $289,037.21 worth of liquidity on chain via Bittensor
-- **Fetched from:** [https://sn77.xyz](https://sn77.xyz)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

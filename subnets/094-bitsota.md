@@ -6,12 +6,10 @@ Decentralized SoTA Research
 
 https://discord.gg/jkJWJtPuw7
 
-**From crawled page (site or GitHub):** BitSota main repository. Contribute to AlveusLabs/SN94-BitSota development by creating an account on GitHub.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -51,7 +49,62 @@ https://discord.gg/jkJWJtPuw7
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
+
+### Direct Mining
+
+Individual miners evolve algorithms locally and submit breakthroughs to validators. Requires higher compute but offers larger individual rewards.
+
+**Best for:** Experienced miners with dedicated hardware
+
+**[→ Direct Mining Guide](docs/mining.md)**
+
+---
+
+### Pool Mining
+
+Collaborative mining where participants handle smaller evolution and evaluation tasks. Pool aggregates results and submits to validators on behalf of all participants.
+
+**Best for:** New miners or those with limited compute resources
+
+**[→ Pool Mining Guide](docs/pool-mining.md)**
+
+---
+
+### Direct Mining Flow
+
+```
+Miner → Evolve Locally → Beat SOTA → Submit to Relay → Validators Verify → Relay Consensus → Weight Update → Emissions
+```
+
+1. Miner runs genetic programming engine for up to 150 generations
+2. When algorithm beats State-of-the-Art threshold, submits to relay
+3. Validators download submission and independently re-evaluate
+4. Validators choose weight setting mode:
+   - Relay mode: Vote on relay, wait for consensus, then set weights
+   - Local mode: Set weights immediately based on own evaluation
+5. Validators set on-chain weights: 90% burn, 10% winner
+6. Network emissions flow to winner via Yuma consensus
+
+---
+
+### Pool Mining Flow
+
+```
+Pool → Assigns Tasks → Miners Execute → Pool Consensus → Submit to Validators → Epoch Rewards
+```
+
+1. Pool distributes evolution and evaluation tasks to participants
+2. Multiple miners evaluate each algorithm (3+ required)
+3. Pool computes median consensus with 10% tolerance
+4. Rewards distributed based on reputation at epoch boundaries
+5. Pool submits best algorithms to validators on behalf of participants
+
+**[→ Detailed Rewards Guide](docs/rewards.md)**
+
+---
 
 ### For Miners
 
@@ -101,10 +154,20 @@ python neurons/validator_node.py
 - 16GB RAM
 - 8+ CPU cores
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/AlveusLabs/SN94-BitSota/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - 2GB storage
+- - 16GB RAM
+- - 8+ CPU cores
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/AlveusLabs/SN94-BitSota/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -132,25 +195,18 @@ https://discord.gg/jkJWJtPuw7
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.005070998 |
-| 8103738 | 0.005071234 |
-| 8103786 | 0.005091045 |
-| 8103834 | 0.005091322 |
-| 8103882 | 0.00509676 |
+| 8103843 | 0.005091304 |
+| 8103891 | 0.005096818 |
+| 8103939 | 0.00509709 |
+| 8103987 | 0.005066297 |
+| 8104035 | 0.005066564 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** GitHub - AlveusLabs/SN94-BitSota: BitSota main repository · GitHub
-- **Meta / og:description:** BitSota main repository. Contribute to AlveusLabs/SN94-BitSota development by creating an account on GitHub.
-- **Fetched from:** [https://github.com/AlveusLabs/SN94-BitSota](https://github.com/AlveusLabs/SN94-BitSota)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

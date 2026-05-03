@@ -4,12 +4,10 @@
 
 Trishool is the AI alignment protocol built on Bittensor
 
-**From crawled page (site or GitHub):** A decentralized defense grid for humanity.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Trishool is the AI alignment protocol built on Bittensor
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### 1. System prerequisites
 
@@ -67,6 +67,48 @@ Trishool is the AI alignment protocol built on Bittensor
 ```bash
 pip install -r requirements.txt
 ```
+
+---
+
+### 5. Local Halo guard (optional — `docker-up.sh --local`)
+
+If you run the guard on the host and use **`pnpm eval … --local`**, follow the dedicated guide **[LOCAL-GUARD.md](LOCAL-GUARD.md)** (installation, env vars, Docker networking, troubleshooting).
+
+---
+
+### 6. Set up environment files
+
+Three env files live at the repo root (all gitignored). Copy each from its example:
+
+```bash
+cp .env.example          .env
+cp .env.tri-claw.example .env.tri-claw
+cp .env.tri-judge.example .env.tri-judge
+```
+
+Then fill in the required values:
+
+**`.env`** — shared settings used by the eval script and PM2 auto-updater:
+```
+OPENCLAW_URL=http://localhost:18789
+OPENCLAW_GATEWAY_PASSWORD=<your-gateway-password>
+JUDGE_URL=http://localhost:8080
+CHUTES_API_KEY=<your-chutes-api-key>       # sent per-request; not injected into agent container
+GITHUB_TOKEN=<PAT with repo read>           # for repo-auto-updater (optional)
+```
+
+**`.env.tri-claw`** — OpenClaw (tri-claw) Docker gateway:
+```
+OPENCLAW_GATEWAY_PASSWORD=<same-as-above>
+OPENCLAW_IMAGE=openclaw:lean
+```
+> Chutes base URL and model fallback order now live in `tri-claw/docker/openclaw.lean.json`.
+
+**`.env.tri-judge`** — Judge Docker service:
+```
+JUDGE_CONFIG_PATH=docker/judge.lean.json
+```
+> The Chutes API key is sent per-request via `X-Chutes-Api-Key` header (sourced from `CHUTES_API_KEY` in `.env`), so it does not need to be stored in the judge's environment.
 
 ---
 
@@ -93,52 +135,24 @@ Your **validator's own** Bittensor wallet lives on the host (e.g. `~/.bittensor/
 
 ---
 
-## Running the Validator
+### Start the Docker agents (builds both images every run)
 
 ```bash
-pm2 start validator.config.js
+bash docker-up.sh
 ```
 
-Useful PM2 commands:
-
-```bash
-pm2 logs trishool-subnet          # live logs
-pm2 status                        # process table
-pm2 restart trishool-subnet       # restart
-pm2 stop trishool-subnet          # stop without removing
-```
+Use `bash docker-up.sh --no-cache` for a full rebu…
 
 ---
 
-## Miners
+#### CPU / GPU / RAM lines (automatic grep)
 
-```bash
-python -m alignet.cli.miner upload \
-  --submission-file your_submission.json \
-  --surface-area 1 \
-  --coldkey coldkey_name \
-  --hotkey hotkey_name \
-  --network finney \
-  --netuid 23 \
-  --api-url https://api.trishool.ai
-```
-
-**Submission file format** (keys Q1–Qn must match the active challenge's `question_count`):
-
-| Surface Area | Format |
-|---|---|
-| 1 | `{"Q1": "prompt", "Q2": "prompt", ...}` |
-| 2 | `{"Q1": {"prompt": "...", "url": "..."}, ...}` |
-| 3 | `{"Q1": {"prompt": "...", "endpoint": "..."}, ...}` |
-| 4 | `{"Q1": {"conversation": [...]}, ...}` |
-| 5 | `{"Q1": {"session1": [...], "session2": [...]}, ...}` |
-
----
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
 
 
-*README source used for excerpts: `https://raw.githubusercontent.com/TrishoolAI/trishool-phase2/main/README.md`.*
+*Primary README URL used: `https://raw.githubusercontent.com/TrishoolAI/trishool-phase2/main/README.md`*
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -167,26 +181,19 @@ Trishool is the AI alignment protocol built on Bittensor
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.004067935 |
-| 8103690 | 0.00406613 |
-| 8103738 | 0.004066125 |
-| 8103786 | 0.004066082 |
-| 8103834 | 0.004065843 |
-| 8103882 | 0.00406623 |
+| 8103795 | 0.004066081 |
+| 8103843 | 0.004065838 |
+| 8103891 | 0.00406623 |
+| 8103939 | 0.004066227 |
+| 8103987 | 0.004066625 |
+| 8104035 | 0.004066623 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Trishool
-- **Meta / og:description:** A decentralized defense grid for humanity.
-- **Fetched from:** [https://trishool.ai](https://trishool.ai)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

@@ -6,12 +6,10 @@ Liquidity-as-a-Service subnet powering 0xMarkets - a permissionless perp DEX for
 
 https://x.com/0x_Markets
 
-**From crawled page (site or GitHub):** Decentralized exchange for commodities and crypto
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -51,7 +49,9 @@ https://x.com/0x_Markets
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 # Cartha Validator
 
@@ -122,6 +122,27 @@ Every federated miner who locks USDC into a principal miner's vault contributes 
 
 ---
 
+### Weekly Epoch System
+
+- **Epoch Duration**: Friday 00:00 UTC → Thursday 23:59 UTC (7 days)
+- **Weight Calculation**: Computed once per week at epoch start
+- **Weight Publishing**: Cached weights are republished every Bittensor epoch (tempo blocks) throughout the week
+- **Daily Expiry Checks**: Validator checks for expired pools daily and updates weights accordingly
+
+---
+
+### Auto-Updater System
+
+The validator includes an automated update system that:
+
+- **Checks GitHub Releases**: Automatically checks for new releases on GitHub
+- **PM2 Process Management**: Manages validator process via PM2 (survives SSH disconnect)
+- **Automatic Updates**: Pulls latest code, installs dependencies, and restarts validator
+- **Environment Validation**: Validates `.env` file before restarting
+- **Failure Handling**: Keeps validator running on current version if update fails
+
+---
+
 #### Initial Setup
 
 ```bash
@@ -154,10 +175,20 @@ This will:
 
 pm2 logs cartha-validator
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/General-Tao-Ventures/cartha-validator/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - **CPU**: 2 cores
+- - **RAM**: 4 GB
+- - **Disk**: 20 GB SSD
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/General-Tao-Ventures/cartha-validator/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -186,26 +217,19 @@ https://x.com/0x_Markets
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.005373057 |
-| 8103690 | 0.005373029 |
-| 8103738 | 0.005272892 |
-| 8103786 | 0.005273543 |
-| 8103834 | 0.005274056 |
-| 8103882 | 0.005274047 |
+| 8103795 | 0.005274047 |
+| 8103843 | 0.005274051 |
+| 8103891 | 0.005274046 |
+| 8103939 | 0.00527374 |
+| 8103987 | 0.005273736 |
+| 8104035 | 0.005273701 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** 0xMarkets
-- **Meta / og:description:** Decentralized exchange for commodities and crypto
-- **Fetched from:** [https://www.0xmarkets.io/](https://www.0xmarkets.io/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

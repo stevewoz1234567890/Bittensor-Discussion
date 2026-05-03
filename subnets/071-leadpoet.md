@@ -7,7 +7,7 @@ Intent-driven AI for modern sales teams.
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -47,7 +47,9 @@ Intent-driven AI for modern sales teams.
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Hardware Requirements
 
@@ -81,9 +83,26 @@ For **qualification models**, paid API calls (LLM, ScrapingDog) go through the v
 
 ---
 
+#    - Environment: "live"
+
+export COMPANIES_HOUSE_API_KEY="your_companies_house_key"
+
+```
+
+See [`env.example`](env.example) for complete configuration template.
+
+---
+
 ## Installation
 
 ```bash
+
+---
+
+# 2. Create virtual environment
+
+python3 -m venv venv
+source venv/bin/activate
 
 ---
 
@@ -139,6 +158,30 @@ These strict requirements at initial go-live demonstrate our dedication to quali
 
 ---
 
+### Reward System
+
+Miners earn rewards based on the **quality and validity** of leads they submit, with rewards weighted entirely by a rolling 30-epoch history to incentivize consistent long-term quality:
+
+**How It Works:**
+1. Each epoch, validators receive leads to validate
+2. Validators run automated checks on all leads (email verification, domain checks, LinkedIn validation, reputation scoring)
+3. Each validator calculates weights proportionally: miners who submitted **VALID** (approved) leads receive rewards
+4. Rewards are weighted by each lead's reputation score (0-48 points: domain history, regulatory filings, and press coverage)
+5. Formula: `miner_reward ∝ Σ(rep_score for all approved leads from that miner)`
+
+**Example:** If Miner A submitted 3 valid leads (scores: 10, 15, 12) and Miner B submitted 2 valid leads (scores: 8, 20), then:
+- Miner A total: 37 points
+- Miner B total: 28 points
+- Weights distributed proportionally: 57% to Miner A, 43% to Miner B
+
+---
+
+## Qualification Model System (Lead Curation)
+
+In addition to sourcing leads, miners can submit **qualification models** - AI/ML models that curate leads from the approved lead pool based on Ideal Customer Profiles (ICPs).
+
+---
+
 ### Qualification Model Requirements
 
 Your model must follow these **strict requirements**:
@@ -163,75 +206,24 @@ your_model/
 └── requirements.txt    # Optional: additional dependencies
 ```
 
-**Size Limit:** Model tarball must be under **200KB**. Submissions exceeding this limit will be rejected.
-
-**Required Function:**
-```python
-def find_leads(icp: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-    """
-    Find a lead matching the ICP's natural language prompt.
-    
-    Config is injected in icp["_config"]:
-        - SUPABASE_URL, SUPABASE_ANON_KEY - Database credentials
-        - QUALIFICATION_LEADS_TABLE - Table name (use "test_leads_for_miners" for local testing)
-        - PROXY_URL - For paid API calls (e.g., "http://localhost:8001")
-    
-    Returns: Dict with lead_id + 14 fields + intent_signals list, or None
-    """
-    config = icp.get("_config", {})
-    supabase_url = config.get("SUPABASE_URL")
-    table_name = config.get("QUALIFICATION_LEADS_TABLE")
-    proxy_url = config.get("PROXY_URL")
-    # ... your logic ...
-```
-
-**Paid API Calls (via Proxy):**
-```python
+**Size Limit:** Model tarball must be under **200KB**. Submissions exceeding…
 
 ---
 
-### Fulfillment Request Schema (What Miners See)
+#### CPU / GPU / RAM lines (automatic grep)
 
-When a client submits a request, miners receive an ICP with this structure:
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
 
-```json
-{
-  "prompt": "VP of Sales and Heads of Revenue at Series A-C SaaS companies in the US showing signals of evaluating outbound sales tools, hiring SDRs, or researching competitors.",
-  "industry": "Software",
-  "sub_industry": "SaaS",
-  "target_role_types": ["Sales", "Business Development"],
-  "target_roles": ["VP of Sales", "Head of Revenue", "Director of Sales"],
-  "target_seniority": "VP",
-  "employee_count": "50-500",
-  "company_stage": "Series A",
-  "geography": "United States",
-  "country": "United States",
-  "product_service": "outbound sales automation platform",
-  "intent_signals": ["hiring SDRs", "evaluating sales tools", "researching competitors"],
-  "num_leads": 2
-}
-```
-
-- `prompt` — Natural language description of the ideal lead. Your model should interpret this.
-- `target_roles` — Exact role titles the client wants. Your lead's `role` must match one of these (fuzzy matching is applied, e.g. "VP, Corporate Sales" matches "VP of Sales").
-- `target_seniority` — Required seniority level.
-- `intent_signals` — The types of buying signals the client cares about. Find real evidence for these.
-- `num_leads` — How many winning leads the client wants. Only the top N by score earn rewards.
-
----
-
-### Auditor Validator
-
-For validators who want to run a lightweight alternative that copies TEE-verified weights from the primary validator:
-
-```bash
-python neurons/auditor_validator.py \
-   …
+- - **Validators**: 64GB RAM, 8-core CPU, 100GB SSD, AWS Nitro Enclaves enabled instance
+- `| **Fabricating dates** | Assigning `date.today()` when no date exists in the evidence | Games the recency score — stale content appears fresh |`
+- `| Tier 1 | Industry, sub-industry, role, seniority, country, employee count, duplicate company | Free |`
+- `| Tier 2 | Email format, name-in-email, domain age, MX/SPF/DMARC, DNSBL, TrueList verification, LinkedIn person verification, company verification, reputation score | API calls |`
+- `| Tier 3 | Each intent signal URL scraped, snippet overlap verified, LLM evaluates relevance, time decay applied, peak-weighted aggregation | LLM + scraping |`
 
 
-*README source used for excerpts: `https://raw.githubusercontent.com/leadpoet/leadpoet/main/README.md`.*
+*Primary README URL used: `https://raw.githubusercontent.com/leadpoet/leadpoet/main/README.md`*
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -259,12 +251,11 @@ Intent-driven AI for modern sales teams.
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.006153165 |
-| 8103690 | 0.006019587 |
-| 8103738 | 0.005988231 |
-| 8103786 | 0.005979134 |
-| 8103834 | 0.005951897 |
-| 8103882 | 0.005771609 |
+| 8103843 | 0.005923718 |
+| 8103891 | 0.005715259 |
+| 8103939 | 0.005762323 |
+| 8103987 | 0.005767028 |
+| 8104035 | 0.005772646 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -273,5 +264,5 @@ Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

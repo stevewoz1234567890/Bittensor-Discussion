@@ -6,12 +6,10 @@ Building a SOTA Exchange for dTAO and Beyond
 
 Powered by TAOS Matrix of Simulations Sandbox
 
-**From crawled page (site or GitHub):** Simulation of Automated Trading in Intelligent Markets (a.k.a. Sn-79)
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -26,7 +24,7 @@ Powered by TAOS Matrix of Simulations Sandbox
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 7200
-- **Registration recycle cost snapshot (`burn`):** τ0.002076310
+- **Registration recycle cost snapshot (`burn`):** τ0.002455167
 - **Owner SS58 (`owner_ss58`):** `5Fxp7QBG81X7PLdMkAe1RLCvqqfQSw9rJC5ppEQs9FP8qez9`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -51,7 +49,9 @@ Powered by TAOS Matrix of Simulations Sandbox
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Validator Role <span id="mechanism-validator"><span>
 
@@ -95,21 +95,23 @@ Requirements are subject to change as the subnet matures and evolves; this secti
 
 ---
 
-### Validator <span id="requirements-validator"><span>
+### Validator <span id="requirements-validato…
 
-Validators need to host the C++ simulator as well as the Python validator.  In the early days of the subnet, the number of orderbooks simulated as well as the count and type of background agents will be reduced so as to limit the requirements before the subnet matures and sufficient emissions are gained to justify the expense of hosting more powerful machinery.  Basic requirements:
+---
 
-- 32GB RAM
-- 16 CORE CPU
-- Ubuntu >= 22.04
-- g++ 14.
+#### CPU / GPU / RAM lines (automatic grep)
 
-We hope to increase both major parameters significantly so that validators may wish to prepare a larger machine for easier expansion.  It should be noted however that increasing the CPU resources available will result in a faster progression of simulations due to multi-threaded processing of the orderbook realizations.  This should not inherently be a problem, but may cause divergences in scoring if there is a major discrepancy in resources with…
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - 32GB RAM
+- - 16 CORE CPU
+- We hope to increase both major parameters significantly so that validators may wish to prepare a larger machine for easier expansion.  It should be noted however that increasing the CPU resources available will result in a faster progression of simulations due to multi-threaded processing of the orderbook realizations.  This should not inherently be a problem, but may cause divergences in scoring if there is a major discrepancy in resources with the other validators in the subnet.  We plan to communicate the setup employed by our validator whenever changes are made, and will enable to configure the resources allocated for simulation processing if necessary.
+- There are no set requirements for miners except that the basic Bittensor package and subnet miner tools occupy ~1GB of RAM per miner instance; resources needed will depend on the complexity and efficiency of the specific strategy implementation.
 
 
-*README source used for excerpts: `https://raw.githubusercontent.com/taos-im/sn-79/main/README.md`.*
+*Primary README URL used: `https://raw.githubusercontent.com/taos-im/sn-79/main/README.md`*
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -137,26 +139,18 @@ Powered by TAOS Matrix of Simulations Sandbox
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.009392993 |
-| 8103690 | 0.009379832 |
-| 8103738 | 0.009293103 |
-| 8103786 | 0.009205706 |
-| 8103834 | 0.009201882 |
-| 8103882 | 0.009210235 |
+| 8103843 | 0.009200309 |
+| 8103891 | 0.009211116 |
+| 8103939 | 0.009221391 |
+| 8103987 | 0.009233615 |
+| 8104035 | 0.009234959 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** TAOS – Simulation of Automated Trading in Intelligent Markets (a.k.a. Sn-79)
-- **Meta / og:description:** Simulation of Automated Trading in Intelligent Markets (a.k.a. Sn-79)
-- **Fetched from:** [https://taos.im](https://taos.im)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

@@ -7,7 +7,7 @@ Methodical. Strong foundation. And...Sr Data Scientist, 4th team member, onboard
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -47,7 +47,7 @@ Methodical. Strong foundation. And...Sr Data Scientist, 4th team member, onboard
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
 
 No GitHub URL is registered on-chain for this subnet, so README-based hardware notes were not fetched. Use the website or community links above when available.
 
@@ -74,11 +74,11 @@ Methodical. Strong foundation. And...Sr Data Scientist, 4th team member, onboard
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.004881607 |
-| 8103738 | 0.004881773 |
-| 8103786 | 0.004844794 |
-| 8103834 | 0.004844964 |
-| 8103882 | 0.004845084 |
+| 8103843 | 0.004844949 |
+| 8103891 | 0.00484512 |
+| 8103939 | 0.004829869 |
+| 8103987 | 0.004830026 |
+| 8104035 | 0.004813098 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -87,5 +87,5 @@ Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

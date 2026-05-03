@@ -9,7 +9,7 @@ The Last Bitcoin Mining Pool, made by Bittensor
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +49,9 @@ The Last Bitcoin Mining Pool, made by Bittensor
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 # Decentralized Bitcoin Mining & Lightning Infrastructure
 
@@ -132,10 +134,78 @@ Use `ssh-keygen` to generate a key pair for the server, then add read-only acces
 
 ```sh
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/backend-developers-ltd/InfiniteHash/master/README.md`.*
+## AWS
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+<details>
+Initiate the infrastructure with Terraform:
+TODO
+
+To push a new version of the application to AWS, just push to a branch named `deploy-$(ENVIRONMENT_NAME)`.
+Typical values for `$(ENVIRONMENT_NAME)` are `prod` and `staging`.
+For this to work, GitHub actions needs to be provided with credentials for an account that has the following policies enabled:
+
+- AutoScalingFullAccess
+- AmazonEC2ContainerRegistryFullAccess
+- AmazonS3FullAccess
+
+See `.github/workflows/cd.yml` to find out the secret names.
+
+For more details see [README_AWS.md](README_AWS.md)
+</details>
+
+---
+
+## B2 cloud storage
+
+> In these examples we assume that backups will be stored inside `folder`. If you want to store backups in the root folder, just use empty string instead of `folder`.
+
+First, create a Backblaze B2 account and a bucket for backups (with [lifecycle rules](https://www.backblaze.com/docs/cloud-storage-configure-and-manage-lifecycle-rules)):
+
+```sh
+b2 bucket create --lifecycle-rule '{"daysFromHidingToDeleting": 30, "daysFromUploadingToHiding": 30, "fileNamePrefix": "folder/"}' "infinite-hashes-backups" allPrivate
+```
+
+> If you want to add backups to already existing bucket, use `b2 bucket update` command and don't forget to list all previous lifecycle rules as well as adding the new one.
+
+Create an application key with restricted access to a single bucket:
+
+```sh
+b2 key create --bucket "infinite-hashes-backups" --namePrefix "folder/" "infinite-hashes-backups-key" listBuckets,listFiles,readFiles,writeFiles
+```
+
+Fill in `.env` file:
+- `BACKUP_B2_BUCKET=infinite-hashes-backups`
+- `BACKUP_B2_FOLDER=folder`
+- `BACKUP_B2_APPLICATION_KEY_ID=0012345abcdefgh0000000000`
+- `BACKUP_B2_APPLICATION_KEY=A001bcdefgHIJKLMNOPQRSTUxx11x22`
+
+---
+
+## Restoring system from backup after a catastrophical failure
+
+1. Follow the instructions above to set up a new production environment
+2. Restore the database using one of
+```sh
+docker compose run --rm backups ./restore-db.sh /var/backups/{backup-name}.dump.zstd
+
+docker compose run --rm backups ./restore-db.sh b2://{bucket-name}/{backup-name}.dump.zstd
+docker compose run --rm backups ./restore-db.sh b2id://{ID}
+```
+3. See if everything works
+4. Make sure everything is filled up in `.env`, error reporting integration, email accounts etc
+
+---
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/backend-developers-ltd/InfiniteHash/master/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -163,11 +233,11 @@ The Last Bitcoin Mining Pool, made by Bittensor
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.003772761 |
-| 8103738 | 0.003772756 |
-| 8103786 | 0.003772713 |
-| 8103834 | 0.003772709 |
-| 8103882 | 0.0037727 |
+| 8103843 | 0.003772704 |
+| 8103891 | 0.0037727 |
+| 8103939 | 0.003772696 |
+| 8103987 | 0.003772117 |
+| 8104035 | 0.003772114 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -176,5 +246,5 @@ Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

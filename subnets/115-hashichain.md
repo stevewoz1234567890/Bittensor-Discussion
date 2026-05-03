@@ -4,12 +4,10 @@
 
 The First Public Blockchain Designed for AI Agents
 
-**From crawled page (site or GitHub):** The digital landscape is currently undergoing a fundamental shift, where the locus of interaction is migrating from humans to Autonomous Agents. Unlike traditional Agents acting merely as passive t...
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,9 +47,16 @@ The First Public Blockchain Designed for AI Agents
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
 
-No matching README sections were auto-detected for [https://github.com/hashi115/hashichain](https://github.com/hashi115/hashichain). Open the repository for miner/validator machine requirements, dependencies, and cloud sizing.
+#### CPU / GPU / RAM lines (automatic grep)
+
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/hashi115/hashichain/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -78,24 +83,18 @@ The First Public Blockchain Designed for AI Agents
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.00740259 |
-| 8103738 | 0.007402553 |
-| 8103786 | 0.007402283 |
-| 8103834 | 0.007402257 |
-| 8103882 | 0.007402197 |
+| 8103843 | 0.00740222 |
+| 8103891 | 0.007402195 |
+| 8103939 | 0.007402168 |
+| 8103987 | 0.007402143 |
+| 8104035 | 0.007402123 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Meta / og:description:** The digital landscape is currently undergoing a fundamental shift, where the locus of interaction is migrating from humans to Autonomous Agents. Unlike traditional Agents acting merely as passive t...
-- **Fetched from:** [https://github.com/hashi115/hashichain](https://github.com/hashi115/hashichain)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

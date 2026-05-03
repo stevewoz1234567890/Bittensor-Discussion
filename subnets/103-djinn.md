@@ -4,12 +4,10 @@
 
 Information X Execution
 
-**From crawled page (site or GitHub):** Unbundling information from execution. Encrypted predictions, verifiable track records, settled in USDC on Base.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -24,7 +22,7 @@ Information X Execution
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 10000
-- **Registration recycle cost snapshot (`burn`):** τ0.000566044
+- **Registration recycle cost snapshot (`burn`):** τ0.000669271
 - **Owner SS58 (`owner_ss58`):** `5E6wTZZipkTmm6mci5jZp1FwXoUSGgG8CemFeC3DsV2nUGiM`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -49,7 +47,9 @@ Information X Execution
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Prerequisites
 
@@ -143,10 +143,89 @@ cd validator && uv run pytest
 
 cd miner && uv run pytest
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/Djinn-Inc/djinn/main/README.md`.*
+### Docker
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+```bash
+
+---
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- `| CPU | 4 cores | 8 cores |`
+- `| RAM | 8 GB | 16 GB |`
+- `| Disk | 40 GB SSD | 100 GB SSD |`
+- Validators run the API server, MPC coordination, outcome attestation, and burn ledger. MPC operations are CPU-intensive during purchase flows.
+- `| CPU | 4 cores | 8+ cores |`
+- `| Disk | 20 GB SSD | 50 GB SSD |`
+- Miners run TLSNotary proof generation (30-90s CPU per attestation) and sports line checking. CPU is the bottleneck for TLSNotary MPC.
+- - **System Dashboard** — CPU, memory, disk, network
+
+---
+
+##### Extra scrape: `miner.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - **CPU:** 2+ cores, 2.0 GHz+
+- - **RAM:** 4 GB minimum
+- - **Storage:** 5 GB SSD
+- - **GPU:** Not required
+
+---
+
+##### Extra scrape: `validator.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - **CPU:** 4+ cores, 2.5 GHz+
+- - **RAM:** 8 GB minimum
+- - **Storage:** 10 GB SSD
+- - **GPU:** Not required
+- `| `SPORTS_API_KEY` | No | Deprecated. Scores now come from ESPN (free). Kept for backward compatibility but ignored. |`
+
+---
+
+##### Extra scrape: `README.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- `| macOS | Intel x86_64 | Untested but should work with the Linux x86_64 TLSNotary binary via Rosetta. |`
+- `| Capability | 10%    | System resource bonus based on advertised hardware (see below) |`
+- `| Total RAM | Score |`
+- `| 8 GB      | 0.1   |`
+- `| 16 GB     | 0.2   |`
+- `| 32 GB     | 0.3   |`
+- `| 64 GB+    | 0.4   |`
+- **CPU (0 to 0.2)**
+- `| Cores | Score |`
+- Computed as `(available_mb / total_mb) * 0.2`. Miners with most of their RAM free score higher.
+- The `ATTEST_MAX_CONCURRENT` environment variable (default 5) controls how many TLSNotary attestation sessions can run simultaneously. Each session consumes significant RAM. Recommended settings:
+- `| RAM   | ATTEST_MAX_CONCURRENT |`
+- `| 8 GB  | 2                     |`
+- `| 16 GB | 3                     |`
+- `| 32 GB | 5                     |`
+- `| 64 GB | 8                     |`
+- `| `max_recv_data`    | 8 MB    | A target site that advertises a huge `Content-Length` (legitimately or maliciously) used to make the prover allocate a multi-gigabyte MPC circuit per request. Targets larger than 8 MB now fail at preflight with an actionable error ("try a smaller endpoint") instead of OOM-killing the prover. |`
+- `| Tier        | RAM    | CPU Cores | Disk   | Notes |`
+- `| Minimum     | 8 GB   | 4         | 50 GB  | Can run basic line checks. Limited attestation capacity (set `ATTEST_MAX_CONCURRENT=2`). Capability score around 0.15-0.25. |`
+- `| Recommended | 32 GB  | 8+        | 100 GB | Handles concurrent attestations comfortably. Capability score around 0.5-0.7. |`
+- `| Optimal     | 64 GB  | 16+       | 200 GB | Maximum capability score. Handles 8+ concurrent attestation sessions. Gets priority routing from validators. |`
+- More resources translate directly to a higher capability score, which means more attestation work routed to your miner and higher emissions. The relationship is not linear; the biggest gains come from crossing tier thresholds (8 to 16 GB, 16 to 32 GB, etc.).
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/Djinn-Inc/djinn/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -174,25 +253,18 @@ Information X Execution
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.0055821 |
-| 8103738 | 0.00554243 |
-| 8103786 | 0.005542118 |
-| 8103834 | 0.005561814 |
-| 8103882 | 0.00562112 |
+| 8103843 | 0.005561798 |
+| 8103891 | 0.005621119 |
+| 8103939 | 0.005631027 |
+| 8103987 | 0.005631016 |
+| 8104035 | 0.005628941 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Djinn | Sports Intelligence Marketplace
-- **Meta / og:description:** Unbundling information from execution. Encrypted predictions, verifiable track records, settled in USDC on Base.
-- **Fetched from:** [https://djinn.gg/](https://djinn.gg/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

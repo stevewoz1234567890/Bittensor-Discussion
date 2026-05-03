@@ -4,12 +4,10 @@
 
 Decentralized Alignment of Artificial Intelligence
 
-**From crawled page (site or GitHub):** Aurelius is a decentralized AI alignment protocol. Alignment you can
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Decentralized Alignment of Artificial Intelligence
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ## Recommended setup: the published Docker image
 
@@ -85,6 +85,43 @@ Prerequisites:
   (`btcli subnet register --netuid 37 --network finney`) — registration costs TAO
 - An OpenAI-compatible LLM API key — [DeepSeek](https://platform.deepseek.com/) is the
   default and cheapest.
+
+---
+
+### 2. Docker compose with socket-proxy sidecar
+
+The validator reaches the Docker daemon through
+[`tecnativa/docker-socket-proxy`](https://github.com/Tecnativa/docker-socket-proxy), which
+restricts the socket to only the API calls the validator actually uses.
+
+```bash
+cat > docker-compose.yml <<'EOF'
+services:
+  aurelius-validator:
+    image: ghcr.io/aurelius-protocol/aurelius-validator:latest
+    container_name: aurelius-validator
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DOCKER_HOST: tcp://docker-proxy:2375
+    cap_add: [NET_ADMIN]
+    volumes:
+      - ~/.bittensor/wallets:/home/appuser/.bittensor/wallets:ro
+      - ./data:/app/data
+      - ./simdata:/sim-data
+    depends_on: [docker-proxy]
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+
+  docker-proxy:
+    image: tecnativa/docker-socket-proxy:0.3.0
+    container_name: docker-proxy
+    restart: unless-stopped
+    environment: { CONTAINERS: 1, IMAGES: 1, POST: 1, NETWORKS: 1 }
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+EOF
+```
 
 ---
 
@@ -149,18 +186,21 @@ AXON_EXTERNAL_IP=<your-public-ip>
 AXON_EXTERNAL_PORT=8091
 EOF
 
-mkdir -p data configs
+mkdir -p data con…
 
 ---
 
-# E2E (requires a running testnet and a funded wallet)
+#### CPU / GPU / RAM lines (automatic grep)
 
-pytest tests/e2e/ -m e2e
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- CPU/RAM limits scaled to the scenario's agent count, and its LLM egress is firewalled to
+- capped RAM / CPU, egress limited to `SIM_ALLOWED_LLM_HOSTS`, and no persistent
 
 
-*README source used for excerpts: `https://raw.githubusercontent.com/Aurelius-Protocol/Aurelius-Protocol/main/README.md`.*
+*Primary README URL used: `https://raw.githubusercontent.com/Aurelius-Protocol/Aurelius-Protocol/main/README.md`*
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -188,26 +228,19 @@ Decentralized Alignment of Artificial Intelligence
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.004052837 |
-| 8103690 | 0.00405283 |
-| 8103738 | 0.004052825 |
-| 8103786 | 0.004052756 |
-| 8103834 | 0.004052754 |
-| 8103882 | 0.004052747 |
+| 8103795 | 0.004052756 |
+| 8103843 | 0.004052749 |
+| 8103891 | 0.004052747 |
+| 8103939 | 0.004052744 |
+| 8103987 | 0.004052677 |
+| 8104035 | 0.004052675 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Aurelius — Decentralized Alignment of Artificial Intelligence
-- **Meta / og:description:** Aurelius is a decentralized AI alignment protocol. Alignment you can
-- **Fetched from:** [https://aureliusaligned.ai](https://aureliusaligned.ai)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

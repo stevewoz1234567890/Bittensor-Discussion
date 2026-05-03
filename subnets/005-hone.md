@@ -4,12 +4,10 @@
 
 Hone training
 
-**From crawled page (site or GitHub):** Incentivized distributed training of large language models. Train together, build what's next.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Hone training
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Prerequisites
 
@@ -67,6 +67,14 @@ Hone training
 - 8GB+ RAM
 - 20GB disk
 - Reliable network connection
+
+---
+
+### 2. Configure Environment
+
+Create `validator/.env`:
+
+```ini
 
 ---
 
@@ -95,6 +103,17 @@ This starts:
 - Public IP address
 - Open port (default: 8091)
 - Minimal compute (the heavy lifting happens in sandbox)
+
+---
+
+### 2. Configure Environment
+
+Create `miner/.env`:
+
+```ini
+WALLET_NAME=default
+WALLET_HOTKEY=miner
+MINER_PORT=8091
 
 ---
 
@@ -237,10 +256,33 @@ docker network rm sandbox-job-xyz
 
 ---
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/manifold-inc/hone/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- A Bittensor subnet where **validators** evaluate **miners** on their ability to solve novel ARC-AGI-2 reasoning problems. Miners don't run solvers directly—they point to a git repository containing their solution, which is executed in a secure GPU sandbox.
+- 2. **Validators** fetch miner info, submit jobs to a **Sandbox Runner** (secure GPU execution service)
+- - **GPU isolation**: Inference runs without network access
+- │ │ M1    │ │    │  │ H200 #0 │  │ H200 #1 │  │ H200 #2 │  │ H200 #3 │ │
+- │ ┌───────┐ │    │  │ H200 #4 │  │ H200 #5 │  │ H200 #6 │  │ H200 #7 │ │
+- - **NVIDIA GPU + drivers** (for sandbox runner / local testing)
+- - 4+ CPU cores
+- - 8GB+ RAM
+- - 20GB disk
+- `| `MINER_WEIGHT_CLASS` | `1xH200` | GPU requirement |`
+- `| Class | GPUs | Use Case |`
+- **GPU allocation failures**
+- nvidia-smi
+- - Check GPU memory is sufficient
+- ├── sandbox_runner/         # GPU execution service
+- │   ├── core/               # job queue, GPU pool, scheduler, executor
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/manifold-inc/hone/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -268,26 +310,19 @@ Hone training
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.01773741 |
-| 8103690 | 0.017737376 |
-| 8103738 | 0.017737357 |
-| 8103786 | 0.017733391 |
-| 8103834 | 0.017733378 |
-| 8103882 | 0.01773237 |
+| 8103795 | 0.017733389 |
+| 8103843 | 0.017732382 |
+| 8103891 | 0.017732369 |
+| 8103939 | 0.017732356 |
+| 8103987 | 0.017732343 |
+| 8104035 | 0.017732336 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Hone
-- **Meta / og:description:** Incentivized distributed training of large language models. Train together, build what's next.
-- **Fetched from:** [https://www.hone.training/](https://www.hone.training/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

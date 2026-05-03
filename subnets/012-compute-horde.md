@@ -2,12 +2,12 @@
 
 ## Overview
 
-**From crawled page (site or GitHub):** Contribute to backend-developers-ltd/ComputeHorde development by creating an account on GitHub.
+**Compute Horde** (NetUID 12) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
 
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -47,7 +47,9 @@
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 # ComputeHorde (Subnet 12 of Bittensor)
 
@@ -122,6 +124,14 @@ Want to maximize earnings? Stake collateral with validators, preload Docker imag
 
 ---
 
+### Encouraging Actual Mining
+
+- Scoring system incentivizing for completing organic tasks.
+- Validators can require miners to deposit collateral to access organic jobs, creating economic pressure to behave honestly.
+- An optional DDoS shield is available for miners to stay reliably online and resilient against attacks.
+
+---
+
 # Running ComputeHorde components
 
 This repository contains the implementations of:
@@ -133,34 +143,39 @@ This repository contains the implementations of:
   The default executor manager runs a single executor and is not intended for mainnet use.
 
 In the following sections, you can find instructions on running [Validator](#Validator) and [Miner](#Miner).
-There are more details in each component's README and in the [Troubleshooting](#Troubleshooting) section below.
-
-Modifications to ComputeHorde components are generally not recommended, with the exception of the [ExecutorManager class](miner#custom-executor-manager). 
-Customizing this class allows you to implement dedicated logic for handling executors, such as running multiple executors per miner.
+There are more details in each com…
 
 ---
 
-## Validator
+#### CPU / GPU / RAM lines (automatic grep)
 
-ComputeHorde validator is built out of three components
-1. trusted miner (requires A6000 - the only GPU supported now) for cross-validation
-1. two S3 buckets for sharing LLM data (lots of small text files)
-1. validator machine (standard, non-GPU) - for regular validating & weight-setting
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
 
-The steps, performed by running installation scripts **on your local machine**, which has your wallet files. For clarity, **these installation scripts are not run on the machine that will become the trusted miner or the validator**, the scripts will connect through SSH to those machines from your local machine:
-1. [setup trusted miner](/validator#setting-up-a-trusted-miner-for-cross-validation) 
-1. [setup validator](#validator-setup)
+- designed to **supercharge Bittensor with scalable and trusted GPU computing power**.
+- ComputeHorde introduces hardware classes to create a free market for GPU resources, balancing cost-effectiveness with performance.
+- Currently, **A6000** is the supported class, with **A100** coming next.
+- The end goal is to eventually support all GPU types/configurations required by validators across Bittensor subnets.
+- ComputeHorde adds GPU-powered validation to this ecosystem, helping other subnets operate effectively without relying on centralized cloud services.
+- If you're a **subnet owner or validator** looking to access scalable, decentralized GPU compute power from ComputeHorde,
+- - **Accelerate validation** by leveraging ComputeHorde’s ready-to-go GPU pool.
+- Miners can preload select images to reduce latency and GPU usage. [More details](miner#preloading-job-images).
+- - Uses a separate GPU, called a **Trusted Miner**, to pre-run part of the validation tasks and establish expected results.
+- - At least **500GB of shared disk space** is recommended to reliably handle docker images and job data stored in `/tmp`.
+- Add support for all GPU classes required by other Bittensor subnets.
+- 1. trusted miner (requires A6000 - the only GPU supported now) for cross-validation
+- 1. validator machine (standard, non-GPU) - for regular validating & weight-setting
+- Miner installation may occasionally fail with an error about the system being unable to install the `cuda-drivers` package.
+- 1. Run the following command on the miner machine to purge any conflicting NVIDIA packages:
+- sudo apt-get purge -y '^nvidia-.*'
+- To verify the health of the NVIDIA setup, run the following command on the miner machine:
+- docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
+- To start all the core services locally and be able to schedule jobs that don't require a GPU (so to test communications
+- self-contained and should run on anything that has a CPU, RAM and an operating system. And docker.
 
----
 
-## Miner
+*Primary README URL used: `https://raw.githubusercontent.com/backend-developers-ltd/ComputeHorde/master/README.md`*
 
-To quickly start a miner, create an Ubuntu Server and execute the following command from your loc…
-
-
-*README source used for excerpts: `https://raw.githubusercontent.com/backend-developers-ltd/ComputeHorde/master/README.md`.*
-
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -185,26 +200,19 @@ To quickly start a miner, create an Ubuntu Server and execute the following comm
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.006792457 |
-| 8103690 | 0.006792447 |
-| 8103738 | 0.006792441 |
-| 8103786 | 0.006792396 |
-| 8103834 | 0.006792389 |
-| 8103882 | 0.00679238 |
+| 8103795 | 0.006792395 |
+| 8103843 | 0.006792384 |
+| 8103891 | 0.006792379 |
+| 8103939 | 0.006792374 |
+| 8103987 | 0.00679237 |
+| 8104035 | 0.006792367 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** GitHub - backend-developers-ltd/ComputeHorde · GitHub
-- **Meta / og:description:** Contribute to backend-developers-ltd/ComputeHorde development by creating an account on GitHub.
-- **Fetched from:** [https://github.com/backend-developers-ltd/ComputeHorde/](https://github.com/backend-developers-ltd/ComputeHorde/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

@@ -4,12 +4,10 @@
 
 Incentivized Compute Marketplace powered by the Targon Virtual Machine (TVM).
 
-**From crawled page (site or GitHub):** Scale with Secure GPU & CPU Rentals on a Lightning-Fast Cloud for Training and Deployment
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,23 @@ Incentivized Compute Marketplace powered by the Targon Virtual Machine (TVM).
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
+
+# Targon: The Confidential Decentralized AI Cloud
+
+Targon is a next-generation AI infrastructure platform that leverages
+Confidential Compute (CC) and Protected pcie (PPCIE) technology to secure the
+entire stack. By providing a secure execution environment from hardware to
+application layers, Targon enables verifiable and trustworthy operations across
+the entire infrastructure in a decentralized fashion.
+
+NOTICE: Using this software, you must agree to the Terms and Agreements provided
+in the terms and conditions document. By downloading and running this software,
+you implicitly agree to these terms and conditions.
+
+---
 
 ### AI Infrastructure Capabilities
 
@@ -60,10 +74,21 @@ Incentivized Compute Marketplace powered by the Targon Virtual Machine (TVM).
 - Secure memory management for AI workloads
 - Isolated execution environment for sensitive operations
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/manifold-inc/targon/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- - GPU TEE (Trusted Execution Environment) for isolated execution
+- - NVIDIA Confidential Compute integration OR
+- - NVIDIA PPCIE
+- - AMD SEV-SNP integration
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/manifold-inc/targon/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -91,26 +116,19 @@ Incentivized Compute Marketplace powered by the Targon Virtual Machine (TVM).
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.057721497 |
-| 8103690 | 0.057700079 |
-| 8103738 | 0.057691949 |
-| 8103786 | 0.057691683 |
-| 8103834 | 0.057500933 |
-| 8103882 | 0.057483696 |
+| 8103795 | 0.057601643 |
+| 8103843 | 0.057479998 |
+| 8103891 | 0.057483693 |
+| 8103939 | 0.057451942 |
+| 8103987 | 0.057452223 |
+| 8104035 | 0.057441034 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Targon
-- **Meta / og:description:** Scale with Secure GPU & CPU Rentals on a Lightning-Fast Cloud for Training and Deployment
-- **Fetched from:** [https://targon.com](https://targon.com)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

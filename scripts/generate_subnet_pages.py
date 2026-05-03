@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Generate one Markdown file per subnet under subnets/.
 
-Pulls chain identity + hyperparameters + short alpha price samples, optionally
-TAOStats historical pool prices and GitHub README “requirements” excerpts.
+Pulls chain identity + hyperparameters, GitHub README **hardware grep** (GB/VRAM/GPU/CUDA/vCPU-aware), short alpha-price samples from RPC, optionally TAOStats historical pools.
 
 Usage (from repo root, with bittensor installed):
     python3 -m venv .venv && .venv/bin/pip install -r scripts/requirements-catalog.txt
@@ -34,7 +33,9 @@ README_SECTION_KEYS = frozenset(
         "require",
         "prereq",
         "hardware",
+        "hardware class",
         "validator",
+        "mining",
         "miner",
         "compute",
         "comput",
@@ -44,12 +45,90 @@ README_SECTION_KEYS = frozenset(
         "vram",
         "memory",
         "infra",
+        "resources",
         "install",
         "setup",
         "recommended",
         "minimum",
+        "system",
+        "machine",
+        "environment",
+        "dependencies",
+        "docker",
+        "ubuntu",
+        "pytorch",
+        "instance",
+        "cloud",
+        "aws",
+        "gcp",
+        "azure",
+        "runpod",
     )
 )
+
+
+# Matches concrete hardware sizing / accelerators — used for a README-wide grep (not headings).
+_HARDWARE_PATTERN = re.compile(
+    r"(?is)"
+    r"(\d[\d.,]{0,6}\s*(?:gb|tb|mb|mib|gib|tib)\b)"
+    r"|(\d+\s*(?:mhz|ghz)\b)"
+    r"|(\d+\s*(?:vcpu|cores?|threads?))\b"
+    r"|\b(?:gpu|graphics|accelerator|nvidia|cuda|cuda\s*toolkit|cudnn|vram|tensor\s*core|nvlink|sm_\d+)\b"
+    r"|\b(?:rtx|gtx|geforce|quadro|tesla)\s*[a-z0-9]+\b|\b(?:h100|h200|a100|a10(?:g)?|l40(?:s)?|t4|v100|k80|h800)\b"
+    r"|\b(?:cpu|processor|xeon|epyc|ryzen|threadripper|intel|amd\b|apple\s+m[0-9])\b"
+    r"|\b(?:ram|dram|ssd|nvme)\b|\b\d+x\s*h100\b"
+)
+
+
+HW_GREP_EMPTY_STUB = """#### CPU / GPU / RAM lines (automatic grep)
+
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+
+"""
+
+
+def _line_looks_hardware_rich(line: str) -> bool:
+    stripped = line.strip()
+    if len(stripped) < 10:
+        return False
+    if stripped.startswith(("#", "<!--", "```", "---", "[")) and not stripped.startswith("[`"):
+        return False
+    if stripped.startswith("!"):
+        return False
+    if stripped.startswith("|") and stripped.count("|") < 3:
+        return False
+
+    low = stripped.lower()
+    # Avoid generic nav lines with no specs
+    noise_only = {"miner", "validator", "miner setup", "validator setup", "# miners", "## miners"}
+    if stripped in noise_only:
+        return False
+
+    return bool(_HARDWARE_PATTERN.search(stripped))
+
+
+def _github_parse_org_repo(repo_https: str) -> tuple[str, str] | None:
+    u = repo_https.strip().rstrip("/")
+    m = re.match(r"https?://github\.com/([^/]+)/([^/#?]+?)(?:\.git)?/?$", u, re.I)
+    if not m:
+        return None
+    return m.group(1), m.group(2)
+
+
+def _github_extra_docs_urls(org: str, repo: str) -> list[str]:
+    """Supplementary docs (tried in order; main branch first, then master)."""
+    paths = (
+        "docs/miner.md",
+        "docs/validator.md",
+        "miner/README.md",
+        "validators.md",
+    )
+    out: list[str] = []
+    for br in ("main", "master"):
+        base = f"https://raw.githubusercontent.com/{org}/{repo}/{br}"
+        for p in paths:
+            out.append(f"{base}/{p}")
+    return out
 
 
 def _slugify(name: str) -> str:
@@ -121,8 +200,22 @@ def _github_repo_raw_readme_candidates(repo_https: str) -> list[str]:
         out.append(f"https://raw.githubusercontent.com/{org}/{repo}/{br}/readme.md")
     return out
 
+def _line_table_header_or_row_probable_hardware(line: str) -> bool:
+    s = line.strip()
+    if not s.startswith("|") or s.count("|") < 3:
+        return False
+    lowered = s.lower().replace("`", "")
+    if re.fullmatch(r"[|\-|:\s]+", lowered):
+        return False
+    return bool(
+        re.search(
+            r"\bgpu|accelerator|vram|cpu|tier|cores?|vcpus?|instance|hardware|compute class|memory\b",
+            lowered,
+        )
+    )
 
-def _extract_readme_spec_sections(markdown_body: str, max_chars: int = 5_500) -> str | None:
+
+def _extract_readme_heading_sections(markdown_body: str, max_chars: int = 4600) -> str | None:
     chunks: list[str] = []
     for m in re.finditer(
         r"(^#{1,4}[ \t]+.+?$)(.*?)(?=^#{1,4}[ \t]|\Z)",
@@ -143,17 +236,145 @@ def _extract_readme_spec_sections(markdown_body: str, max_chars: int = 5_500) ->
     return joined
 
 
-def _readme_specs_from_github(repo_url: str) -> tuple[str | None, str | None]:
-    candidates = _github_repo_raw_readme_candidates(repo_url)
-    sources: list[str] = []
-    for raw_url in candidates:
-        text = _fetch_text(raw_url, timeout=10.0, max_bytes=800_000)
-        if text and len(text) > 80:
-            ex = _extract_readme_spec_sections(text)
-            if ex:
-                return ex, raw_url
-            sources.append(raw_url)
-    return None, None
+def _collect_hardware_grep_lines(markdown_body: str, *, max_lines: int = 48) -> list[str]:
+    """Surface CPU/GPU/RAM lines wherever they appear — prose, bullets, tables."""
+    out: list[str] = []
+    seen: set[str] = set()
+    for ln in markdown_body.splitlines():
+        if len(out) >= max_lines:
+            break
+        ls = ln.rstrip()
+        if not ls:
+            continue
+        if _line_table_header_or_row_probable_hardware(ls):
+            cand = ls
+        elif _line_looks_hardware_rich(ls):
+            cand = ls
+        else:
+            continue
+        key = " ".join(cand.split())
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(cand)
+    return out
+
+
+def _format_hw_grep_block(lines: list[str]) -> str | None:
+    if not lines:
+        return None
+    bl: list[str] = []
+    for ln in lines:
+        s = ln.strip()
+        if not s:
+            continue
+        if s.startswith("|"):
+            bl.append(f"- `{s}`")
+        else:
+            bl.append(f"- {s}")
+    return (
+        "#### CPU / GPU / RAM lines (automatic grep)\n\n"
+        "Lines caught by patterns such as **\\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. "
+        "*(Heuristic — confirm on the subnet’s official repo / docs.)*\n\n"
+        + "\n".join(bl)
+    )
+
+
+def _append_extra_github_hw_docs(
+    org: str,
+    repo: str,
+    http_delay: float,
+    *,
+    min_total_hw_lines: int,
+    existing_count: int,
+) -> list[tuple[str, list[str]]]:
+    """Pull a few supplementary markdown files when the main README lacks enough hardware mentions."""
+    if existing_count >= min_total_hw_lines:
+        return []
+
+    gleaned: list[tuple[str, list[str]]] = []
+    fetched = 0
+    MAX_FILES = 4
+
+    lines_seen = existing_count
+
+    for url in _github_extra_docs_urls(org, repo):
+        if fetched >= MAX_FILES:
+            break
+        if lines_seen >= min_total_hw_lines and fetched > 0:
+            break
+        time.sleep(http_delay)
+        text = _fetch_text(url, timeout=12.0, max_bytes=600_000)
+        if not text or len(text) < 50:
+            continue
+        glean = _collect_hardware_grep_lines(text, max_lines=36)
+        if not glean:
+            continue
+        short = urllib.parse.urlsplit(url).path.rsplit("/", 1)[-1]
+        gleaned.append((short, glean))
+        lines_seen += len(glean)
+        fetched += 1
+
+    return gleaned
+
+
+def _readme_specs_from_github(
+    repo_url: str,
+    *,
+    http_delay: float,
+) -> tuple[str | None, str | None]:
+    """Return Markdown body plus canonical README URL."""
+    readme_text = None
+    readme_url_used = None
+    for raw_url in _github_repo_raw_readme_candidates(repo_url):
+        text = _fetch_text(raw_url, timeout=12.0, max_bytes=800_000)
+        if text and len(text.strip()) > 80:
+            readme_text = text
+            readme_url_used = raw_url
+            break
+
+    if not readme_text:
+        return None, None
+
+    heading_chunks = _extract_readme_heading_sections(readme_text)
+    grep_primary = _collect_hardware_grep_lines(readme_text)
+
+    bundled: list[str] = []
+    if heading_chunks:
+        bundled.append(
+            "#### Sections matched by heading (miner / validator / hardware / requirements)\n\n" + heading_chunks
+        )
+
+    grep_block = _format_hw_grep_block(grep_primary)
+
+    extra_sections: list[str] = []
+    org_repo = _github_parse_org_repo(repo_url)
+    if org_repo:
+        extras = _append_extra_github_hw_docs(
+            org_repo[0],
+            org_repo[1],
+            http_delay,
+            min_total_hw_lines=22,
+            existing_count=len(grep_primary),
+        )
+        for short_name, glines in extras:
+            blk = _format_hw_grep_block(glines)
+            if blk:
+                extra_sections.append(f"##### Extra scrape: `{short_name}` (grep only)\n\n" + blk)
+
+    if grep_block:
+        bundled.append(grep_block)
+    elif not extra_sections:
+        bundled.append(HW_GREP_EMPTY_STUB)
+    bundled.extend(extra_sections)
+
+    if not bundled:
+        return None, readme_url_used
+
+    text_out = "\n\n---\n\n".join(bundled)
+    if len(text_out) > 12_500:
+        text_out = text_out[: 12_400] + "…\n"
+    return text_out, readme_url_used
 
 
 def chain_price_recent_rows(
@@ -214,9 +435,9 @@ def format_chain_ops(st: Subtensor, netuid: int, block: int) -> str:
     lines: list[str] = []
 
     lines.append(
-        "**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, "
-        "weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs "
-        "(see the next section when GitHub excerpts are available).\n"
+        "**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. "
+        "**CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below "
+        "(GitHub README scrape) and the subnet’s live documentation.\n"
     )
 
     lines.append("### Topology & economics (`SubnetInfo` snapshot)\n")
@@ -283,13 +504,13 @@ def format_readme_specs_block(
 ) -> str:
     gh = github_field.strip() if github_field else ""
     if readme_excerpt and readme_source_url:
-        src = f"\n\n*README source used for excerpts: `{readme_source_url}`.*"
+        src = f"\n\n*Primary README URL used: `{readme_source_url}`*"
         return (
             readme_excerpt.strip()
             + "\n"
             + src
-            + "\n\n*Headings were selected heuristically (hardware / miner / validator / requirements). "
-            "Always read the full README in the repo.*\n"
+            + "\n\n*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* "
+            "Always verify against the subnet’s current repository branch.*\n"
         )
     if gh.startswith("https://github.com"):
         return (
@@ -483,9 +704,9 @@ def render_page(
     if sym:
         title += f" (`{sym}`)"
 
-    readme_block = "*README hardware excerpt skipped (`--no-readme-specs`).*\n\n"
+    readme_block = "*README/hardware scrape skipped (`--no-readme-specs`).*\n\n"
     if not skip_specs_readme:
-        readme_block = "## Miner / validator compute notes (README excerpts)\n\n"
+        readme_block = "## Miner / validator hardware (CPU/GPU/RAM)\n\n"
         readme_block += format_readme_specs_block(readme_excerpt, readme_raw_url, gh_ident)
 
     lines: list[str] = [
@@ -668,7 +889,7 @@ def main() -> None:
         readme_excerpt = None
         readme_raw_url = None
         if args.readme_specs and github_candidate:
-            readme_excerpt, readme_raw_url = _readme_specs_from_github(gh_raw)
+            readme_excerpt, readme_raw_url = _readme_specs_from_github(gh_raw, http_delay=args.delay)
             time.sleep(args.delay)
 
         body = render_page(

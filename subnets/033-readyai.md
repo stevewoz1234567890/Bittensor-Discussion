@@ -2,12 +2,12 @@
 
 ## Overview
 
-**From crawled page (site or GitHub):** ReadyAI (readyai.ai) enables structured data processing at scale, democratizing access to the valuable digital commodity of structured data – the key ingredient for high quality fine tuned models a...
+**ReadyAI** (NetUID 33) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
 
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -22,7 +22,7 @@
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 10000000
 - **`immunity_period` (blocks):** 7200
-- **Registration recycle cost snapshot (`burn`):** τ0.001222226
+- **Registration recycle cost snapshot (`burn`):** τ0.001146975
 - **Owner SS58 (`owner_ss58`):** `5HinUfk5SqBUAbkMtgdNoum3VJvwrLgdvwW5sbXA1UPYZ8uB`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -47,7 +47,9 @@
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ## Installation & Compute Requirements
 
@@ -77,141 +79,140 @@ Miners & Validators using an OpenAI API Key will need a CPU with at least 8GB of
 
 ---
 
-### pm2 Installation
+## Mining
 
-To install Pm2 on your Ubuntu Device, use
+You can launch your miners on testnet using the following command.
 
-```
-apt install nodejs npm
-npm install -g pm2
-```
+To run with pm2 please see instructions [here](#Running-a-Miner-with-PM2)
 
-The basic command structure to run a process in pm2 is below:
+If you are running on runpod, please read instructions [here](#Using-Runpod).
 
-```
-pm2 start "<your neuron start command here>" --name "<your process name here>"
-```
-
----
-
-### Running a Miner with PM2
-
-To run a miner with PM2, you can use the following template:
+To setup and run a miner with Docker, see instructions [here](#Running-a-Miner-or-a-Validator-with-Docker).
 
 ```
-pm2 start "python3 -m neurons.miner --netuid 33 --wallet.name default --wallet.hotkey default --logging.debug --axon.port <port>" --name "miner"
+python3 -m neurons.miner --subtensor.network test --netuid 138 --wallet.name <coldkey name> --wallet.hotkey <hotkey name> --logging.debug --axon.port <port>
+```
+
+Once you've registered on on mainnet SN33, you can start your miner with this command:
+
+```
+python3 -m neurons.miner --netuid 33 --wallet.name <wallet name> --wallet.hotkey <hotkey name> --axon.port <port>
 ```
 
 ---
 
-### Running a Validator with PM2
+#### Using the Prebuilt Docker Image
 
-To run a validator with PM2, you can use the following template:
+This section shows you how to quickly run the API server using a prebuilt Docker image—**no build step required**!
 
+The image comes preloaded with a `conversations.sqlite` database containing **4,888 podcast conversations** ready for training or testing.
+
+**Steps**
+
+1. **Create Your `.env` File**
+
+   Copy the example environment file and create your own configuration:  
+   ```
+   cp env.example .env
+   ```
+
+2. **Configure the Environment**
+
+   Open the `.env` file and set the `TYPE` variable to `api`:  
+   ```
+   TYPE=api
+   ```
+   You will also need to adjust the endpoints for your needs as explained [here](#for-testing-with-a-local-api)
+
+   > [!IMPORTANT]  
+   > **If you are a validator** and you want to use the local api and test dataset to send conversations to miners, you have to set `TYPE=validator` and `START_LOCAL_CGP_API=true` instead
+
+
+3. **Start the Server**
+
+   Run the following script to launch the server:  
+   ```
+   mot/up
+   ```
+
+   This will:
+   - Download the Docker image if not already present
+   - Start the API using Docker Compose
+
+   **To build the image yourself** instead of using the prebuilt one:  
+   ```
+   docker compose build  
+   docker compose up
+   ```
+
+**Verifying the Server**
+
+If the server starts correctly, your logs should show something like:  
 ```
-pm2 start "python3 -m neurons.validator --netuid 33 --wallet.name <wallet name> --wallet.hotkey <hotkey name> --axon.port <port>" --name "validator"
-```
-
----
-
-### Requirements
-
-- An [OpenAI API Key](https://platform.openai.com/api-keys)
-- A [Bittensor wallet](https://docs.bittensor.com/working-with-keys#creating-a-wallet-with-btcli)
-- [Registering](https://docs.bittensor.com/miners/#miner-registration) the hotkey on the subnet 33 
-  - or 138 if you want to run on the test network
-
----
-
-# --- For Validators ---
-
-export WANDB_API_KEY=        # Your WandB API Key
-export WAND_ENABLED=0        # Enable or disable WandB (Validators NEED to set this to 1)
-```
-
-- Do not forget to set your OpenAI API Key
-- Set `TYPE=miner` to run a miner, or `TYPE=validator` to run a validator.
-- Set `NETWORK=finney` to run on the main net, or `NETWORK=test` to run on the test net.
-- Don't forget the port you chose has to be open and be able to receive HTTP requests. To validate follow the steps [here](#making-sure-your-port-is-open).
-- ***If you are a validator:***
-  - Do not forget to set your `WANDB_API_KEY` and to set `WAND_ENABLED` to 1
-  - **On Finney**, do not forget to setup your ReadyAI API key by following the steps [here](https://github.com/afterpartyai/bittensor-conversation-genome-project/blob/main/docs/generate-validator-api-key.md) and make sure you have a file called `readyai_api_data.json` containing your API key.
-  - **On Test net**, rename the provided API key in the root of the repository from `testnet_readyai_api_data.json` to `readyai_api_data.json` using `cp testnet_readyai_api_data.json readyai_api_data.json`. It will be pre-loaded in the Docker automaticaly.
-
----
-
-## How to Run a Bittensor Miner on Subnet 33 Using Runpod
-
-This guide walks you through the process of deploying a Bittensor miner on Subnet 33 using [Runpod](https://runpod.io). In a few simple steps, you’ll go from zero to mining on the testnet or mainnet.
-
----
-
----
-
-## ✅ Requirements
-
-- A [Runpod.io](https://runpod.io) account  
-- An OpenAI API key
-
----
-
----
-
-## 🌍 Make Sure Your Miner is Reachable
-
-Validators need to be able to reach your miner's Axon port.
-
-1. Click **Connect** on your pod.
-    ![Miner Connect Button](docs/deploy-miner-on-runpod/runpod-miner-connect-button.png)
-2. Note the **Direct TCP** port (not port 22). This is your Axon port and **must** be publicly accessible.
-    ![Miner Axon Port](docs/deploy-miner-on-runpod/runpod-miner-axon-port.png)
-
-To test if it's reachable:
-
-```
-curl <YOUR_POD_IP>:<AXON_PORT>
+cgp_miner-1  | INFO:     Started server process [7]  
+cgp_miner-1  | INFO:     Waiting for application startup.  
+cgp_miner-1  | INFO:     Application startup complete.  
+cgp_miner-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
-You should:
-- Get a JSON-like response in your terminal
-    ![Axon reachable curl](docs/deploy-miner-on-runpod/runpod-miner-reachable-curl.png)
-- See logs in your miner indicating it received a connection
-    ![Axon reached in miner](docs/deploy-miner-on-runpod/runpod-miner-axon-reached.png)
+**Test the API**
 
----
-
----
-
-## 🔑 Registering your miner
-
-You will need:
-- Enough Tao to pay the registration fee
-
-You can register by following these steps:
-1. Connect via SSH into your miner as explained [here](#Connect-via-SSH)
-2. Run the following command and complete the prompts:
+Make a test request to verify it’s running:  
 ```
-btcli s register --netuid 138 --wallet.name default --wallet.hotkey default --network test --wallet.path /workspace/wallets
+curl -X POST localhost:8000/api/v1/conversation/reserve
 ```
 
-You can change the `--netuid` to `33` and the `--network` to `finney` if you want to register on the main Bittensor network
+Expected output:  
+```
+{"guid":11388,"lines":[[1,"Welcome to the Sell or Die podcast."],[1,"I...
+```
 
 ---
 
----
+## Using Runpod
 
-## 🎉 Your Miner Is Live!
-
-You should now see logs indicating that the miner is running and active. When it actually handles validator requests, you will see logs like this:
-![Miner is working](docs/deploy-miner-on-runpod/runpod-miner-is-working.png)
-> It can take up to 1 hour before validators send requests to your miner.
+Runpod is a very helpful resource for easily launching and managing cloud GPU and CPU instances, however, there are several configuration settings that must be implemented both on Runpod and in your start command for the subnet.
 
 ---
 
+### Choosing an Instance
 
-*README source used for excerpts: `https://raw.githubusercontent.com/afterpartyai/bittensor-conversation-genome-project/main/README.md`.*
+To run the subnet code for ReadyAI, you'll need either a GPU or a CPU, depending on your subnet role and configuration.
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Miners & Validators using an OpenAI API Key, you will need a CPU with at least 8GB of Ram and 20GB of Disk Space. Runpod provides basic CPU units of different processing powers.
+
+---
+
+### Configuring Your Instance
+
+Runpod Instances are dockerized. As a result, there are specific ports configurations needed to be able to run processes over the network.
+
+When you are launching your pod, and have selected your instance, click "Edit Template."
+
+With the editing window open, you adjust your container disk space and/or volume diskspace to match the needs of your neuron, and you can expose additional ports. You will need to expose symmetrical TCP Ports, which requires you to specify non-standard ports >=70000 in the "Expose TCP ports" field. Add however many ports you will need (we recommend at least 2, or more if you want to run additional miners).
+
+Now, you can deploy your instan…
+
+---
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- Miners & Validators using an OpenAI API Key will need a CPU with at least 8GB of Ram and 20GB of Disk Space.
+- - `readyai_conversation_data_importer.py` -- An example processor that reads [ReadyAi/5000-podcast-conversations-with-metadata-and-embedding-dataset](https://huggingface.co/datasets/ReadyAi/5000-podcast-conversations-with-metadata-and-embedding-dataset) and processes a subset of it and inserts it into the `conversations.sqlite` data store
+- - `facebook_conversation_data_importer.py` -- An example processor that reads the subset of the Facebook conversation data and processes it into the `conversations.sqlite` data store
+- Runpod is a very helpful resource for easily launching and managing cloud GPU and CPU instances, however, there are several configuration settings that must be implemented both on Runpod and in your start command for the subnet.
+- To run the subnet code for ReadyAI, you'll need either a GPU or a CPU, depending on your subnet role and configuration.
+- Miners & Validators using an OpenAI API Key, you will need a CPU with at least 8GB of Ram and 20GB of Disk Space. Runpod provides basic CPU units of different processing powers.
+- - Choose a data center with available CPU instances.
+- - Set a volume name and allocate 10 GB (enough for typical usage).
+- - Select the cheapest available CPU option — it’s sufficient for this subnet.
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/afterpartyai/bittensor-conversation-genome-project/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -237,25 +238,19 @@ You should now see logs indicating that the miner is running and active. When it
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.006949432 |
-| 8103690 | 0.006915876 |
-| 8103738 | 0.00691587 |
-| 8103786 | 0.006915815 |
-| 8103834 | 0.00691581 |
-| 8103882 | 0.006915801 |
+| 8103795 | 0.006915814 |
+| 8103843 | 0.006915804 |
+| 8103891 | 0.006915801 |
+| 8103939 | 0.006915643 |
+| 8103987 | 0.006877773 |
+| 8104035 | 0.006877771 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Meta / og:description:** ReadyAI (readyai.ai) enables structured data processing at scale, democratizing access to the valuable digital commodity of structured data – the key ingredient for high quality fine tuned models a...
-- **Fetched from:** [https://github.com/afterpartyai/bittensor-conversation-genome-project](https://github.com/afterpartyai/bittensor-conversation-genome-project)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

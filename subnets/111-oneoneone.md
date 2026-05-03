@@ -2,12 +2,12 @@
 
 ## Overview
 
-**From crawled page (site or GitHub):** A decentralized AI ecosystem built on the Bittensor network that specializes in collecting, validating, and serving high-quality user-generated content from platforms across the web. - oneoneone-io...
+**oneoneone** (NetUID 111) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
 
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -47,7 +47,9 @@
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Validators
 
@@ -136,6 +138,13 @@ source ~/.bashrc
 
 ---
 
+# Create and activate conda environment
+
+conda create -n subnet-111 python=3.12
+conda activate subnet-111
+
+---
+
 # Install Python dependencies
 
 pip install -r requirements.txt
@@ -149,6 +158,12 @@ cd node
 npm install
 cd ..
 ```
+
+---
+
+# Copy the root environment file (no editing needed)
+
+cp .env.example .env
 
 ---
 
@@ -255,43 +270,23 @@ pm2 start ./auto-updater.sh --name "autoupdater-validator-prod" -- validator 111
 
 ---
 
-# Start miner with auto-updater (recommended)
-
-pm2 start ./auto-updater.sh --name "autoupdater-miner-prod" -- miner 111 miner default 9001
+# Start mine…
 
 ---
 
-# Start validator with auto-updater on testnet
+#### CPU / GPU / RAM lines (automatic grep)
 
-pm2 start ./auto-updater.sh --name "autoupdater-validator-test" -- validator 427 validator default 9000 test
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
 
----
-
-# Start miner with auto-updater on testnet
-
-pm2 start ./auto-updater.sh --name "autoupdater-miner-test" -- miner 427 miner default 9001 test
-
----
-
-#### Option B: Manual Setup
-
-If you prefer manual control over the processes:
-
-##### For Miners
-
-```bash
-
----
-
-# Setup PM2 to start on system boot
-
-pm2 startup
-```
+- - **CPU**: 2 cores
+- - **RAM**: 8 GB
+- - **Storage**: 32 GB SSD
+- `| **Phase 1** (Kickoff)             | Implementation of 3 core job types<br/>95%+ API success rate<br/>Network benchmarking        | 🚧 In Progress |`
 
 
-*README source used for excerpts: `https://raw.githubusercontent.com/oneoneone-io/subnet-111/main/README.md`.*
+*Primary README URL used: `https://raw.githubusercontent.com/oneoneone-io/subnet-111/main/README.md`*
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -317,24 +312,18 @@ pm2 startup
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.003717069 |
-| 8103738 | 0.003717061 |
-| 8103786 | 0.003716991 |
-| 8103834 | 0.003716986 |
-| 8103882 | 0.003716972 |
+| 8103843 | 0.003716977 |
+| 8103891 | 0.003716972 |
+| 8103939 | 0.003716966 |
+| 8103987 | 0.003716961 |
+| 8104035 | 0.003716957 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Meta / og:description:** A decentralized AI ecosystem built on the Bittensor network that specializes in collecting, validating, and serving high-quality user-generated content from platforms across the web. - oneoneone-io...
-- **Fetched from:** [https://github.com/oneoneone-io/subnet-111](https://github.com/oneoneone-io/subnet-111)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

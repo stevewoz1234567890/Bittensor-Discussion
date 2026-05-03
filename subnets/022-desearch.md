@@ -4,12 +4,10 @@
 
 Decentralized search engine
 
-**From crawled page (site or GitHub):** AI-powered search APIs for web and Twitter/X data. Build intelligent agents with real-time search, semantic retrieval, and structured responses.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Decentralized search engine
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### For Miners
 
@@ -75,10 +75,16 @@ Validators verify miner outputs and write weights on-chain. Expected setup steps
 
 See the [Validator Setup Guide](./docs/running_a_validator.md) for full instructions.
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/datura-ai/desearch/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/datura-ai/desearch/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -107,26 +113,19 @@ Decentralized search engine
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.004840561 |
-| 8103690 | 0.00484055 |
-| 8103738 | 0.004840545 |
-| 8103786 | 0.004840521 |
-| 8103834 | 0.004840418 |
-| 8103882 | 0.004840409 |
+| 8103795 | 0.00484052 |
+| 8103843 | 0.004840412 |
+| 8103891 | 0.004840408 |
+| 8103939 | 0.004840404 |
+| 8103987 | 0.0048404 |
+| 8104035 | 0.004840397 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Desearch - AI Search APIs for Web and X Data
-- **Meta / og:description:** AI-powered search APIs for web and Twitter/X data. Build intelligent agents with real-time search, semantic retrieval, and structured responses.
-- **Fetched from:** [https://desearch.ai](https://desearch.ai)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

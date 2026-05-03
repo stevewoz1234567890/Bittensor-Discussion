@@ -4,12 +4,10 @@
 
 Incentivized market intelligence.
 
-**From crawled page (site or GitHub):** Prediction markets have earned a reputation for accurate forecasting—but that accuracy mostly shows up in the final hours before resolution. Almanac rewards traders for being right early, when the signal matters most.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Incentivized market intelligence.
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Miner
 
@@ -185,10 +185,25 @@ pm2 start validator.py --name sn41-validator -- \
     --logging.debug
 ```
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/sportstensor/sn41/main/README.md`.*
+## Environments
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+| Network | Netuid |
+| ----------- | -----: |
+| Mainnet     |     41 |
+| Testnet     |    172 |
+
+---
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/sportstensor/sn41/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -215,26 +230,19 @@ Incentivized market intelligence.
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.005504287 |
-| 8103690 | 0.005504278 |
-| 8103738 | 0.005504273 |
-| 8103786 | 0.005504244 |
-| 8103834 | 0.005504241 |
-| 8103882 | 0.005506102 |
+| 8103795 | 0.005504244 |
+| 8103843 | 0.005505935 |
+| 8103891 | 0.005506102 |
+| 8103939 | 0.005506098 |
+| 8103987 | 0.005506095 |
+| 8104035 | 0.00550595 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Almanac — Accurate Before It's Obvious
-- **Meta / og:description:** Prediction markets have earned a reputation for accurate forecasting—but that accuracy mostly shows up in the final hours before resolution. Almanac rewards traders for being right early, when the signal matters most.
-- **Fetched from:** [https://almanac.market](https://almanac.market)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

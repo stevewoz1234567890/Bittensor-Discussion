@@ -4,12 +4,10 @@
 
 universal transaction layer
 
-**From crawled page (site or GitHub):** Allways
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,13 +47,42 @@ universal transaction layer
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Requirements
 
 - Python 3.10+
 - Bittensor wallet
 - Docker & Docker Compose
+
+---
+
+### Running with Docker
+
+**Miner:**
+
+```bash
+docker compose -f docker-compose.miner.yml up -d
+```
+
+**Validator:**
+
+```bash
+docker compose -f docker-compose.vali.yml up -d
+```
+
+Both require a `.env` file with `PORT` and `WALLET_PATH` configured.
+
+---
+
+# activate the uv virtual environment
+
+source .venv/bin/activate
+
+alw --help
+```
 
 ---
 
@@ -87,10 +114,16 @@ network should run its own lite node for this.
 
 ```bash
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/entrius/allways/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/entrius/allways/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -117,26 +150,19 @@ universal transaction layer
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.004813142 |
-| 8103690 | 0.004822649 |
-| 8103738 | 0.004805362 |
-| 8103786 | 0.004816396 |
-| 8103834 | 0.004816524 |
-| 8103882 | 0.004811807 |
+| 8103795 | 0.004816419 |
+| 8103843 | 0.004816541 |
+| 8103891 | 0.004811831 |
+| 8103939 | 0.004811956 |
+| 8103987 | 0.00479426 |
+| 8104035 | 0.004780836 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Allways
-- **Meta / og:description:** Allways
-- **Fetched from:** [https://all-ways.io/](https://all-ways.io/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

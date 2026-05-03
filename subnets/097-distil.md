@@ -7,7 +7,7 @@ Distillation
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -22,7 +22,7 @@ Distillation
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 18446744073709551615
 - **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.951438656
+- **Registration recycle cost snapshot (`burn`):** τ0.797293279
 - **Owner SS58 (`owner_ss58`):** `5EUXD91ADceyH7nRWXCqG1wbaCEhsqosT4rjGhwaZDRR4ib6`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -47,7 +47,9 @@ Distillation
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Requirements
 
@@ -153,10 +155,35 @@ The validator now runs as a split architecture across two trust boundaries:
 
 Wallet keys never leave the `distil` host. The GPU pod receives evaluation tasks and returns scores. This separation ensures that even a compromised GPU pod cannot steal funds or manipulate weights directly.
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/unarbos/distil/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- 1. **Pre-checks (no GPU)** — Every epoch (~10 min), all committed models are verified:
+- - Models that fail pre-checks are **never sent to GPU** — no wasted compute
+- 6. **vLLM-accelerated evaluation** — vLLM generates teacher continuations 5–10× faster than pure HuggingFace inference. Teacher logits are precomputed and cached on GPU. Multi-GPU pod scaffolding (`DISTIL_TP_SIZE`, `DISTIL_STUDENT_PARALLELISM`) supports 4× / 8× H100 migration for Kimi K2.6 / batched student forward (v30.4).
+- - **Top-128 sparse KL**: Teacher returns top-128 logprobs per position (`--max-logprobs 128` on vLLM). Student softmaxes over the full 248,320-token vocab, then gathers + renormalizes to the same 128 positions for a proper KL on the shared support. Full-vocab dense path exists in `compute_kl_from_precomputed` for reference; disabled in prod for bandwidth (~150GB/round at full vocab).
+- - **Full teacher (Qwen3.5-35B-A3B unquantized):** 2× A100 80GB+ recommended (one for teacher, one for student)
+- - **Local dev with smaller models:** 2× 24GB GPUs (e.g. RTX 3090/4090)
+- **Local dev with smaller models (e.g. 2× 24GB GPUs):**
+- - **GPU**: 1x B200 192GB recommended (~100GB minimum VRAM: teacher 67GB + student 8GB + teacher logits cache 17GB + king model 8GB). A100 80GB is insufficient for the vLLM pipeline.
+- 1. Loads the teacher model (Qwen3.5-35B-A3B) via vLLM for fast generation (~67GB VRAM)
+- 5. Teacher logits are precomputed and cached on GPU for fast scoring
+- `| `GET /api/scores` | Current KL scores, disqualification reasons, last eval details |`
+- ├── check_model.py            # Pre-submission checker (13 pre-GPU + 4 GPU checks)
+- │   ├── kl_divergence.py      # Sparse top-128 KL on GPU (dense path available for offline replays)
+- │   ├── pod_eval_vllm.py      # GPU eval runner: vLLM teacher generation + HF logit extraction,
+- │   │                         #   GPU-resident teacher logits, early stopping, king-in-VRAM
+- │   ├── remote_validator.py   # King-of-the-hill validator (Hetzner + Lium GPU)
+- - **Lium GPU pod** (remote): Teacher/student forward passes, KL computation, vLLM inference. This machine has the GPU but **no chain access** — it cannot set weights or read wallet keys.
+- Wallet keys never leave the `distil` host. The GPU pod receives evaluation tasks and returns scores. This separation ensures that even a compromised GPU pod cannot steal funds or manipulate weights directly.
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/unarbos/distil/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -185,11 +212,11 @@ Distillation
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.047318561 |
-| 8103738 | 0.047428648 |
-| 8103786 | 0.047487166 |
-| 8103834 | 0.047587695 |
-| 8103882 | 0.047578281 |
+| 8103843 | 0.047581898 |
+| 8103891 | 0.04757803 |
+| 8103939 | 0.047573797 |
+| 8103987 | 0.047258638 |
+| 8104035 | 0.047593059 |
 
 ### Extended history — TAOStats pool price (daily)
 
@@ -198,5 +225,5 @@ Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

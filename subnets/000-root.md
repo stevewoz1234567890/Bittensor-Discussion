@@ -7,7 +7,7 @@ The **root network** (NetUID 0) is Bittensor’s top-level coordination layer. T
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -47,7 +47,7 @@ The **root network** (NetUID 0) is Bittensor’s top-level coordination layer. T
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
 
 No GitHub URL is registered on-chain for this subnet, so README-based hardware notes were not fetched. Use the website or community links above when available.
 
@@ -76,22 +76,22 @@ Root uses TAO directly; protocol surfaces **1 τ per root weight unit** for pric
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103306 | 1 |
-| 8103354 | 1 |
-| 8103402 | 1 |
-| 8103450 | 1 |
-| 8103498 | 1 |
-| 8103546 | 1 |
-| 8103594 | 1 |
-| 8103642 | 1 |
-| 8103690 | 1 |
-| 8103738 | 1 |
-| 8103786 | 1 |
-| 8103834 | 1 |
-| 8103882 | 1 |
+| 8103459 | 1 |
+| 8103507 | 1 |
+| 8103555 | 1 |
+| 8103603 | 1 |
+| 8103651 | 1 |
+| 8103699 | 1 |
+| 8103747 | 1 |
+| 8103795 | 1 |
+| 8103843 | 1 |
+| 8103891 | 1 |
+| 8103939 | 1 |
+| 8103987 | 1 |
+| 8104035 | 1 |
 
 
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

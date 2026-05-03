@@ -4,12 +4,10 @@
 
 "The RedTeam subnet by Innerworks is a decentralized platform designed to drive innovation in cybersecurity through competitive programming challenges. The subnet incentivizes miners to develop and submit code solutions to various technical challenges, with a focus on enhancing security. These solutions can be integrated into real-world products to improve their security features."
 
-**From crawled page (site or GitHub):** Transform your skills in circumventing and breaking detection mechanisms into meaningful, rewarding work. Compete, innovate, and earn in a safe, decentralized platform.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,15 @@
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
+
+## Scoring System: Fair, Dynamic, and Motivating
+
+We've introduced an exciting new way to score miners that rewards innovation and long-term engagement. Here's how the new scoring system works:
+
+---
 
 ## Validator Setup
 
@@ -63,10 +69,16 @@
 
 ---
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/RedTeamSubnet/RedTeam/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/RedTeamSubnet/RedTeam/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -94,26 +106,19 @@
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.003893594 |
-| 8103690 | 0.003893586 |
-| 8103738 | 0.00389306 |
-| 8103786 | 0.003893128 |
-| 8103834 | 0.003893125 |
-| 8103882 | 0.003893118 |
+| 8103795 | 0.003893127 |
+| 8103843 | 0.003893121 |
+| 8103891 | 0.003893118 |
+| 8103939 | 0.003893115 |
+| 8103987 | 0.003872513 |
+| 8104035 | 0.003872511 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Harness Red Team Ingenuity to Tackle the Internet's Challenges | RedTeam
-- **Meta / og:description:** Transform your skills in circumventing and breaking detection mechanisms into meaningful, rewarding work. Compete, innovate, and earn in a safe, decentralized platform.
-- **Fetched from:** [https://www.theredteam.io/](https://www.theredteam.io/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

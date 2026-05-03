@@ -2,12 +2,12 @@
 
 ## Overview
 
-**From crawled page (site or GitHub):** Contribute to EfficientFrontier-SignalPlus/EfficientFrontier development by creating an account on GitHub.
+**EfficientFrontier** (NetUID 53) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
 
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -47,7 +47,9 @@
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### 2. Professional Trading Infrastructure
 
@@ -104,25 +106,20 @@ By handling the TAO acquisition and payment process, we aim to make it as easy a
 
 ### What are the expected operations for a miner?
 
-- You need to operate with a certain capital base, be actively trading, with a goal of maximizing your return against the lowest possible drawdowns via the [t.signalplus.com](https://t.signalplus.com) platform.
-- Your scores will be judged based on a 'drawdown-adjusted' return (as defined above), with rewards based on your daily rankings.
+- You need to operate with a certain cap…
 
 ---
 
-### Do I need a GPU to run a miner or validator?
+#### CPU / GPU / RAM lines (automatic grep)
 
-- No, you don't.
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
 
----
-
-### Does SignalPlus require KYC?
-
-- KYC is not required for our new SignalPlus users as our platform does not touch customer assets at any point of the workflow; however, the platform requires a CEX account API to work as most derivative trading liquidity is still aggregated on CEX.
+- `|  Ranking_Index <p> (Strategy Score)|  $${\frac {\text{Weighted Daily \\% Returns}}{\text{Maximum Decayed Drawdown}} \cdot 10} \cdot \text{Risk Factor}$$|**Weighted Daily Returns / Maximum Drawdown Applied Against a Decay Factor (with a Scoring Cap)**<p>Conceptually similar to a Calmar ratio, with some adjustments down to daily return weights in order to favour more recent performance.|`
 
 
-*README source used for excerpts: `https://raw.githubusercontent.com/EfficientFrontier-SignalPlus/EfficientFrontier/main/README.md`.*
+*Primary README URL used: `https://raw.githubusercontent.com/EfficientFrontier-SignalPlus/EfficientFrontier/main/README.md`*
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -147,26 +144,19 @@ By handling the TAO acquisition and payment process, we aim to make it as easy a
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.005988661 |
-| 8103690 | 0.005994415 |
-| 8103738 | 0.005994525 |
-| 8103786 | 0.005995744 |
-| 8103834 | 0.005995856 |
-| 8103882 | 0.005996144 |
+| 8103795 | 0.005995765 |
+| 8103843 | 0.005995873 |
+| 8103891 | 0.005996165 |
+| 8103939 | 0.005996277 |
+| 8103987 | 0.005997159 |
+| 8104035 | 0.005997609 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** GitHub - EfficientFrontier-SignalPlus/EfficientFrontier · GitHub
-- **Meta / og:description:** Contribute to EfficientFrontier-SignalPlus/EfficientFrontier development by creating an account on GitHub.
-- **Fetched from:** [https://github.com/EfficientFrontier-SignalPlus/EfficientFrontier](https://github.com/EfficientFrontier-SignalPlus/EfficientFrontier)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

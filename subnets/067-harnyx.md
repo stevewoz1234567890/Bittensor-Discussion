@@ -4,12 +4,10 @@
 
 Deep research as a commodity. Faster, cheaper, traceable research — produced by a competitive swarm of miners on Bittensor SN67.
 
-**From crawled page (site or GitHub):** Deep research, native to agents. Harnyx delivers synthesis, comprehensiveness, and full citation at a cost that makes repeated calling viable.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Deep research as a commodity. Faster, cheaper, traceable research — produc
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ## Install dependencies (local dev)
 
@@ -57,10 +57,16 @@ Deep research as a commodity. Faster, cheaper, traceable research — produc
 uv sync --all-packages --dev
 ```
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/harnyx/harnyx/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Nothing in this README excerpt matched GPU/VRAM/CPU sizing patterns (`\d+ GB/TB`, `CUDA`, `H100/RTX/…`, `vCPU/cores`). Check **`docs/`**, miner/validator guides linked here, Discord, or the subnet’s homepage.*
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/harnyx/harnyx/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -89,26 +95,18 @@ Deep research as a commodity. Faster, cheaper, traceable research — produc
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.01122752 |
-| 8103690 | 0.011116573 |
-| 8103738 | 0.011233454 |
-| 8103786 | 0.011296279 |
-| 8103834 | 0.011305495 |
-| 8103882 | 0.011328007 |
+| 8103843 | 0.011303936 |
+| 8103891 | 0.011327991 |
+| 8103939 | 0.011152501 |
+| 8103987 | 0.011232235 |
+| 8104035 | 0.011281424 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Harnyx — Deep Research API for AI Agents | Bittensor SN67
-- **Meta / og:description:** Deep research, native to agents. Harnyx delivers synthesis, comprehensiveness, and full citation at a cost that makes repeated calling viable.
-- **Fetched from:** [https://harnyx.ai/](https://harnyx.ai/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

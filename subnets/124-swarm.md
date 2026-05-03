@@ -2,12 +2,12 @@
 
 ## Overview
 
-**From crawled page (site or GitHub):** A global arena for autonomous drone flight, backed by real-world impact and on-chain notarization.
+**Swarm** (NetUID 124) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
 
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -47,9 +47,134 @@
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
 
-No matching README sections were auto-detected for [https://github.com/swarm-subnet/swarm](https://github.com/swarm-subnet/swarm). Open the repository for miner/validator machine requirements, dependencies, and cloud sizing.
+#### Sections matched by heading (miner / validator / hardware / requirements)
+
+## Environments
+
+Every benchmark run generates unique worlds. Six environment types test completely different navigation skills — tight urban corridors, open-air precision, mountain terrain, village streets, indoor obstacle courses, and dense forests.
+
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="https://raw.githubusercontent.com/swarm-subnet/swarm/main/swarm/assets/map_images/Type1_sub2.png" alt="City" width="100%">
+<br><b>City</b> — dense streets, buildings, intersections
+</td>
+<td align="center" width="50%">
+<img src="https://raw.githubusercontent.com/swarm-subnet/swarm/main/swarm/assets/map_images/Type3_sub2.png" alt="Ski Village" width="100%">
+<br><b>Ski Village</b> — snow-roofed buildings, mountain backdrop
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<img src="https://raw.githubusercontent.com/swarm-subnet/swarm/main/swarm/assets/map_images/Type3.png" alt="Mountains" width="100%">
+<br><b>Mountains</b> — procedural terrain, peaks and valleys
+</td>
+<td align="center" width="50%">
+<img src="https://raw.githubusercontent.com/swarm-subnet/swarm/main/swarm/assets/map_images/Type4_2.png" alt="Warehouse" width="100%">
+<br><b>Warehouse</b> — indoor, racks, cranes, 12m ceiling
+</td>
+</tr>
+</table>
+
+<br>
+
+<h3 align="center">Forest — 4 Seasonal Modes</h3>
+
+<table>
+<tr>
+<td align="center" width="50%">
+<img src="https://raw.githubusercontent.com/swarm-subnet/swarm/main/swarm/assets/map_images/Type6_sub1.png" alt="Forest Normal" width="100%">
+<br><b>Normal</b> — green canopy, full foliage
+</td>
+<td align="center" width="50%">
+<img src="https://raw.githubusercontent.com/swarm-subnet/swarm/main/swarm/assets/map_images/Type6_sub2.png" alt="Forest Autumn" width="100%">
+<br><b>Autumn</b> — orange and brown tones
+</td>
+</tr>
+<tr>
+<td align="center" width="50%">
+<img src="https://raw.githubusercontent.com/swarm-subnet/swarm/main/swarm/assets/map_images/Type6_sub3.png" alt="Forest Snow" width="100%">
+<br><b>Snow</b> — white terrain, bare branches
+</td>
+<td align="center" width="50%">
+<img src="https://raw.githubusercontent.com/swarm-subnet/swarm/main/swarm/assets/map_images/Type6_sub4.png" alt="Forest Dead" width="100%">
+<br><b>Dead</b> — no leaves, dark ground
+</td>
+</tr>
+</table>
+
+<p align="center">
+  <sub>1,000 unique seeds per epoch — 6 environment types, each procedurally generated with unique layouts every run.</sub>
+</p>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+---
+
+<!-- CLI -->
+
+---
+
+##### Extra scrape: `miner.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- Submissions must be ≤ **50 MiB** compressed.
+- `| Screening threshold | >= champion score + 0.015 (or >= 0.01 bootstrap) |`
+- `| Max submission size | 50 MiB (compressed) |`
+- torch, torchvision, torchaudio, onnx, onnxruntime, onnxruntime-gpu,
+- - **Submission exceeds 50 MiB** — compressed size limit is enforced.
+- **"Agent too large"** — Submissions must be ≤ 50 MiB compressed.
+
+---
+
+##### Extra scrape: `validator.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- `| CPU | 12 cores | |`
+- `| RAM | 48 GB | |`
+- `| Disk | 50 GB | Environment + model cache |`
+- `| GPU | None | |`
+
+---
+
+##### Extra scrape: `miner.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- Submissions must be ≤ **50 MiB** compressed.
+- `| Screening threshold | >= champion score + 0.015 (or >= 0.01 bootstrap) |`
+- `| Max submission size | 50 MiB (compressed) |`
+- torch, torchvision, torchaudio, onnx, onnxruntime, onnxruntime-gpu,
+- - **Submission exceeds 50 MiB** — compressed size limit is enforced.
+- **"Agent too large"** — Submissions must be ≤ 50 MiB compressed.
+
+---
+
+##### Extra scrape: `validator.md` (grep only)
+
+#### CPU / GPU / RAM lines (automatic grep)
+
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- `| CPU | 12 cores | |`
+- `| RAM | 48 GB | |`
+- `| Disk | 50 GB | Environment + model cache |`
+- `| GPU | None | |`
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/swarm-subnet/swarm/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -77,25 +202,18 @@ No matching README sections were auto-detected for [https://github.com/swarm-sub
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.007936939 |
-| 8103738 | 0.007936436 |
-| 8103786 | 0.007943816 |
-| 8103834 | 0.007943803 |
-| 8103882 | 0.007943774 |
+| 8103843 | 0.007943785 |
+| 8103891 | 0.007943773 |
+| 8103939 | 0.007943759 |
+| 8103987 | 0.007943749 |
+| 8104035 | 0.007943739 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Swarm124
-- **Meta / og:description:** A global arena for autonomous drone flight, backed by real-world impact and on-chain notarization.
-- **Fetched from:** [https://www.swarm124.com](https://www.swarm124.com)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

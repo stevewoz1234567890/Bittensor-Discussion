@@ -4,12 +4,10 @@
 
 Breaking today to build tomorrow
 
-**From crawled page (site or GitHub):** Decentralized deep tech. Innovation from everywhere. Quantum computing, AI, and decentralized networks powered by Bittensor.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Breaking today to build tomorrow
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ## Installation & Setup (Validator Only)
 
@@ -69,6 +69,13 @@ Breaking today to build tomorrow
 ### Quick Setup
 
 ```bash
+
+---
+
+# 1. Create and activate virtual environment
+
+python3 -m venv .venv
+source .venv/bin/activate
 
 ---
 
@@ -104,10 +111,20 @@ Run Tests:
 pytest .
 ```
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/qbittensor-labs/enigma/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- To bind the validator to a specific GPU, use the `--neuron.device` flag:
+- python neurons/validator.py --netuid 63 --logging.info --wallet.name <your_wallet_name> --wallet.hotkey <your_hotkey> --neuron.device cuda:0
+- This sets the validator to use only the specified device, and system metrics will reflect only that GPU. If not specified, it defaults to the first available GPU or CPU.
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/qbittensor-labs/enigma/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -136,26 +153,19 @@ Breaking today to build tomorrow
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.008544734 |
-| 8103690 | 0.008544716 |
-| 8103738 | 0.008544705 |
-| 8103786 | 0.008538928 |
-| 8103834 | 0.008536651 |
-| 8103882 | 0.008536634 |
+| 8103795 | 0.008538927 |
+| 8103843 | 0.008536641 |
+| 8103891 | 0.008536634 |
+| 8103939 | 0.008536626 |
+| 8103987 | 0.008525826 |
+| 8104035 | 0.008483983 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** qBitTensor Labs — Decentralized Deep Tech
-- **Meta / og:description:** Decentralized deep tech. Innovation from everywhere. Quantum computing, AI, and decentralized networks powered by Bittensor.
-- **Fetched from:** [https://www.qbittensorlabs.com/](https://www.qbittensorlabs.com/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

@@ -6,12 +6,10 @@ Structured OTC deals for subnet tokens.
 
 The Capital Layer for Bittensor
 
-**From crawled page (site or GitHub):** Structured OTC deals for the subnet economy. Raise capital, allocate funds, and earn rewards.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -51,7 +49,7 @@ The Capital Layer for Bittensor
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
 
 No matching README sections were auto-detected for [https://github.com/RogueTensor/comingsoon](https://github.com/RogueTensor/comingsoon). Open the repository for miner/validator machine requirements, dependencies, and cloud sizing.
 
@@ -81,26 +79,19 @@ The Capital Layer for Bittensor
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.004077103 |
-| 8103690 | 0.004077095 |
-| 8103738 | 0.004077091 |
-| 8103786 | 0.004077057 |
-| 8103834 | 0.004078873 |
-| 8103882 | 0.004078659 |
+| 8103795 | 0.004076963 |
+| 8103843 | 0.004078869 |
+| 8103891 | 0.004078658 |
+| 8103939 | 0.004078656 |
+| 8103987 | 0.004078653 |
+| 8104035 | 0.004078651 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** GroundLayer — The Capital Layer for Bittensor
-- **Meta / og:description:** Structured OTC deals for the subnet economy. Raise capital, allocate funds, and earn rewards.
-- **Fetched from:** [https://groundlayer.xyz](https://groundlayer.xyz)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

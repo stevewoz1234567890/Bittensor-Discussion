@@ -4,12 +4,10 @@
 
 Verified AI inference and training subnet.
 
-**From crawled page (site or GitHub):** Cryptographically verified AI inference and training on Bittensor. Trust the math, not the server.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Verified AI inference and training subnet.
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### As a Miner
 
@@ -107,10 +107,26 @@ python -m neurons.validator \
 
 See the [Setup Guide](docs/setup.md) for wallet creation, EVM funding, auto-update, and running the gateway proxy.
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/verathos-ai/verathos/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- Verathos is a decentralized compute network on Bittensor (Subnet 96) where any tensor operation – in inference or training – can be cryptographically proven via ZK-inspired **sumcheck-based verification** over Merkle-committed weights, anchored on-chain. Validators verify proofs on CPU in milliseconds and set weights accordingly. The result is a permissionless network where compute is verifiable, not trusted.
+- A proof plugin integrates directly into production [vLLM](https://github.com/vllm-project/vllm) serving. It generates sumcheck proofs for GEMM operations in parallel during CUDA graph execution – no challenge-response round trip, single-digit percent overhead. The network exposes an OpenAI-compatible API with score-weighted routing across all miners.
+- │  (GPU)   │  ── receipt ──►   │  (CPU)     │──shared_state──►│  (API)     │
+- Requires NVIDIA GPU with 24 GB+ VRAM (RTX 4090, A100, H100, etc.).
+- bash scripts/setup_miner.sh          # creates venv, installs deps, builds CUDA ext
+- `--model-id auto` detects your GPU and picks the optimal model. See the [Setup Guide](docs/setup.md) for wallet creation, EVM funding, model selection, and production deployment with PM2.
+- No GPU required.
+- dist/           Pre-built wheels – zkllm (CUDA kernels)
+- `zkllm` (cryptographic primitives, field arithmetic, Merkle trees, sumcheck, CUDA kernels) is distributed as a pre-built wheel in `dist/`. The setup scripts install it automatically.
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/verathos-ai/verathos/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -138,25 +154,18 @@ Verified AI inference and training subnet.
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.024590279 |
-| 8103738 | 0.024960995 |
-| 8103786 | 0.024070642 |
-| 8103834 | 0.024052009 |
-| 8103882 | 0.023941147 |
+| 8103843 | 0.024033101 |
+| 8103891 | 0.023934527 |
+| 8103939 | 0.023831652 |
+| 8103987 | 0.023830149 |
+| 8104035 | 0.023151936 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Verathos — Verified Intelligence for Everyone
-- **Meta / og:description:** Cryptographically verified AI inference and training on Bittensor. Trust the math, not the server.
-- **Fetched from:** [https://verathos.ai](https://verathos.ai)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

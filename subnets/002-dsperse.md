@@ -4,12 +4,10 @@
 
 Verifiable and distributed inference on Bittensor
 
-**From crawled page (site or GitHub):** The world
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Verifiable and distributed inference on Bittensor
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Miners
 
@@ -143,6 +143,27 @@ services:
 
 ---
 
+#### With docker cli
+
+```console
+docker run -d \
+  --name subnet-2-miner \
+  -p 8091:8091 \
+  -v {path_to_your_.bittensor_directory}:/home/subnet2/.bittensor \
+  -e PUID=1000 \
+  -e HOME=/home/subnet2 \
+  --restart unless-stopped \
+  ghcr.io/inference-labs-inc/subnet-2:latest \
+  sn2-miner \
+  --wallet-name {your_miner_key_name} \
+  --wallet-hotkey {your_miner_hotkey_name} \
+  --netuid 2
+```
+
+</details>
+
+---
+
 ### Run the Validator
 
 <details>
@@ -181,65 +202,40 @@ services:
 
 ---
 
-## Miner
+#### With docker cli
 
-Miners contribute to this subnet by providing compute to generate output from, and prove AI model inferences. Miners receive workloads from validators in the form of input data, perform verified inferences on those inputs and respond with output along with a zero-knowledge proof of inference.
-
----
-
-#### Minimum
-
-| Component      | Requirement   |
-| -------------- | ------------- |
-| CPU            | 8 core 3.2GHz |
-| RAM            | 32GB          |
-| Network Up     | 400Mbps       |
-| Network Down   | 400Mbps       |
-| Storage        | 1TB           |
-| Storage Medium | NVMe SSD      |
+```console
+docker run -d \
+  --name subnet-2-validator \
+  -p 8443:8443 \
+  -p 9090:9090 \
+  -v {path_to_your_.bittensor_directory}:/home/subnet2/.bittensor \
+  -e PUID=1000 \
+  -e HOME=…
 
 ---
 
-#### Recommended
+#### CPU / GPU / RAM lines (automatic grep)
 
-> [!NOTE]
-> Exceeding these requirements in terms of storage, network and CPU speed will most likely result in higher rewards due to performance incentivization.
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
 
-| Component      | Recommendation |
-| -------------- | -------------- |
-| CPU            | 8 core 3.6GHz+  |
-| RAM            | 64GB+           |
-| Network Up     | 1Gbps           |
-| Network Down   | 1Gbps           |
-| Storage        | 2TB             |
-| Storage Medium | NVMe SSD        |
-
----
-
-## Validator
-
-Validators are responsible for verifying model outputs as provided by miners, and updating that miner's score based on the verification results.
-
----
-
-#### Minimum
-
-| Component    | Requirement   |
-| ------------ | ------------- |
-| CPU          | 8 core 3.2GHz |
-| RAM          | 16GB          |
-| Network Up   | 400Mbps       |
-| Network Down | 400Mbps       |
-| Storage      | 1TB           |
-
----
-
-#### Recommend…
+- Subnet 2 incentivizes miners and validators to contribute to the generation and validation of high-quality, secure, and efficient verified AI predictions using a specialized reward mechanism aligned with the unique aspects of zero-knowledge machine learning (zk-ML) and decentralized AI. Zero-knowledge proofs are generally more CPU computationally intensive and open the opportunity for non-GPU miners to participate, however the end goal is to further incentivize the development of proving systems optimized for GPU-based operations. The incentives are based around miners creating succinct and efficient models which can be circuitized with a zero-knowledge proving system.
+- `| CPU            | 8 core 3.2GHz |`
+- `| RAM            | 32GB          |`
+- `| Storage        | 1TB           |`
+- `| Storage Medium | NVMe SSD      |`
+- > Exceeding these requirements in terms of storage, network and CPU speed will most likely result in higher rewards due to performance incentivization.
+- `| CPU            | 8 core 3.6GHz+  |`
+- `| RAM            | 64GB+           |`
+- `| Storage        | 2TB             |`
+- `| RAM          | 16GB          |`
+- `| CPU            | 8 core 3.4GHz  |`
+- `| Storage Medium | SSD            |`
 
 
-*README source used for excerpts: `https://raw.githubusercontent.com/inference-labs-inc/subnet-2/main/README.md`.*
+*Primary README URL used: `https://raw.githubusercontent.com/inference-labs-inc/subnet-2/main/README.md`*
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -266,26 +262,19 @@ Verifiable and distributed inference on Bittensor
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.006472381 |
-| 8103690 | 0.006472365 |
-| 8103738 | 0.006472356 |
-| 8103786 | 0.006472282 |
-| 8103834 | 0.006472276 |
-| 8103882 | 0.006472262 |
+| 8103795 | 0.006472281 |
+| 8103843 | 0.006472267 |
+| 8103891 | 0.006472261 |
+| 8103939 | 0.006469027 |
+| 8103987 | 0.00646893 |
+| 8104035 | 0.006467372 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** DSperse | Verifiable Oracles
-- **Meta / og:description:** The world
-- **Fetched from:** [https://subnet2.inferencelabs.com](https://subnet2.inferencelabs.com)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

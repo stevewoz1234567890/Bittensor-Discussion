@@ -4,12 +4,10 @@
 
 revolutionizing the democratization of compute
 
-**From crawled page (site or GitHub):** Contribute to Datura-ai/lium-io development by creating an account on GitHub.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ revolutionizing the democratization of compute
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### For Miners
 
@@ -70,10 +70,26 @@ Validators play a crucial role in maintaining the integrity of the Compute Subne
 
 For more details, visit the [Validator Setup Guide](neurons/validators/README.md).
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/Datura-ai/lium-io/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- Welcome to **Lium.io powered by Bittensor Subnet 51**! This project enables a decentralized, peer-to-peer GPU rental marketplace, connecting miners who contribute GPU resources with users who need computational power. Our frontend interface is available at [lium.io](https://lium.io), where you can easily rent machines from the subnet.
+- The Compute Subnet on Bittensor is a decentralized network that allows miners to contribute their GPU resources to a global pool. Users can rent these resources for computational tasks, such as machine learning, data analysis, and more. The system ensures fair compensation for miners based on the quality and performance of their GPUs.
+- - **Miners**: Provide GPU resources to the network, evaluated and scored by validators.
+- 2. **Browse** available GPU resources.
+- 3. **Select** machines based on GPU type, performance, and price.
+- **Command-Line Alternative**: For renters who prefer working from the terminal, you can also use [lium-cli](https://github.com/Datura-ai/lium-cli) - a command-line interface that allows you to manage GPU pods, SSH into machines, transfer files, and execute commands directly from your terminal. Install it with `pip install lium-cli`.
+- Miners can contribute their GPU-equipped machines to the network. The machines are scored and validated based on factors like GPU type, number of GPUs, bandwidth, and overall GPU performance. Higher performance results in better compensation for miners.
+- If you are a miner and want to contribute GPU resources to the subnet, please refer to the [Miner Setup Guide](neurons/miners/README.md) for instructions on how to:
+- Validators play a crucial role in maintaining the integrity of the Compute Subnet by verifying the hardware specifications and performance of miners’ machines. Validators ensure that miners are fairly compensated based on their GPU contributions and prevent fraudulent activities.
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/Datura-ai/lium-io/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -100,26 +116,19 @@ revolutionizing the democratization of compute
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.063768602 |
-| 8103690 | 0.063783907 |
-| 8103738 | 0.063831029 |
-| 8103786 | 0.063840223 |
-| 8103834 | 0.063843413 |
-| 8103882 | 0.063846935 |
+| 8103795 | 0.063840848 |
+| 8103843 | 0.063843984 |
+| 8103891 | 0.063847569 |
+| 8103939 | 0.06397184 |
+| 8103987 | 0.063975204 |
+| 8104035 | 0.06399009 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** GitHub - Datura-ai/lium-io · GitHub
-- **Meta / og:description:** Contribute to Datura-ai/lium-io development by creating an account on GitHub.
-- **Fetched from:** [https://github.com/Datura-ai/lium-io](https://github.com/Datura-ai/lium-io)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

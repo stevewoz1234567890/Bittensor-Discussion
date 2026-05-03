@@ -2,12 +2,12 @@
 
 ## Overview
 
-**From crawled page (site or GitHub):** Contribute to BitMind-AI/bitmind-subnet development by creating an account on GitHub.
+**BitMind** (NetUID 34) does not currently expose a long on-chain description. Use the registered links and any website excerpt below; confirm the subnet’s purpose on official channels and explorers.
 
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -47,7 +47,9 @@
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Installation
 
@@ -59,6 +61,12 @@ cd bitmind-subnet
 
 **Options:**
 - `./install.sh --no-system-deps` - Skip system dependency installation (intended for discriminative miners)
+
+---
+
+# Activate virtual environment to use gascli
+
+source .venv/bin/activate
 
 ---
 
@@ -139,10 +147,21 @@ Generative miners generate synthetic images and videos according to prompts from
 
 Validators are responsible for challenging and scoring both miner types. Generative miners are sent prompts, and their returned synthetic media are validated to mitigate gaming and incentivize high quality results. Discriminative miners are continually evaluated against a mix of data from generative miners, real world data, and data generated locally on the validator.
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/BitMind-AI/bitmind-subnet/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- `| Track | What You Do | How You're Scored |`
+- `| **Discriminative Mining** | Submit AI-generated content detection models (image, video, audio) | `sn34_score` -- geometric mean of MCC and Brier score, measuring both accuracy and calibration |`
+- - **Cloud-evaluated**: Discriminator models are benchmarked on cloud infrastructure -- no GPU hosting required
+- Discriminative miners submit detection models for evaluation against a wide variety of real and synthetic media across **image, video, and audio** modalities. Models are evaluated on cloud infrastructure and rewarded based on their accuracy and calibration. This significantly reduces the capital required to mine compared to previous versions that required GPU hosting, and allows the subnet to more reliably identify unique models and reward novel contributions proportionally to their accuracy.
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/BitMind-AI/bitmind-subnet/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -168,26 +187,19 @@ Validators are responsible for challenging and scoring both miner types. Generat
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.01370834 |
-| 8103690 | 0.013708319 |
-| 8103738 | 0.013708307 |
-| 8103786 | 0.013708207 |
-| 8103834 | 0.01370671 |
-| 8103882 | 0.013706691 |
+| 8103795 | 0.013708205 |
+| 8103843 | 0.013706698 |
+| 8103891 | 0.013706691 |
+| 8103939 | 0.013706493 |
+| 8103987 | 0.013706487 |
+| 8104035 | 0.013706482 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** GitHub - BitMind-AI/bitmind-subnet · GitHub
-- **Meta / og:description:** Contribute to BitMind-AI/bitmind-subnet development by creating an account on GitHub.
-- **Fetched from:** [https://github.com/BitMind-AI/bitmind-subnet](https://github.com/BitMind-AI/bitmind-subnet)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

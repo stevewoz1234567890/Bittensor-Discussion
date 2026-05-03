@@ -4,12 +4,10 @@
 
 Trustless micropayments for autonomous AI agents
 
-**From crawled page (site or GitHub):** Discover AI providers, pay with USDC micropayments, and run pre-built AI skills. No API keys, no subscriptions — powered by Bittensor Subnet 58.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,9 @@ Trustless micropayments for autonomous AI agents
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
 
 ### Prerequisites
 
@@ -125,10 +125,18 @@ Run a validator to score providers on Subnet 58.
 
 ---
 
+---
 
-*README source used for excerpts: `https://raw.githubusercontent.com/Handshake58/HS58/main/README.md`.*
+#### CPU / GPU / RAM lines (automatic grep)
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
+
+- `| [DRAIN Protocol](https://github.com/kimbo128/DRAIN) | Core protocol, smart contracts, SDK |`
+
+
+*Primary README URL used: `https://raw.githubusercontent.com/Handshake58/HS58/main/README.md`*
+
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -156,26 +164,19 @@ Trustless micropayments for autonomous AI agents
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.004652308 |
-| 8103690 | 0.004652298 |
-| 8103738 | 0.004652293 |
-| 8103786 | 0.004651715 |
-| 8103834 | 0.004651711 |
-| 8103882 | 0.004651702 |
+| 8103795 | 0.004651714 |
+| 8103843 | 0.004651706 |
+| 8103891 | 0.004651702 |
+| 8103939 | 0.004651698 |
+| 8103987 | 0.004651694 |
+| 8104035 | 0.004651691 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Handshake58 | AI Agent Marketplace
-- **Meta / og:description:** Discover AI providers, pay with USDC micropayments, and run pre-built AI skills. No API keys, no subscriptions — powered by Bittensor Subnet 58.
-- **Fetched from:** [https://handshake58.com](https://handshake58.com)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

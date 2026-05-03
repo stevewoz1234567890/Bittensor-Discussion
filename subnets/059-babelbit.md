@@ -7,7 +7,7 @@ Babelbit: harnessing the predictive power of LLMs to deliver state-of-the-art tr
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -22,7 +22,7 @@ Babelbit: harnessing the predictive power of LLMs to deliver state-of-the-art tr
 - **`emission_value` (display field):** 0
 - **`difficulty` (PoW field on info view):** 10000000
 - **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.001367454
+- **Registration recycle cost snapshot (`burn`):** τ0.001018466
 - **Owner SS58 (`owner_ss58`):** `5DkPyHKTXK3eTJarh2hAL4FnkpQ5k7QivRucY8yXVN1wug4y`
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
@@ -47,7 +47,25 @@ Babelbit: harnessing the predictive power of LLMs to deliver state-of-the-art tr
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
+
+#### Sections matched by heading (miner / validator / hardware / requirements)
+
+## 4: A Fairer Approach to Mining Challenges
+
+The text prediction challenge we designed in October 2025, was a task designed to reward miners that make useful predictions early, including predictions that are semantically right before the full utterance is revealed. This allowed us to prove that it was possible to reduce translation latency in a new way.
+
+However, we noticed that some creative approaches to prediction didn't score well, but inspired some good ideas. So it occurred to us that while we still want to reward the biggest performance gains, we don't want any hard-working machine learning engineer to be working for nothing.
+
+So we have come up with a two phase contest - a qualifying round where every contestant gets a proportion of the allotted emissions, and The Arena where the qualifying contestants compete to win the rest.
+
+This is a new evolution of our development, and we will need our mining community to remain ever adaptable with us as we progress - after all we are trying to maximise the performance of the world's first machine interpreter. So this is how we're planning things at launch:
+
+**The Qualifying Round** will share 20% of the emissions between all the contestants (unless they're caught cheating), in proportion to their scores. It probably won't make anyone rich, but our hope is that the hard work will be rewarded in another way - getting better and better - until you qualify for the second phase.
+
+The qualifiers then compete in **The Arena** for a chance at winning the remaining 80%.
+
+---
 
 ## 5: Babelbit Mining Setup
 
@@ -178,94 +196,27 @@ docker compose logs -f --tail 100
 
 ### 6.10: Local validator run
 
-If running locally, make sure the signer URL points to a reachable local signer:
-
-```bash
-SIGNER_URL=http://127.0.0.1:8080
-```
-
-Then run the services you need:
-
-```bash
-bb -vv signer
-bb -vv subtensor-gateway
-bb -vv runner
-bb -vv validate
-```
+If running locally, make s…
 
 ---
 
-### 7.2: What miners need to do
+#### CPU / GPU / RAM lines (automatic grep)
 
-Miners participating in Babelbit need to maintain two things:
+Lines caught by patterns such as **\d+ GB/TB**, **CUDA / VRAM**, **RTX / H100 / A100**, **vCPU / cores**, etc. *(Heuristic — confirm on the subnet’s official repo / docs.)*
 
-1. A reachable qualifying miner that validators can discover through Bittensor axon metadata.
-2. Submission artifacts for the broader Babelbit flow: a Docker image and a Hugging Face repository handle.
-
-This repo documents the public compatibility requirements. Private submission and managed deployment mechanics are intentionally omitted.
-
----
-
-### 7.3: Prerequisites
-
-- Python 3.10-3.13
-- Enough RAM or VRAM for the chosen model
-- A Bittensor wallet and registered hotkey
-- A reachable public IP and port for your axon-compatible miner
-- Hugging Face access if your model is gated or private
-
----
-
-### 7.4: Shared miner-related environment
-
-The validator stack and related tooling currently reference these shared miner-related settings:
-
-```bash
-BITTENSOR_WALLET_PATH=~/.bittensor/wallets/my-wallet/hotkeys/my-hotkey
-BITTENSOR_WALLET_COLD=my-wallet
-BITTENSOR_WALLET_HOT=my-hotkey
-BITTENSOR_SUBTENSOR_ENDPOINT=finney
-BABELBIT_NETUID=59
-
-HUGGINGFACE_USERNAME=your-username
-HUGGINGFACE_API_KEY=your-api-key
-
-MINER_MODEL_ID=babelbit-ai/base-miner
-MINER_AXON_PORT=8091
-MINER_DEVICE=cpu
-MINER_LOAD_IN_8BIT=0
-MINER_LOAD_IN_4BIT=0
-
----
-
-# MINER_EXTERNAL_IP=your-public-ip
-
-```
-
-Model-specific generation knobs belong in the external miner repo, not in this validator stack.
-
----
-
-### 7.7: Compatibility requirements
-
-Your external miner implementation should satisfy these validator-facing expectations:
-
-- Register on netuid `59` with a hotkey that is discoverable through Bittensor axon metadata.
-- Expose a prediction endpoint at `POST /predict` by default. Validators can be pointed at a different path with `BB_MINER_PREDICT_ENDPOINT`, but `/predict` is the current default.
-- Optionally expose `GET /healthz` for operational monitoring.
-- Accept Bittensor-style signed request headers. The validator currently sends `bt_header_*` headers such as hotkey, nonce, UUID, signature, axon IP, and axon port.
-- Return JSON compatible with the validator schema: `success`, `model`, `utterance`, `context_used`, optional `error`, and `complete`.
-
----
-
-## 8: Miner Submission Artifacts
-
-Running a qualifying miner is only one part o…
+- - Enough RAM or VRAM for the chosen model
+- MINER_DEVICE=cpu
+- - Small models are suitable for CPU testing.
+- - Large models on CPU will usually be too slow for competitive inference.
+- - Set `MINER_DEVICE=cuda` on NVIDIA systems.
+- - Use quantization if you need to reduce VRAM pressure.
+- If MPS is unstable for your model, switch to CPU:
+- Curate a dataset of source speech paired with high-quality interpretations (not literal translations), and fine-tune. This can be done with LoRA or with full fine-tuning of some or all layers — though full fine-tuning risks catastrophic forgetting and requires a lot more VRAM (all tensors must track gradients). Or if you're really constrained, use prompt tuning (learn embeddings for a few soft tokens)
 
 
-*README source used for excerpts: `https://raw.githubusercontent.com/babelbit/babelbit_subnet/main/README.md`.*
+*Primary README URL used: `https://raw.githubusercontent.com/babelbit/babelbit_subnet/main/README.md`*
 
-*Headings were selected heuristically (hardware / miner / validator / requirements). Always read the full README in the repo.*
+*Markdown includes **matched headings** plus a **hardware grep** (GB/VRAM/GPU/CUDA/cpu/cores).* Always verify against the subnet’s current repository branch.*
 
 ## On-chain identity — description
 
@@ -294,25 +245,19 @@ Babelbit: harnessing the predictive power of LLMs to deliver state-of-the-art tr
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103642 | 0.003957265 |
-| 8103690 | 0.003981574 |
-| 8103738 | 0.003981569 |
-| 8103786 | 0.003981465 |
-| 8103834 | 0.003981629 |
-| 8103882 | 0.003981421 |
+| 8103795 | 0.00398186 |
+| 8103843 | 0.003981505 |
+| 8103891 | 0.003981679 |
+| 8103939 | 0.003981675 |
+| 8103987 | 0.003981841 |
+| 8104035 | 0.003984938 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** BabelBit — Real-time speech translation
-- **Fetched from:** [https://babelbit.ai](https://babelbit.ai)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 

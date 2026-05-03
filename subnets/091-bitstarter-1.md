@@ -4,12 +4,10 @@
 
 A new subnet launch on Bitstarter - coming soon!
 
-**From crawled page (site or GitHub):** Bittensor's first crowdfunding platform. Discover new teams. Pledge TAO. And get liftoff All on-chain. Built for Bittensor. Open for all.
-
 ## Operational parameters — registration, limits, economics (chain)
 
 
-**What is on-chain here:** consensus / registration economics (burns, immunity, capacities, tempo, weight rules). These are **not** GPU SKU requirements—those live in subnet code and READMEs (see the next section when GitHub excerpts are available).
+**What is on-chain:** registration economics, neuron caps, tempo, and weight-commit rules. **CPU/GPU/RAM class requirements are NOT on-chain** — use **Miner / validator hardware (CPU/GPU/RAM)** below (GitHub README scrape) and the subnet’s live documentation.
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
@@ -49,7 +47,7 @@ A new subnet launch on Bitstarter - coming soon!
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
-## Miner / validator compute notes (README excerpts)
+## Miner / validator hardware (CPU/GPU/RAM)
 
 No GitHub URL is registered on-chain for this subnet, so README-based hardware notes were not fetched. Use the website or community links above when available.
 
@@ -79,25 +77,18 @@ A new subnet launch on Bitstarter - coming soon!
 Most public Finney RPC nodes discard state after only **hundreds of blocks**, so this is a **true** but **very short** slice of history (samples every **48** blocks out to roughly **576** blocks).
 | Block | α price (TAO) |
 |------:|----------------:|
-| 8103690 | 0.018274959 |
-| 8103738 | 0.018333418 |
-| 8103786 | 0.01835573 |
-| 8103834 | 0.018338744 |
-| 8103882 | 0.018416065 |
+| 8103843 | 0.018336834 |
+| 8103891 | 0.018416094 |
+| 8103939 | 0.018415214 |
+| 8103987 | 0.018414664 |
+| 8104035 | 0.018414412 |
 
 ### Extended history — TAOStats pool price (daily)
 
 Provide **`TAOSTATS_API_KEY`** in the environment (or **`--taostats-api-key`**) to pull roughly **weekly–monthly** cadence historical prices from TAOStats. Without a key, only the abbreviated on-chain samples above populate automatically.
 
 
-## Web crawl (supplementary)
-
-
-- **Document title:** Bitstarter | Kickstarter For Bittensor
-- **Meta / og:description:** Bittensor's first crowdfunding platform. Discover new teams. Pledge TAO. And get liftoff All on-chain. Built for Bittensor. Open for all.
-- **Fetched from:** [https://bitstarter.ai/](https://bitstarter.ai/)
-
 ---
 
-*Snapshot: Subtensor `finney`, head block **8103882**, 2026-05-03 15:06 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
+*Snapshot: Subtensor `finney`, head block **8104035**, 2026-05-03 15:36 UTC. Regenerate via `scripts/generate_subnet_pages.py`. Chain excerpts are authoritative for protocol fields; README parsing is heuristic; TAOStats history requires API access.*
 
