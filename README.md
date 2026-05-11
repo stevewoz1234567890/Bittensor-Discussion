@@ -8,6 +8,9 @@ Notes and summaries on Bittensor (TAO) ecosystem topics—governance, subnets, a
 |--------|------|
 | Covenant AI departure, governance allegations, and TAO price reaction | [discussions/covenant-ai-governance-dispute.md](discussions/covenant-ai-governance-dispute.md) |
 | dTAO alpha price (TAO/alpha from pool reserves), wallet/testnet hints, emissions and pool links | [discussions/dtao-alpha-price-and-resources.md](discussions/dtao-alpha-price-and-resources.md) |
+| Emission mechanics: AMM pool dynamics, the two factors driving emission changes, feedback loops | [discussions/emission-mechanics.md](discussions/emission-mechanics.md) |
+| btcli full command tree, staking workflows, child hotkeys, DCA automation bots | [discussions/btcli-reference.md](discussions/btcli-reference.md) |
+| Running your own subtensor node: PM2 archive node and Docker lite node setup | [discussions/subtensor-node-setup.md](discussions/subtensor-node-setup.md) |
 | On-chain subnet names, symbols, and identity descriptions (regenerate from Finney) | [discussions/subnet-catalog.md](discussions/subnet-catalog.md) |
 | One Markdown file per subnet: chain economics, README miner/validator notes, on-chain + optional TAOStats prices | [subnets/README.md](subnets/README.md) |
 

@@ -55,6 +55,17 @@ Dashboard / ancillary tool:
 
 - [taopill.ai](https://taopill.ai)
 
+### DCA & automation bots
+
+- [mcjkula/bittensor-scripts — dtao-dca.py](https://github.com/mcjkula/bittensor-scripts/blob/main/dtao-dca.py) — Python DCA script for periodic subnet staking
+- [unconst/DynamicBot](https://github.com/unconst/DynamicBot) — automated dTAO rebalancing bot by a core contributor
+
+## Related discussions in this repo
+
+- [Emission Mechanics & AMM Pool Dynamics](emission-mechanics.md) — what drives emission changes, the two key factors, feedback loops
+- [btcli Reference & Staking Guide](btcli-reference.md) — full command tree, staking operations, DCA tooling
+- [Subtensor Node Setup](subtensor-node-setup.md) — run your own archive or lite node for reliable RPC
+
 *(Obsidian vault reference: diagram `![[Pasted image 20250404032216.png]]` — add under `assets/` and link here if you want the image version-controlled in this repo.)*
 
 ## Sources / further reading
