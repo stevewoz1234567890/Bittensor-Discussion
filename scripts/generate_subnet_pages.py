@@ -15,7 +15,6 @@ from __future__ import annotations
 import argparse
 import html as html_lib
 import json
-import math
 import os
 import re
 import sys
@@ -136,62 +135,6 @@ def _strip_leading_heading_chunk_if_duplicate_readme_intro(
         rest = "\n\n---\n\n".join(p.strip() for p in parts[1:] if p.strip()).strip()
         return rest
     return heading_chunks
-
-
-def _mermaid_xychart_decimal(x: float, *, places: int = 14) -> str:
-    """Format floats for Mermaid xychart on GitHub: fixed-point only (no `e` exponent)."""
-    if not math.isfinite(x):
-        return "0.0"
-    s = format(float(x), f".{places}f").rstrip("0").rstrip(".")
-    if not s or s in ("-", "-0"):
-        return "0.0"
-    if "." not in s:
-        s += ".0"
-    return s
-
-
-def _taostats_pool_hist_to_mermaid_xychart(rows: list[dict], *, max_points: int = 56) -> str:
-    """Mermaid xychart-beta for daily pool price (GitHub-flavored Markdown)."""
-    chronological = sorted(
-        rows,
-        key=lambda x: (int(x.get("block_number") or 0), str(x.get("timestamp") or "")),
-    )
-    if not chronological:
-        return ""
-    take = min(max_points, len(chronological))
-    slice_ = chronological[-take:]
-    labels: list[str] = []
-    ys: list[float] = []
-    for row in slice_:
-        ts = str(row.get("timestamp") or "")
-        lab = ts.split("T")[0] if "T" in ts else (ts[:10] if len(ts) >= 10 else ts or "?")
-        labels.append(lab.replace('"', "'"))
-        try:
-            ys.append(float(row.get("price")))
-        except (TypeError, ValueError):
-            ys.append(0.0)
-    if not ys:
-        return ""
-    lo, hi = min(ys), max(ys)
-    lo = max(0.0, lo)
-    hi = max(lo, hi)
-    span = (hi - lo) or 1e-9
-    y_lo = lo - span * 0.08
-    y_hi = hi + span * 0.08
-    y_lo = max(0.0, y_lo)
-    if y_hi <= y_lo:
-        y_hi = y_lo + max(1e-18, abs(y_lo) * 1e-12, span * 1e-6)
-    lbl_joined = "[" + ", ".join(f'"{lab}"' for lab in labels) + "]"
-    nums_joined = "[" + ", ".join(_mermaid_xychart_decimal(max(0.0, y)) for y in ys) + "]"
-    return (
-        "\n```mermaid\n"
-        "xychart-beta\n"
-        '    title "TAOStats daily pool price (τ per α)"\n'
-        f"    x-axis {lbl_joined}\n"
-        f'    y-axis "Price" in {_mermaid_xychart_decimal(y_lo)} --> {_mermaid_xychart_decimal(y_hi)}\n'
-        f"    line {nums_joined}\n"
-        "```\n"
-    )
 
 
 def _title_line_subnet(name: str, netuid: int, sym: str) -> str:
@@ -1041,13 +984,23 @@ def format_price_block(
             f"[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** "
             f"(TAO per α), **{len(hist)}** rows in this snapshot.\n"
         )
-        mermaid = _taostats_pool_hist_to_mermaid_xychart(
-            hist, max_points=min(56, taostats_limit, len(hist))
+        lines.append("| Timestamp (UTC) | Block | Pool price |")
+        lines.append("|-----------------|------:|-----------:|")
+
+        chronological = sorted(
+            hist,
+            key=lambda x: (
+                x.get("block_number") or 0,
+                str(x.get("timestamp") or ""),
+            ),
         )
-        if mermaid:
-            lines.append(mermaid.rstrip() + "\n")
-        else:
-            lines.append("*Chart could not be built from TAOStats rows.*\n")
+        take = min(taostats_limit, len(chronological))
+        for row in chronological[-take:]:
+            ts = row.get("timestamp") or ""
+            bn = row.get("block_number")
+            px = row.get("price") or ""
+            lines.append(f"| {ts} | {bn} | {px} |")
+        lines.append("")
     else:
         lines.append(
             "*Daily pools from TAOStats require `TAOSTATS_API_KEY` or `--taostats-api-key` (see conventions in this folder’s README).*\n"

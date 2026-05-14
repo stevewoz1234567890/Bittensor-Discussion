@@ -1,29 +1,16 @@
 #!/usr/bin/env python3
-"""Rewrite existing subnets/*.md layout: TAOStats + SubnetInfo + hyperparams → tables; pool history table → Mermaid chart.
+"""Rewrite existing subnets/*.md layout: TAOStats + SubnetInfo + hyperparams → tables; pool xychart → table.
 
 Idempotent for files already rewritten. Does not require bittensor.
 """
 
 from __future__ import annotations
 
-import math
 import re
 import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-
-
-def _mermaid_xychart_decimal(x: float, *, places: int = 14) -> str:
-    """Format floats for Mermaid xychart on GitHub: fixed-point only (no `e` exponent)."""
-    if not math.isfinite(x):
-        return "0.0"
-    s = format(float(x), f".{places}f").rstrip("0").rstrip(".")
-    if not s or s in ("-", "-0"):
-        return "0.0"
-    if "." not in s:
-        s += ".0"
-    return s
 
 
 def _markdown_kv_table_from_bullet_lines(bullet_lines: list[str]) -> str | None:
@@ -100,9 +87,11 @@ def _dedupe_targon_style_hardware(text: str) -> str:
         hdr = m.group(1)
         body = m.group(2)
         stripped = _strip_leading_heading_chunk_if_duplicate_readme_intro(body, intro)
+        if stripped.rstrip() == body.rstrip():
+            return m.group(0)
         if not stripped:
             return hdr + "*Same content as **Overview → Repository README excerpt** above; see repo for full runbooks.*\n\n"
-        return hdr + stripped + "\n\n"
+        return hdr + stripped.rstrip() + "\n\n"
 
     return re.sub(
         r"(#### Sections matched by heading \(miner / validator / hardware / requirements\)\n\n)([\s\S]*?)(?=\n#### CPU / GPU / RAM lines|\n\*Primary README URL)",
@@ -183,117 +172,43 @@ def _convert_topology_consensus(text: str) -> str:
     return text
 
 
-def _pool_table_to_mermaid(text: str) -> str:
-    m = re.search(
-        r"(### Extended history — TAOStats pool price \(daily\)\n\n"
-        r"(?:\[TAOStats\][^\n]*\n\n)?)"
-        r"(\| Timestamp[^\n]*\n\|[-|\s:]+\n(?:\|[^\n]+\n)+)",
-        text,
-    )
-    if not m:
-        return text
-    prefix = m.group(1)
-    anchor = m.start()
-    if "```mermaid" in text[anchor : anchor + 900]:
-        return text
-    table = m.group(2)
-    rows: list[tuple[str, int | str, float]] = []
-    for ln in table.splitlines():
-        if not ln.strip().startswith("|") or "Timestamp" in ln or re.match(r"^\|[\s\-:|]+\|$", ln.replace(" ", "")):
-            continue
-        parts = [p.strip() for p in ln.split("|")]
-        parts = [p for p in parts if p]
-        if len(parts) < 3:
-            continue
-        ts, bn, px = parts[0], parts[1], parts[2]
-        try:
-            price = float(px)
-        except ValueError:
-            continue
-        try:
-            block_n = int(bn)
-        except ValueError:
-            block_n = bn
-        rows.append((ts, block_n, price))
-    if len(rows) < 2:
-        return text
-    rows.sort(key=lambda t: (t[1] if isinstance(t[1], int) else 0, t[0]))
-    labels: list[str] = []
-    ys: list[float] = []
-    for ts, _bn, price in rows:
-        lab = ts.split("T")[0] if "T" in ts else (ts[:10] if len(ts) >= 10 else ts)
-        labels.append(lab.replace('"', "'"))
-        ys.append(price)
-    lo, hi = min(ys), max(ys)
-    lo = max(0.0, lo)
-    hi = max(lo, hi)
-    span = (hi - lo) or 1e-9
-    y_lo = lo - span * 0.08
-    y_hi = hi + span * 0.08
-    y_lo = max(0.0, y_lo)
-    if y_hi <= y_lo:
-        y_hi = y_lo + max(1e-18, abs(y_lo) * 1e-12, span * 1e-6)
-    lbl_joined = "[" + ", ".join(f'"{lab}"' for lab in labels) + "]"
-    nums_joined = "[" + ", ".join(_mermaid_xychart_decimal(max(0.0, y)) for y in ys) + "]"
-    chart = (
-        "```mermaid\n"
-        "xychart-beta\n"
-        '    title "TAOStats daily pool price (τ per α)"\n'
-        f"    x-axis {lbl_joined}\n"
-        f'    y-axis "Price" in {_mermaid_xychart_decimal(y_lo)} --> {_mermaid_xychart_decimal(y_hi)}\n'
-        f"    line {nums_joined}\n"
-        "```\n\n"
-    )
-    return text[: m.start()] + prefix + chart + text[m.end() :]
-
-
-def _fix_existing_xychart_pool_price_mermaid(text: str) -> str:
-    """Rewrite numeric literals in deployed pool-price xycharts (fixes %g / scientific notation)."""
-
-    def fix_body(body: str) -> str:
-        lines_out: list[str] = []
-        for ln in body.splitlines():
-            t = ln.strip()
-            if t.startswith("y-axis") and " in " in ln and "-->" in ln:
-                mm = re.search(r"\bin\s+(\S+)\s+-->\s+(\S+)\s*$", ln)
-                if mm:
-                    try:
-                        a, b = float(mm.group(1)), float(mm.group(2))
-                        if b <= a:
-                            b = a + max(1e-18, abs(a) * 1e-12)
-                        a = max(0.0, a)
-                        b = max(a + 1e-18, b)
-                        ln = re.sub(
-                            r"\bin\s+\S+\s+-->\s+\S+",
-                            f"in {_mermaid_xychart_decimal(a)} --> {_mermaid_xychart_decimal(b)}",
-                            ln,
-                        )
-                    except ValueError:
-                        pass
-            elif t.startswith("line ") and "[" in ln:
-                mm = re.search(r"line\s+(\[[^\]]+\])", ln)
-                if mm:
-                    inner = mm.group(1).strip()[1:-1]
-                    nums = [x.strip() for x in inner.split(",")]
-                    new_nums: list[str] = []
-                    for p in nums:
-                        try:
-                            new_nums.append(_mermaid_xychart_decimal(max(0.0, float(p))))
-                        except ValueError:
-                            new_nums.append(p)
-                    ln = re.sub(r"line\s+\[[^\]]+\]", "line [" + ", ".join(new_nums) + "]", ln)
-            lines_out.append(ln)
-        return "\n".join(lines_out)
+def _extended_history_mermaid_to_table(text: str) -> str:
+    """Replace TAOStats daily pool-price Mermaid xychart with the original three-column markdown table."""
 
     def repl(m: re.Match[str]) -> str:
-        body = m.group(1)
-        fixed = fix_body(body)
-        if fixed == body:
+        prefix = m.group(1)
+        body = m.group(2)
+        ax = re.search(r"x-axis\s+(\[[^\]]+\])", body)
+        line_m = re.search(r"line\s+(\[[^\]]+\])", body)
+        if not ax or not line_m:
             return m.group(0)
-        return "```mermaid\n" + fixed + "\n```"
+        labels = re.findall(r'"([^"]*)"', ax.group(1))
+        inner = line_m.group(1).strip()[1:-1]
+        price_tokens = [x.strip() for x in inner.split(",")]
+        for p in price_tokens:
+            try:
+                float(p)
+            except ValueError:
+                return m.group(0)
+        n = min(len(labels), len(price_tokens))
+        if n < 1:
+            return m.group(0)
+        out_lines = [
+            "| Timestamp (UTC) | Block | Pool price |",
+            "|-----------------|------:|-----------:|",
+        ]
+        for i in range(n):
+            lab = labels[i].strip().replace('"', "'")
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", lab):
+                ts = f"{lab}T23:59:48Z"
+            else:
+                ts = lab
+            out_lines.append(f"| {ts} | — | {price_tokens[i]} |")
+        return prefix + "\n".join(out_lines) + "\n\n"
 
     return re.sub(
-        r"```mermaid\n(xychart-beta\n\s*title \"TAOStats daily pool price[^\n]*\n[\s\S]*?)\n```",
+        r"(### Extended history — TAOStats pool price \(daily\)\n\n"
+        r"(?:\[TAOStats\][^\n]*\n\n)?)```mermaid\nxychart-beta\n([\s\S]*?)\n```\s*",
         repl,
         text,
     )
@@ -305,8 +220,7 @@ def rewrite_one(path: Path) -> bool:
     out = _dedupe_targon_style_hardware(out)
     out = _convert_taostats_subsection(out)
     out = _convert_topology_consensus(out)
-    out = _pool_table_to_mermaid(out)
-    out = _fix_existing_xychart_pool_price_mermaid(out)
+    out = _extended_history_mermaid_to_table(out)
     if out != raw:
         path.write_text(out, encoding="utf-8")
         return True
