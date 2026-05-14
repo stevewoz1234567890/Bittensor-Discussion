@@ -229,6 +229,10 @@ There are more details in each com…
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - designed to **supercharge Bittensor with scalable and trusted GPU computing power**.

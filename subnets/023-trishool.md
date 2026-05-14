@@ -240,6 +240,10 @@ Use `bash docker-up.sh --no-cache` for a full rebu…
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*

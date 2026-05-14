@@ -189,6 +189,10 @@ docker pull ghcr.io/trajectoryrl/hermes-agent:latest
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - - **No server required** — Miners upload packs to any HTTP endpoint and commit on-chain. No GPU, no uptime needed.

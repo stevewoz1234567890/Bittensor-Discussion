@@ -165,6 +165,10 @@ For more details, visit the [Validator Setup Guide](neurons/validators/README.md
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - Welcome to **Lium.io powered by Bittensor Subnet 51**! This project enables a decentralized, peer-to-peer GPU rental marketplace, connecting miners who contribute GPU resources with users who need computational power. Our frontend interface is available at [lium.io](https://lium.io), where you can easily rent machines from the subnet.

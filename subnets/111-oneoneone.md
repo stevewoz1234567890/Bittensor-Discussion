@@ -366,6 +366,10 @@ pm2 start ./auto-updater.sh --name "autoupdater-validator-prod" -- validator 111
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - - **CPU**: 2 cores

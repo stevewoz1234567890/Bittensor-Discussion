@@ -156,6 +156,10 @@ Maximum number of instances that can be active at a time.
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - - Contain a cuda installation, preferably version 12.2-12.6

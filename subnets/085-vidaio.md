@@ -167,6 +167,10 @@ Validators ensure miners deliver consistent, high-quality results by evaluating 
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*

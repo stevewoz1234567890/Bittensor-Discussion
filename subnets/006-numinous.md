@@ -173,6 +173,10 @@ Run the physical infrastructure that executes and scores the agents.
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - Agents must adhere to the interface defined in the architecture. Code size is limited to **2MB**.

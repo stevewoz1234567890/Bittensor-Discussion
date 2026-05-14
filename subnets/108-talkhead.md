@@ -221,6 +221,10 @@ python -m neurons.validator \
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - TalkHead is a subnet where miners submit Dockerized talking-head models, and validators evaluate them in a secure GPU executor to rank performance and set weights.

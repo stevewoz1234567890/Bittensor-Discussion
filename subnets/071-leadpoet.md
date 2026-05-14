@@ -293,6 +293,10 @@ your_model/
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - - **Validators**: 64GB RAM, 8-core CPU, 100GB SSD, AWS Nitro Enclaves enabled instance

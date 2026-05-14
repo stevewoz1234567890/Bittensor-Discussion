@@ -227,6 +227,10 @@ Use **uv** for local tooling (e.g. `uv run vocence`); Chutes builds run in their
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - `| **Miners** | Train PromptTTS models, publish them on Hugging Face, and deploy on [Chutes](https://chutes.ai) using the canonical Vocence wrapper. They expose a single `/speak` API (text + instruction → WAV). You can run miner workflows via the [CLI](docs/CLI.md#miner-commands) (`vocence miner push`, `vocence miner commit`) or follow [miner_sample](miner_sample/MINER_GUIDE.md) for the Chutes deploy. Rewards come from validator scores. |`

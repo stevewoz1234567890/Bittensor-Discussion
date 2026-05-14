@@ -319,6 +319,10 @@ docker run -d \
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - Subnet 2 incentivizes miners and validators to contribute to the generation and validation of high-quality, secure, and efficient verified AI predictions using a specialized reward mechanism aligned with the unique aspects of zero-knowledge machine learning (zk-ML) and decentralized AI. Zero-knowledge proofs are generally more CPU computationally intensive and open the opportunity for non-GPU miners to participate, however the end goal is to further incentivize the development of proving systems optimized for GPU-based operations. The incentives are based around miners creating succinct and efficient models which can be circuitized with a zero-knowledge proving system.

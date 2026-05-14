@@ -298,6 +298,10 @@ bash start-miner.sh --setup                                           # Re-run s
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - `| CPU/RAM (Validator) | ≥8 cores / 32 GB RAM | hap.py scoring benefits from cores |`

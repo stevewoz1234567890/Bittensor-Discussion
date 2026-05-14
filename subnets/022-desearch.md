@@ -177,6 +177,10 @@ See the [Validator Setup Guide](./docs/running_a_validator.md) for full instruct
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*

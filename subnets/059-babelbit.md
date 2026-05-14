@@ -287,6 +287,10 @@ If running locally, make s…
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - - Enough RAM or VRAM for the chosen model

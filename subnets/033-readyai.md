@@ -314,6 +314,10 @@ Now, you can deploy your instan…
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - Miners & Validators using an OpenAI API Key will need a CPU with at least 8GB of Ram and 20GB of Disk Space.

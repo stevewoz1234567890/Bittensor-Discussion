@@ -259,6 +259,10 @@ For the complete, step-by-step instructions for setting up and running your vali
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*

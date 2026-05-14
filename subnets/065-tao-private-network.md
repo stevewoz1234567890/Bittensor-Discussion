@@ -310,6 +310,10 @@ You will now need to register your key with Bittensor. The registration costs fo
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - - [ ] Have a Debian/Ubuntu machine with 2 cores and 2GiB+ RAM ready

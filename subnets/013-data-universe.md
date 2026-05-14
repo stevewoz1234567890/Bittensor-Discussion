@@ -226,6 +226,10 @@ Validators remain suspicious of Miners and so they periodically check a sample o
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - Data Universe was built from the ground-up with a focus on decentralization and scalability. There is no centralized entity that controls the data; the data is stored across all Miners on the network, and is queryable via the Validators. At launch, Data Universe is able to support up to 50 Petabytes of data across 200 miners, while only requiring ~10GB of storage on the Validator.

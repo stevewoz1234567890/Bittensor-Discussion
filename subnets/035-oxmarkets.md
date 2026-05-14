@@ -265,6 +265,10 @@ pm2 logs cartha-validator
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - - **CPU**: 2 cores

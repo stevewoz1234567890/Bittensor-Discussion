@@ -240,6 +240,10 @@ Requirements are subject to change as the subnet matures and evolves; this secti
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - - 32GB RAM

@@ -185,6 +185,10 @@ Here at Graphite, we aim to make the installation process as seamless as possibl
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*

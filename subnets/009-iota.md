@@ -177,6 +177,10 @@ The runs are currently in bfloat16, resulting in a total footprint of ~2GB for a
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - The runs are currently in bfloat16, resulting in a total footprint of ~2GB for a 1B parameter model. As such, we recommend:

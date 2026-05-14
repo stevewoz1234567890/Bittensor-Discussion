@@ -259,6 +259,10 @@ Please see our [Miner Installation](https://github.com/taoshidev/vanta-network/b
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - `| NVDA   | NVIDIA                  | Technology             |`

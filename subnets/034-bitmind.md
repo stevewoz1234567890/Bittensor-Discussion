@@ -251,6 +251,10 @@ Validators are responsible for challenging and scoring both miner types. Generat
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - `| Track | What You Do | How You're Scored |`

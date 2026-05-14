@@ -203,6 +203,10 @@ By handling the TAO acquisition and payment process, we aim to make it as easy a
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - `|  Ranking_Index <p> (Strategy Score)|  $${\frac {\text{Weighted Daily \\% Returns}}{\text{Maximum Decayed Drawdown}} \cdot 10} \cdot \text{Risk Factor}$$|**Weighted Daily Returns / Maximum Drawdown Applied Against a Decay Factor (with a Scoring Cap)**<p>Conceptually similar to a Calmar ratio, with some adjustments down to daily return weights in order to favour more recent performance.|`

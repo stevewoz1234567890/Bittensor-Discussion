@@ -200,6 +200,10 @@ Executes arbitrary Docker images with mounted volumes and environment variables:
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*

@@ -243,6 +243,10 @@ source validator_env/bin/activate
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - - **8GB+ RAM (16GB recommended)**

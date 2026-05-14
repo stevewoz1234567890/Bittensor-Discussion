@@ -275,6 +275,10 @@ cd miner && uv run pytest
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - `| CPU | 4 cores | 8 cores |`

@@ -174,6 +174,10 @@ See [Miner Setup](docs/miner_setup.md)
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*

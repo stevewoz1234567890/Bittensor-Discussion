@@ -210,6 +210,10 @@ A newly registered miner goes live on the dashboard after day 1, with an immunit
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*

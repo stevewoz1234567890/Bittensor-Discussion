@@ -210,6 +210,10 @@ docker compose build validator-cpu && docker compose up -d validator-cpu
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - Requires NVIDIA GPU (A100+ recommended), Isaac Sim 5.1, Isaac Lab 2.3.0, Docker + NVIDIA Container Toolkit.

@@ -243,6 +243,10 @@ API documentation available at `http://localhost:8000/docs`
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - `| `GET /scores` | Current miner scores |`

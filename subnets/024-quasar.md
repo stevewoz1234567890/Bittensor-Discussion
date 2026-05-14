@@ -244,6 +244,10 @@ of git. Use a private environment file or your process manager's secret store.
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - - Pre-checks run before GPU evaluation: architecture compliance, tokenizer

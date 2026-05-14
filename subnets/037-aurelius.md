@@ -285,6 +285,10 @@ mkdir -p data con…
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - CPU/RAM limits scaled to the scenario's agent count, and its LLM egress is firewalled to

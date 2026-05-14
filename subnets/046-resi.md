@@ -207,6 +207,10 @@ uv sync
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - `| **Non-winners** | 1% | Shared proportionally by score among valid models |`

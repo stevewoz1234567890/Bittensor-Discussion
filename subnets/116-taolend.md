@@ -223,6 +223,10 @@ pm2 start --name sn116-auto-upgrade python3 -- start_validator.py \
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*

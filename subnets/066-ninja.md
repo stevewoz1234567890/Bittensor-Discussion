@@ -197,6 +197,10 @@ When you pass `--agent cursor`, tau builds a Docker image, runs the Cursor CLI i
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - 2. A container starts with resource limits (memory, CPU, pids, tmpfs).

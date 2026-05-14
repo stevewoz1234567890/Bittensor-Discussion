@@ -254,6 +254,10 @@ python neurons/validator_node.py
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - - 2GB storage

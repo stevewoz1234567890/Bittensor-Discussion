@@ -215,6 +215,10 @@ See [Validator Operations](docs/operations/validator.md) for hardware, configura
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - - **No GPU required**: validators run on CPU servers.

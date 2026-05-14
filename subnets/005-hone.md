@@ -349,6 +349,10 @@ docker network rm sandbox-job-xyz
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 - A Bittensor subnet where **validators** evaluate **miners** on their ability to solve novel ARC-AGI-2 reasoning problems. Miners don't run solvers directly—they point to a git repository containing their solution, which is executed in a secure GPU sandbox.

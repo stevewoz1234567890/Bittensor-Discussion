@@ -223,6 +223,10 @@ Approximately 33% of emissions need to be burned to maintain the 1:1 ratio.
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*

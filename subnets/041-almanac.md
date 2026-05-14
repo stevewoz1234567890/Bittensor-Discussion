@@ -297,6 +297,10 @@ pm2 start validator.py --name sn41-validator -- \
 
 
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
