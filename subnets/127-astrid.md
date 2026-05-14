@@ -30,43 +30,50 @@ The capital axis for Bittensor.
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
-- **Subnet name (API):** `Astrid`
-- **Symbol (API):** `𑀅`
-- **Rank:** `98`
-- **Block (API):** `8104202`
-- **Time (API):** `2026-05-03T16:10:00Z`
-- **Price τ/α:** `0.004235844`
-- **Market cap:** `9979802951225.038872444`
-- **Market cap Δ 1d:** `0.452813202368063853`
-- **Liquidity:** `8005532961201`
-- **Total τ:** `4001093053011`
-- **Total α:** `3202447541488519`
-- **α in pool:** `945370015560227`
-- **α staked:** `1410666455854924`
-- **Price Δ 1h:** `-0.025537382526860276`
-- **Price Δ 1d:** `0.242949011945821376`
+
+| Field | Value |
+| --- | --- |
+| Subnet name (API) | `Astrid` |
+| Symbol (API) | `𑀅` |
+| Rank | `98` |
+| Block (API) | `8104202` |
+| Time (API) | `2026-05-03T16:10:00Z` |
+| Price τ/α | `0.004235844` |
+| Market cap | `9979802951225.038872444` |
+| Market cap Δ 1d | `0.452813202368063853` |
+| Liquidity | `8005532961201` |
+| Total τ | `4001093053011` |
+| Total α | `3202447541488519` |
+| α in pool | `945370015560227` |
+| α staked | `1410666455854924` |
+| Price Δ 1h | `-0.025537382526860276` |
+| Price Δ 1d | `0.242949011945821376` |
+
 #### Subnet activity (TAOStats)
 
-- **NetUID (API):** `127`
-- **Owner SS58 (API):** `5FU4uxAdrZsaWaezWwXEK93MwPX5gw2566BQK2WwrGUudfSH`
-- **Block (API):** `8104199`
-- **Time (API):** `2026-05-03T16:09:24.001Z`
-- **Registration block:** `5848837`
-- **Registration wall time:** `2025-06-24T04:44:48Z`
-- **Registration cost snapshot:** `97101698382`
-- **Active keys:** `256`
-- **Active validators:** `16`
-- **Active miners:** `4`
-- **Active dual-role:** `1`
-- **Emission:** `0`
-- **Max neurons:** `256`
-- **Validator slots (metadata):** `16`
-- **Max validators (API):** `64`
-- **Neuron reg. cost:** `500000`
-- **Tempo (API):** `360`
-- **Min allowed weights (API):** `1`
-- **Max weights limit (API):** `65535`
-- **Activity cutoff:** `5000`
+
+| Field | Value |
+| --- | --- |
+| NetUID (API) | `127` |
+| Owner SS58 (API) | `5FU4uxAdrZsaWaezWwXEK93MwPX5gw2566BQK2WwrGUudfSH` |
+| Block (API) | `8104199` |
+| Time (API) | `2026-05-03T16:09:24.001Z` |
+| Registration block | `5848837` |
+| Registration wall time | `2025-06-24T04:44:48Z` |
+| Registration cost snapshot | `97101698382` |
+| Active keys | `256` |
+| Active validators | `16` |
+| Active miners | `4` |
+| Active dual-role | `1` |
+| Emission | `0` |
+| Max neurons | `256` |
+| Validator slots (metadata) | `16` |
+| Max validators (API) | `64` |
+| Neuron reg. cost | `500000` |
+| Tempo (API) | `360` |
+| Min allowed weights (API) | `1` |
+| Max weights limit (API) | `65535` |
+| Activity cutoff | `5000` |
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -80,51 +87,52 @@ A production-ready Bittensor subnet validator daemon for Subnet 127 (Astrid). Th
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
-- **`max_n` (max registered UIDs):** 256
-- **`subnetwork_n`:** 256
-- **Max validators allowed (`max_allowed_validators`):** 64
-- **Min weights per neuron (`min_allowed_weights`):** 1
-- **`max_weights_limit` (consensus-encoded cap):** 65535
-- **`tempo` (blocks between epoch advances):** 360
-- **`scaling_law_power`:** 50
-- **`modality` ID:** `0`
-- **`emission_value` (display field):** 0
-- **`difficulty` (PoW field on info view):** 18446744073709551615
-- **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.000500000
-- **Owner SS58 (`owner_ss58`):** `5FU4uxAdrZsaWaezWwXEK93MwPX5gw2566BQK2WwrGUudfSH`
+
+| Field | Value |
+| --- | --- |
+| `max_n` (max registered UIDs) | 256 |
+| `subnetwork_n` | 256 |
+| Max validators allowed (`max_allowed_validators`) | 64 |
+| Min weights per neuron (`min_allowed_weights`) | 1 |
+| `max_weights_limit` (consensus-encoded cap) | 65535 |
+| `tempo` (blocks between epoch advances) | 360 |
+| `scaling_law_power` | 50 |
+| `modality` ID | `0` |
+| `emission_value` (display field) | 0 |
+| `difficulty` (PoW field on info view) | 18446744073709551615 |
+| `immunity_period` (blocks) | 5000 |
+| Registration recycle cost snapshot (`burn`) | τ0.000500000 |
+| Owner SS58 (`owner_ss58`) | `5FU4uxAdrZsaWaezWwXEK93MwPX5gw2566BQK2WwrGUudfSH` |
+
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
 
-- **Registration allowed:** `True`
-- **`min_burn` / `max_burn` (RAO envelope):** τ0.000500000 / τ100.000000000
-- **PoW `difficulty` + bounds:** `18446744073709551615` (min `18446744073709551615`, max `18446744073709551615`)
-- **`target_regs_per_interval`:** `1`
-- **`immunity_period`:** `5000` blocks
-- **`max_regs_per_block`:** `1`
-- **`serving_rate_limit`:** `50`
-- **`weights_rate_limit`:** `100`
-- **`activity_cutoff`:** `5000` blocks
-- **`commit_reveal_weights_enabled`:** `False`
-- **`commit_reveal_period`:** `1`
-- **`liquid_alpha_enabled`:** `False`
-- **`user_liquidity_enabled` (subnet pool):** `False`
-- **`bonds_reset_enabled` / `bonds_moving_avg`:** `False` / `900000`
-- **`subnet_is_active`:** `True`
-- **`yuma_version`:** `2`
-- **`alpha_sigmoid_steepness` / `alpha_high` / `alpha_low`:** 1000.0, `58982`, `45875`
+
+| Field | Value |
+| --- | --- |
+| Registration allowed | `True` |
+| `min_burn` / `max_burn` (RAO envelope) | τ0.000500000 / τ100.000000000 |
+| PoW `difficulty` + bounds | `18446744073709551615` (min `18446744073709551615`, max `18446744073709551615`) |
+| `target_regs_per_interval` | `1` |
+| `immunity_period` | `5000` blocks |
+| `max_regs_per_block` | `1` |
+| `serving_rate_limit` | `50` |
+| `weights_rate_limit` | `100` |
+| `activity_cutoff` | `5000` blocks |
+| `commit_reveal_weights_enabled` | `False` |
+| `commit_reveal_period` | `1` |
+| `liquid_alpha_enabled` | `False` |
+| `user_liquidity_enabled` (subnet pool) | `False` |
+| `bonds_reset_enabled` / `bonds_moving_avg` | `False` / `900000` |
+| `subnet_is_active` | `True` |
+| `yuma_version` | `2` |
+| `alpha_sigmoid_steepness` / `alpha_high` / `alpha_low` | 1000.0, `58982`, `45875` |
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
 ## Miner / validator hardware (CPU/GPU/RAM)
 
 #### Sections matched by heading (miner / validator / hardware / requirements)
-
-# Astrid Validator - Subnet 127
-
-A production-ready Bittensor subnet validator daemon for Subnet 127 (Astrid). This validator connects to the Astrid coordination service, executes trading strategy simulations in isolated Docker environments, and manages Bittensor weight commitments.
-
----
 
 ## Prerequisites
 
@@ -189,6 +197,9 @@ Executes arbitrary Docker images with mounted volumes and environment variables:
 
 ---
 
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
@@ -224,64 +235,14 @@ Executes arbitrary Docker images with mounted volumes and environment variables:
 
 [TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
 
-| Timestamp (UTC) | Block | Pool price |
-|-----------------|------:|-----------:|
-| 2026-03-09T23:59:48Z | 7711060 | 0.005809285 |
-| 2026-03-10T23:59:48Z | 7718257 | 0.005648115 |
-| 2026-03-11T23:59:48Z | 7725455 | 0.005542028 |
-| 2026-03-12T23:59:48.001Z | 7732653 | 0.005660948 |
-| 2026-03-13T23:59:48Z | 7739841 | 0.006148097 |
-| 2026-03-14T23:59:48.001Z | 7747036 | 0.006597684 |
-| 2026-03-15T23:59:48Z | 7754226 | 0.006681642 |
-| 2026-03-16T23:59:48Z | 7761426 | 0.006039994 |
-| 2026-03-17T23:59:48Z | 7768619 | 0.006363369 |
-| 2026-03-18T23:59:48Z | 7775819 | 0.006541233 |
-| 2026-03-19T23:59:48Z | 7783014 | 0.0070151332366353924 |
-| 2026-03-20T23:59:48Z | 7790201 | 0.007695518 |
-| 2026-03-21T23:59:48Z | 7797398 | 0.007724054 |
-| 2026-03-22T23:59:48Z | 7804598 | 0.007314718 |
-| 2026-03-23T23:59:48Z | 7811798 | 0.007836318 |
-| 2026-03-24T23:59:48.001Z | 7818996 | 0.00796138827896450226 |
-| 2026-03-25T23:59:48Z | 7826196 | 0.006793259 |
-| 2026-03-26T23:59:48Z | 7833396 | 0.006650208 |
-| 2026-03-27T23:59:48Z | 7840596 | 0.005991768 |
-| 2026-03-28T23:59:48.001Z | 7847743 | 0.00655125 |
-| 2026-03-29T23:59:48Z | 7854902 | 0.006479118 |
-| 2026-03-30T23:59:48.001Z | 7862095 | 0.00624211 |
-| 2026-03-31T23:59:48Z | 7869291 | 0.005905817 |
-| 2026-04-01T23:59:48Z | 7876474 | 0.006021613 |
-| 2026-04-02T23:59:48Z | 7883622 | 0.006137771 |
-| 2026-04-03T23:59:48Z | 7890794 | 0.005611533 |
-| 2026-04-04T23:59:48.001Z | 7897988 | 0.005642115 |
-| 2026-04-05T23:59:48Z | 7905188 | 0.005618943 |
-| 2026-04-06T23:59:48Z | 7912388 | 0.005680479 |
-| 2026-04-07T23:59:48Z | 7919588 | 0.00588408 |
-| 2026-04-08T23:59:48Z | 7926788 | 0.005854613 |
-| 2026-04-09T23:59:48Z | 7933987 | 0.005630892 |
-| 2026-04-10T23:59:48Z | 7941184 | 0.00561583 |
-| 2026-04-11T23:59:48Z | 7948384 | 0.005610165 |
-| 2026-04-12T23:59:48Z | 7955584 | 0.005520023 |
-| 2026-04-13T23:59:48Z | 7962784 | 0.00546645 |
-| 2026-04-14T23:59:48Z | 7969979 | 0.005368509 |
-| 2026-04-15T23:59:48.001Z | 7977179 | 0.005074587 |
-| 2026-04-16T23:59:48Z | 7984379 | 0.005217572 |
-| 2026-04-17T23:59:48Z | 7991579 | 0.005123813 |
-| 2026-04-18T23:59:48Z | 7998779 | 0.004994469 |
-| 2026-04-19T23:59:48Z | 8005979 | 0.005019145 |
-| 2026-04-20T23:59:48Z | 8013179 | 0.004999958 |
-| 2026-04-21T23:59:48Z | 8020376 | 0.004915441 |
-| 2026-04-22T23:59:48Z | 8027562 | 0.004832213 |
-| 2026-04-23T23:59:48Z | 8034762 | 0.00501135 |
-| 2026-04-24T23:59:48Z | 8041962 | 0.004837463 |
-| 2026-04-25T23:59:48Z | 8049151 | 0.004854719 |
-| 2026-04-26T23:59:48Z | 8056274 | 0.004787913 |
-| 2026-04-27T23:59:48.001Z | 8063454 | 0.004671918 |
-| 2026-04-28T23:59:48Z | 8070646 | 0.004721567 |
-| 2026-04-29T23:59:48Z | 8077790 | 0.004668195 |
-| 2026-04-30T23:59:48Z | 8084984 | 0.004598505 |
-| 2026-05-01T23:59:48Z | 8092168 | 0.004371739 |
-| 2026-05-02T23:59:48Z | 8099357 | 0.004177856 |
-| 2026-05-03T16:10:00Z | 8104202 | 0.004235844 |
+```mermaid
+xychart-beta
+    title "TAOStats daily pool price (τ per α)"
+    x-axis ["2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-14", "2026-03-15", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-04", "2026-04-05", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-25", "2026-04-26", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-02", "2026-05-03"]
+    y-axis "Price" in 0.003875173 --> 0.008264071
+    line [0.005809285, 0.005648115, 0.005542028, 0.005660948, 0.006148097, 0.006597684, 0.006681642, 0.006039994, 0.006363369, 0.006541233, 0.00701513323664, 0.007695518, 0.007724054, 0.007314718, 0.007836318, 0.00796138827896, 0.006793259, 0.006650208, 0.005991768, 0.00655125, 0.006479118, 0.00624211, 0.005905817, 0.006021613, 0.006137771, 0.005611533, 0.005642115, 0.005618943, 0.005680479, 0.00588408, 0.005854613, 0.005630892, 0.00561583, 0.005610165, 0.005520023, 0.00546645, 0.005368509, 0.005074587, 0.005217572, 0.005123813, 0.004994469, 0.005019145, 0.004999958, 0.004915441, 0.004832213, 0.00501135, 0.004837463, 0.004854719, 0.004787913, 0.004671918, 0.004721567, 0.004668195, 0.004598505, 0.004371739, 0.004177856, 0.004235844]
+```
+
 
 
 ---

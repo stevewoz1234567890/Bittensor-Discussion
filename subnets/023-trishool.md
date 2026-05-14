@@ -30,43 +30,50 @@ Trishool is the AI alignment protocol built on Bittensor
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
-- **Subnet name (API):** `Trishool`
-- **Symbol (API):** `ψ`
-- **Rank:** `69`
-- **Block (API):** `8104202`
-- **Time (API):** `2026-05-03T16:10:00Z`
-- **Price τ/α:** `0.004070134`
-- **Market cap:** `16499505161286.094756602`
-- **Market cap Δ 1d:** `6.170061761736476332`
-- **Liquidity:** `13759897142841`
-- **Total τ:** `6880047087046`
-- **Total α:** `4938811718165933`
-- **α in pool:** `1690325197105533`
-- **α staked:** `2363473808353770`
-- **Price Δ 1h:** `0.096059542160449439`
-- **Price Δ 1d:** `6.032310394028623613`
+
+| Field | Value |
+| --- | --- |
+| Subnet name (API) | `Trishool` |
+| Symbol (API) | `ψ` |
+| Rank | `69` |
+| Block (API) | `8104202` |
+| Time (API) | `2026-05-03T16:10:00Z` |
+| Price τ/α | `0.004070134` |
+| Market cap | `16499505161286.094756602` |
+| Market cap Δ 1d | `6.170061761736476332` |
+| Liquidity | `13759897142841` |
+| Total τ | `6880047087046` |
+| Total α | `4938811718165933` |
+| α in pool | `1690325197105533` |
+| α staked | `2363473808353770` |
+| Price Δ 1h | `0.096059542160449439` |
+| Price Δ 1d | `6.032310394028623613` |
+
 #### Subnet activity (TAOStats)
 
-- **NetUID (API):** `23`
-- **Owner SS58 (API):** `5CqTRwoFmme25YAbbwovR9rEic1UY7hYBLHxSk1PSfZ2jpmN`
-- **Block (API):** `8104199`
-- **Time (API):** `2026-05-03T16:09:24.001Z`
-- **Registration block:** `2063528`
-- **Registration wall time:** `2024-01-02T19:38:12Z`
-- **Registration cost snapshot:** `0`
-- **Active keys:** `256`
-- **Active validators:** `12`
-- **Active miners:** `1`
-- **Active dual-role:** `1`
-- **Emission:** `0`
-- **Max neurons:** `256`
-- **Validator slots (metadata):** `12`
-- **Max validators (API):** `64`
-- **Neuron reg. cost:** `100000000`
-- **Tempo (API):** `360`
-- **Min allowed weights (API):** `1`
-- **Max weights limit (API):** `65535`
-- **Activity cutoff:** `5000`
+
+| Field | Value |
+| --- | --- |
+| NetUID (API) | `23` |
+| Owner SS58 (API) | `5CqTRwoFmme25YAbbwovR9rEic1UY7hYBLHxSk1PSfZ2jpmN` |
+| Block (API) | `8104199` |
+| Time (API) | `2026-05-03T16:09:24.001Z` |
+| Registration block | `2063528` |
+| Registration wall time | `2024-01-02T19:38:12Z` |
+| Registration cost snapshot | `0` |
+| Active keys | `256` |
+| Active validators | `12` |
+| Active miners | `1` |
+| Active dual-role | `1` |
+| Emission | `0` |
+| Max neurons | `256` |
+| Validator slots (metadata) | `12` |
+| Max validators (API) | `64` |
+| Neuron reg. cost | `100000000` |
+| Tempo (API) | `360` |
+| Min allowed weights (API) | `1` |
+| Max weights limit (API) | `65535` |
+| Activity cutoff | `5000` |
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -88,39 +95,46 @@ A Bittensor subnet building the SOTA AI guard model. Miners submit adversarial p
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
-- **`max_n` (max registered UIDs):** 256
-- **`subnetwork_n`:** 256
-- **Max validators allowed (`max_allowed_validators`):** 64
-- **Min weights per neuron (`min_allowed_weights`):** 1
-- **`max_weights_limit` (consensus-encoded cap):** 65535
-- **`tempo` (blocks between epoch advances):** 360
-- **`scaling_law_power`:** 50
-- **`modality` ID:** `0`
-- **`emission_value` (display field):** 0
-- **`difficulty` (PoW field on info view):** 10000000
-- **`immunity_period` (blocks):** 15000
-- **Registration recycle cost snapshot (`burn`):** τ0.100000000
-- **Owner SS58 (`owner_ss58`):** `5CqTRwoFmme25YAbbwovR9rEic1UY7hYBLHxSk1PSfZ2jpmN`
+
+| Field | Value |
+| --- | --- |
+| `max_n` (max registered UIDs) | 256 |
+| `subnetwork_n` | 256 |
+| Max validators allowed (`max_allowed_validators`) | 64 |
+| Min weights per neuron (`min_allowed_weights`) | 1 |
+| `max_weights_limit` (consensus-encoded cap) | 65535 |
+| `tempo` (blocks between epoch advances) | 360 |
+| `scaling_law_power` | 50 |
+| `modality` ID | `0` |
+| `emission_value` (display field) | 0 |
+| `difficulty` (PoW field on info view) | 10000000 |
+| `immunity_period` (blocks) | 15000 |
+| Registration recycle cost snapshot (`burn`) | τ0.100000000 |
+| Owner SS58 (`owner_ss58`) | `5CqTRwoFmme25YAbbwovR9rEic1UY7hYBLHxSk1PSfZ2jpmN` |
+
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
 
-- **Registration allowed:** `True`
-- **`min_burn` / `max_burn` (RAO envelope):** τ0.100000000 / τ100.000000000
-- **PoW `difficulty` + bounds:** `10000000` (min `10000000`, max `18446744073709551615`)
-- **`target_regs_per_interval`:** `1`
-- **`immunity_period`:** `15000` blocks
-- **`max_regs_per_block`:** `1`
-- **`serving_rate_limit`:** `50`
-- **`weights_rate_limit`:** `100`
-- **`activity_cutoff`:** `5000` blocks
-- **`commit_reveal_weights_enabled`:** `True`
-- **`commit_reveal_period`:** `1`
-- **`liquid_alpha_enabled`:** `False`
-- **`user_liquidity_enabled` (subnet pool):** `False`
-- **`bonds_reset_enabled` / `bonds_moving_avg`:** `False` / `900000`
-- **`subnet_is_active`:** `True`
-- **`yuma_version`:** `2`
-- **`alpha_sigmoid_steepness` / `alpha_high` / `alpha_low`:** 1000.0, `58982`, `45875`
+
+| Field | Value |
+| --- | --- |
+| Registration allowed | `True` |
+| `min_burn` / `max_burn` (RAO envelope) | τ0.100000000 / τ100.000000000 |
+| PoW `difficulty` + bounds | `10000000` (min `10000000`, max `18446744073709551615`) |
+| `target_regs_per_interval` | `1` |
+| `immunity_period` | `15000` blocks |
+| `max_regs_per_block` | `1` |
+| `serving_rate_limit` | `50` |
+| `weights_rate_limit` | `100` |
+| `activity_cutoff` | `5000` blocks |
+| `commit_reveal_weights_enabled` | `True` |
+| `commit_reveal_period` | `1` |
+| `liquid_alpha_enabled` | `False` |
+| `user_liquidity_enabled` (subnet pool) | `False` |
+| `bonds_reset_enabled` / `bonds_moving_avg` | `False` / `900000` |
+| `subnet_is_active` | `True` |
+| `yuma_version` | `2` |
+| `alpha_sigmoid_steepness` / `alpha_high` / `alpha_low` | 1000.0, `58982`, `45875` |
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
@@ -221,6 +235,10 @@ bash docker-up.sh
 Use `bash docker-up.sh --no-cache` for a full rebu…
 
 ---
+
+
+
+
 
 #### CPU / GPU / RAM lines (automatic grep)
 

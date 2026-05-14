@@ -30,43 +30,50 @@ Agentic RL as a Service, Optimize agent trajectories to make agents cheaper, saf
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
-- **Subnet name (API):** `TrajectoryRL`
-- **Symbol (API):** `λ`
-- **Rank:** `25`
-- **Block (API):** `8104202`
-- **Time (API):** `2026-05-03T16:10:00Z`
-- **Price τ/α:** `0.011346027`
-- **Market cap:** `44367605731640.375071272`
-- **Market cap Δ 1d:** `-0.536749910855577071`
-- **Liquidity:** `47092972229722`
-- **Total τ:** `23537088251013`
-- **Total α:** `4913790852755057`
-- **α in pool:** `2076135018778737`
-- **α staked:** `1834273949192199`
-- **Price Δ 1h:** `0.310975662047769518`
-- **Price Δ 1d:** `-0.674329181262877465`
+
+| Field | Value |
+| --- | --- |
+| Subnet name (API) | `TrajectoryRL` |
+| Symbol (API) | `λ` |
+| Rank | `25` |
+| Block (API) | `8104202` |
+| Time (API) | `2026-05-03T16:10:00Z` |
+| Price τ/α | `0.011346027` |
+| Market cap | `44367605731640.375071272` |
+| Market cap Δ 1d | `-0.536749910855577071` |
+| Liquidity | `47092972229722` |
+| Total τ | `23537088251013` |
+| Total α | `4913790852755057` |
+| α in pool | `2076135018778737` |
+| α staked | `1834273949192199` |
+| Price Δ 1h | `0.310975662047769518` |
+| Price Δ 1d | `-0.674329181262877465` |
+
 #### Subnet activity (TAOStats)
 
-- **NetUID (API):** `11`
-- **Owner SS58 (API):** `5D2Jhtbnm7iAdKfjRk6DisXBnr1MEsYat8kXqaPNrVqJP3uE`
-- **Block (API):** `8104199`
-- **Time (API):** `2026-05-03T16:09:24.001Z`
-- **Registration block:** `2918568`
-- **Registration wall time:** `2024-05-09T10:17:36.002Z`
-- **Registration cost snapshot:** `0`
-- **Active keys:** `256`
-- **Active validators:** `10`
-- **Active miners:** `2`
-- **Active dual-role:** `1`
-- **Emission:** `0`
-- **Max neurons:** `256`
-- **Validator slots (metadata):** `10`
-- **Max validators (API):** `64`
-- **Neuron reg. cost:** `200000000`
-- **Tempo (API):** `360`
-- **Min allowed weights (API):** `1`
-- **Max weights limit (API):** `65535`
-- **Activity cutoff:** `5000`
+
+| Field | Value |
+| --- | --- |
+| NetUID (API) | `11` |
+| Owner SS58 (API) | `5D2Jhtbnm7iAdKfjRk6DisXBnr1MEsYat8kXqaPNrVqJP3uE` |
+| Block (API) | `8104199` |
+| Time (API) | `2026-05-03T16:09:24.001Z` |
+| Registration block | `2918568` |
+| Registration wall time | `2024-05-09T10:17:36.002Z` |
+| Registration cost snapshot | `0` |
+| Active keys | `256` |
+| Active validators | `10` |
+| Active miners | `2` |
+| Active dual-role | `1` |
+| Emission | `0` |
+| Max neurons | `256` |
+| Validator slots (metadata) | `10` |
+| Max validators (API) | `64` |
+| Neuron reg. cost | `200000000` |
+| Tempo (API) | `360` |
+| Min allowed weights (API) | `1` |
+| Max weights limit (API) | `65535` |
+| Activity cutoff | `5000` |
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -93,39 +100,46 @@ One install gives any agent (Claude Code, Cursor, Codex, OpenClaw, Hermes, Manus
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
-- **`max_n` (max registered UIDs):** 256
-- **`subnetwork_n`:** 256
-- **Max validators allowed (`max_allowed_validators`):** 64
-- **Min weights per neuron (`min_allowed_weights`):** 1
-- **`max_weights_limit` (consensus-encoded cap):** 65535
-- **`tempo` (blocks between epoch advances):** 360
-- **`scaling_law_power`:** 50
-- **`modality` ID:** `0`
-- **`emission_value` (display field):** 0
-- **`difficulty` (PoW field on info view):** 10000000
-- **`immunity_period` (blocks):** 10800
-- **Registration recycle cost snapshot (`burn`):** τ0.200000000
-- **Owner SS58 (`owner_ss58`):** `5D2Jhtbnm7iAdKfjRk6DisXBnr1MEsYat8kXqaPNrVqJP3uE`
+
+| Field | Value |
+| --- | --- |
+| `max_n` (max registered UIDs) | 256 |
+| `subnetwork_n` | 256 |
+| Max validators allowed (`max_allowed_validators`) | 64 |
+| Min weights per neuron (`min_allowed_weights`) | 1 |
+| `max_weights_limit` (consensus-encoded cap) | 65535 |
+| `tempo` (blocks between epoch advances) | 360 |
+| `scaling_law_power` | 50 |
+| `modality` ID | `0` |
+| `emission_value` (display field) | 0 |
+| `difficulty` (PoW field on info view) | 10000000 |
+| `immunity_period` (blocks) | 10800 |
+| Registration recycle cost snapshot (`burn`) | τ0.200000000 |
+| Owner SS58 (`owner_ss58`) | `5D2Jhtbnm7iAdKfjRk6DisXBnr1MEsYat8kXqaPNrVqJP3uE` |
+
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
 
-- **Registration allowed:** `True`
-- **`min_burn` / `max_burn` (RAO envelope):** τ0.200000000 / τ100.000000000
-- **PoW `difficulty` + bounds:** `10000000` (min `10000000`, max `18446744073709551615`)
-- **`target_regs_per_interval`:** `1`
-- **`immunity_period`:** `10800` blocks
-- **`max_regs_per_block`:** `1`
-- **`serving_rate_limit`:** `10`
-- **`weights_rate_limit`:** `100`
-- **`activity_cutoff`:** `5000` blocks
-- **`commit_reveal_weights_enabled`:** `True`
-- **`commit_reveal_period`:** `1`
-- **`liquid_alpha_enabled`:** `False`
-- **`user_liquidity_enabled` (subnet pool):** `False`
-- **`bonds_reset_enabled` / `bonds_moving_avg`:** `False` / `100000`
-- **`subnet_is_active`:** `True`
-- **`yuma_version`:** `2`
-- **`alpha_sigmoid_steepness` / `alpha_high` / `alpha_low`:** 1000.0, `58982`, `45875`
+
+| Field | Value |
+| --- | --- |
+| Registration allowed | `True` |
+| `min_burn` / `max_burn` (RAO envelope) | τ0.200000000 / τ100.000000000 |
+| PoW `difficulty` + bounds | `10000000` (min `10000000`, max `18446744073709551615`) |
+| `target_regs_per_interval` | `1` |
+| `immunity_period` | `10800` blocks |
+| `max_regs_per_block` | `1` |
+| `serving_rate_limit` | `10` |
+| `weights_rate_limit` | `100` |
+| `activity_cutoff` | `5000` blocks |
+| `commit_reveal_weights_enabled` | `True` |
+| `commit_reveal_period` | `1` |
+| `liquid_alpha_enabled` | `False` |
+| `user_liquidity_enabled` (subnet pool) | `False` |
+| `bonds_reset_enabled` / `bonds_moving_avg` | `False` / `100000` |
+| `subnet_is_active` | `True` |
+| `yuma_version` | `2` |
+| `alpha_sigmoid_steepness` / `alpha_high` / `alpha_low` | 1000.0, `58982`, `45875` |
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
@@ -170,6 +184,10 @@ docker pull ghcr.io/trajectoryrl/trajrl-bench:latest
 docker pull ghcr.io/trajectoryrl/hermes-agent:latest
 
 ---
+
+
+
+
 
 #### CPU / GPU / RAM lines (automatic grep)
 

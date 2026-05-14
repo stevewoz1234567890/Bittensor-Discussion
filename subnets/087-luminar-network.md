@@ -30,43 +30,50 @@ Video Surveillance Agents
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
-- **Subnet name (API):** `Luminar Network`
-- **Symbol (API):** `Ы`
-- **Rank:** `118`
-- **Block (API):** `8104202`
-- **Time (API):** `2026-05-03T16:10:00Z`
-- **Price τ/α:** `0.005144742`
-- **Market cap:** `3794999837658.419150406`
-- **Market cap Δ 1d:** `17.993290309657164854`
-- **Liquidity:** `2375325327052`
-- **Total τ:** `1187538285252`
-- **Total α:** `1083545657735793`
-- **α in pool:** `230873976148888`
-- **α staked:** `506772311586905`
-- **Price Δ 1h:** `0.198615495358497269`
-- **Price Δ 1d:** `16.865450114690621537`
+
+| Field | Value |
+| --- | --- |
+| Subnet name (API) | `Luminar Network` |
+| Symbol (API) | `Ы` |
+| Rank | `118` |
+| Block (API) | `8104202` |
+| Time (API) | `2026-05-03T16:10:00Z` |
+| Price τ/α | `0.005144742` |
+| Market cap | `3794999837658.419150406` |
+| Market cap Δ 1d | `17.993290309657164854` |
+| Liquidity | `2375325327052` |
+| Total τ | `1187538285252` |
+| Total α | `1083545657735793` |
+| α in pool | `230873976148888` |
+| α staked | `506772311586905` |
+| Price Δ 1h | `0.198615495358497269` |
+| Price Δ 1d | `16.865450114690621537` |
+
 #### Subnet activity (TAOStats)
 
-- **NetUID (API):** `87`
-- **Owner SS58 (API):** `5GquyFXCVX4dAB1GFNSfZemYZm43H8KWa1BSTjV9UKeSYt2x`
-- **Block (API):** `8104199`
-- **Time (API):** `2026-05-03T16:09:24.001Z`
-- **Registration block:** `7208725`
-- **Registration wall time:** `2025-12-30T02:49:12.001Z`
-- **Registration cost snapshot:** `212994266278`
-- **Active keys:** `256`
-- **Active validators:** `9`
-- **Active miners:** `1`
-- **Active dual-role:** `1`
-- **Emission:** `2572366`
-- **Max neurons:** `256`
-- **Validator slots (metadata):** `9`
-- **Max validators (API):** `64`
-- **Neuron reg. cost:** `1000000`
-- **Tempo (API):** `360`
-- **Min allowed weights (API):** `1`
-- **Max weights limit (API):** `65535`
-- **Activity cutoff:** `5000`
+
+| Field | Value |
+| --- | --- |
+| NetUID (API) | `87` |
+| Owner SS58 (API) | `5GquyFXCVX4dAB1GFNSfZemYZm43H8KWa1BSTjV9UKeSYt2x` |
+| Block (API) | `8104199` |
+| Time (API) | `2026-05-03T16:09:24.001Z` |
+| Registration block | `7208725` |
+| Registration wall time | `2025-12-30T02:49:12.001Z` |
+| Registration cost snapshot | `212994266278` |
+| Active keys | `256` |
+| Active validators | `9` |
+| Active miners | `1` |
+| Active dual-role | `1` |
+| Emission | `2572366` |
+| Max neurons | `256` |
+| Validator slots (metadata) | `9` |
+| Max validators (API) | `64` |
+| Neuron reg. cost | `1000000` |
+| Tempo (API) | `360` |
+| Min allowed weights (API) | `1` |
+| Max weights limit (API) | `65535` |
+| Activity cutoff | `5000` |
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -80,39 +87,46 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
-- **`max_n` (max registered UIDs):** 256
-- **`subnetwork_n`:** 256
-- **Max validators allowed (`max_allowed_validators`):** 64
-- **Min weights per neuron (`min_allowed_weights`):** 1
-- **`max_weights_limit` (consensus-encoded cap):** 65535
-- **`tempo` (blocks between epoch advances):** 360
-- **`scaling_law_power`:** 50
-- **`modality` ID:** `0`
-- **`emission_value` (display field):** 0
-- **`difficulty` (PoW field on info view):** 18446744073709551615
-- **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.001000000
-- **Owner SS58 (`owner_ss58`):** `5GquyFXCVX4dAB1GFNSfZemYZm43H8KWa1BSTjV9UKeSYt2x`
+
+| Field | Value |
+| --- | --- |
+| `max_n` (max registered UIDs) | 256 |
+| `subnetwork_n` | 256 |
+| Max validators allowed (`max_allowed_validators`) | 64 |
+| Min weights per neuron (`min_allowed_weights`) | 1 |
+| `max_weights_limit` (consensus-encoded cap) | 65535 |
+| `tempo` (blocks between epoch advances) | 360 |
+| `scaling_law_power` | 50 |
+| `modality` ID | `0` |
+| `emission_value` (display field) | 0 |
+| `difficulty` (PoW field on info view) | 18446744073709551615 |
+| `immunity_period` (blocks) | 5000 |
+| Registration recycle cost snapshot (`burn`) | τ0.001000000 |
+| Owner SS58 (`owner_ss58`) | `5GquyFXCVX4dAB1GFNSfZemYZm43H8KWa1BSTjV9UKeSYt2x` |
+
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
 
-- **Registration allowed:** `True`
-- **`min_burn` / `max_burn` (RAO envelope):** τ0.001000000 / τ100.000000000
-- **PoW `difficulty` + bounds:** `18446744073709551615` (min `18446744073709551615`, max `18446744073709551615`)
-- **`target_regs_per_interval`:** `1`
-- **`immunity_period`:** `5000` blocks
-- **`max_regs_per_block`:** `1`
-- **`serving_rate_limit`:** `50`
-- **`weights_rate_limit`:** `100`
-- **`activity_cutoff`:** `5000` blocks
-- **`commit_reveal_weights_enabled`:** `True`
-- **`commit_reveal_period`:** `1`
-- **`liquid_alpha_enabled`:** `False`
-- **`user_liquidity_enabled` (subnet pool):** `False`
-- **`bonds_reset_enabled` / `bonds_moving_avg`:** `False` / `900000`
-- **`subnet_is_active`:** `True`
-- **`yuma_version`:** `2`
-- **`alpha_sigmoid_steepness` / `alpha_high` / `alpha_low`:** 1000.0, `58982`, `45875`
+
+| Field | Value |
+| --- | --- |
+| Registration allowed | `True` |
+| `min_burn` / `max_burn` (RAO envelope) | τ0.001000000 / τ100.000000000 |
+| PoW `difficulty` + bounds | `18446744073709551615` (min `18446744073709551615`, max `18446744073709551615`) |
+| `target_regs_per_interval` | `1` |
+| `immunity_period` | `5000` blocks |
+| `max_regs_per_block` | `1` |
+| `serving_rate_limit` | `50` |
+| `weights_rate_limit` | `100` |
+| `activity_cutoff` | `5000` blocks |
+| `commit_reveal_weights_enabled` | `True` |
+| `commit_reveal_period` | `1` |
+| `liquid_alpha_enabled` | `False` |
+| `user_liquidity_enabled` (subnet pool) | `False` |
+| `bonds_reset_enabled` / `bonds_moving_avg` | `False` / `900000` |
+| `subnet_is_active` | `True` |
+| `yuma_version` | `2` |
+| `alpha_sigmoid_steepness` / `alpha_high` / `alpha_low` | 1000.0, `58982`, `45875` |
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 

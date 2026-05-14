@@ -30,43 +30,50 @@ TAOHash is a Subnet for decentralizing PoW mining hashrate- rental and financial
 Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [pool latest](https://docs.taostats.io/reference/get-subnet-pools).
 #### Liquidity pool (TAOStats)
 
-- **Subnet name (API):** `TAOHash`
-- **Symbol (API):** `テ`
-- **Rank:** `27`
-- **Block (API):** `8104202`
-- **Time (API):** `2026-05-03T16:10:00Z`
-- **Price τ/α:** `0.009188821`
-- **Market cap:** `38232414557608.015025147`
-- **Market cap Δ 1d:** `0.178742380458604884`
-- **Liquidity:** `47462744710244`
-- **Total τ:** `23727972420031`
-- **Total α:** `5030849183695434`
-- **α in pool:** `2583005185345731`
-- **α staked:** `1577747816329676`
-- **Price Δ 1h:** `-0.000348248034874429`
-- **Price Δ 1d:** `0.068118214451167571`
+
+| Field | Value |
+| --- | --- |
+| Subnet name (API) | `TAOHash` |
+| Symbol (API) | `テ` |
+| Rank | `27` |
+| Block (API) | `8104202` |
+| Time (API) | `2026-05-03T16:10:00Z` |
+| Price τ/α | `0.009188821` |
+| Market cap | `38232414557608.015025147` |
+| Market cap Δ 1d | `0.178742380458604884` |
+| Liquidity | `47462744710244` |
+| Total τ | `23727972420031` |
+| Total α | `5030849183695434` |
+| α in pool | `2583005185345731` |
+| α staked | `1577747816329676` |
+| Price Δ 1h | `-0.000348248034874429` |
+| Price Δ 1d | `0.068118214451167571` |
+
 #### Subnet activity (TAOStats)
 
-- **NetUID (API):** `14`
-- **Owner SS58 (API):** `5CKhH8nKAhXLmqxwaXzFtVFgxqwwnyckXG8qLpmGtzVJH9Ri`
-- **Block (API):** `8104199`
-- **Time (API):** `2026-05-03T16:09:24.001Z`
-- **Registration block:** `4848444`
-- **Registration wall time:** `2025-02-03T18:04:24Z`
-- **Registration cost snapshot:** `0`
-- **Active keys:** `256`
-- **Active validators:** `11`
-- **Active miners:** `4`
-- **Active dual-role:** `1`
-- **Emission:** `428786`
-- **Max neurons:** `256`
-- **Validator slots (metadata):** `11`
-- **Max validators (API):** `64`
-- **Neuron reg. cost:** `500000`
-- **Tempo (API):** `360`
-- **Min allowed weights (API):** `1`
-- **Max weights limit (API):** `65535`
-- **Activity cutoff:** `5000`
+
+| Field | Value |
+| --- | --- |
+| NetUID (API) | `14` |
+| Owner SS58 (API) | `5CKhH8nKAhXLmqxwaXzFtVFgxqwwnyckXG8qLpmGtzVJH9Ri` |
+| Block (API) | `8104199` |
+| Time (API) | `2026-05-03T16:09:24.001Z` |
+| Registration block | `4848444` |
+| Registration wall time | `2025-02-03T18:04:24Z` |
+| Registration cost snapshot | `0` |
+| Active keys | `256` |
+| Active validators | `11` |
+| Active miners | `4` |
+| Active dual-role | `1` |
+| Emission | `428786` |
+| Max neurons | `256` |
+| Validator slots (metadata) | `11` |
+| Max validators (API) | `64` |
+| Neuron reg. cost | `500000` |
+| Tempo (API) | `360` |
+| Min allowed weights (API) | `1` |
+| Max weights limit (API) | `65535` |
+| Activity cutoff | `5000` |
 
 ### Repository README excerpt *(everything before first `##` heading)*
 
@@ -86,39 +93,46 @@ Sources: [subnet latest](https://docs.taostats.io/reference/get-subnets-1), [poo
 
 ### Topology & economics (`SubnetInfo` snapshot)
 
-- **`max_n` (max registered UIDs):** 256
-- **`subnetwork_n`:** 256
-- **Max validators allowed (`max_allowed_validators`):** 64
-- **Min weights per neuron (`min_allowed_weights`):** 1
-- **`max_weights_limit` (consensus-encoded cap):** 65535
-- **`tempo` (blocks between epoch advances):** 360
-- **`scaling_law_power`:** 50
-- **`modality` ID:** `0`
-- **`emission_value` (display field):** 0
-- **`difficulty` (PoW field on info view):** 10000000
-- **`immunity_period` (blocks):** 5000
-- **Registration recycle cost snapshot (`burn`):** τ0.000500000
-- **Owner SS58 (`owner_ss58`):** `5CKhH8nKAhXLmqxwaXzFtVFgxqwwnyckXG8qLpmGtzVJH9Ri`
+
+| Field | Value |
+| --- | --- |
+| `max_n` (max registered UIDs) | 256 |
+| `subnetwork_n` | 256 |
+| Max validators allowed (`max_allowed_validators`) | 64 |
+| Min weights per neuron (`min_allowed_weights`) | 1 |
+| `max_weights_limit` (consensus-encoded cap) | 65535 |
+| `tempo` (blocks between epoch advances) | 360 |
+| `scaling_law_power` | 50 |
+| `modality` ID | `0` |
+| `emission_value` (display field) | 0 |
+| `difficulty` (PoW field on info view) | 10000000 |
+| `immunity_period` (blocks) | 5000 |
+| Registration recycle cost snapshot (`burn`) | τ0.000500000 |
+| Owner SS58 (`owner_ss58`) | `5CKhH8nKAhXLmqxwaXzFtVFgxqwwnyckXG8qLpmGtzVJH9Ri` |
+
 
 ### Consensus hyperparameters (`SubnetHyperparameters` snapshot)
 
-- **Registration allowed:** `True`
-- **`min_burn` / `max_burn` (RAO envelope):** τ0.000500000 / τ100.000000000
-- **PoW `difficulty` + bounds:** `10000000` (min `10000000`, max `18446744073709551615`)
-- **`target_regs_per_interval`:** `1`
-- **`immunity_period`:** `5000` blocks
-- **`max_regs_per_block`:** `1`
-- **`serving_rate_limit`:** `50`
-- **`weights_rate_limit`:** `100`
-- **`activity_cutoff`:** `5000` blocks
-- **`commit_reveal_weights_enabled`:** `True`
-- **`commit_reveal_period`:** `1`
-- **`liquid_alpha_enabled`:** `False`
-- **`user_liquidity_enabled` (subnet pool):** `False`
-- **`bonds_reset_enabled` / `bonds_moving_avg`:** `False` / `1`
-- **`subnet_is_active`:** `True`
-- **`yuma_version`:** `2`
-- **`alpha_sigmoid_steepness` / `alpha_high` / `alpha_low`:** 1000.0, `58982`, `45875`
+
+| Field | Value |
+| --- | --- |
+| Registration allowed | `True` |
+| `min_burn` / `max_burn` (RAO envelope) | τ0.000500000 / τ100.000000000 |
+| PoW `difficulty` + bounds | `10000000` (min `10000000`, max `18446744073709551615`) |
+| `target_regs_per_interval` | `1` |
+| `immunity_period` | `5000` blocks |
+| `max_regs_per_block` | `1` |
+| `serving_rate_limit` | `50` |
+| `weights_rate_limit` | `100` |
+| `activity_cutoff` | `5000` blocks |
+| `commit_reveal_weights_enabled` | `True` |
+| `commit_reveal_period` | `1` |
+| `liquid_alpha_enabled` | `False` |
+| `user_liquidity_enabled` (subnet pool) | `False` |
+| `bonds_reset_enabled` / `bonds_moving_avg` | `False` / `1` |
+| `subnet_is_active` | `True` |
+| `yuma_version` | `2` |
+| `alpha_sigmoid_steepness` / `alpha_high` / `alpha_low` | 1000.0, `58982`, `45875` |
 
 - **Docs:** [Subnet hyperparameters (Learn Bittensor)](https://learnbittensor.org/explore/concept/subnet-hyperparameters)
 
@@ -241,6 +255,10 @@ For the complete, step-by-step instructions for setting up and running your vali
 
 ---
 
+
+
+
+
 #### CPU / GPU / RAM lines (automatic grep)
 
 *No sizing lines matched the scrape heuristics — see `docs/`, repo guides, Discord, or homepage.*
@@ -279,64 +297,14 @@ For the complete, step-by-step instructions for setting up and running your vali
 
 [TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** (TAO per α), **120** rows in this snapshot.
 
-| Timestamp (UTC) | Block | Pool price |
-|-----------------|------:|-----------:|
-| 2026-03-09T23:59:48Z | 7711060 | 0.009710381 |
-| 2026-03-10T23:59:48Z | 7718257 | 0.009703478 |
-| 2026-03-11T23:59:48Z | 7725455 | 0.009651389 |
-| 2026-03-12T23:59:48.001Z | 7732653 | 0.009680399 |
-| 2026-03-13T23:59:48Z | 7739841 | 0.009648028 |
-| 2026-03-14T23:59:48.001Z | 7747036 | 0.009664371 |
-| 2026-03-15T23:59:48Z | 7754226 | 0.009650859 |
-| 2026-03-16T23:59:48Z | 7761426 | 0.009611244 |
-| 2026-03-17T23:59:48Z | 7768619 | 0.009487282 |
-| 2026-03-18T23:59:48Z | 7775819 | 0.009339408 |
-| 2026-03-19T23:59:48Z | 7783014 | 0.00929754035330721634 |
-| 2026-03-20T23:59:48Z | 7790201 | 0.009304435 |
-| 2026-03-21T23:59:48Z | 7797398 | 0.009299899 |
-| 2026-03-22T23:59:48Z | 7804598 | 0.009311546 |
-| 2026-03-23T23:59:48Z | 7811798 | 0.009280997 |
-| 2026-03-24T23:59:48.001Z | 7818996 | 0.00907421544092514243 |
-| 2026-03-25T23:59:48Z | 7826196 | 0.00897961 |
-| 2026-03-26T23:59:48Z | 7833396 | 0.008999656 |
-| 2026-03-27T23:59:48Z | 7840596 | 0.008956859 |
-| 2026-03-28T23:59:48.001Z | 7847743 | 0.008932274 |
-| 2026-03-29T23:59:48Z | 7854902 | 0.008915633 |
-| 2026-03-30T23:59:48.001Z | 7862095 | 0.008861131 |
-| 2026-03-31T23:59:48Z | 7869291 | 0.008920251 |
-| 2026-04-01T23:59:48Z | 7876474 | 0.008947474 |
-| 2026-04-02T23:59:48Z | 7883622 | 0.008941556 |
-| 2026-04-03T23:59:48Z | 7890794 | 0.009276772 |
-| 2026-04-04T23:59:48.001Z | 7897988 | 0.009275079 |
-| 2026-04-05T23:59:48Z | 7905188 | 0.009148631 |
-| 2026-04-06T23:59:48Z | 7912388 | 0.009067013 |
-| 2026-04-07T23:59:48Z | 7919588 | 0.009142309 |
-| 2026-04-08T23:59:48Z | 7926788 | 0.009194422 |
-| 2026-04-09T23:59:48Z | 7933987 | 0.009173303 |
-| 2026-04-10T23:59:48Z | 7941184 | 0.008894033 |
-| 2026-04-11T23:59:48Z | 7948384 | 0.008963757 |
-| 2026-04-12T23:59:48Z | 7955584 | 0.008979181 |
-| 2026-04-13T23:59:48Z | 7962784 | 0.008877182 |
-| 2026-04-14T23:59:48Z | 7969979 | 0.008926893 |
-| 2026-04-15T23:59:48.001Z | 7977179 | 0.008932053 |
-| 2026-04-16T23:59:48Z | 7984379 | 0.009050969 |
-| 2026-04-17T23:59:48Z | 7991579 | 0.009078352 |
-| 2026-04-18T23:59:48Z | 7998779 | 0.009208104 |
-| 2026-04-19T23:59:48Z | 8005979 | 0.00926294 |
-| 2026-04-20T23:59:48Z | 8013179 | 0.009208533 |
-| 2026-04-21T23:59:48Z | 8020376 | 0.009227806 |
-| 2026-04-22T23:59:48Z | 8027562 | 0.009239989 |
-| 2026-04-23T23:59:48Z | 8034762 | 0.00924206 |
-| 2026-04-24T23:59:48Z | 8041962 | 0.009261723 |
-| 2026-04-25T23:59:48Z | 8049151 | 0.009228921 |
-| 2026-04-26T23:59:48Z | 8056274 | 0.009261955 |
-| 2026-04-27T23:59:48.001Z | 8063454 | 0.009222401 |
-| 2026-04-28T23:59:48Z | 8070646 | 0.009192881 |
-| 2026-04-29T23:59:48Z | 8077790 | 0.009230229 |
-| 2026-04-30T23:59:48Z | 8084984 | 0.009230667 |
-| 2026-05-01T23:59:48Z | 8092168 | 0.009183431 |
-| 2026-05-02T23:59:48Z | 8099357 | 0.009195424 |
-| 2026-05-03T16:10:00Z | 8104202 | 0.009188821 |
+```mermaid
+xychart-beta
+    title "TAOStats daily pool price (τ per α)"
+    x-axis ["2026-03-09", "2026-03-10", "2026-03-11", "2026-03-12", "2026-03-13", "2026-03-14", "2026-03-15", "2026-03-16", "2026-03-17", "2026-03-18", "2026-03-19", "2026-03-20", "2026-03-21", "2026-03-22", "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27", "2026-03-28", "2026-03-29", "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03", "2026-04-04", "2026-04-05", "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-25", "2026-04-26", "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30", "2026-05-01", "2026-05-02", "2026-05-03"]
+    y-axis "Price" in 0.008793191 --> 0.009778321
+    line [0.009710381, 0.009703478, 0.009651389, 0.009680399, 0.009648028, 0.009664371, 0.009650859, 0.009611244, 0.009487282, 0.009339408, 0.00929754035331, 0.009304435, 0.009299899, 0.009311546, 0.009280997, 0.00907421544093, 0.00897961, 0.008999656, 0.008956859, 0.008932274, 0.008915633, 0.008861131, 0.008920251, 0.008947474, 0.008941556, 0.009276772, 0.009275079, 0.009148631, 0.009067013, 0.009142309, 0.009194422, 0.009173303, 0.008894033, 0.008963757, 0.008979181, 0.008877182, 0.008926893, 0.008932053, 0.009050969, 0.009078352, 0.009208104, 0.00926294, 0.009208533, 0.009227806, 0.009239989, 0.00924206, 0.009261723, 0.009228921, 0.009261955, 0.009222401, 0.009192881, 0.009230229, 0.009230667, 0.009183431, 0.009195424, 0.009188821]
+```
+
 
 
 ---

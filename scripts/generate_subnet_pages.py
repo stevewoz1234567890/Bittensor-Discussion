@@ -64,7 +64,6 @@ README_SECTION_KEYS = frozenset(
         "ubuntu",
         "pytorch",
         "instance",
-        "cloud",
         "aws",
         "gcp",
         "azure",
@@ -93,6 +92,88 @@ HW_GREP_EMPTY_STUB = """#### CPU / GPU / RAM lines (automatic grep)
 """
 
 OVERVIEW_README_INTRO_CHARS = 14_000
+
+
+def _markdown_kv_table_from_bullet_lines(bullet_lines: list[str]) -> str | None:
+    """Turn `- **Label:** value` lines into a two-column Markdown table."""
+    rows: list[tuple[str, str]] = []
+    for ln in bullet_lines:
+        stripped = ln.strip()
+        if not stripped.startswith("- "):
+            continue
+        m = re.match(r"- \*\*(.+?):\*\*\s*(.+)$", stripped)
+        if not m:
+            continue
+        rows.append((m.group(1).strip(), m.group(2).strip()))
+    if not rows:
+        return None
+    out = ["| Field | Value |", "| --- | --- |"]
+    for k, v in rows:
+        out.append(f"| {k} | {v} |")
+    return "\n".join(out) + "\n"
+
+
+def _strip_leading_heading_chunk_if_duplicate_readme_intro(
+    heading_chunks: str, readme_intro: str | None
+) -> str:
+    """Drop the first README heading-section chunk when it repeats the Overview README preface."""
+    if not heading_chunks or not readme_intro:
+        return heading_chunks
+    intro = readme_intro.strip()
+    if len(intro) < 120:
+        return heading_chunks
+    parts = heading_chunks.split("\n\n---\n\n")
+    if not parts:
+        return heading_chunks
+    first = parts[0].strip()
+    intro_n = re.sub(r"\s+", " ", intro)
+    first_n = re.sub(r"\s+", " ", first)
+    n = min(len(first_n), len(intro_n), 360)
+    if n < 80:
+        return heading_chunks
+    if first_n[:n] == intro_n[:n] or first_n.startswith(intro_n[: min(200, len(intro_n))]):
+        rest = "\n\n---\n\n".join(p.strip() for p in parts[1:] if p.strip()).strip()
+        return rest
+    return heading_chunks
+
+
+def _taostats_pool_hist_to_mermaid_xychart(rows: list[dict], *, max_points: int = 56) -> str:
+    """Mermaid xychart-beta for daily pool price (GitHub-flavored Markdown)."""
+    chronological = sorted(
+        rows,
+        key=lambda x: (int(x.get("block_number") or 0), str(x.get("timestamp") or "")),
+    )
+    if not chronological:
+        return ""
+    take = min(max_points, len(chronological))
+    slice_ = chronological[-take:]
+    labels: list[str] = []
+    ys: list[float] = []
+    for row in slice_:
+        ts = str(row.get("timestamp") or "")
+        lab = ts.split("T")[0] if "T" in ts else (ts[:10] if len(ts) >= 10 else ts or "?")
+        labels.append(lab.replace('"', "'"))
+        try:
+            ys.append(float(row.get("price")))
+        except (TypeError, ValueError):
+            ys.append(0.0)
+    if not ys:
+        return ""
+    lo, hi = min(ys), max(ys)
+    span = (hi - lo) or 1e-9
+    y_lo = lo - span * 0.08
+    y_hi = hi + span * 0.08
+    lbl_joined = "[" + ", ".join(f'"{lab}"' for lab in labels) + "]"
+    nums_joined = "[" + ", ".join(f"{y:.12g}" for y in ys) + "]"
+    return (
+        "\n```mermaid\n"
+        "xychart-beta\n"
+        '    title "TAOStats daily pool price (τ per α)"\n'
+        f"    x-axis {lbl_joined}\n"
+        f'    y-axis "Price" in {y_lo:.7g} --> {y_hi:.7g}\n'
+        f"    line {nums_joined}\n"
+        "```\n"
+    )
 
 
 def _title_line_subnet(name: str, netuid: int, sym: str) -> str:
@@ -260,7 +341,7 @@ def format_taostats_snapshot_markdown(subnet: dict | None, pool: dict | None) ->
     bits: list[str] = []
 
     def add_block(title: str, row: dict, fields: tuple[tuple[str, str], ...]) -> None:
-        lines_out: list[str] = []
+        bullet_lines: list[str] = []
         for label, k in fields:
             if k not in row:
                 continue
@@ -274,10 +355,10 @@ def format_taostats_snapshot_markdown(subnet: dict | None, pool: dict | None) ->
                     v = json.dumps(v, separators=(",", ":"))[:520]
                 except (TypeError, ValueError):
                     v = str(v)[:520]
-            lines_out.append(f"- **{label}:** `{v}`")
-        if lines_out:
-            bits.append(f"#### {title}\n")
-            bits.extend(lines_out)
+            bullet_lines.append(f"- **{label}:** `{v}`")
+        tab = _markdown_kv_table_from_bullet_lines(bullet_lines)
+        if tab:
+            bits.append(f"#### {title}\n{tab}")
 
     if isinstance(pool, dict) and pool:
         add_block(
@@ -704,6 +785,11 @@ def _readme_specs_from_github(
         return None, readme_url_used, readme_text
 
     heading_chunks = _extract_readme_heading_sections(readme_text)
+    if heading_chunks:
+        heading_chunks = _strip_leading_heading_chunk_if_duplicate_readme_intro(
+            heading_chunks,
+            _readme_intro_until_first_section(readme_text, max_chars=OVERVIEW_README_INTRO_CHARS),
+        )
     grep_primary = _collect_hardware_grep_lines(readme_text)
 
     bundled: list[str] = []
@@ -792,53 +878,69 @@ def format_chain_ops(st: Subtensor, netuid: int, block: int) -> str:
     lines: list[str] = []
 
     lines.append("### Topology & economics (`SubnetInfo` snapshot)\n")
+    topo_bullets: list[str] = []
     if si:
-        lines.append(f"- **`max_n` (max registered UIDs):** {si.max_n}")
-        lines.append(f"- **`subnetwork_n`:** {si.subnetwork_n}")
-        lines.append(f"- **Max validators allowed (`max_allowed_validators`):** {si.max_allowed_validators}")
-        lines.append(f"- **Min weights per neuron (`min_allowed_weights`):** {si.min_allowed_weights}")
-        lines.append(f"- **`max_weights_limit` (consensus-encoded cap):** {si.max_weight_limit}")
-        lines.append(f"- **`tempo` (blocks between epoch advances):** {si.tempo}")
-        lines.append(f"- **`scaling_law_power`:** {si.scaling_law_power}")
-        lines.append(f"- **`modality` ID:** `{si.modality}`")
-        lines.append(f"- **`emission_value` (display field):** {si.emission_value}")
-        lines.append(f"- **`difficulty` (PoW field on info view):** {si.difficulty}")
-        lines.append(f"- **`immunity_period` (blocks):** {si.immunity_period}")
-        lines.append(f"- **Registration recycle cost snapshot (`burn`):** {si.burn}")
-        lines.append(f"- **Owner SS58 (`owner_ss58`):** `{si.owner_ss58}`")
+        topo_bullets.append(f"- **`max_n` (max registered UIDs):** `{si.max_n}`")
+        topo_bullets.append(f"- **`subnetwork_n`:** `{si.subnetwork_n}`")
+        topo_bullets.append(f"- **Max validators allowed (`max_allowed_validators`):** `{si.max_allowed_validators}`")
+        topo_bullets.append(f"- **Min weights per neuron (`min_allowed_weights`):** `{si.min_allowed_weights}`")
+        topo_bullets.append(f"- **`max_weights_limit` (consensus-encoded cap):** `{si.max_weight_limit}`")
+        topo_bullets.append(f"- **`tempo` (blocks between epoch advances):** `{si.tempo}`")
+        topo_bullets.append(f"- **`scaling_law_power`:** `{si.scaling_law_power}`")
+        topo_bullets.append(f"- **`modality` ID:** `{si.modality}`")
+        topo_bullets.append(f"- **`emission_value` (display field):** `{si.emission_value}`")
+        topo_bullets.append(f"- **`difficulty` (PoW field on info view):** `{si.difficulty}`")
+        topo_bullets.append(f"- **`immunity_period` (blocks):** `{si.immunity_period}`")
+        topo_bullets.append(f"- **Registration recycle cost snapshot (`burn`):** `{si.burn}`")
+        topo_bullets.append(f"- **Owner SS58 (`owner_ss58`):** `{si.owner_ss58}`")
 
         if si.connection_requirements:
-            lines.append("- **Subnet connection graph (`connection_requirements`, peer NetUID → weight multiplier):**")
-            for nid, wt in sorted(
-                si.connection_requirements.items(), key=lambda x: int(str(x[0]))
-            ):
-                lines.append(f"  - NetUID `{nid}` → {wt}")
+            parts = "; ".join(
+                f"NetUID `{nid}` → {wt}"
+                for nid, wt in sorted(
+                    si.connection_requirements.items(), key=lambda x: int(str(x[0]))
+                )
+            )
+            topo_bullets.append(f"- **Subnet connection graph (`connection_requirements`):** {parts}")
+
+    topo_tab = _markdown_kv_table_from_bullet_lines(topo_bullets)
+    if topo_tab:
+        lines.append(topo_tab.rstrip() + "\n")
 
     lines.append("")
     lines.append("### Consensus hyperparameters (`SubnetHyperparameters` snapshot)\n")
+    hp_bullets: list[str] = []
     if hp:
-        lines.append(f"- **Registration allowed:** `{hp.registration_allowed}`")
-        lines.append(f"- **`min_burn` / `max_burn` (RAO envelope):** {Balance.from_rao(hp.min_burn)} / {Balance.from_rao(hp.max_burn)}")
-        lines.append(
+        hp_bullets.append(f"- **Registration allowed:** `{hp.registration_allowed}`")
+        hp_bullets.append(
+            f"- **`min_burn` / `max_burn` (RAO envelope):** `{Balance.from_rao(hp.min_burn)}` / `{Balance.from_rao(hp.max_burn)}`"
+        )
+        hp_bullets.append(
             f"- **PoW `difficulty` + bounds:** `{hp.difficulty}` (min `{hp.min_difficulty}`, max `{hp.max_difficulty}`)"
         )
-        lines.append(f"- **`target_regs_per_interval`:** `{hp.target_regs_per_interval}`")
-        lines.append(f"- **`immunity_period`:** `{hp.immunity_period}` blocks")
-        lines.append(f"- **`max_regs_per_block`:** `{hp.max_regs_per_block}`")
-        lines.append(f"- **`serving_rate_limit`:** `{hp.serving_rate_limit}`")
-        lines.append(f"- **`weights_rate_limit`:** `{hp.weights_rate_limit}`")
-        lines.append(f"- **`activity_cutoff`:** `{hp.activity_cutoff}` blocks")
-        lines.append(f"- **`commit_reveal_weights_enabled`:** `{hp.commit_reveal_weights_enabled}`")
-        lines.append(f"- **`commit_reveal_period`:** `{hp.commit_reveal_period}`")
-        lines.append(f"- **`liquid_alpha_enabled`:** `{hp.liquid_alpha_enabled}`")
-        lines.append(f"- **`user_liquidity_enabled` (subnet pool):** `{hp.user_liquidity_enabled}`")
-        lines.append(f"- **`bonds_reset_enabled` / `bonds_moving_avg`:** `{hp.bonds_reset_enabled}` / `{hp.bonds_moving_avg}`")
-        lines.append(f"- **`subnet_is_active`:** `{hp.subnet_is_active}`")
-        lines.append(f"- **`yuma_version`:** `{hp.yuma_version}`")
-        lines.append(
-            f"- **`alpha_sigmoid_steepness` / `alpha_high` / `alpha_low`:** {hp.alpha_sigmoid_steepness}, "
+        hp_bullets.append(f"- **`target_regs_per_interval`:** `{hp.target_regs_per_interval}`")
+        hp_bullets.append(f"- **`immunity_period`:** `{hp.immunity_period}` blocks")
+        hp_bullets.append(f"- **`max_regs_per_block`:** `{hp.max_regs_per_block}`")
+        hp_bullets.append(f"- **`serving_rate_limit`:** `{hp.serving_rate_limit}`")
+        hp_bullets.append(f"- **`weights_rate_limit`:** `{hp.weights_rate_limit}`")
+        hp_bullets.append(f"- **`activity_cutoff`:** `{hp.activity_cutoff}` blocks")
+        hp_bullets.append(f"- **`commit_reveal_weights_enabled`:** `{hp.commit_reveal_weights_enabled}`")
+        hp_bullets.append(f"- **`commit_reveal_period`:** `{hp.commit_reveal_period}`")
+        hp_bullets.append(f"- **`liquid_alpha_enabled`:** `{hp.liquid_alpha_enabled}`")
+        hp_bullets.append(f"- **`user_liquidity_enabled` (subnet pool):** `{hp.user_liquidity_enabled}`")
+        hp_bullets.append(
+            f"- **`bonds_reset_enabled` / `bonds_moving_avg`:** `{hp.bonds_reset_enabled}` / `{hp.bonds_moving_avg}`"
+        )
+        hp_bullets.append(f"- **`subnet_is_active`:** `{hp.subnet_is_active}`")
+        hp_bullets.append(f"- **`yuma_version`:** `{hp.yuma_version}`")
+        hp_bullets.append(
+            f"- **`alpha_sigmoid_steepness` / `alpha_high` / `alpha_low`:** `{hp.alpha_sigmoid_steepness}`, "
             f"`{hp.alpha_high}`, `{hp.alpha_low}`"
         )
+
+    hp_tab = _markdown_kv_table_from_bullet_lines(hp_bullets)
+    if hp_tab:
+        lines.append(hp_tab.rstrip() + "\n")
 
     lines.append("")
     lines.append(
@@ -921,22 +1023,13 @@ def format_price_block(
             f"[TAOStats](https://docs.taostats.io/reference/get-historical-subnet-pools) daily pool **`price`** "
             f"(TAO per α), **{len(hist)}** rows in this snapshot.\n"
         )
-        lines.append("| Timestamp (UTC) | Block | Pool price |")
-        lines.append("|-----------------|------:|-----------:|")
-
-        chronological = sorted(
-            hist,
-            key=lambda x: (
-                x.get("block_number") or 0,
-                str(x.get("timestamp") or ""),
-            ),
+        mermaid = _taostats_pool_hist_to_mermaid_xychart(
+            hist, max_points=min(56, taostats_limit, len(hist))
         )
-        for row in chronological[-min(56, len(chronological)) :]:
-            ts = row.get("timestamp") or ""
-            bn = row.get("block_number")
-            px = row.get("price") or ""
-            lines.append(f"| {ts} | {bn} | {px} |")
-        lines.append("")
+        if mermaid:
+            lines.append(mermaid.rstrip() + "\n")
+        else:
+            lines.append("*Chart could not be built from TAOStats rows.*\n")
     else:
         lines.append(
             "*Daily pools from TAOStats require `TAOSTATS_API_KEY` or `--taostats-api-key` (see conventions in this folder’s README).*\n"
